@@ -1,0 +1,330 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2022}
+\author{\textbf{Homework 4} Due Oct 20}
+\date{}
+
+\voffset -1.25cm \hoffset -3.5cm \textwidth 18cm \textheight 25cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+ 
+
+
+\item  Let us revisit the example given in the lecture: Use the method of separation of variables to find the solution to the following problem in terms of infinite series
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=Du_{xx},& x\in (0,L), t>0\\
+u(x,0)=x, &x\in(0,L), \\
+u_x(x,t)=0, & x=0,L.
+\end{array}
+\right.
+\end{equation}
+
+(i) Without solving this problem, use physical intuition to predict/explain what is the limit of $u(x,t)$ as $t\rightarrow \infty$?  Hint: think of $u(x,t)$ as the temperature.
+
+(ii)  Try a separable solution $U_n(x,t)=X_n(x)T_n(t)$ of the PDE and then find it by the boundary condition;
+
+(iii)  Let $u(x,t)=\sum^\infty_{n=1}C_nX_n(x)T_n(t)$ and then find $C_n$ by fitting the initial condition;
+
+(iv)  Choose $D=1$ and $L=\pi$.  Use a computer program to plot the sum of the first $N$--terms $u^N(x,t)$
+\[u^N(x,t):=\sum^N_{n=1}C_nX_n(x)T_n(t)\]
+of the series at time $t=0.1$ by taking $N=1, 2, 3, 10$ (in different colors or lines such as dash, dot, etc) respectively.  You shall observe that $u^N(x,t)$ converges as $N$ increases (well, at least at $t=0.1$).  Therefore, though it is impossible to plot $u^\infty(x,t)$, one can, given applications, employ $u^N(x,t)$ to approximate the true solution by taking $N$ large enough.
+
+(v)  Assume that $u^{10}(x,t)$ above is a good enough approximation of the exact solution (i.e., the infinite series).  Plot the graphs of $u^{10}(x,t)$ for $t=0.1,0.5,1,2,5,10,...$. What is the limit of this curve as $t\rightarrow \infty$.  Compare this with your prediction/explanation in (i).
+
+(vi) Plot the graphs as in (v) with $t=-1$, -2,...You will see the blow-ups of $u(x,t)$.   That being said, the heat equation is ill-posed backward in time.
+
+
+\item Solve the following IBVP by separation of variables and write its solution in terms of infinite series
+\begin{equation}\label{L}
+\left\{
+\begin{array}{ll}
+u_t=Du_{xx},& x\in(-L,L),t>0\\
+u(x,0)=\phi(x),&x\in(-L,L),\\
+u(-L,t)=u(L,t)=0, &t>0.
+\end{array}
+\right.
+\end{equation}
+\emph{Remark:  Ambitious and motivated students are encouraged to explore this problem by replacing $(-L,L)$ by $(a,b)$, though I do not require you to do so.  We shall see later in this course that by passing $L\rightarrow\infty$, we collect \eqref{L} in the whole space.}
+
+\item  The method of separation of variables can also be used to solve wave--equation or hyperbolic equation such as of the following form
+\begin{equation}\label{7}
+\left\{
+\begin{array}{ll}
+u_{tt}=Du_{xx},& x\in(0,L),t\in \mathbb R_+,\\
+u(x,0)=\phi(x), u_t(x,0)=0, &x\in(0,L),\\
+u(0,t)=0, u(L,t)=0, &t\in \mathbb R_+,
+\end{array}
+\right.
+\end{equation}
+where
+\[\phi(x)=
+\left\{
+\begin{array}{ll}
+\frac{2h}{L}x, &x\in[0,\frac{L}{2}],\\
+\frac{2h}{L}(L-x),& x\in[\frac{L}{2},L],
+\end{array}
+\right.
+\]
+wherein the left-hand side of the PDE, second-order derivative is taken concerning time.  You can solve (\ref{7}) by taking the following steps
+
+(i)  Try a separable solution of the form $U_n(x,t)=X_n(x)T_n(t)$;  find the ODEs of $X_n$ and $T_n$, then solve for $X_n$ by the boundary condition thus $T_n(t)$.  Now $T_n(t)$ satisfies second order ODE and it should take the form $T_n(t)=A_n \cos(...)+B_n\sin (...)$, where $A_n$ and $B_n$ are constants to be determined.  Now you should have obtained $U_n(x,t)=X_n(x)T_n(t)$;
+
+(ii) Let $u(x,t)=\sum^\infty_{n=1}X_n(x)T_n(t)$ and then find $A_n$ and $B_n$ by fitting the initial condition.  \emph{Remark:  In the linear combination, the coefficient $C_n$ is embedded into $A_n$ and $B_n$.}
+
+(iii)  Choose $D=L=1$.  Use the first 10 terms as your approximate.  Plot the graphs for $t=1, 1.5, 2, 2.5, 3$...and the initial data on the same coordinate.  What are your observations? Compare this with the heat equation.
+
+(iv).  You can even try to plot the graphs for $t=-1$, $t=-2$, $t=-3$.  You may see that graphs propagate like a wave and this is why the PDE is called a wave equation.  What is the speed of wave propagation?
+
+\item  This is another example that applies the method of separation of variables.  Consider the scenario that an agent starts with a total wealth $x$ at time $t$, and can invest the total wealth $X_s$ into a bond (risk-free) with a portion $\alpha_s$ and a stock (risky) with the rest portion $1-\alpha_s$.  Then idealized modeling of the evolution of the total wealth is the following differential equation
+\[dX_s=X_s\big(r+(\mu-r)\alpha_s\big)dt+\sigma \alpha_sX_sdW_s,\]
+where $r$ is the constant interest rate of the bond, and constants $\mu$ and $\sigma$ are the interest rate and volatility of the stock.  $W_s$ is the Brownian motion and it is a user-friendly choice that models the uncertainty or the ``risk" when investing in the stock.  Then an optimization problem arises when this agent opts to maximize the ``benefit" from the total wealth by altering the allocation $\alpha_s$.  That is, one aims in finding the maximum value function from the investment
+\[u(x,t):=\sup_{\alpha_s\in\mathcal A}E[\mathbb U(X^{x,t}_T)].\]
+Here $\mathbb U(\cdot)$ is the so-called utility function, and ${t,x}$ on the shoulder are included to highlight the effects endowment $x$ at time $t$.  Note that: i) $X_t$ is a stochastic process, hence the expectation is taken; ii) one may wonder why not to maximize $E[X^{x,t}_T]$ but $E[\mathbb U(X^{x,t}_T)]$.  This utility function describes the well-accepted belief that utility or ``satisfaction" should not be linear in wealth, but a concave function.  Imagine that eating two apples is less than twice satisfying as eating one.  Some may argue it might be more than twice in a certain situation which I agree with, however, this implies that a nonlinear function should be considered here anyhow, and that is the utility function.  You do not have to understand everything above to do this problem, but I explain to them here to give you a motivation why the optimal value function $u(x,t)$ above is of interest.
+
+By the standard dynamic programming principle (or Bellman's optimality condition), one can show that this function solves the following
+\begin{equation}\label{HJB}
+\left\{
+\begin{array}{ll}
+u_t+rxu_x+\sup_{\alpha\in\mathbb R}\big[\alpha(\mu-r)xu_x+\frac{\alpha^2\sigma^2}{2}x^2u_{xx}\big]=0,&x\in (0,\infty),t\in(0,T),\\
+u(x,T)=\mathbb U(x)=\frac{x^p}{p},&x\in (0,\infty),
+\end{array}
+\right.
+\end{equation}
+where for simplicity we assume that $\alpha$ is constant, and choose the so-called CRRV utility $\mathbb U(x)$ with $p\in(0,1)$.  Use the method of separation of variables to solve for the optimal $\alpha^*$ and the value function of (\ref{HJB}).  Suggest answer: $u(x,t)=e^{\lambda(T-t)}x^p/p$, where $\lambda=\frac{p(\mu-r)^2}{2(1-p)\sigma^2}+pr$, and the optimal control is $\alpha^*=\frac{\mu-r}{(1-p)\sigma^2}$.
+
+\item  Let us consider the following problem under RBC
+\begin{equation}\label{NBVP1}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx},& x\in (0,1), t\in\mathbb R^+,\\
+u(x,0)=x, &x\in(0,1), \\
+u+u_x=0, & x=0,1, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+
+(i)  solve this problem in terms of infinite series;
+
+(ii) use computer program to plot the sum of first $N$--terms $u^N(x,t)$
+\[u^N(x,t):=\sum C_nX_n(x)T_n(t)\]
+of the series at time $t=0.1$ by taking $N=1, 2, 3, 10$ (in different colors or lines such as dash, dot, etc) respectively.  Then again we shall observe that $u^N(x,t)$ converges as $N$ increases and $u^N(x,t)$ to approximate the true solution if $N$ is large enough;
+
+(iii) assume that $u^{10}(x,t)$ is a good enough approximation of the exact solution (i.e., the infinite series)--this applies in the sequel.  Plot the graphs of $u^{10}(x,t)$ for $t=0.01,0.05,01,1,2,5,...$.   What are your observation of $u(x,t)$ when $t$ is large?
+
+
+\item  Let us consider the following problem with heating/cooling resources under NBC
+\begin{equation}\label{NBVP1}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx}+e^{-t}\sin 2x,& x\in (0,1), t\in\mathbb R^+,\\
+u(x,0)=x, &x\in(0,1), \\
+u=0, & x=0,1, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+
+Do all the work as in Problem 2.
+
+
+\item  Let us consider the following problem with heating/cooling resources under NBC
+\begin{equation}\label{NBVP1}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx}+e^{-t}\sin 2x,& x\in (0,1), t\in\mathbb R^+,\\
+u(x,0)=x, &x\in(0,1), \\
+u_x=0, & x=0,1, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+
+Do all the work as in Problem 2.  Summarize/propose all your observations/guesses from Problems 2-4 on the effects of IC, BC, and PDE on the long-time behaviors.
+
+\item  Separation of variables can also be applied to tackle some (most likely linear) PDEs in higher dimensions.  Consider
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=D\Delta u,& x\in\Omega,t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x\in\Omega,\\
+u(x,t)=0, &x\in\partial \Omega, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+Write down $u(x,t)$ in terms of an infinite series by mimicking the approaches for 1D IBVP.  You can assume similar properties of the eigen-value problem that you encounter.
+
+\item It seems in the problem above, more needed to be said about the following multi-dimensional eigen-value problem with $w\in C^2(\Omega)\cap C(\bar\Omega)$ (i.e., twice differentiable in the interior and continuous up to the boundary)
+\begin{equation}\label{DEP}
+\left\{
+\begin{array}{ll}
+\Delta w(x)+\lambda w(x)=0,& x\in\Omega,\\
+w(x)=0, &x\in\partial \Omega.
+\end{array}
+\right.
+\end{equation}
+Again, $<w,\lambda>$ is called eigen-pair and $w\not\equiv0$ is needed (see our discussions above).  Prove that $\lambda>0$.  Hint: multiply BHS by $w$ and then integrate it over $\Omega$ by parts and you will see that $\lambda\geq0$; moreover $w\equiv 0$ if $\lambda=0$ (continuity up to the boundary).  \emph{Remark: Similar to in 1D, there are infinitely many eigen-pairs.  The smallest eigen-value, denoted by $\lambda_1$, is called the principal eigen-value.  For example, the principal eigen-value in 1D is $(\frac{\pi}{L})^2$.  The effect of $\lambda_1$ is that it determines how fast the solution converges/stabilizes. }
+
+\item Consider the following problem
+\begin{equation}\label{ndep}
+\left\{
+\begin{array}{ll}
+\Delta w+\lambda w=0,& x\in \Omega,\\
+\alpha\frac{\partial u}{\partial \textbf{n}}+\beta u=0, &x\in\partial\Omega,
+\end{array}
+\right.
+\end{equation}
+where $\Omega$ is a bounded domain in $\mathbb R^n$, $n\geq2$, and $\alpha^2+\beta^2\neq0$.  Prove that $w_m$ and $w_n$, corresponding to $\lambda_m$ and $\lambda_n$ respectively, are orthogonal in $L^2(\Omega)$, whenever $\lambda_m\neq \lambda_n$.
+
+\item The multi-dimensional eigen-value problem over special geometries can be solved explicitly.  For example, choose $\Omega=(0,a)\times(0,b)$ and consider the Dirichlet eigen-value problem (\ref{DEP}).  Find its eigen-pairs by starting with $u(x,y)=X(x)Y(y)$.  Hint: your solution should be of the form $u_{mn}(x,y)=X_m(x)Y_n(y)$ and $\lambda_{mn}$, $m,n\in\mathbb N$.
+
+\item One can also employ the method of separation of variables to solve other types of (multi-dimensional) PDEs.  For example, consider the following problem over a 2D square $\Omega=(0,1)\times(0,1)$
+\begin{equation}
+\left\{
+\begin{array}{ll}
+\Delta u=0,& x\in(0,1)\times(0,1)\\
+u_x(0,y)=u_x(1,y)=0,&y\in(0,1),\\
+u(x,0)=0, u(x,1)=x. &
+\end{array}
+\right.
+\end{equation}
+Find $u(x,y)$ in terms of infinite series by starting with $u(x,y)=X(x)Y(y)$.  Suggested answer:
+\[u(x,y)=\frac{y}{2}+\sum_{n=1}^\infty \frac{2((-1)^n-1)}{(n\pi)^2}\frac{e^{n\pi y}-e^{-n\pi y}}{e^{n\pi}-e^{-n\pi}}\cos n\pi x.\]
+Plot $u(x,y)$ by choosing $N$ large to see the graph yourself if it matches the boundary conditions.  \emph{Remark: If $\Delta u=0$, we say that $u$ is a harmonic function.  More about harmonic functions will be discussed with details in coming lectures.}
+
+\item  We observe in class that the method of separation of variables can be applied to solve non-autonomous problems (i.e., the reaction term $f$ does not depend on $u$), whereas the PDE $u_t=u_{xx}+f(u)$ is nonlinear and can not be solved explicitly in general.  However, this method is applicable as long as the corresponding ODE is solvable.  To see this, let us consider the following non-autonomous problem
+\begin{equation}\label{5}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx}-\lambda u+\mu,& x\in(0,L),t\in\mathbb R^+,\\
+u(x,0)=0,&x\in(0,L),\\
+u_x(0,t)=0, u_x(L,t)=0, &t\in\mathbb R^+,
+\end{array}
+\right.
+\end{equation}
+where $\lambda$ and $\mu$ are positive constants.
+
+i) solve it explicitly;
+
+ii) what is the limit of $u(x,t)$ as $t\rightarrow \infty$?
+
+iii) what is the solution to the following ODE
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=-\lambda u+\mu,&t\in\mathbb R^+,\\
+u(0)=0.&
+\end{array}
+\right.
+\end{equation}
+What is(are) your observation(s) after comparing the solutions of the PDE and the ODE; use intuition to justify it(them)?
+
+\item  Solve the following non-autonomous problem with a different initial condition
+\begin{equation}\label{5a}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx}-\lambda u+\mu,& x\in(0,L),t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x\in(0,L),\\
+u_x(0,t)=0, u_x(L,t)=0, &t\in\mathbb R^+,
+\end{array}
+\right.
+\end{equation}
+where $\lambda$ and $\mu$ are positive constants.  Find the (pointwise) limit of $u(x,t)$ as $t\rightarrow\infty$?  If you can not, do some numerical simulations by choosing $N=10$ and choosing $\phi(x)=x$ or $1+\cos \frac{\pi x}{L}$ to give you some intuitions.
+\end{enumerate}
+
+
+\end{document}
+\endinput

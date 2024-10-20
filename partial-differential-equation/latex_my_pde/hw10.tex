@@ -1,0 +1,166 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2022}
+\author{\textbf{Homework 10, Due Dec 15}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+ \usepackage{textcomp}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+
+\item Let us denote \[F(x):=\frac{1}{2}\int_{-\infty}^\infty |x-y|\sin ydy.\]
+Show that $\frac{d^2F(x)}{dx^2}=\sin x$.  (Remark: this fact is not intuitively simple)
+
+\item 1) Show that $F(x;c)=xH(x)+cx$, $\forall c\in\mathbb R$, is a fundamental solution of $\mathcal L=\frac{d^2}{dx^2}$;
+
+2) Choose several different $c$ and plot the figure of $F(x;c)$ to give yourself some intuition.  Remark:  Any fundamental solution of $\mathcal L$ must be of this form for some $c$.  Some students approached me after the class about the $\mathcal L$.  Here it is merely a notation for this linear operator.
+
+3) Find a general formula for the fundamental solution $G$ for $\mathcal L$.  Hint: solve $\mathcal G=0$ for $x< 0$ and $x>0$ by avoiding the singularity point first.  Then apply the integral condition for the Delta function.
+
+\item Suppose that $u$ is a harmonic function in a plane disk $B_2(0)\subset \mathbb R^2$, i.e., centered at the origin with radius 2, and $u=3 \cos 2\theta +1$ for $r=2$.  Calculate the value of $u$ at the origin without finding the solution $u$.
+
+
+\item Let us recall from the Green's second identity that
+\[\int_\Omega u\Delta G-\Delta uGdx=\int_{\partial \Omega}u\frac{\partial G}{\partial \textbf{n}}-\frac{\partial u}{\partial \textbf{n}}GdS\footnote{I switched the order so one collects $u(x_0)$ without the negative sign.}.\]
+I want to remind you that in multi-variate calculus, one typically requires that both $u$ and $G$ are at least twice differentiable for this identity to hold.  However, now that you understand the weak derivative, the Laplacian $\Delta$ can be treated in the weak sense without ruining this equality, hence the smoothness of $u$ and $G$ are no longer required in the classical sense.
+
+Note that $G$ is not unique for $\Delta G(\textbf{x})=\delta(\textbf{x})$ to hold since $\Delta (G+\tilde{G})=\delta(\textbf{x})$ if $\Delta \tilde{G}\equiv 0$.
+
+
+
+Let us consider the following problem
+\[
+\left\{
+\begin{array}{ll}
+\Delta u(\textbf{x})=f(\textbf{x}),& \textbf{x}\in\Omega,\\
+u(\textbf{x})=g(\textbf{x}),&\textbf{x}\in\partial \Omega.
+\end{array}
+\right.
+\]
+
+1) show that for any $G^*$ such that $\Delta G^*=\delta(\textbf{x})$, we have that for any $x_0\in\Omega$
+\begin{equation}\label{rep2}
+    u(\textbf{x}_0)=\int_\Omega fG^*d\textbf{x}+\int_{\partial \Omega}g\frac{\partial G^*}{\partial \textbf{n}}-\frac{\partial u}{\partial \textbf{n}}G^*dS.
+\end{equation}
+You should write explicitly in this formula as, e.g., $f(\textbf{x})G^*(\textbf{x}_0-\textbf{x})$,...
+
+2) In \eqref{rep2}, we note that $\frac{\partial u}{\partial \textbf{n}}$ is not known, therefore one might want to choose $G^*=0$ on $\partial \Omega$ such that this surface integral disappears.  However, this is only doable for special geometries.
+
+Let us consider $\Omega$ the upper half plane $\mathbb R^2_+:\{\textbf{x}=(x,y)\in\mathbb R^2|x\in(-\infty,\infty),y\in(0,\infty)\}$.  Find $G^*(\textbf{x})$ such that $\Delta G(\textbf{x})=0$ in $\mathbb R^2_+$ and $G(\textbf{x})$ on $\partial \mathbb R^2_+$ (i.e., the $x$-axis.  Indeed, the term for $|x|\rightarrow \infty$ disappear.)  Hint:  $G^*(\textbf{x};\textbf{x}_0)=G(\textbf{x};\textbf{x}_0)+\tilde{G}(\textbf{x};\textbf{x}_0)$ as suggested earlier.  Choose $\tilde{G}$ such that $G^*\equiv 0$ on the boundary.
+
+
+\item Find the harmonic function $u$ over $\mathbb R^2_+$ such that
+\[\Delta u=0, x\in(-\infty,\infty),y\in(0,\infty),\]
+subject to the boundary condition
+\[u(x,0)=
+\left\{
+\begin{array}{ll}
+1,& x>0\\0,&x\leq 0.
+\end{array}
+\right.
+\]
+Then plot $u(x,y)$ over $\mathbb R^2_+$ to illustrate your solution.
+
+\item Let $u$ be a radially symmetric function such $u=u(r)$, $r=|\textbf{x}|=\sqrt{\sum x_i^2}$, $\textbf{x}:=(x_1,x_2,\ldots,x_n)$.  Prove that $\frac{\partial u(r)}{\partial \textbf{n}}=\frac{\partial u(r)}{\partial r}$, where $\textbf{n}$ is the unit outer normal derivative.
+
+
+
+\end{enumerate}
+
+\end{document}
+\endinput

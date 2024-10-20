@@ -1,0 +1,229 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2022}
+\author{\textbf{Homework 7, Due Nov 24}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+ \usepackage{textcomp}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+
+\item In class, we arrived at an integral of the following form when evaluating $G^{\pm}_L$
+\[I(c)=\int_0^\infty e^{-w^2b} \cos (wc) dw,\]
+where $b$ and $c$ are constants.
+
+(i) (Optional) Evaluate this integral through integration by parts or any method you know;
+
+(ii).  An alternative approach is to solve an ODE that $I(c)$ satisfies.  Show that $I(c)$ satisfies
+\[\frac{dI(c)}{dc}=-\frac{c}{2b}I(c);\]
+
+(iii).  Show that $I(0)=\sqrt \frac{\pi}{4b}$ and solve the ODE in (ii) to find $I(c)$.
+
+\item We know from class that the solution to the following problem
+\begin{equation}\label{halfinfty}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x \in (0,\infty),\\
+u(0,t)=u(\infty,t)=0,&t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+is given in the following form\footnote{Throughout this homework, and probably the whole course, $G(\xi;x,t)$ is the heat kernel and it is explicitly given by
+\[G(\xi;x,t)=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{|x-\xi|^2}{4Dt}}.\]}
+\[u(x,t)=\int_0^\infty \big(G^-(\xi;x,t)-G^+(\xi;x,t)\big)\phi(\xi)d\xi.\]
+Note that this integral above can be evaluated symbolically.  Choose $D=1$ and the initial data to be $\phi(x)\equiv 1$ for $x\in(0,1)\cup(2,3)$ and $\phi(x)\equiv0$ otherwise.  Plot the solution of (\ref{halfinfty}) at times $t=10^{-4},10^{-3},0.1,0.5$,1 and 5.  Note that this integral over $(0,\infty)$ must be truncated over $(0,L)$ for $L$ large.  Choose your own $L$.  (You should know how to choose such $L$ up to certain accuracy by now).
+
+
+\item  Let us consider the following IBVP over half line $(0,\infty)$ with Neumann boundary condition
+\begin{equation}\label{NBC}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x \in (0,\infty),\\
+u_x(0,t)=0,&t\in(0,\infty),
+\end{array}
+\right.
+\end{equation}
+Similar as in class, tackle this problem by first solving its counterpart in $(0,L)$ and then sending $L\rightarrow\infty$.  Hint: the suggested solution is
+\[u(x,t)=\int_0^\infty \Big(G(\xi;x,t)+G(x,t;-\xi)\Big)\phi(\xi)d\xi.\]
+
+\item  Let us consider the following Cauchy problem
+\begin{equation}\label{infty}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (-\infty,\infty), t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x \in (-\infty,\infty).
+\end{array}
+\right.
+\end{equation}
+We can approximate the solution to this problem by first solving its counterpart in $(-L,L)$, which has been in a previous homework, and then sending $L\rightarrow\infty$.
+
+Consider
+\begin{equation}\label{L}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (-L,L), t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x \in (-L,L),\\
+u(-L,t)=u(L,t)=0,& t\in\mathbb R^+.\\
+\end{array}
+\right.
+\end{equation}
+
+(i).  write the solution to (\ref{L}) in terms of infinite series; you just present your final results, no need to show the details here;
+
+(ii).  write the series above into an integral and then evaluate this integral by sending $L\rightarrow \infty$.  Suggested answer:
+\begin{equation}\label{sol}
+u(x,t)=\int_{\mathbb R}G(\xi;x,t)\phi(\xi)d\xi,
+\end{equation}
+
+We shall see several important applications of solution (\ref{sol}) in the future.
+
+\item   The heat kernel $G(\xi;x,t)$ is sometimes called fundamental solution of heat equation
+\[G(\xi;x,t)=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{(x-\xi)^2}{4Dt}}.\]
+Prove that
+
+(i) $|\frac{\partial G}{\partial x}|\rightarrow 0$ as $|x|\rightarrow\infty$ for each $t$ and $\xi$.  Prove the same for $\frac{\partial^m G}{\partial x^m}$ for each $m\in \mathbb N^+$;
+
+(ii) $G_t=DG_{xx}$, $x\in\mathbb R,t\in\mathbb R^+$;
+
+(iii) $\int_{\mathbb R}G(\xi;x,t)dx=1$.
+
+Remark:  I would like to note that we write the kernel $G(\xi;x,t)$ and $G(\xi;x,t)$ interchangeably.  The former is to highlight the eventual solution as a function of $x$ and $t$, whereas the latter is to focus on treating $\xi$ as the integration variable whenever applicable.
+
+\item To give yourself some physical intuitions on the heat kernel, let us consider the following situation in $\mathbb R$: put two separate unit thermal heat at locations $\xi=-1$ and $\xi=1$ respectively at time $t=0$.  Suppose that the temperature $u(x,t)$ satisfies the heat equation with diffusion rate $D=1$, then it is given by the following explicit form
+    \[u(x,t)=G(x,t;-1)+G(x,t;1)=\frac{1}{\sqrt{4\pi t}}\Big(e^{-\frac{(x+1)^2}{4t}}+e^{-\frac{(x-1)^2}{4t}}\Big).\]
+Plot $u(x,t)$ over $x\in(-5,5)$ with $t=0.01, 0.02, 0.05$, $0.1$ and $1$ \emph{on the same coordinate} in $(-R,R)$ (if $R$ is large, then it approximates the whole line)  to illustrate your results--please use different colors and/or line styles for better effects.  We will know more about the physical intuition in the future; indeed you should already have an intuition about: i) the evolution of the thermal energy; ii) the connect between diffusion and Brownian motion or normal distribution.)
+
+\item
+
+Consider the following problem
+\begin{equation}\label{advection}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx}-\alpha u_x-ru,& x\in (-\infty,0), t\in\mathbb R^+,\\
+u(x,0)=\phi(x)\geq,\neq0,&x \in (\infty,0),\\
+u(-\infty,t)=e^{-rt}K>0,u(0,t)=0,& t\in\mathbb R^+,\\
+\end{array}
+\right.
+\end{equation}
+where $D$, $\alpha$, $r$ and $K$ are positive constants.
+
+Let visit it truncated problem
+\begin{equation}\label{advectionL}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx}-\alpha u_x-ru,& x\in (-L,0), t\in\mathbb R^+,\\
+u(x,0)=\phi(x)\geq,\neq0,&x \in (\infty,0),\\
+u(-L,t)=e^{-rt}K>0,u(0,t)=0,& t\in\mathbb R^+.\\
+\end{array}
+\right.
+\end{equation}
+
+
+(i) Solve \eqref{advectionL} in terms of infinite series.  Hint: its boundary condition is inhomogeneous;
+
+(ii) Send $L$ to infinity and then find the limiting solution in terms of an integral.
+
+
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

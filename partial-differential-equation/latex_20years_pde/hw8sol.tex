@@ -1,0 +1,506 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2020}
+\author{\textbf{Homework 8, Solutions}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+ \usepackage{textcomp}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+\item Let us revisit the Lebesgue's dominated convergence theorem.  It states that: if $f_n(x)\rightarrow f(x)$ pointwisely/a.e., and there exists an integrable function $g(x)$ such that $|f_n(x)|\leq g(x)$ pointwisely/a.e., then one has that
+    \[\lim_{n\rightarrow \infty} \int_\Omega f_n(x)dx=\int_\Omega f(x)dx,\]
+    or equivalently $\Vert f_n-f\Vert_{L^1(\Omega)}\rightarrow 0$.  Here $g(x)$ means that $g\in L^1(\Omega)$.  Use this fact to prove its generalized version: if all the statements above hold, except that $g\in L^p(\Omega)$, $p\in(1,\infty)$, then we have that $\Vert f_n-f\Vert_{L^p(\Omega)}\rightarrow 0$.  I wish this gives you some motivations for further (strong) convergence on the $(G*f)(x,t)\rightarrow f(x)$ that we proved in class.
+\begin{solution}
+This is obvious.  Since $f_n\rightarrow f$ pointwisely, one has the $|f_n-f|^p\rightarrow 0$ pointwisely.  On the other hand,
+\[|f_n-f|^p\leq 2^p |g|^p,\]
+therefore, applying Lebesgue's dominated convergence theorem, in light of the fact that the dominating function $|g|^p$ is integrable, gives that
+\[\int_\Omega |f_n-f|^pdx\rightarrow 0,\]
+hence $\Vert f_n-f\Vert_{L^p(\Omega)}\rightarrow 0$.
+\end{solution}
+
+
+ \item We know that the solution $u(x,t)$ to the following Cauchy problem
+\begin{equation}\label{infty}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (-\infty,\infty), t>0,\\
+u(x,0)=\phi(x),&x \in (-\infty,\infty),
+\end{array}
+\right.
+\end{equation}
+is given by
+\[u(x,t)=\int_{\mathbb R} \phi(\xi)G(x,t;\xi)d\xi,\]
+with
+\[G(x,t;\xi)=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{(x-\xi)^2}{4Dt}}\footnote{I would like to point out that there should be no confusion on the notation here, where $G(x-\xi;t)$ was adopted in class.  It is a matter of the integration variable and the parameter.}.\]
+Suppose that $\phi(x)\in L^\infty(\mathbb R)\cap C^0(\mathbb R)$ (i.e., continuous and bounded).
+\begin{enumerate}
+\item Prove that $u(x,t)\in C_x(\mathbb R)$, i.e., continuous with respect to $x$.  Hint: you can either use $\epsilon-\delta$ language or show that $u(x_n,t)\rightarrow u(x,t)$ as $x_n\rightarrow x$ for each fixed $(x,t)$.  Similarly, you can continue to prove that $u\in C^k_x(\mathbb R)$ for any $k\in\mathbb N^+$, hence $C^\infty_x$, while you can skip this part;
+\item Indeed, as you may have seen from your proof, the continuity condition on initial data $\phi(x)$ above is not required, i.e., $u(x,t)\in C^\infty (\mathbb R\times [\epsilon,\infty))$ for any $\epsilon>0$, if $\phi(x)\in L^\infty(\mathbb R)$ (even if it has jump or discontinuity).  To illustrate this, let us assume $\phi(x)=1$ for $x\in(-1,1)$ and $\phi(x)=0$ elsewhere, therefore it has jumps at $x=\pm1$.  Choose $D=1$, then use MATLAB to plot the integral solution $u(x,t)$ above for time $t=0.001$, $t=0.01$, $t=0.1$ and $t=1$ in the same coordinate--choose the integration limit to be $(-M,M)$ for some $M$ large enough so it approximate the exact solution.  One shall see that $u(x,t)$ becomes smooth at $x=\pm 1$ for any small time $t>0$, though two jumps present in the initial data; this is the so--called smoothing or regularizing effect of diffusion.
+\end{enumerate}
+\begin{solution}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=6in,height=2.5in]{hw6figure1.eps}
+  \caption{Smoothing effect of diffusion with diffusion rate chosen $D=1$.  The initial condition is a characteristic function supported on $[-1,1]$.  We see that the singularities at $x\pm1$ is smeared out immediately after even a tiny time $t=0.001$.  Indeed, $u(x,t)$ is $C^\infty$ smooth in $x$ for each $t>0$ as one can prove.}\label{figure1}
+\end{figure}
+
+(a).  I shall take the second approach here, i.e., by showing that $|u_n(x)-u(x)|\rightarrow 0$ if $|x_n-x|\rightarrow 0$ ($n\rightarrow \infty$) with $(x,t)$ fixed.  To this end, we observe that for each fixed pair $(x,t) \in\mathbb R\times \mathbb R^+$
+\begin{align}
+|u(x_n,t)-u(x,t)|=&\Big|\int_{\mathbb R^n} \phi(\xi)\Big(G(x_n,t,\xi)-G(x,t,\xi)\Big)d\xi  \Big|  \nonumber\\
+\leq & \int_{\mathbb R^n} |\phi(\xi)|\Big|G(x_n,t,\xi)-G(x,t,\xi)\Big|d\xi    \nonumber\\
+\leq &\Vert\phi(\xi)\Vert_{L^\infty(\mathbb R^n)}\int_{\mathbb R^n} \Big|G(x_n,t,\xi)-G(x,t,\xi)\Big|d\xi.    \nonumber
+\end{align}
+It is easy to see that, in the last integral, the integrand $|G(x_n,t,\xi)-G(x,t,\xi)|$ converges to zero pointwisely, therefore to obtain the convergence of the integral to zero through Lebsesgue's dominated convergence theorem, one only needs to that the integrand is bounded by an integrable function or a constant.  The latter case is impossible since it has singularities at both $x_n$ and $x$.  To show the former, one can apply the Mean Value Theorem to have that
+\[|G(x_n,t,\xi)-G(x,t,\xi)|=G_x(\tilde x,t,\xi)(x_n-x),\]
+for some $\tilde x \in (x-1,x+1)$, for $n$ large enough, show that $G_x$ is absolutely integrable.  I leave this to the student to verify.  An alternative way is to follow the approach in class by breaking $\mathbb R^n$ into two regions (three indeed) as follows:  it is easy to know that, for any $\epsilon>0$, one can choose $M$ large enough such that
+\[\int_{I_M} \Big|G(x_n,t,\xi)-G(x,t,\xi)\Big|d\xi<\frac{\epsilon}{2},\]
+where I denote for notational simplicity the outer region to be
+\[I_M:=\{|\xi|\geq M\}.\]
+Note that $I_M$ may depend on $x$ and $t$, while it can be uniform in $x_n$ as long as $n$ is large enough; on the other hand, in this inner region, we have that, for $n$ sufficiently large $G(x_n,t,\xi)<G(x,t,\xi)+1$ hence
+\[|G(x_n,t,\xi)-G(x,t,\xi)|<2G(x,t,\xi)+1,\]
+which is, though not bounded in $\mathbb R^n\backslash I_M$, absolutely integrable over the inner region.  Therefore, since the integrand converges to zero pointwisely, one can apply the dominated convergence theorem to obtain that for $n$ sufficiently large
+\[\int_{\mathbb R^n\backslash I_M} \Big|G(x_n,t,\xi)-G(x,t,\xi)\Big|d\xi<\frac{\epsilon}{2}.\]
+I would like to remark that this is why sometimes it is necessary or friendly to students/beginners to split $\mathbb R^n$ in this form.
+
+(b).  See figure \ref{figure1}.
+\end{solution}
+
+\item Consider the following problem over the half-plane
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t>0,\\
+u(x,0)=0,&x \in (0,\infty),\\
+u(0,t)=N_0,&t>0,
+\end{array}
+\right.
+\end{equation}
+where $N_0$ is a point heating source at the end point.
+
+(1) Solve for $u(x,t)$ in terms of an integral.
+
+
+(2) Set $D=N_0=1$.  Plot your solve for $t=0.001$, 0.01, 0.1 and $1$.  The graphes should match the physical description of the problem.
+\begin{solution}
+Let us first consider its counterpart over $\mathbb R$ in the following form
+\begin{equation}\label{whole}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (-\infty,\infty), t>0,\\
+u(x,0)=0,&x \in (-\infty,\infty),\\
+u(0,t)=\phi(x),& t>0,
+\end{array}
+\right.
+\end{equation}
+with
+\[\phi(x)=\left\{
+\begin{array}{ll}
+0,&x >0,\\
+\Phi(x),& x<0,
+\end{array}
+\right.
+\]
+$\Phi(x)$ to be chosen.  We observe that the solution to (\ref{whole}) solves (\ref{half}) except the boundary condition.  Therefore we shall choose $\Phi(x)$ to this end.  Note that the solution to (\ref{whole}) is
+\[u(x,t)=\int_{-\infty}^\infty \phi(\xi)G(x,t;\xi)d\xi=\int_{-\infty}^0 \Phi(\xi)G(x,t;\xi)d\xi.\]
+Coping it with the initial condition $u(x,0)=N_0$ gives us
+\[N_0= \int_{-\infty}^0 \Phi(\xi)G(0,t;\xi)d\xi.\]
+There are various choices of $\Phi(x)$ through which one can achieve this identity and the simplest one is a constant $\Phi\equiv K$.  In this case, using the fact that
+\[\int_{-\infty}^0 G(0,t,\xi)d\xi=\frac{1}{2}\]
+gives us that $\Phi(x)\equiv K=2N_0$.  Therefore we have that
+\[u(x,t)=2N_0\int_{-\infty}^0G(x,t;\xi)d\xi\]
+ or an equivalent form
+ \[u(x,t)=2N_0\int_0^\infty G(x,t;-\xi)d\xi=\frac{N_0}{\sqrt{4Dt}}\int_0^\infty e^{-\frac{|x+\xi|^2}{4\pi Dt}}d\xi.\]
+Again, I would like to remark that here the choice of such $\Phi$ is apparently not unique, however different $\Phi$ gives rise to different integral, while in the end $u(x,t)$ end up the same since it is unique (though we have not proved the uniqueness for the Cauchy's problem).  This is very similar to what we convert inhomogeneous boundary conditions into homogeneous ones, one has infinitely many choices of $w(x,t)$, and different ones give rise to different problems, while eventually ends up with the same solution for the original problem.
+
+Even though the approach above may seem awkward or not natural to some of you, it is wrong to solve this problem by kernel of half plane
+\[G^*(x,t;\xi)=G(x,t;\xi)-G(x,t;-\xi)\]
+since the boundary condition is inhomogeneous.  Some of your peer student have redone the whole problem from the beginning, that being said, first consider the problem over $(0,L)$
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,L), t>0,\\
+u(x,0)=0,&x \in (0,L),\\
+u(0,t)=N_0,&t>0,
+\end{array}
+\right.
+\end{equation}
+work on it by converting the inhomogeneous boundary condition into a homogeneous one, and then send $L$ to infinity, which I have no problem with.  In this spirit, one can simply denote $v(x,t):=u(x,t)-N_0$, then $v(x,t)$ satisfies
+\begin{equation}\label{half}
+\left\{
+\begin{array}{ll}
+v_t=D v_{xx},& x\in (0,\infty), t>0,\\
+v(x,0)=-N_0,&x \in (0,\infty),\\
+v(0,t)=0,&t>0,
+\end{array}
+\right.
+\end{equation}
+therefore by the formula for the half line problem we have that
+\[v(x,t)=-N_0\int_0^\infty G(x,t;\xi)-G(x,t;-\xi)d\xi\]
+hence
+\[u(x,t)=N_0-N_0\int_0^\infty G(x,t;\xi)-G(x,t;-\xi)d\xi,\]
+which, in light of the identity
+\[1-\int_0^\infty G(x,t;\xi)d\xi=1-\int_{-\infty}^0 G(x,t;-\xi)d\xi=\int_0^\infty G(x,t;-\xi)d\xi,\]
+also gives rise to the desired expression of $u(x,t)$ as above.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=6in,height=2.5in]{hw6figure2.eps}
+  \caption{Solution $u(x,t)$ at different times.  One observes that the DBC acts as an source that keeps pumping the heat into the region, hence for each location the temperature is increasing with respect to time as one can observe.}\label{figure2}
+\end{figure}
+
+\end{solution}
+
+
+\item
+Use physical interpretations (or design some mental experiments) to obtain the solution to the following problems by using $u(x,t)$ in (\ref{infty}) without solving them as you have done before (note that you already know the results according to lecture and the last HW)
+\begin{equation}\label{DBC}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t>0,\\
+u(x,0)=\phi(x),&x \in (0,\infty),\\
+u(0,t)=0,&t>0,
+\end{array}
+\right.
+\end{equation}
+and
+\begin{equation}\label{NBC}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t>0,\\
+u(x,0)=\phi(x),&x \in (0,\infty),\\
+u_x(0,t)=0,&t>0.
+\end{array}
+\right.
+\end{equation}
+\begin{solution}
+When putting an unit thermal energy (heat) at location $\xi$ at time $t=0$, the distribution $G(x,t;\xi)$ is temperature at space--time location $(x,t)$.  However, if one puts another cooling point source at $-\xi$ at the same time, it is not hard to see, by the symmetry of $G$, that the resulting temperature is $G^*(x,t;\chi)=G(x,t;\xi)-G(x,t;-\xi)$ and it is always zero at location $x=0$.  Therefore, for general initial data $\phi(x)$, the resulting temperature subject to zero boundary condition at $x=0$ is the convolution of $G^*$ with $\phi$.   Similarly, for (\ref{NBC}), one can put the two unit thermal energies at $x=\pm\xi$ respectively, resulting in heat kernel $\tilde G=G(x,t;\xi)+G(x,t;-\xi)$, which satisfies the Neumann boundary condition, and then the convolution of $\tilde G$ with $\phi$ is the solution for (\ref{NBC}).
+For (\ref{DBC}), one can perform a similar except with a heating and cooling resource at each size.
+\end{solution}
+
+
+\item As mentioned in class, one criticism of the classical heat equation is that infinite speed of propagation violates the intuition as well as the truth of heat transfer in general.  On modification of the classical heat equation is the following Porous medium equation (PME) with $m>1$
+    \[u_t= \Delta (u^m).\]
+Refer to HW 1 for detailed discussions about this equation.
+
+A fundamental solution of the problem in 1D was obtained in the 1950s by Russian mathematician Barenblatt, where in $\mathbb R^N$, $N\geq1$, one has
+\begin{equation}\label{Barenblatt}
+u(\textbf{x},t)=t^{-\alpha}\Big(C-\kappa |\textbf{x}|^2t^{-2\beta}\Big)_+^\frac{1}{m-1},
+\end{equation}
+where
+\[(f)_+:=\max\{f,0\}, \alpha:=\frac{N}{(m-1)N+2}, \beta:=\frac{\alpha}{N}, \kappa =\frac{\alpha(m-1)}{2mN}\]
+and $C$ is any positive constant.
+
+(1)  Again, choose $m=2$, $n=1$ and $C=10$, and then plot $u(x,t)$ for $t=1$, $2$, $5$ and $10$.  Then you should observe the finite speed of propagation;
+
+(2) In 1D, the interface where $u$ touches zero given $C=\kappa |x|^2t^{-2\beta}$ consists of two (symmetric) points which moves with a finite speed.  Prove that $u(x,t)$ is not smooth at these two points.  Then the regularizing effect in P. 1 is not available in the PME.
+
+(3) Prove that (\ref{Barenblatt}) satisfies the PME;
+
+(4) For the fundamental solution, $C$ in (\ref{Barenblatt}) is determined such that $u(x,t)\rightarrow \delta(x)$ as $t\rightarrow 0^+$.  Prove this convergence in distribution and then determine $C$ in 1D.
+\begin{solution}
+See Figure \ref{figure3} for the illustration of the profiles .
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=6in,height=2.5in]{hw6figure3.eps}
+  \caption{Plots of the explicit Barenblatt profiles.  One observes, in contrast to the classical heat/diffusion which smoothes and propagates with an infinite speed, the degenerate diffusion preserves the discontinuity at the interfaces, and the solution/heat propagates with a finite speed.}\label{figure3}
+\end{figure}
+(2)-(4) are for interested students and can be verified by straightforward calculations.  I skip their arguments here.
+\end{solution}
+
+\item  This problem is to give you a flavor of how PDE is connected and applied to finance.  To be specific, we will obtain the price of a European option explicitly by solving the classical 1D heat equation, leading to the seminal Black-Scholes formula.
+
+In mathematical finance, the Black-Scholes or Black-Scholes-Merton model is a PDE that describes the price evolution of a European call or European put under the Black-Scholes model.  Let us denote $S_t$ as the price of the underlying risky asset at time $t$, typically a stock (which is regarded as an independent variable to which investigator adjust their investing strategy) and $\mu$ as the risk--free interest rate, then the Black-Scholes model assumes that the price of $S$ follows a geometric Brownian motion
+\[\frac{dS_t}{S_t}=\mu dt+\sigma dW_t\footnote{Here the subindex $t$, like it or not, merely means a notation, not the partial derivative.},\]
+where $W_t$ is Brownian motion (a continuous stochastic process the increments of which are Gaussian, i.e., $W_{t+s}-W_s\sim N(0,s)$ for each $t,s>0$, one can simply it treat it formally as a randomly increasing or decreasing process as time varies).  $\sigma>0$ is the magnitude of such randomness, so this term measures the risk (of investing in this stock) and is called \emph{volatility} in finance (think of this as the variance of a random variable in statistics).  It is not hard to image that $S$ is now a stochastic process, i.e., at each fixed time $S$ is a random variable with random event $\omega$ hidden.  Financial time-series data indicate that the volatility can depend on stock price $S$ and other factors in practice (e.g., time-delay, term structure, component structure, volatility smile, etc., if you are aware of), however for the sake of mathematical simplicity (all models are wrong), it is assumed that $\sigma$ is a constant in the B--S model (well, this is not useful, to be honest with you).  According to the model, the equation above gives rise to the following PDE
+\begin{equation}\label{BS}
+\left\{
+\begin{array}{ll}
+\frac{\partial V}{\partial t}+\frac{1}{2}\sigma^2 S^2\frac{\partial^2 V}{\partial S^2}+rS\frac{\partial V}{\partial S}-rV=0,& S>0,0<t<T,\\
+V(S,T)=\phi(S),&S>0,
+\end{array}
+\right.
+\end{equation}
+where $T>0$ is a pre--given time, the so-called strike time.  $V$ is the option value (as the dependent value) (the word \emph{option} in finance means the right to buy or sell an asset at a predetermined price, or the so-called strike price $K$, before or on the strike time $T$.  Both $K$ and $T$ are specified in the contract.)  You need to know some basic stochastic calculus or It\^o calculus in order to derive this PDE, which is out of the scope of this homework or this course.  Anyhow, let us just focus on cooking up this PDE at this moment.  It is necessary to point out that instead of an initial condition, (\ref{BS}) is coupled with a terminal condition.  This is because the diffusion rate becomes $-\frac{1}{2}\sigma^2S^2$ if you want to write it as a heat equation, therefore there is no contradiction to the principle that diffusion rate can not be negative.
+
+It is the purpose of this homework to show that (\ref{BS}) can be transformed to the Cauchy problem of the heat equation and then be solved explicitly.  To this end, do the followings:
+
+(a).  Introduce the new variables
+\[S=Ke^x, t=T-\frac{\tau}{\sigma^2/2},\]
+where the constant $K$ is the strike price.  Let $v(x,\tau)=V(S,t)$.  Show that
+\[\frac{\partial v}{\partial \tau}=\frac{\partial^2 v}{\partial x^2}+\Big(\frac{2r}{\sigma^2}-1\Big)\frac{\partial v}{\partial x}-\frac{2r}{\sigma^2}v.\]
+
+(b).  Introduce
+\[u(x,\tau)=e^{ax+b\tau}v(x,\tau).\]
+Choose constants $a$ and $b$ such that $u(x,\tau)$ satisfies
+\begin{equation}\label{heat}
+\frac{\partial u}{\partial \tau}=\frac{\partial^2u}{\partial x^2}.
+\end{equation}
+
+(c)  A European option may be exercised only at the expiration date $T$ of the option, and in particular, the call option of a European option is defined mathematically by letting
+\[\phi(S)=\max\{S-K,0\}.\]
+Solve the classical heat equation (\ref{heat}) under this terminal condition.  Write your solution $u(x,\tau)$ in terms of integrals.
+
+(d).  In terms of the solutions in (c) and the transformations.  Show that the solution $V(S,t)$ to (\ref{BS}) is
+\[V=SN(d_1)-Ke^{-r(T-t)}N(d_2),\]
+where
+\[d_1=\frac{\ln S/K +(r+\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}},\]
+\[d_2=\frac{\ln S/K +(r-\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}},\]
+and $N$ is the cumulative normal distribution that
+\[N(x)=\frac{1}{\sqrt {2\pi}}\int_{-\infty}^x e^{-\frac{y^2}{2}}dy.\]
+
+(e)  Suppose that $S=200$, $K=210$, $r=2\%$ is the annual interest rate, $\sigma=0.58$ and the expiration date is in two months.  Find the call value $V$.  In order to make use of this formula, you need to make sure that all the parameters are on the same scale.
+\begin{solution}
+(a).   Since $S=Ke^x, t=T-\frac{\tau}{\sigma^2/2}$, we have that $\tau=(T-t)\frac{\sigma^2}{2}, x=\ln{\frac{S}{K}}$ and therefore
+\[\frac{\partial \tau}{\partial t}=-\frac{\sigma^2}{2}, \frac{\partial x}{\partial S}=\frac{1}{S},\]
+\[\frac{\partial V}{\partial t}=\frac{\partial \tau}{\partial t}\frac{\partial v}{\partial\tau}=-\frac{\sigma^2}{2}\frac{\partial v}{\partial\tau}, \frac{\partial V}{\partial S}=\frac{\partial x}{\partial S}\frac{\partial v}{\partial x}=\frac{1}{S}\frac{\partial v}{\partial x}\]
+and
+\[\frac{\partial^2 V}{\partial S^2}=\frac{\partial }{\partial S}(\frac{\partial V}{\partial S})=(-\frac{1}{S^2})\frac{\partial v}{\partial x}+\frac{1}{S}\frac{\partial x}{\partial S}\frac{\partial }{\partial x}(\frac{\partial v}{\partial x})=(-\frac{1}{S^2})\frac{\partial v}{\partial x}+\frac{1}{S^2}\frac{\partial^2 v}{\partial x^2}.\]
+
+Substituting these identities into the PDE leads us to
+\begin{align*}
+-\frac{\sigma^2}{2}\frac{\partial v}{\partial\tau}+\frac{\sigma^2}{2}S^2(-\frac{1}{S^2}\frac{\partial v}{\partial x}+\frac{1}{S^2}\frac{\partial^2 v}{\partial x^2})+rS\frac{1}{S}\frac{\partial v}{\partial x}-rv=0,
+\end{align*}
+which implies
+\begin{align*}
+\frac{\partial v}{\partial \tau}=\frac{\partial^2 v}{\partial x^2}+\Big(\frac{2r}{\sigma^2}-1\Big)\frac{\partial v}{\partial x}-\frac{2r}{\sigma^2}v.
+\end{align*}
+
+
+(b). Let $u(x,t)=e^{ax+b\tau}v(x,t)$ for some constants $a$ and $b$ to be determined.  Then
+\[\frac{\partial u}{\partial \tau}=(bv+\frac{\partial v}{\partial \tau})e^{ax+b\tau}\]
+and
+\[\frac{\partial u}{\partial x}=(av+\frac{\partial v}{\partial x})e^{ax+b\tau}, \frac{\partial^2 u}{\partial x^2}=\Big(\frac{\partial^2 v}{\partial x^2}+2a\frac{\partial v}{\partial x}+a^2v\Big)e^{ax+b\tau}.\]
+Therefore, we have that
+\begin{align*}
+\frac{\partial u}{\partial \tau}-\frac{\partial^2 u}{\partial x^2}=&\Big(bv+\frac{\partial v}{\partial \tau}-\frac{\partial^2 v}{\partial x^2}-2a\frac{\partial v}{\partial x}-a^2v\Big)e^{ax+b\tau}\\
+=&\Big(\frac{\partial v}{\partial \tau}-\frac{\partial^2 v}{\partial x^2}-2a\frac{\partial v}{\partial x}+(b-a^2)v\Big)e^{ax+b\tau}
+\end{align*}
+Now we choose $a$ and $b$ such that
+\begin{align*}
+\begin{cases}
+2a=k-1\\
+b-a^2=k
+\end{cases}
+\end{align*}
+with $k=\frac{2r}{\sigma^2}$, i.e.,
+\[a=\frac{k-1}{2}=\frac{2r-\sigma^2}{2\sigma^2}, b=\frac{(k+1)^2}{4}=\frac{(2r+\sigma^2)^2}{4\sigma^4}.\]
+Then we readily see that $u(x,\tau)$ satisfies
+\begin{align*}
+\frac{\partial u}{\partial \tau}=\frac{\partial^2 u}{\partial x^2}.
+\end{align*}
+(c). $\tau=0$ for $t=T$, then the terminal condition becomes
+\begin{align*}
+V(S,T)=v(x,0)=\phi(S)=\phi(Ke^x)=\max{\{Ke^x-K,0\}}=K(e^x-1)^{+}
+\end{align*}
+Thus we can obtain $u(x,0)$ is
+\begin{align*}
+u(x,0)=e^{ax}v(x,0)=e^{\frac{k-1}{2} x}v(x,0)=K(e^{\frac{(k+1)x}{2}}-e^{\frac{(k-1)x}{2}})^{+}:=\Phi(x),
+\end{align*}
+where $k=\frac{2r}{\sigma^2}$ as given above.
+
+On the other hand, we know that the solution to the heat equation takes the integral form
+\begin{align*}
+u(x,\tau)=G\ast \Phi (x,\tau)=\int_{\mathbb{R}}G(x-\xi,\tau)\Phi(\xi)d\xi,
+\end{align*}
+where $G(x-\xi,\tau)=\frac{1}{\sqrt{4\pi \tau}}e^{-\frac{(x-\xi)^2}{4\tau}}$ and $\Phi(\xi)=K(e^{\frac{(k+1)\xi}{2}}-e^{\frac{(k-1)\xi}{2}})^{+}$.
+To be precise, we can rewrite $u(x,\tau)$ as
+\begin{align*}
+u(x,\tau)=&\frac{K}{\sqrt{4\pi \tau}}\int_{\mathbb{R}}(e^{\frac{(k+1)\xi}{2}}-e^{\frac{(k-1)\xi}{2}})^{+}e^{-\frac{(x-\xi)^2}{4\tau}}d\xi \\
+=& \frac{K}{\sqrt{4\pi \tau}}\int_{0}^{\infty}(e^{\frac{(k+1)\xi}{2}}-e^{\frac{(k-1)\xi}{2}})e^{-\frac{(x-\xi)^2}{4\tau}}d\xi,
+\end{align*}
+because
+\begin{align*}
+\Phi(\xi)=
+\begin{cases}
+K(e^{\frac{(k+1)\xi}{2}}-e^{\frac{(k-1)\xi}{2}}),&\xi>0,\\
+0,&\text{otherwise}.
+\end{cases}
+\end{align*}
+(d).  Now we change the variable $\xi$ as $\xi=x+\sqrt{2\tau}\eta$ and obtain
+\begin{align*}
+u(x,\tau)=&\frac{K}{\sqrt{4\pi \tau}}\int_{0}^{\infty}(e^{\frac{(k+1)\xi}{2}}-e^{\frac{(k-1)\xi}{2}})e^{-\frac{(x-\xi)^2}{4\tau}}d\xi\\
+=&\frac{K}{\sqrt{4\pi \tau}}\int_{-\frac{x}{\sqrt{2\tau}}}^{\infty}(e^{\frac{(k+1)(x+\sqrt{2\tau}\eta)}{2}}-e^{\frac{(k-1)(x+\sqrt{2\tau}\eta)}{2}})e^{-\frac{\eta^2}{2}}\sqrt{2\tau}d\eta \\
+=&\frac{K}{\sqrt{2\pi}}e^{\frac{(k+1)x}{2}+\frac{1}{4}\tau(k+1)^2}\int_{-\frac{x}{\sqrt{2\tau}}}^{\infty}e^{-\frac{(\eta-\frac{1}{2}\sqrt{2\tau}(k+1))^2}{2}}d\eta\\
+&-\frac{K}{\sqrt{2\pi}}e^{\frac{(k-1)x}{2}+\frac{1}{4}\tau(k-1)^2}\int_{-\frac{x}{\sqrt{2\tau}}}^{\infty}e^{-\frac{(\eta-\frac{1}{2}\sqrt{2\tau}(k-1))^2}{2}}d\eta.
+\end{align*}
+For the first term, we denote $y=\eta-\frac{1}{2}\sqrt{2\tau}(k+1)$ and have
+\begin{align*}
+\frac{1}{2\pi}\int_{-\frac{x}{\sqrt{2\tau}}}^{\infty}e^{-\frac{(\eta-\frac{1}{2}\sqrt{2\tau}(k+1))^2}{2}}d\eta=&\frac{1}{2\pi}\int_{-\frac{x}{\sqrt{2\tau}}-\frac{1}{2}\sqrt{2\tau}(k+1)}^{\infty}e^{-\frac{y^2}{2}}dy=\frac{1}{2\pi}\int^{\frac{x}{\sqrt{2\tau}}+\frac{1}{2}\sqrt{2\tau}(k+1)}_{-\infty}e^{-\frac{y^2}{2}}dy \quad  \\
+=&N\Big(\frac{x}{\sqrt{2\tau}}+\frac{1}{2}\sqrt{2\tau}(k+1)\Big)=N(d_1),
+\end{align*}
+where
+\begin{align*}
+d_1=&\frac{x}{\sqrt{2\tau}}+\frac{1}{2}\sqrt{2\tau}(k+1)=\frac{\ln{\frac{S}{K}}+(\frac{2r}{\sigma^2}+1)\frac{\sigma^2}{2}(T-t)}{\sqrt{2\frac{\sigma^2}{2}(T-t)}}=\frac{\ln S/K +(r+\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}}.
+\end{align*}
+
+
+Similarly, we let $y=\eta-\frac{1}{2}\sqrt{2\tau}(k-1)$ and have that
+\begin{align*}
+\frac{1}{2\pi}\int_{-\frac{x}{\sqrt{2\tau}}}^{\infty}e^{-\frac{(\eta-\frac{1}{2}\sqrt{2\tau}(k-1))^2}{2}}d\eta=&\frac{1}{2\pi}\int^{\frac{x}{\sqrt{2\tau}}+\frac{1}{2}\sqrt{2\tau}(k-1)}_{-\infty}e^{-\frac{y^2}{2}}dy \\
+=&N\Big(\frac{x}{\sqrt{2\tau}}+\frac{1}{2}\sqrt{2\tau}(k-1)\Big)=N(d_2),
+\end{align*}
+where
+\begin{align*}
+d_2=&\frac{x}{\sqrt{2\tau}}+\frac{1}{2}\sqrt{2\tau}(k-1)=\frac{\ln{\frac{S}{K}}+(\frac{2r}{\sigma^2}-1)\frac{\sigma^2}{2}(T-t)}{\sqrt{2\frac{\sigma^2}{2}(T-t)}}=\frac{\ln S/K +(r-\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}}
+\end{align*}
+Finally, using $u=e^{ax+b\tau}v$ leads us to the desired
+\begin{align*}
+V=&e^{-ax-b\tau}u=e^{-\frac{k-1}{2}x-\frac{(k+1)^2}{4}\tau}\Big(     Ke^{\frac{(k+1)x}{2}+\frac{1}{4}\tau(k+1)^2}N(d_1)-Ke^{\frac{(k-1)x}{2}+\frac{1}{4}\tau(k-1)^2}N(d_2)       \Big)\\
+=&Ke^x N(d_1)-Ke^{k\tau}N(d_2)\\
+=&SN(d_1)-Ke^{r(T-t)}N(d_2),
+\end{align*}
+where
+\[d_1=\frac{\ln S/K +(r+\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}},\]
+\[d_2=\frac{\ln S/K +(r-\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}},\]
+and $N$ is the cumulative normal distribution that
+\[N(x)=\frac{1}{\sqrt {2\pi}}\int_{-\infty}^x e^{-\frac{y^2}{2}}dy.\]
+(e).  Choosing $S=200, K=210, r=0.02, \sigma=0.58, T=\frac{2}{12}$ and $t=0$, we can calculate
+\begin{align*}
+d_1=\frac{\ln S/K +(r+\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}}\approx -0.0736,\\
+d_2=\frac{\ln S/K +(r-\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}}\approx -0.3104,\\
+N(d_1)=\frac{1}{\sqrt {2\pi}}\int_{-\infty}^{d_1} e^{-\frac{y^2}{2}}dy\approx 0.470671, \\
+N(d_2)=\frac{1}{\sqrt {2\pi}}\int_{-\infty}^{d_2} e^{-\frac{y^2}{2}}dy\approx 0.378141,
+\end{align*}
+and eventually evaluate that $V=SN(d_1)-Ke^{-r(T-t)}N(d_2)\approx 14.988848$.
+\end{solution}
+
+
+\item Let us consider the multi-dimensional heat equation in $\mathbb R^n$, $n\geq2$
+\begin{equation}\label{ND}
+\left\{
+\begin{array}{ll}
+u_t=D \Delta u,& x\in \mathbb R^n, t>0,\\
+u(x,0)=\phi(x),&x \in \mathbb R^n.
+\end{array}
+\right.
+\end{equation}
+
+i) use your gut feeling to write down the solution of (\ref{ND}) without solving it.  Hint: what is the fundamental solution in $n$D?
+
+ii) To solve (\ref{ND}), let us consider the \emph{dilation scaling} with constants $\alpha$ and $\beta$
+\[u(x,t):=\frac{1}{t^\alpha}v\big(\frac{x}{t^\beta}\big),x\in\mathbb R^n,t>0.\]
+Denote $y:=\frac{x}{t^\beta}$.  Find the PDE for $v(y)$ and show that $\beta=\frac{1}{2}$;
+
+iii) Let $w(|y|)=v(y)$.  Find the PDE for $w(|y|)$ and show that $\alpha=\frac{n}{2}$;
+
+iv) Suppose that (for physical consideration) that both $w$ and $w'$ converges to zero as $|y|\rightarrow\infty$,  Show that $w(r)=C_0e^{-\frac{r^2}{4}}$, where $C_0$ is a positive constant to be determined such that the total mass/integral of $w$ is unit.  Compare it with your intuition.
+\begin{solution}
+i) We mimic the 1D scenario by putting a unit heat source at location $\xi$, then the resulting temperature profile is the fundamental solution of the heat equation in high dimension which takes the following form (we just guess)
+\[G(x,t;\xi)=\frac{1}{\sqrt{(4\pi Dt)^n}}e^\frac{-|x-\xi|^2}{4Dt}.\]
+The appearance of $n$ is due to the restriction that the total mass (heat) of $G$ must be 1.  You can either perform straightforward calculations or conduct a mental experiment as follows: integrating $e^\frac{-|x-\xi|^2}{4Dt}$ over $x_1$ in $\mathbb R$ gives $\sqrt{4\pi Dt}$, over $x_2$ $\mathbb R$ gives another $\sqrt{4\pi Dt}$, ..., hence $n$ is needed in the denominator.  
+
+ii)  By straightforward calculations, we find that 
+\[\alpha t^{-\alpha+1}v(y)+\beta t^{-(\alpha+1)}y\cdot \nabla v(y)+t^{-(\alpha+2\beta)}\Delta v(y)=0.\]
+This equation only holds without have (anything) blow-up if $\beta=\frac{1}{2}$.  Then the PDE reduces to 
+\[\alpha v(y)+ \frac{1}{2}y\cdot \nabla v(y)+ \Delta v(y)=0.\]
+
+iii) If we further restrict $v$ to be radial (i.e., radially symmetric), then one can find by straightforward calculations that 
+\[\alpha w(r)+ \frac{1}{2}r w'+w''+\frac{n-1}{r}w'=0.\]
+If one converts the ODE for $rw'$, then $\alpha=\frac{n}{2}$ is necessary and one finds that $(r^{n-1}w')'+\frac{1}{2}(r^nw)'=0$, which thereupon implies
+\[r^{n-1}w'+\frac{1}{2}r^nw=C.\]
+This constant $C$ must be zero since we always needs $w$ and $w'$ to decay to zero in infinity.  Finally, $w'=-\frac{r}{2}w$ and $w=C_0e^\frac{r^2}{4}$ with $C_0$ being the same constant as above that normalize the integral. 
+
+iv)
+\end{solution}
+
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

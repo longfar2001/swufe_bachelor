@@ -1,0 +1,207 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2020}
+\author{\textbf{Homework 7, Solutions}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+ \usepackage{textcomp}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+\item In practice, we are motivated to approximate a delta function by some concrete functions \emph{on earth}, and these functions are called the \emph{nascent delta functions}.  (The word \emph{nascent} means \emph{beginning}, or \emph{newly developing}).  One of the natural choices, as we showed in class, is
+  \begin{equation}
+\delta_\epsilon(x)=\left\{
+\begin{array}{ll}
+(\epsilon-x)/\epsilon^2,&x\in(0,\epsilon),\\
+(x+\epsilon)/\epsilon^2,&x\in(-\epsilon,0),\\
+0,&\vert x \vert \geq \epsilon.
+\end{array}
+\right.
+\end{equation}
+This hat function seems good: it is intuitively very simple, and it is compactly supported, (i.e., the region $\eta_\epsilon(x)\neq0$ is of the form $(-\epsilon,\epsilon)$, though not compact itself, and is compactly supported in $\mathbb R$).  However, it is not differentiable at the end $x=\pm\epsilon$ which circumvents it from further applications whenever differentiation would be taken.
+
+Give an alternative example of such nascent delta function which is not only compactly supported but also $C^\infty$.  Then show that this new $\delta_\epsilon(x)$ converges to the delta function $\delta(x)$ in distribution.  Note that the heat kernel sounds like a candidate but it is not compactly supported if you understand what it means.
+\begin{solution}
+skipped
+\end{solution}
+
+\item  Show the following facts for $\delta(x)$:
+
+(1).  $\delta(x)=\delta(-x)$;
+
+(2). $\delta(kx)=\frac{\delta(x)}{\vert k\vert }$, where $k$ is a non-zero constant;
+
+(3).  $\int_\mathbb{R} f(x)\delta(x-x_0) dx=f(x_0)$; $\delta(x-x_0)$ is occasionally written as $\delta_{x_0}(x)$;
+
+(4).  Let $f(x)$ be continuous except for a jump--discontinuity at $0$.  Show that
+\[\frac{f(0^-)+f(0^+)}{2}=\int_{-\infty}^\infty f(x)\delta(x)dx\]
+
+Remark: For (1) and (2), you are indeed asked to show that they equal in the distribution sense, but not pointwisely.
+
+\begin{solution}
+(1). I would like to mention that, whenever to check identities involving $\delta(x)$, it is necessary to check that it holds both pointwisely, as well as in the distribution sense.  First of all, it is easy to check that $\delta(x)=\delta(-x)$ pointwisely (which is only a formal identity), hence I skip it here.  To show that they are the same in the distribution sense, we choose an arbitrary continuous function $\phi(x)$ and have that
+\[\int_{-\infty}^\infty \phi(x)\delta(x)dx=\phi(0)=\phi(-0)=\int_{-\infty}^\infty\phi(-x)\delta(x)dx=\int_{-\infty}^\infty\phi(\xi)\delta(-\xi)d\xi,\]
+ where we denote $\xi:=-x$ in the last identity.  Therefore we have the desired identity.  The verification of (2) and (3) follows the same approach and I skip it here.
+
+
+(4).  There are several ways that one can obtain this result and here is one of them.  Let us introduce
+\[g(x)=\frac{f(x)+f(-x)}{2},\forall x\in\mathbb R;\]
+if we further define
+\[g(0):=\frac{f(0^+)+f(0^-)}{2},\]
+then it is easy to see that $g(x)$ is continuous over $\mathbb R^n$.  Therefore, by the definition of a dirac--delta function, we have that
+\[\int_{\mathbb R}g(x)\delta (x)dx=g(0)=\frac{f(0^+)+f(0^-)}{2};\]
+on the other hand, we have that
+\begin{align*}
+   &\int_{\mathbb R}g(x)\delta (x)dx=\frac{1}{2}\int_{\mathbb R} (f(x)+f(-x))\delta (x)dx  \\
+   =& \frac{1}{2}\int_{\mathbb R}f(x)\delta (x)dx+\frac{1}{2}\int_{\mathbb R}f(-x)\delta(x)dx\\
+   =&\int_{\mathbb R}f(x)\delta(x)dx,
+\end{align*}
+where the last identity follows from a change of variable as above.  Another approach of the same spirit is to introduce $F(x)=2g(x)$ and define $F(0)$ as it should be.   This should give a method which is intuitively not straightforward, but rigourous.
+
+\end{solution}
+
+
+\item  We have defined the dirac-delta function $\delta(x)$ in 1D in class.
+
+(1) generalize the definition to $N$D, $N\geq2$.
+
+(2) give an example of the nascent delta function as above;
+
+\begin{solution}
+(1) all requirements in the definition remain the same except that $\mathbb R$ becomes $\mathbb R^N$;
+
+(2) one can simply extend the hat function to $N$D
+\end{solution}
+
+
+\item One can following the same approximation approach to, at least formally, solving the Schr\"odinger's equation describing evolution of the quantum state of a quantum system, discovered and formulated by the Austrian physicist Erwin Schr\"dinger in 1920s.  Solve its one-dimensional version
+    \[
+\left\{
+\begin{array}{ll}
+iu_{t}+Du_{xx}=0,&x\in \mathbb R,t>0,\\
+u(x,0)=f(x),&x\in \mathbb R,\\
+\end{array}
+\right.
+\]
+where $D$ is related to the co--called Planck constant, $i$ is the complex unit such that $i^2=-1$, $u$ and $f$ are complex functions. ($u$ denotes a wave function).
+\begin{solution}
+skipped
+\end{solution}
+
+
+\item (i) In various problems, we have used the fact: prove that as $M\rightarrow \infty$
+\[I_1=\int_{-\infty}^{-M}e^{-\eta ^2}dx\rightarrow 0;\]
+
+(ii)  Prove or disapprove the following: (a)
+suppose that $f(x)$ is absolutely integrable, i.e.,
+\[\int_\mathbb R|f(x)|dx<\infty\]
+then as $M\rightarrow \infty$
+\[I=\int_{-\infty}^{-M} |f(x)|dx\rightarrow 0.\]
+(b).  Suppose that $f(x)$ is absolutely integrable, then
+\[\lim_{|x|\rightarrow\infty} |f(x)|=0.\]
+\begin{solution}
+skipped
+\end{solution}
+\item Write down Lebesgue's dominated convergence theorem.
+\begin{solution}
+skipped
+\end{solution}
+\end{enumerate}
+
+
+\end{document}
+\endinput

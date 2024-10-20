@@ -1,0 +1,184 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2022}
+\author{\textbf{Homework 3} Due Oct 13}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+\item
+Perform straightforward calculations to verify that
+\begin{equation*}
+\int_0^L \sin \frac{m\pi x}{L} \sin \frac{n\pi x}{L}=\int_0^L \cos \frac{m\pi x}{L} \cos \frac{n\pi x}{L}=\frac{L}{2}\delta_{mn}=
+\left\{
+\begin{array}{ll}
+\frac{L}{2},\text{~if~}m=n,\\
+0,\text{~if~}m\neq n;
+\end{array}
+\right.
+\end{equation*}
+here $\delta$ is the so--called Kronecker delta function.
+
+\item We have shown that only a pair of the form $(X_n,\lambda_n)=\Big(\sin \frac{n\pi x}{L}, \big(\frac{n\pi }{L}\big)^2\Big)$, $n\in\mathbb N$, can satisfy the associated problem
+\begin{equation}\label{EPDBC}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0, x\in (0,L),\\
+X(0)=X(L)=0.
+\end{array}
+\right.
+\end{equation}
+First of all, it is easy to see that $CX_n$ is also a solution of (\ref{EPDBC}) for any $C\in\mathbb R$, however we conventionally choose $C=1$ and write $X_n=\sin \frac{n\pi x}{L}$; or occasionally we choose its normalized version $X_n=\sqrt{\frac{2}{L}}\sin \frac{n\pi x}{L}$ since $\Vert X_n\Vert_{L^2(0,L)}=1$.  That being said, it is the shape of $\sin $ that matters, but not the magnitude, at least for (\ref{EPDBC}).
+
+
+Second of all, (\ref{EPDBC}) is called an eigen--value problem, $(X_n,\lambda_n)$ an eigen--pair, an analogy to eigen--vectors and eigen--values in linear algebra.  Let us recall the followings in linear algebra: consider a $n\times n$ matrix $A$, we call $(\textbf{x},\lambda)$ its eigen--pair, $\textbf{x}$ (nonzero) the eigen--vector and $\lambda$ the eigen--value, if $A\textbf{x}=\lambda \textbf{x}$ holds ($\lambda=0$ is allowed).  I assume that you are aware that in linear algebra if $\textbf{x}$ is an eigen--vector, so does $C\textbf{x}$---I wish this also gives you another motivation why $C=1$ is selected above.  Now, for (\ref{EPDBC}), one can formally treat $-\frac{d^2}{dx^2}$ as $A$, and then it writes $AX=\lambda X$, however the eigen--space $\{X_n\}$ (the space consists of all such eigen--functions) is infinite--dimensional, since $X_n$ for each $n\in\mathbb N$ is an element.  This is a strong contrast to the linear algebra, when a $n\times n$ matrix has an eigen--space of at most $n$--dimension.
+
+Moreover, it is well--known that if a $n\times n$ matrix $A$ is invertible, its eigen--vectors form a basis of $\mathbb R^n$ (go to review this if you are not aware).  Then we shall see in the coming lectures that, similarly the eigen--functions of $-\frac{d}{dx^2}$ (or just solutions to the eigen--value problem (\ref{EPDBC})) $\{X_n\}_{n\in\mathbb N}$ form a basis of $L^2(0,L)$ with DBC, i.e., the square--integrable functions with Dirichlet boundary conditions.  This is known as the Sturm–Liouville theory, one of the corner--stones in the studies of differential equations--more will be talked about later in class.  Generally speaking, the studies of many PDE problem comes to the investigations of eigen--value problems, of course some of way more complicated that (\ref{EPDBC}).  However, we can study the cousins of (\ref{EPDBC}):
+
+Find eigen--paris $\{(X_k, \lambda_k)\}$ to the following eigen--value problems
+\begin{equation}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0, x\in (0,L),\\
+X'(0)=X'(L)=0;
+\end{array}
+\right.
+\end{equation}
+
+\begin{equation}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0, x\in (0,L),\\
+X(0)=X'(L)=0;
+\end{array}
+\right.
+\end{equation}
+and
+\begin{equation}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0, x\in (0,L),\\
+X'(0)=X(L)=0;
+\end{array}
+\right.
+\end{equation}
+
+
+\item Let us come back to the $L^2(0,L)$, the space of square integrable functions.  In general, for $p\in(1,\infty)$, the $L^p$ space is defined to be
+\[L^p(\Omega):=\Big\{f(x)\Big|\int_\Omega |f(x)|^pdx\Big\}<\infty;\]
+some other conditions may be added/imposed such as $\Omega$, $f$ measurable, while I skip them in order not to bother you too much this time.
+Moreover, one is able to define \emph{the length}, the so--called \textbf{\emph{norm}}, of any function $f\in L^p$ as
+\[\Vert f\Vert_{L^p(\Omega)}:=\Big(\int_\Omega \vert f \vert^p dx\Big)^\frac{1}{p}.\]
+Find: (a) $\Vert f(x) \Vert_{L^2_{(0,1)}}$ for $f(x)=e^x$ and  (b). $\Vert f(x) \Vert_{L^2_{(0,2)}}$ for $f(x)=x-1$.
+
+\item We showed that $f(x)=\frac{1}{\sqrt x}\in L^1(0,1)$ but not $L^2(0,1)$.  What would be your general theory/conditions about a function of the form $f(x)=x^\alpha\in L^p(0,1)$, but not $L^q(0,1)$.  Assuming that $p,q\in(1,\infty)$ for simplicity.
+
+\item The orthogonality of functions is generalized from that of vectors with inner products of the latter being replaced by the inner product.  One can also generalize the idea as follows: suppose that $w(x)$ is a nonnegative function on $[a, b]$.  Let $f(x)$ and $g(x)$ be real-valued functions and their inner product on $[a, b]$ with respect to the weight $w$ is given by
+\[\langle f, g\rangle=\int_a^b f(x) g(x) w(x) d x.\]
+Then we say $f$ and $g$ are orthogonal on $[a, b]$ with respect to the weight $w$ if $\langle f, g\rangle=0$.  Show that 
+The functions
+\[f_0(x)=1, \quad f_1(x)=2 x, \quad f_2(x)=4 x^2-1, \quad f_3(x)=8 x^3-4 x\] 
+are pairwise orthogonal on $[-1,1]$ relative to the weight function $w(x)=\sqrt{1-x^2}$.  They are examples of \textbf{Chebyshev polynomials of the second kind}.  Indeed, one can find that $f_4(x)=16 x^4-12 x^2+1, \quad f_5(x)=32 x^5-32 x^3+6 x$ (you can but are not required to verify this).  Plot all the functions $f_i(x)$, $i=0,1,,\ldots,5$ on the same coordinate.  Do you observe orthogonality?  Justify or explain your observations.  
+ 
+
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

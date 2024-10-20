@@ -1,0 +1,206 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2022}
+\author{\textbf{Homework 2} Due Oct 8}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+ \item Consider the following reaction--diffusion equation with Robin boundary condition
+\begin{equation}\label{1}
+\left\{
+\begin{array}{ll}
+u_t=D\Delta u+f(x,t),&x\in \Omega,t>0,\\
+u(x,0)=\phi(x),&x\in \Omega,\\
+\alpha u+\beta \frac{\partial u}{\partial \textbf{n}}=\gamma,&x \in \partial \Omega, t>0.
+\end{array}
+\right.
+\end{equation}
+Use the energy method to:
+
+(i)  prove the uniqueness of (\ref{1}) when $\alpha=0$ and $\beta\neq 0$;
+
+(ii) prove the uniqueness when both $\alpha$ and $\beta$ are not zero.  You might need to discuss the signs of $\alpha$ and $\beta$.
+
+\vspace{0.2in}\item   The so-called energy
+\[E(t)=\int_\Omega w^2(x,t)dx\]
+might not be necessary a physical energy such as kinetic energy or potential energy.  But the term "energy" is used since it has many similarities as a physical energy, for example, is always positive, is increasing if temperature $u$ increases.  It is better called energy-functional as we did in class (i.e., the function of functions).
+
+(i) let us define
+\[E(t):=\int_\Omega w^4(x,t)dx.\]
+Use this new energy--functional to prove the uniqueness to (\ref{1}) with $\alpha=1$ and $\beta=0$.
+
+(iii)  can you use $E(t):=\int_\Omega w^3(x,t)dx$ for this purpose?
+
+
+\item In general, one can not apply energy methods to problems with $f=f(x,t,u)$; many problems have indeed more than one solutions.  However, it works for problems with special reaction term $f$ (note that $f$ is called reaction in general because heat produces through \emph{chemical reactions}; and therefore you may see in elsewhere that the heat equations is also called reaction--diffusion equation).
+
+(i).  Use energy method to prove uniqueness to the following problem
+\begin{equation}\label{decay}
+\left\{
+\begin{array}{ll}
+u_t=D\Delta u-u,&x\in \Omega,t>0,\\
+u(x,0)=\phi(x),&x\in \Omega,\\
+u(x,t)=\gamma,&x \in \partial \Omega, t>0.
+\end{array}
+\right.
+\end{equation}
+
+(ii).  Do the same for the following problem with $f=f(u)$ dependent only on $u$
+\begin{equation}\label{nonlinear}
+\left\{
+\begin{array}{ll}
+u_t=D\Delta u+f(u),&x\in \Omega,t>0,\\
+u(x,0)=\phi(x),&x\in \Omega,\\
+u(x,t)=\gamma,&x \in \partial \Omega, t>0.
+\end{array}
+\right.
+\end{equation}
+For what conditions (on $f$) do you have uniqueness of (\ref{nonlinear})?  Hint: according to intermediate value theorem, $f(u_1)-f(u_2)=f'(u_1+\theta (u_2-u_1))(u_1-u_2)$ for some $\theta\in[0,1]$.  Remark: you should see that it also works even if $f=f(x,t,u)$, while I skip $x$ and $t$ with loss of generality.
+
+\vspace{0.2in}\item  Energy method can also be applied to problems of other various forms.  For example, consider the following Initial Boundary Value Problem (a wave equation, you do not need to know anything about it now)
+\begin{equation}\label{wave}
+\left\{
+\begin{array}{ll}
+u_{tt}=D\Delta u+f(x,t),&x\in \Omega,t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x\in \Omega,\\
+u_t(x,0)=h(x),&x \in \partial \Omega, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+Use the energy--functional
+\[E(t):=\frac{1}{2}\int_\Omega w_t^2(x,t)+|\nabla w(x,t)|^2 dx\]
+to prove the uniqueness of (\ref{wave}).  You need to justify each step of your arguments rigorously.
+
+\item  We shall see in coming lectures that heat equation can not be solved back in time (i.e., only the case $t\in\mathbb R^+$, or some finite lower bounded, can be well investigated).  This effect is called the \emph{ill--posedness} of heat equation backwards in time.  However, backward heat equation has uniqueness, surprisingly or not.
+
+    To show this, let us take the 1-D heat equation over $\Omega=(0,L)$ with DBC for example.  Similar as in class, it is equivalent to prove that the following problem has only zero solution $w(x,t)\equiv 0$ over $(0,L)\times (-\infty,0)$
+\begin{equation}\label{backheat}
+\left\{
+\begin{array}{ll}
+w_t=Dw_{xx},&x\in (0,L),t\in\mathbb R^-,\\
+w(x,0)=0,&x\in (0,L),\\
+w(x,t)=0,&x=0,L, t\in\mathbb R^-,
+\end{array}
+\right.
+\end{equation}
+and furthermore it is sufficient to prove that $E(t)=0$ for all $t\in\mathbb R^-$, with $E(t):=\int_\Omega w^2(x,t)dx$.  It is not easy to see that the fact $\frac{dE(t)}{dt}\leq 0$ leads to no contradiction since $E(t)\geq0$ for $t\in\mathbb R^-$, which is totally reasonable.
+
+Let us argue by contradiction as follows.  If not, say $E(t_0)>0$ for some $t_0>0$.  Then by the continuity, we can always find $t_1\in(t_0,0]$ such that $E(t)>0$ in $(t_0,t_1)$ and $E(t_1)=0$ (draw a graph to for yourself; such $t_1$ exists since at least $E(0)=0$).
+
+(i)  Find $E'(t)$ and $E''(t)$;
+
+(ii)  Prove the Cauchy--Schwartz inequality
+\[\Big| \int_0^L f(x)g(x)dx \Big|\leq \Big(\int_0^L f^2(x) dx\Big)^2 \Big(\int_0^L g^2(x) dx\Big)^2;\]
+this is also referred to as Holder's inequality with $p=2$.  Hint: $p(r)=\int_0^L (f(x)+rg(x))^2 dx$ is always nonnegative, $\forall r\in\mathbb R$;
+
+(iii)  Prove that $(E')^2\leq EE''$, $\forall t\in [t_0,t_1)$;
+
+(iv)  Prove that $(\ln E)''\geq 0$, $\forall t\in [t_0,t_1)$, and then use this to derive a contraction to the fact that $E(t_1)=0$.
+
+\item  Use Green's first identity to show that
+ \begin{equation}\label{GS}
+\int_\Omega f \Delta g - \Delta f  gdx =\int_{\partial \Omega} f \frac{\partial g}{\partial \textbf{n}}-\frac{\partial f}{\partial \textbf{n}} gdS.
+\end{equation}
+(\ref{GS}) is called Green's second identity.  What is (\ref{GS}) when $\Omega=(a,b)$?
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

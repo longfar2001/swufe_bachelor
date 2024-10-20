@@ -1,0 +1,444 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2020}
+\author{\textbf{Homework 11, Solutions}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{textcomp}
+\usepackage{esint}
+\usepackage{paralist}
+\usepackage{graphics} %% add this and next lines if pictures should be in esp format
+\usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+
+\begin{enumerate}
+\item Find a fundamental solution of $\mathcal L:=\frac{d^2}{dx^2}-1$ in $\mathbb R$.  Again, compare this with your solution in HW 10 and HW 9.
+\begin{solution}
+The main step is to find for $G(x)$ such that $\mathcal G(x)=0$ for $x<0$ and $x>0$, respectively.  
+\end{solution}
+
+\item Follow the same approach as in class to find a fundamental solution of Laplacian $\Delta$ in 3D.  Hint: $G(r)=-\frac{1}{4\pi}\frac{1}{|\textbf{x}|}=-\frac{1}{4\pi}\frac{1}{r}$.
+\begin{solution}
+It follows from straightforward calculations.  
+\end{solution}
+
+\item Find the Green's function over $\mathbb R^3_+:=\{(x,y,z)\in (-\infty,\infty)\times(-\infty,\infty)\times (0,\infty) \}$, and then solve
+\begin{equation}
+\left\{
+\begin{array}{ll}
+\Delta u=0,& x\in \mathbb R^3_+,\\
+\frac{\partial u}{\partial \textbf{n}}=g,& x\in \partial \mathbb R^3_+.
+\end{array}
+\right.
+\end{equation}
+\begin{solution}
+One needs to finds $G$ such that it satisfies the homogeneous NBC.  Skipped.
+\end{solution}
+
+
+\item Use the method of separation of variables to find a harmonic function $u(x,y)$, i.e,. with $\Delta u=0$, over the unit square $(0,1)\times (0,1)$, subject to the boundary conditions
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u(x,0)=x^3(x-1);\\
+u(x,1)=0;\\
+u(0,y)=0;\\
+u(1,y)=y(y-1);
+\end{array}
+\right.
+\end{equation}
+
+(1).  Write your solution $u(x,y)$ as an infinite series.  Hint: the domain is a square.
+
+(2).  Using MATLAB to plot $u(x,y)$ over the square.
+\begin{solution}
+\begin{figure}
+  \centering
+  \includegraphics[width=4.5in,height=3in]{harmonic.png}
+  \caption{Harmonic function $u(x,y)$}\label{}
+\end{figure}
+
+If we follow the standard strategy, we need to solve two nonlinear equations for the coefficients, which is not a trivial problem.  However, by the virtue of the separation of variables, we are motivated to rewrite the this system as a combination of two systems with homogeneous boundary conditions.  To be specific, we solve the following systems respectively for $v$
+\begin{equation}
+\left\{
+\begin{array}{ll}
+v(x,0)=x^3(x-1);\\
+v(x,1)=0;\\
+v(0,y)=0;\\
+v(1,y)=0,
+\end{array}
+\right.
+\end{equation}
+and for $w$
+\begin{equation}
+\left\{
+\begin{array}{ll}
+w(x,0)=0;\\
+w(x,1)=0;\\
+w(0,y)=0;\\
+w(1,y)=y(y-1);
+\end{array}
+\right.
+\end{equation}
+then $u=v+w$ is a solution to the original system.  We want to remark that choices for system (2) and (3) are not unique as long as $v+w$ satisfies (1), however, we do have the uniqueness for (1) (prove it yourself), thus any solution obtained is the desired solution.  Now, we shall solve for $v$ and $w$ in (2) and (3).
+
+We shall only do the separation of variables for $v$, while $w$ can be obtained in the same way.  To this end, we write $v$ in its infinite series
+\[v(x,y)=\sum_{n=1}^\infty C_nX_nY_n,\]
+where $C_n$ is the coefficient, and $X_n$ and $Y_n$ are functions of $x$ and $y$ respectively.  After encoding the boundary condition, we readily see that $X_n$ is an eigenfunction of
+\[X''+\lambda X=0,~X(0)=X(1)=0,\]
+and we must have that
+\[X_n=A_n\sin n\pi x,~\lambda_n=(n\pi)^2,~n=1,2,...\]
+moreover, thanks to the boundary condition $Y(1)=0$, we have that $Y_n=B_n(e^{n\pi y}-e^{n\pi (2-y)})~n=1,2,...$, and then
+\[v(x,y)=\sum_{n=1}^\infty C_n \sin n\pi x (e^{n\pi y}-e^{n\pi (2-y)}),\]
+where $A_n$ and $B_n$ are incorporated into $C_n$ as we have been doing in class.  To find the coefficient $C_n$, we read the inhomogeneous boundary condition $ v(x,0)=x^3(x-1)$ and have that
+\[\sum_{n=1}^\infty C_n \sin n\pi x (1-e^{2n\pi})=x^3(x-1),\]
+then we have that
+\[C_n=\frac{2}{1-e^{2n\pi}} \int_0^1 x^3(x-1) \sin n\pi xdx,~n=1,2,...\]
+Similarly, we can show that
+\[w(x,y)=\sum_{n=1}^\infty D_n\sin n\pi y (e^{n\pi x}-e^{-n\pi x}),\]
+where \[D_n=\frac{2}{e^{n\pi}-e^{-n\pi}} \int_0^1 y(y-1) \sin n \pi y dy,~n=1,2,... \]
+
+You can evaluate $C_n$ and $D_n$ of integrals, which can also be obtained in MATLAB if you do the numerical approximation.  Finally, we have that
+\[u(x,y)=\sum_{n=1}^\infty C_n \sin n\pi x (e^{n\pi y}-e^{n\pi (2-y)})+D_n\sin n\pi y (e^{n\pi x}-e^{-n\pi x}),\]
+with $C_n$ and $D_n$ being given above.  This graph is contributed by Sijie Wang.
+
+\end{solution}
+
+\item Verify that the Laplacian of $u(x,y)$ in the polar coordinates $x=r\cos \theta, y=r \sin \theta$ is
+\[\Delta u= \frac{\partial^2 u }{\partial r^2 }+\frac{1}{r} \frac{\partial u}{\partial r}+\frac{1}{r^2}\frac{\partial^2 u}{\partial \theta^2}.\]
+\begin{solution}
+This follows from straightforward calculations and details skipped.
+\end{solution}
+
+
+\item Solve the following Poisson's equation for $u(r,\theta)$
+\begin{equation}
+\left\{
+\begin{array}{ll}
+\Delta u=\cos \theta,&r\in(1,2)~\theta\in[0,2\pi), \\
+u\vert_{r=1}=0,~ u\vert_{r=2}=2.
+\end{array}
+\right.
+\end{equation}
+Hint: There are two methods you can tackle this problem.  The first is to use the method of separation of variables.  For each fixed $r\in(1,2)$, $u(r,\theta)$ is a $2\pi$--periodic function of $\theta$.  Show that it can expands into
+\[u(r,\theta)=A_0+\sum_{n=1}^\infty A_n \cos n\theta+B_n\sin n \theta,  \]
+where $A_n$ and $B_n$ are functions of $r$.  Then substitute this into the polar coordinate of the PDE and collect the ODEs for $A_n$ and $B_n$.  You may need to solve some Euler--type ODE.  Then find the coefficients by the boundary conditions.  The second method is to find $u=v+w$ such that $\Delta v=0$ and $\Delta w=\cos \theta$ and the main task is to find one specific $w$.
+\begin{solution}
+Since $u$ is not a harmonic function, the general solution may not be true for this problem,  however, we can use the idea for solving inhomogeneous heat equations: $u(r,\theta)$ is periodic in $\theta$ and we can expand it into a Fourier series as the follows
+\[u(r,\theta)=A_0+\sum_{n=1}^\infty A_n\cos n \theta +B_n \sin n \theta,\]
+where $A_n=A_n(r)$ and $B_n=B_n(r)$ are functions of $r$.  Actually, this follows from the fact that $\{\cos n \theta, \sin n \theta\}$ form an orthogonal basis for $L^2$--functions with period $2\pi$.  Substituting the series into the polar coordinate form of the equation, i.e., $\Delta =\frac{\partial^2 }{\partial r^2}+\frac{1}{r}\frac{\partial  }{\partial r }+\frac{1}{r^2}\frac{\partial^2 }{\partial \theta^2}$, we collect from the PDE the following equation
+\[A_0''+\frac{1}{r}A_0'+\sum_{n=1}^\infty \big(A_n''+\frac{1}{r}A_n'-\frac{n^2}{r^2}A_n \big)\cos n \theta+\big(B_n''+\frac{1}{r}B_n'-\frac{n^2}{r^2}B_n \big)\sin n \theta=\cos \theta,\]
+where the derivatives are taken with respect to $r$.  Now we compare the coefficients and have that $A_n=B_n=0$ for all $n\geq1$ (ok, why?) except for $A_0$ and $A_1$, which satisfy
+\[A_0''+\frac{1}{r}A_0'=0,~A_1''+\frac{1}{r}A_1'-\frac{1}{r^2}A_1=1.\]
+Then solving these ODEs leads us to
+\[A_0(r)=C_0\ln r+D_0\]
+and
+\[A_1(r)=C_1r+C_2r^{-1}+r^2/3,\]
+where $C_0$, $C_1$, $D_0$ and $D_1$ are constants independent of $r$ and $\theta$.
+
+Using the boundary conditions, we are led to
+\begin{equation*}
+\left\{
+\begin{array}{ll}
+C_0\ln 1+D_0+(C_1+C_2+1/3)\cos \theta=0,\\
+C_0\ln 2+D_0+(C_1+C_2/2+4/3)\cos \theta=2.
+\end{array}
+\right.
+\end{equation*}
+Solving this algebraic system, we have that $C_0=2/\ln2,D_0=0,C_1-7/9$ and $C_2=4/9$.  Finally we obtain that
+\[u(r,\theta)=2\ln r/\ln 2+(-7r/9+4/(9r)+r^2/3)\cos \theta.\]
+
+I want to point out that an alternative way to solve this problem is to introduce a new function such that the inhomogeneous PDE becomes homogeneous, i.e., a harmonic function.  To this end, let us denote $=u+f(r,\theta)$, where $f(r,\theta)=-\frac{1}{3}r^2\cos\theta$, then we can get
+\begin{align*}
+\Delta w&=\Delta u+\Delta f(r,\theta)\\
+&=\cos\theta+\frac{\partial^2 f}{\partial r^2}+\frac{1}{r}\frac{\partial f}{\partial r}+\frac{1}{r^2}\frac{\partial^2 f}{\partial \theta^2}\\
+&=\cos\theta-\frac{2}{3}\cos\theta-\frac{2}{3}\cos\theta+\frac{1}{3}\cos\theta\\
+&=0
+\end{align*}
+Since $\Delta=\frac{\partial^2}{\partial r^2}+\frac{1}{r}\frac{\partial}{\partial r}+\frac{1}{r^2}\frac{\partial^2}{\partial \theta}$.\\
+Let $w=R(r)\Theta(\theta)$, then we can get
+\[\Delta w=R^{''}\Theta+\frac{1}{r}R^{'}\Theta+\frac{1}{r^2}R\Theta^{''}=0\]
+since the zero solution is pointless, thus we can get
+\[\frac{R^{''}}{R}+\frac{R^{'}}{rR}+\frac{1}{r^2}\frac{\Theta^{''}}{\Theta}=0\]
+i.e,
+\[r^2\frac{R^{''}}{R}+r\frac{R^{'}}{R}=-\frac{\Theta^{''}}{\Theta}=\lambda\]
+Since $\Theta(\theta)$ is a $2\pi$--periodic function of $\theta$, then we can write $\Theta(\theta)$ as followings
+\[\Theta(\theta)=\sum_{n=0}^{\infty}A_n\cos n\theta+B_n\sin n\theta\]
+Moreover we can get
+\[r^2\frac{R^{''}}{R}+r\frac{R^{'}}{R}=n^2\]
+Let $R=Cr^\alpha$, then we have
+\[C\alpha(\alpha-1)r^\alpha+C\alpha r^\alpha=Cn^2r^\alpha,\]
+i.e, $\alpha^2=n^2$.   If $n\neq0$, we have $R_n(r)=C_n r^n$.  If $n=0$, we have $r^2 R^{''}+r R{'}=0$, solving the equation, we can get $R(r)=C_0+D_0\ln r$.  Therefore we find that
+\[w(r,\theta)=(C_0+D_0\ln r)+\sum_{n=1}^{\infty}(C_n r^n+D_n r^{-n})(A_n\cos n\theta+B_n\sin n\theta)\]
+Moreover we can get
+\[u(r,\theta)=w(r,\theta)-f(r,\theta)=(C_0+D_0\ln r)+\frac{1}{3}r^2\cos\theta+\sum_{n=1}^{\infty}(C_n r^n+D_n r^{-n})(A_n\cos n\theta+B_n\sin n\theta)\]
+it is obvious that we can write $u(r,\theta)$ as follows
+\[u(r,\theta)=A_0(r)+\sum_{n=1}^{\infty}A_n(r)\cos n\theta+B_n(r)\sin n\theta\]
+Now substituting $u(r,\theta)$ into PDE, we can get
+\[A_{0}^{''}(r)+\frac{1}{r}A_{0}^{'}(r)+\sum_{n=1}^{\infty}(A_{n}^{''}(r)+\frac{1}{r}A_{n}^{'}(r)-\frac{n^2}{r^2}A_{n}(r))\cos n\theta+(B_{n}^{''}(r)+\frac{1}{r}B_{n}^{'}(r)-\frac{n^2}{r^2}B_{n}(r))\sin n\theta=\cos\theta\]
+Multiplying $\cos n\theta$ and $\sin n\theta$ respectively and integrating over $(0,L)$, we can get
+\begin{equation*} \label{1}
+\left\{
+\begin{array}{ll}
+A_{1}^{''}+\frac{1}{r}A_{1}^{'}-\frac{1}{r^2}A_1=1~~~~~~~~~~~~~~~~~~~~~~~~~~~(1)     \\
+A_{n}^{''}+\frac{1}{r}A_{n}^{'}-\frac{n^2}{r^2}A_n=0~~~(n\neq1)~~~~~~~~~~~~~~(2)\\
+B_{n}^{''}+\frac{1}{r}B_{n}^{'}-\frac{n^2}{r^2}B_n=0~~~~~~~~~~~~~~~~~~~~~~~~~~(3)
+\end{array}
+\right.
+\end{equation*}
+Moreover, according to the BC, we have
+\begin{equation*} \label{1}
+\left\{
+\begin{array}{ll}
+A_0(1)+\sum_{n=1}^{\infty}A_n(1)\cos n\theta+B_n(1)\sin n\theta=0    \\
+A_0(2)+\sum_{n=1}^{\infty}A_n(2)\cos n\theta+B_n(2)\sin n\theta=2    \\
+\end{array}
+\right.
+\end{equation*}
+i.e
+\[A_0(1)=0~~~~~A_0(2)=2\]
+and
+\[A_n(1)=A_n(2)=0,(n\geq1)~~~~~~~~~~~B_n(1)=B_n(2)=0,(n\geq0)\]
+Solving the equation $(2)$, we can get
+\[A_n(r)=c_n r^n+d_n r^{-n},(n\geq1)~~~~~~A_0(r)=c_0+d_0\ln r\]
+Solving the equation $(3)$, we can get
+\[B_n(r)=c_{n}^{'} r^n+d_{n}^{'} r^{-n},(n\geq1)~~~~~~B_0(r)=c_{0}^{'}+d_{0}^{'}\ln r\]
+Then applying the BC, we can get
+\[c_0=0,~d_0=\frac{2}{\ln 2};~c_n=d_n=0, n>1;~and~c_{n}^{'}=d_{n}^{'}=0, n\geq0\]
+Now, let us consider the value of equation $(1)$ withe the BC as follows
+\begin{equation*} \label{1}
+\left\{
+\begin{array}{ll}
+A_{1}^{''}+\frac{1}{r}A_{1}^{'}-\frac{1}{r^2}A_1=1   \\
+A_1(1)=A_1(2)=0  \\
+\end{array}
+\right.
+\end{equation*}
+i.e,
+\begin{equation*} \label{1}
+\left\{
+\begin{array}{ll}
+r^2A_{1}^{''}+rA_{1}^{'}-A_1=1~~~~~~(4)   \\
+A_1(1)=A_1(2)=0  \\
+\end{array}
+\right.
+\end{equation*}
+Denote $r=e^x$, then we have
+\[\frac{d^2 A_1}{d r^2}-A_1=e^{2x}\]
+Firstly, let us solve the equation
+\[\frac{d^2 A_1}{d r^2}-A_1=0\]
+we can get the general solution of $A_1(r)$ is $m_1e^x+m_2e^{-x}$ and moreover we can get the special solution of $A_1(r)$ is $A_{1}^{*}(r)=be^{2x}=br^2$.  Then substitute $A_{1}^{*}(r)$ into the equation $(4)$, we have $3b=1$, i.e, $b=\frac{1}{3}$.  Finally, we can get the common solution of $A_1(r)$ is
+\[A_1(r)=m_1r+m_2\frac{1}{r}+\frac{1}{3}r^2\]
+since $A_1(1)=A_1(2)=0$, i.e,
+\begin{equation*} \label{1}
+\left\{
+\begin{array}{ll}
+m_1+m_2+\frac{1}{3}=0  \\
+2m_1+\frac{1}{2}m_2+\frac{4}{3}=0 \\
+\end{array}
+\right.
+\end{equation*}
+Solving the system, we can get $m_1=-\frac{7}{9}$ and $m_2=\frac{4}{9}$. i.e,
+\[A_1(r)=\frac{1}{3}r^2-\frac{7}{9}r+\frac{4}{9}\cdot\frac{1}{r}\]
+Therefore, we can get
+\begin{align*}
+u(r,\theta)&=A_0(r)+\sum_{n=1}^{\infty}A_n(r)\cos n\theta+B_n(r)\sin n\theta\\
+&=\frac{2}{\ln 2}\ln r+(\frac{1}{3}r^2-\frac{7}{9}r+\frac{4}{9}\cdot\frac{1}{r})\cos\theta
+\end{align*}
+\end{solution}
+
+
+\item Consider the following problem
+\begin{equation}
+\left\{
+\begin{array}{ll}
+\Delta u=f,& x\in \Omega,\\
+\frac{\partial u}{\partial \textbf{n}}=g,& x\in \partial \Omega.
+\end{array}
+\right.
+\end{equation}
+What condition is necessary if this problem has a solution?  Hint: divergence theorem.
+\begin{solution}
+Integrating the PDE over $\Omega$, one  concludes from the divergence theorem that
+\[\int_\Omega fdx=\int_{\partial\Omega} dS,\]
+which is necessary if the problem admits a solution.
+\end{solution}
+
+
+\item Suppose that $u$ is a harmonic function in a plane disk $B_0(2)\subset \mathbb R^2$, i.e, centered at the origin with radius 2, and $u=3 \cos 2\theta +1$ for $r=2$.  Calculate the value of $u$ at the origin without finding the solution $u$.
+\begin{solution}
+From the mean value property, we have that
+\[u(0)=\frac{1}{4\pi}\int_{\partial B_0(2)} udS,\]
+where $dS$ represents the differential for a line integral.  It is easy to know that $dS= r d\theta$ for the circle with radius $r$, hence for $\partial B_0(2)$ we have that
+\[u(0)=\frac{1}{2\pi}\int_{\partial B_0(2)} (3 \cos 2\theta +1)d\theta=\frac{2\pi}{2\pi}=1.\]
+\end{solution}
+
+\item Find the harmonic function $u$ over $\mathbb R^2_+$ such that
+\[\Delta u=0, x\in(-\infty,\infty),y\in(0,\infty),\]
+subject to the boundary condition
+\[u(x,0)=
+\left\{
+\begin{array}{ll}
+1,& x>0\\0,&x\leq 0.
+\end{array}
+\right.
+\]
+Then plot $u(x,y)$ over $\mathbb R^2_+$ to illustrate your solution.
+\begin{solution}
+According to the integral presentation, we know that
+\[u(x_0,y_0)=\frac{y_0}{\pi}\int_{-\infty}^\infty \frac{\phi(x)}{(x-x_0)^2+y_0^2}dx=\frac{y_0}{\pi}\int_{0}^\infty \frac{1}{(x-x_0)^2+y_0^2}dx,\]
+which can be simplified, through the fact that $(\arctan x)'=\frac{1}{1+x^2}$, as
+\[u(x_0,y_0)=\frac{1}{\pi}\Big(\frac{\pi}{2}+\arctan \frac{x_0}{y_0}\Big).\]
+\end{solution}
+
+\item Let $\Omega$ be a bounded domain in $\mathbb R^N$, $N\geq 1$ with smooth boundary $\partial \Omega$.  Consider the Green's function under Neumann boundary condition
+\begin{equation}
+\left\{
+\begin{array}{ll}
+\Delta G(x;x_0)=\delta_{x_0}(x),&x\in \Omega, \\
+\frac{\partial G(x;x_0) }{\partial \textbf{n}}=C,& x\in \partial \Omega,
+\end{array}
+\right.
+\end{equation}
+where $\textbf{n}$ is the unit outer normal of $\partial \Omega$ and $x_0$ is a fixed point in $\Omega$.
+
+(i).  Solve the following solutions formally to find the constant $C$;
+
+(ii).  By using $G(x;x_0)$, find a formula for $u(x_0)$, with $u$ being a solution of
+\begin{equation}
+\left\{
+\begin{array}{ll}
+\Delta u=f(x),&x\in \Omega, \\
+\frac{\partial u }{\partial \textbf{n}}=g(x),& x\in \partial \Omega.
+\end{array}
+\right.
+\end{equation}
+Remark: we know that the problem has a unique solution up to a constant.  You can choose this constant 0 or any number that you like.
+
+\begin{solution}
+This follows from straightforward calculations involving Green's identities and the definition of
+the delta function. I leave the details to the student.
+\end{solution}
+
+\item  Assume that $G(x)$ is a Green's function for the mixed boundary value problem
+\begin{equation}\label{5}
+\left\{
+\begin{array}{ll}
+\Delta u=f(x),&x\in \Omega, \\
+\alpha u+\beta \frac{\partial u}{\partial \textbf{n}}=0,&x \in \partial \Omega,
+\end{array}
+\right.
+\end{equation}
+where $\alpha\neq0$, i.e, $G$ as a function of $x$ satisfies
+\begin{equation}
+\left\{
+\begin{array}{ll}
+\Delta G=\delta(x),&x\in \Omega, \\
+\alpha G+\beta \frac{\partial G}{\partial \textbf{n}}=0,&x \in \partial \Omega.
+\end{array}
+\right.
+\end{equation}
+Show that the solution of the PDE in (\ref{5}) subject to the nonhomogeneous boundary condition
+\[\alpha(x) u+\beta(x) \frac{\partial u}{\partial \textbf{n}}=g(x),x \in \partial \Omega,\]
+$\alpha\neq 0$,
+is given by
+\[u(x_0)=\int_\Omega G_{x_0}(x)f(x) dx+\int_{\partial \Omega} \frac{g(x)}{\alpha(x)} \frac{\partial G_{x_0}(x)}{\partial \textbf{n}} dS.\]
+\begin{solution}
+Similar as above, this follows from the same calculations involving Green's identities and the definition of the delta function. I again leave the details to the student.
+\end{solution}
+\end{enumerate}
+
+
+\end{document}
+\endinput

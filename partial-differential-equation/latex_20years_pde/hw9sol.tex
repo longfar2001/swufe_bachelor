@@ -1,0 +1,348 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2020}
+\author{\textbf{Homework 9, Solution}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+ \usepackage{textcomp}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+PROLOGUE:  One student (Jiahui Shui) came to me after the lecture pointing out that a ``$\frac{1}{2\pi}$'' was missing in the Fourier inverse transform as follows:
+\[f(x)=\textcolor[rgb]{1.00,0.00,0.00}{\frac{1}{2\pi}}\int_{\mathbb R}\hat f(s)e^{isx}ds,\]
+now that we defined
+\begin{equation}\label{ordinary}
+\hat f(s):=\int_{\mathbb R}\hat f(x)e^{-isx}dx.
+\end{equation}
+I concurred right away.  There came two more students through email expressing their confusion about the definition (\ref{angular}), which also bothered me even though ``$\frac{1}{2\pi}$'' was the only incorrect thing (that I know) on board.  Then I realized that these students (perhaps more) have learned Fourier transform somewhere else (or they are smart enough to brainstorm out the missing $2\pi$ above in the lecture) that adopts the following definition
+\begin{equation}\label{angular}
+\hat f_{(2)}(s):=\int_{\mathbb R}\hat f(x)e^{-2\pi isx}dx,
+\end{equation}
+which implies that
+\[f(x)=\int_{\mathbb R}\hat f_{(2)}(s)e^{isx}ds.\]
+It would be trouble (or pain for them) if I just patched the inverse transform as above but remained the same.  Before proceeding further, I want to mention that (\ref{angular}) and (\ref{ordinary}) are equivalent in mathematics, but $s$ therein has different (physical) meanings.  Indeed, $s$ in (\ref{angular}) denotes the angular frequency while that in (\ref{ordinary}) denotes the regular frequency as ``angular frequency $=2\pi$ regular frequency"\footnote{Period $T=\frac{1}{f}=\frac{2\pi}{\omega}$}.  One can propose the third definition as
+\[\hat f_{(3)}(s):=\frac{1}{\sqrt{2\pi}}\int_{\mathbb R}f(x)e^{- isx}dx,\]
+and then the resulting inverse transform is
+\[f(x)=\frac{1}{\sqrt{2\pi}}\int_{\mathbb R}\hat f_{(3)}(s)e^{isx}ds,\]
+accordingly.  The reason I introduced (\ref{ordinary}) rather than the other two was this one is mathematically natural, to begin with, and all three are equivalent (in mathematics).  However, the inverse transform of both $\hat f_{(2)}(s)$ and $\hat f_{(3)}(s)$ preserves the coefficient of the integral and this is referred to as the unitary property, while (\ref{ordinary}) is non-unitary.  Though there is a mere difference in coefficient, it seems necessary for us to give the following statement to advance our plots: (\ref{angular}) is our official Fourier transform throughout the course.  I hope this alleviates the agony for those who learned (\ref{angular}) at the beginning.
+
+\begin{enumerate}
+\item Denote $\hat f(s)$ as the Fourier transform of $f(x)$.  Prove the following identities:
+\begin{enumerate}
+  \item $\widehat{f(ax)}=\frac{1}{\vert a\vert}\hat f\Big(\frac{s}{a}\Big), \forall a\in\mathbb\backslash \{0\};$
+  \item $\widehat{f(x)e^{iax}}=\widehat{f}\Big(s-\frac{a}{2\pi}\Big)$; $\widehat{f(x)\cos ax}=\frac{\widehat{f}(s-\frac{a}{2\pi})+\widehat{f}(s+\frac{a}{2\pi})}{2}$; $\widehat{f(x)\sin ax}=\frac{\widehat{f}(s-\frac{a}{2\pi})-\widehat{f}(s+\frac{a}{2\pi})}{2i}$;
+  \item $x^n\hat f(s)=\big(\frac{i}{2\pi}\big)^n\frac{d^n \hat f(s)}{ds^n}, \forall n\in\mathbb N^+$;
+  \item $\widehat{e^{-ax^2}}=\sqrt{\frac{\pi}{a}}e^{-\frac{(\pi s)^2}{a}}$, and $\widehat{e^{-a|x|}}=\frac{2a}{(2\pi s)^2+a^2}$, $\forall a\in\mathbb R$;
+  \item $\widehat{f\ast g}=\hat f \hat g;~  \widehat{fg}=\hat f\ast \hat g$;--this is sometimes called Fourier inverse theorem.
+\end{enumerate}
+
+\begin{solution}
+\begin{enumerate}
+  \item If $a>0$, we have that
+\[\widehat{f(ax)}=\int^{\infty}_{-\infty}f(ax)e^{-2\pi isx}dx=\int^{\infty}_{-\infty}\frac{1}{a} f(ax)e^{-2\pi i\frac{s}{a} ax}d(ax)=\frac{1}{a}\int^{\infty}_{-\infty}f(x)e^{-2\pi i\frac{s}{a}x}dx=\frac{1}{a}\hat{f}(\frac{s}{a});\]
+if $a<0$, we introduce $t=ax$ to obtain
+\begin{align*}
+\widehat{f(ax)}&=\int^{\infty}_{-\infty}f(ax)e^{-2\pi isx}dx=\int^{\infty}_{-\infty}-\frac{1}{\vert a\vert} f(ax)e^{-2\pi i\frac{s}{a} ax}d(ax)=-\frac{1}{\vert a\vert}\int^{-\infty}_{\infty} f(t)e^{-2\pi i\frac{s}{a} t}d(t) \\
+&=\frac{1}{\vert a\vert}\int^{\infty}_{-\infty} f(t)e^{-2\pi i\frac{s}{a} t}d(t)=\frac{1}{\vert a\vert}\hat{f}(\frac{s}{a}).
+\end{align*}
+Therefore we have in either case
+\[\widehat{f(ax)}=\frac{1}{\vert a\vert}\hat f\big(\frac{s}{a}\big), \forall a\in\mathbb\backslash \{0\}. \]
+
+\item It is easy to have that $\widehat{f(x)e^{iax}}=\widehat{f}\Big(s-\frac{a}{2\pi}\Big)$ by shifting the variable; the next two identities follow through Euler's formula $e^{i\theta}=\cos \theta +i\sin \theta$ and its implications
+\[\cos ax=\frac{e^{iax}+e^{-iax}}{2}, \sin ax=\frac{e^{iax}-e^{-iax}}{2i}\]
+whereas the calculations are the same as above (or just follow from above).
+
+\item  You can prove it by straightforward calculations.  I approach by first proving
+\[\widehat{\frac{d^n f}{dx^n}}=(2\pi is)^n \hat{f}(s).\]
+From the definition of Fourier transform, we have
+\[\widehat{\frac{d f}{dx}}=\int_{\mathbb{R}}e^{-2\pi isx}f'(x)dx=f(x)e^{-2\pi isx}\Big\vert^{x=\infty}_{x=-\infty}-(-2\pi is)\int_{\mathbb{R}}f(x)e^{-2\pi isx}dx=2\pi is \hat{f}(s),\]
+where the endpoint terms with $x=\pm \infty$ are zero because $e^{-2\pi isx}$ is bounded and $f(x)$ decays to zero at $x=\pm\infty$.  Therefore we can repeat this process iteratively and obtain
+\[\widehat{\frac{d^n f}{dx^n}}=(2\pi is)\widehat{\frac{d^{(n-1)}f}{dx^{(n-1)}}}=\cdots=(2\pi is)^{n-1}\widehat{\frac{d f}{dx}}=(2\pi is)^n\hat{f}.\]
+Then it is not hard to finish the rest;
+
+\item We have from straightforward calculations that
+\begin{align*}
+\widehat{f\ast g}=&\int_\mathbb R  e^{-2\pi isx} \int_\mathbb Rf(x-\xi)g(\xi)d\xi dx=\int_\mathbb R  \int_\mathbb R e^{-2\pi isx}f(x-\xi)g(\xi)d\xi dx\\
+=&\int_\mathbb R  \int_\mathbb R e^{-2\pi isx}f(x-\xi)g(\xi)d\xi dx \quad -\text{~using~}y:=x-\xi\\
+=&\int_\mathbb R  \int_\mathbb R e^{-2\pi is(\xi+y)}f(y)g(\xi)d\xi dy\\
+=&\int_\mathbb R  e^{-2\pi isy} f(y)dy \int_\mathbb R e^{-2\pi is\xi} g(\xi)d\xi\quad -\text{~by Fubini's theorem~}\\
+=&\hat f \hat g;
+\end{align*}
+one can do the same to get the second identity.
+\end{enumerate}
+\end{solution}
+
+
+\item Finish solving the following inhomogeneous Cauchy problem using Fourier transform
+\[
+\left\{
+\begin{array}{ll}
+u_t=Du_{xx},&x\in \mathbb R,t>0\\
+u(x,0)=\phi(x),&x\in \mathbb R.
+\end{array}
+\right.
+\]
+
+\begin{solution}
+Details skipped
+\end{solution}
+
+\item Use the method of Fourier transform to find the solution of the following inhomogeneous Cauchy problem
+\[
+\left\{
+\begin{array}{ll}
+u_t=Du_{xx}+f(x,t),&x\in \mathbb R,t>0\\
+u(x,0)=\phi(x),&x\in \mathbb R.
+\end{array}
+\right.
+\]
+ Hint:
+ \[u(x,t)=\int_\mathbb R G(x,t;\xi)\phi(\xi)d\xi+\int_0^t\int_\mathbb R G(x,t-s;\xi)f(\xi,s)d\xi ds,  \]
+where \[G(x,t;\xi)=\frac{1}{\sqrt{4\pi Dt}}e^\frac{\vert x-\xi\vert^2}{4Dt}.\]
+\begin{solution}
+Take the Fourier transforms on BHS of the PDE, then we have that
+\begin{align*}
+\begin{cases}
+&\frac{d}{dt}\hat{u}(s,t)=D(2\pi is)^2\hat{u}(s,t)+\hat{f}(s,t),\\
+&\hat{u}(s,0)=\hat{\phi}(s).\\
+\end{cases}
+\end{align*}
+I would like to remark that here $u$ is a function of two variables $s$ and $t$, while a regular derivative sign $\frac{d}{dt}$, rather than the partial derivative $\frac{\partial}{\partial t}$, is used here because in Fourier transform, $s$ is treated as a parameter.
+
+Let $\theta=2\pi s$.  Solving the ODE gives us
+\[\hat{u}(s,t)e^{D\theta^2 t}+\hat{u}(s,0)=\int^t_0 \hat{f}(s,\tau)e^{D\theta^2 \tau}d\tau\]
+or
+\[\hat{u}(s,t)=\hat{\phi}(s)e^{-D\theta^2 t}+\int^t_0 \hat{f}(s,\tau)e^{-D\theta^2 (t-\tau)}d\tau=\hat{\phi}(s)\hat{G}(s,t)+\int^t_0 \hat{f}(s,\tau)\hat{G}(s,t-\tau)d\tau.\]
+if we denote $\hat{G}(s,t):=e^{-D\theta^2 t}=e^{-D(2\pi s)^2 t}$.  Now in order to find $u(x,t)$, we apply the inverse Fourier transform of this solution.  Indeed, we already know that the inverse of $\hat G$ is
+\[G(x,t)=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{x^2}{4Dt}}\]
+or equivalently
+\[(\hat G)^{-1}=G(x,t),\]
+therefore the solution of the inhomogeneous Cauchy problem is
+\begin{align*}
+u(x,t)&=G\ast\phi (x,t)+ \int^t_0 \int_{\mathbb{R}}G(x-\xi,t-\tau)f(\xi,\tau)d\xi d\tau \\
+&=\int_{\mathbb{R}}G(x-\xi,t)\phi(\xi)d\xi+\int^t_0 \int_{\mathbb{R}}G(x-\xi,t-s)f(\xi,s)d\xi ds \\
+&=\int_\mathbb R G(x,t;\xi)\phi(\xi)d\xi+\int_0^t\int_\mathbb R G(x,t-s;\xi)f(\xi,s)d\xi ds,
+\end{align*}
+where
+\[G(x,t;\xi)=G(x-\xi,t)=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{\vert x-\xi\vert^2}{4Dt}}.\]
+Remark: when $f\equiv 0$, it is easy to recover the formula to the solution to the Cauchy's problem as is well known.
+\end{solution}
+
+\item The method of Fourier transform can also be used to solve the wave equation of the following form
+\[
+\left\{
+\begin{array}{ll}
+u_{tt}=c^2u_{xx},&x\in \mathbb R,t>0,\\
+u(x,0)=f(x),&x\in \mathbb R,\\
+u_t(x,0)=g(x),&x\in \mathbb R,
+\end{array}
+\right.
+\]
+where $c$ is a positive constant.  Show that
+\begin{equation}\label{DE}
+u(x,t)=\frac{1}{2}\Big(f(x-ct)+f(x+ct)\Big)+\frac{1}{2c}\int_{x-ct}
+^{x+ct} g(\xi)d\xi.
+\end{equation}
+(\ref{DE}) is the so-called d'Alembert's formula and $c$ is the speed of wave propagation.
+\begin{solution}
+Take the Fourier transforms on BHS of the PDE, then we have that
+\begin{align*}
+\begin{cases}
+&\frac{d^2}{dt^2}\hat{u}(s,t)=c^2(2\pi is)^2\hat{u}(s,t),\\
+&\hat{u}(s,0)=\hat{f}(s),\\
+&\frac{d}{dt}\hat{u}(s,0)=\hat{g}(s).
+\end{cases}
+\end{align*}
+It is easy to see that the general solution of the ODE reads
+\[\hat{u}(s,t)=c_1\cos{2c\pi st}+c_2\sin{2c\pi st},\]
+where $c_i$, $i=1,2$, are constants.  Invoking the initial conditions, we have
+\[\hat{u}(s,t)=\hat{f}(s)\cos{2c\pi st}+\frac{\hat{g}(s)}{2c\pi s}\sin{2c\pi st}=\hat{f}(s)\hat{G}_1(s,t)+\hat{g}(s)\hat{G}_2(s,t),\]
+where $\hat{G}_1(s,t)=\cos{2c\pi st}$ and $\hat{G}_2(s,t)=\frac{\sin{2c\pi st}}{2c\pi s}$.
+
+Now we need to find $G_i$, $i=1,2$.  We recall (or it is not hard to find as by the problems above) that the dirca--delta function $\delta$ satisfies
+\[\widehat{\delta(x-a)}=e^{-2\pi isa}\hat{\delta}=e^{-2\pi isa};\]
+on the other hand, we can rewrite $\hat{G}_1$ into
+\[\hat{G}_1 (s,t)=\cos{2c\pi st}=\frac{e^{2c\pi sti}+e^{-2c\pi sti}}{2}.\]
+then we have
+\[G_1(x,t)=\frac{1}{2}\Big(\delta(x-ct)+\delta(x+ct)\Big).\]
+
+On the other hand, we can evaluate through direct calculations that $\frac{1}{\pi s}\sin{(a\cdot 2\pi s)}$ is the transform of $H(a-\vert x\vert)$.  Alternatively you can use the facts in problem 4 to obtain this fact.  Then we have that the inverse transform of $\hat{G}_2 (s,t)$ is
+\[G_2(x,t)=\frac{1}{2c}H(ct-\vert x\vert),\]
+where we apply the notation of the so--called Heaviside step function
+\begin{align*}
+H(x)=
+\begin{cases}
+1, &x\geq 0, \\
+0, &x<0.
+\end{cases}
+\end{align*}
+Hence, the solution of the problem is
+\begin{align*}
+u(x,t)&=\int_{\mathbb{R}}G_1(x-\xi)f(\xi)d\xi+\int_{\mathbb{R}}G_2(x-\xi)g(\xi)d\xi \\
+& = \int_{\mathbb{R}}\frac{1}{2}\Big(\delta(x-ct-\xi)+\delta(x+ct-\xi)\Big)f(\xi)d\xi+\int_{\mathbb{R}}\frac{1}{2c}H(ct-\vert x-\xi\vert)g(\xi)d\xi\\
+&=\frac{1}{2}\Big(\int_{\mathbb{R}}\delta(x-ct-\xi)f(\xi)d\xi+\int_{\mathbb{R}}\delta(x+ct-\xi)f(\xi)d\xi\Big)+\frac{1}{2c}\int_{\mathbb{R}}H(ct-\vert x-\xi\vert)g(\xi)d\xi
+\end{align*}
+Note that $\delta(x)=\delta(-x)$ and
+\begin{align*}
+H(ct-\vert x-\xi\vert)=
+\begin{cases}
+1, &x-ct\leqslant\xi\leqslant x+ct,\\
+0, &\text{otherwise}.
+\end{cases}
+\end{align*}
+Finally we have
+\begin{align*}
+u(x,t)&=\frac{1}{2}\Big(\int_{\mathbb{R}}\delta(\xi-(x-ct))f(\xi)d\xi+\int_{\mathbb{R}}\delta(\xi-(x+ct))f(\xi)d\xi\Big)+\frac{1}{2c}\int_{x-ct}^{x-ct}g(\xi)d\xi \\
+&=\frac{1}{2}\Big(f(x-ct)+f(x+ct)\Big)+\frac{1}{2c}\int_{x-ct}
+^{x+ct} g(\xi)d\xi,
+\end{align*}
+which is the desired formula.  Or if you can just apply the shift identity above if you do not apply the Heaviside function.
+\end{solution}
+
+
+\item Again, it can also be applied to solve the Schr\"odinger's equation describing the evolution of the quantum state of a quantum system, discovered and formulated by the Austrian physicist Erwin Schr\"dinger in the 1920s
+    \[
+\left\{
+\begin{array}{ll}
+iu_{t}+Du_{xx}=0,&x\in \mathbb R,t>0,\\
+u(x,0)=f(x),&x\in \mathbb R,\\
+\end{array}
+\right.
+\]
+where $i$ is the complex unit such that $i^2=-1$.  $u$ and $f$ are complex functions. ($u$ denotes a wave function).
+\begin{solution}
+The arguments are exact the same as those for the 1D Cauchy's problem and we can have that
+\[u(x,t)=\int_{\mathbb R}G^*(x,t;\xi)f(\xi)d\xi,\]
+where
+\[G^*(x,t;\xi)=\frac{1}{\sqrt{4\pi Dit}}e^{-\frac{\vert x-\xi\vert^2}{4Dit}}.\]
+On the other hand, it is easy to see that, if we denote $u^*(x,t)=u(x,t)$, then $u^*$ satisfies the regular heat equation and the same initial condition.  This also gives rise to the same formula as above.
+\end{solution}
+
+
+\item
+i) Use Fourier transform to solves the potential equation for $u$ with $f\in L^2(\mathbb R)$.
+\[-u_{xx}+u=f,x\in \mathbb R,\]
+This leads to the so-called Bessel's kernel.
+
+ii) Use Fourier transform to solves the potential equation for $u$ with $f\in L^2(\mathbb R)$.
+\[-u_{xx}=f,x\in \mathbb R.\]
+Hint: one needs to find the inverse transform of $\frac{1}{s^2}$, and we will come back to this with a different approach later.
+
+Remark:  I would like to remark that, it seems more realistic to consider the above equations in higher dimensions from the viewpoint of practice.  To this end, one can apply the higher--dimensional Fourier transform to find the explicit solutions by the same analysis here.  However, let us focus on the 1D case for the sake of simplicity in this course.  You are encouraged to work on the ND case if interested.
+\begin{solution}
+i) Taking the Fourier transform on BHS of the PDE gives us
+\[-(2\pi i s)^2 \hat u(s)+\hat u(s)=\hat f(s),\]
+hence
+\[\hat u(s)=\frac{1}{1+4\pi^2 s^2}\hat f(s);\]
+
+on the other hand, we know that, from lecture example or by simple calculations, that $\frac{1}{1+4\pi^2 s^2}$ is the Fourier transform of $\frac{1}{2}e^{-|x|}$, or
+\[\widehat {\frac{1}{2}e^{-|x|}}=\frac{1}{1+4\pi^2 s^2},\]
+therefore one concludes that
+\[u(x)=\frac{1}{2}\int_\mathbb R f(\xi)  e^{-|x-\xi|}d\xi.\]
+
+ii) One can easily find that the Fourier transform now satisfies
+\[\hat u(s)=\frac{1}{4\pi^2 s^2}\hat f(s),\]
+and one should be able to find that the inverse transform is $\frac{|x|}{2}$.  Therefore, $u(x)$ can be rewritten as 
+\[u(x)=\frac{1}{2}\int_{\mathbb R}|x-y|f(y)dy.\]  
+Note that this again shows that $\frac{|x|}{2}$ is a fundamental solution of $\frac{d^2}{dx^2}$.
+
+\end{solution}
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

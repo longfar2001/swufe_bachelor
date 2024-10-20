@@ -1,0 +1,395 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2020}
+\author{\textbf{Homework 3, Solutions}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+\item Solve the following IBVP by separation of variables and write its solution in terms of infinite series
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=Du_{xx},& x\in(-L,L),t>0\\
+u(x,0)=\phi(x),&x\in(-L,L),\\
+u(-L,t)=u(L,t)=0, &t>0.
+\end{array}
+\right.
+\end{equation}
+\emph{Remark:  Ambitious and motivated students are encouraged to explore this problem replacing $(-L,L)$ by $(a,b)$, though I do not require you to do so.}
+\begin{solution}
+First of all, we have that the eigen--value problem associated with this system is
+\begin{equation*}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0,& x\in(-L,L),\\
+X(-L)=X(L)=0. &
+\end{array}
+\right.
+\end{equation*}
+Now we need to find the eigen--pairs to the problem above.  While you can do it by straightforward calculations, an alternative way is to do as follows:
+let us denote 
+\[Y(x):=X(x-L),\]
+then it is easy to see that the eigen--value problem now becomes
+\begin{equation*}
+\left\{
+\begin{array}{ll}
+Y''+\lambda Y=0,& x\in(0,2L),\\
+Y(0)=Y(2L)=0. &
+\end{array}
+\right.
+\end{equation*}
+It is well known that the eigen--pairs are
+\[\]
+\[Y_n(x)=\sin \frac{n\pi x}{2L},\lambda_n=\Big(\frac{n\pi}{2L}\Big)^2,n=1,2,...\]
+therefore we have that
+\[X_n(x)=Y_n(x+L)=\sin \frac{n\pi (x+L)}{2L}=\sin \Big(\frac{n\pi x}{2L}+\frac{n\pi}{2}\Big),\lambda_n=\Big(\frac{n\pi}{2L}\Big)^2,n=1,2,...\]
+moreover, we can also find that
+\[\int_{-L}^L X^2_n(x)dx=\int_0^{2L}Y^2_n(x)dx=\int_0^{2L}\sin^2 \frac{n\pi x}{2L}dx=L,\]
+while \[\int_{-L}^L X_m(x)X_n(x)dx=0,m\neq n.\]
+
+According to the Sturm--Liouville Theory, we are able to write the solution in terms of the infinite series
+\[u(x,t)=\sum_{n=1}^\infty C_n(t) \sin \frac{n\pi (x+L)}{2L}.\]
+Substituting this solution into the PDE gives us
+\[\sum_{n=1}^\infty C_n'(t) \sin \frac{n\pi (x+L)}{2L}=-D\sum_{n=1}^\infty C_n(t) \Big(\frac{n\pi}{2L}\Big)^2\sin \frac{n\pi (x+L)}{2L};\]
+%on the other hand, we can have from straightforward calculations that
+%\[\int_{-L}^L \sin^2 \frac{n\pi x}{L}dx=\frac{x}{2}-\frac{L\sin \frac{2n\pi x}{L}}{4n\pi}\Big|_{-L}^L=L,\]
+%while \[\int_{-L}^L \sin \frac{m\pi (x-L)}{L} \sin \frac{n\pi (x-L)}{L}dx=0,m\neq n.\]
+Multiplying BHS of the system above by $X_n(x)$ and then integrating it over $(-L,L)$, we obtain that
+\[C_n'(t)=- D \Big(\frac{n\pi}{2L}\Big)^2C_n(t);\]
+solving this ODE gives us
+\[C_n(t)=C_n(0)e^{-D(\frac{n\pi}{2L})^2t},\]
+where $C_n(0)$ can be evaluated by the initial condition as
+\[C_n(0)=\frac{1}{L}\int_{-L}^L \phi(x) \sin \frac{n\pi (x+L)}{2L}dx.\]
+\end{solution}
+
+
+\item  Use the method of separation of variables to find the solution to the following problem in terms of infinite series
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=Du_{xx},& x\in (0,L), t>0\\
+u(x,0)=x, &x\in(0,L), \\
+u_x(x,t)=0, & x=0,L.
+\end{array}
+\right.
+\end{equation}
+
+(i) Without solving this problem, use physical intuition to predict/explain what is the limit of $u(x,t)$ as $t\rightarrow \infty$?  Hint: think of $u(x,t)$ as the temperature.
+
+(ii)  Try a separable solution $U_n(x,t)=X_n(x)T_n(t)$ of the PDE and then find it by the boundary condition;
+
+(iii)  Let $u(x,t)=\sum^\infty_{n=1}C_nX_n(x)T_n(t)$ and then find $C_n$ by fitting the initial condition;
+
+(iv)  Choose $D=1$ and $L=\pi$.  Use computer program to plot the sum of first $N$--terms $u^N(x,t)$
+\[u^N(x,t):=\sum^N_{n=1}C_nX_n(x)T_n(t)\]
+of the series at time $t=0.1$ by taking $N=1, 2, 3, 10$ (in different colors or lines such as dash, dot, etc) respectively.  You shall observe that $u^N(x,t)$ converges as $N$ increases (well, at least at $t=0.1$).  Therefore, though it is impossible to plot $u^\infty(x,t)$, one can, in view of applications, employ $u^N(x,t)$ to approximate the true solution by taking $N$ large enough.
+
+(v)  Assume that $u^{10}(x,t)$ above is a good enough approximation of the exact solution (i.e., the infinite series).  Plot the graphes of $u^{10}(x,t)$ for $t=0.1,0.5,1,2,5,10,...$. What is the limit of this curve as $t\rightarrow \infty$.  Compare this with your predictation/explaination in (i).
+
+(vi) Plot the graphs as in (v) with $t=-1$, -2,...You will see that the blow-ups of $u(x,t)$.   That being said, the heat equation is ill-posed backward in time.
+\begin{solution}
+(i).  As we have discussed in class, the moral of the story is that we recognize this problem as one arising from the physical scenario that a homogeneous (no heat resource), well--insulated (NBC) bar with initial temperature distributed in the form of $x$.  Then it is natural to expect that the heat will flow from the region of higher temperature to lower temperature, with the whole bar approaching a constant temperature eventually.  On the other hand, there is no creation and degradation of the thermal energy within the bar and across the boundary (endpoints), therefore the final constant temperature is expected to the average value of the initial temperature, thanks to the conservation of the thermal energy.  The question of how the temperature converges to the average (constant) if the goal of this homework problem;
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{1\textwidth}
+        \includegraphics[width=0.85\textwidth]{hw2figure1.eps}
+        \caption{Plots of $u^N(x,0.1)$ for $N=1,2,3$ and $10$.  It provides evidence that $N=10$ is already a good approximation.}
+    \end{subfigure}
+    \begin{subfigure}[b]{1\textwidth}
+        \includegraphics[width=0.85\textwidth]{hw2figure2.eps}
+        \caption{Absolute errors of difference terms $u^{N+1}-u^N$ for several $N$.  Left column: we observe that the error is negligible when $N$ is larger than 5, hence $N=10$ is a good approximation.  Right column: we provide further evidence that the error is infinitesimal when $N\geq10$ and this sequence is Cauchy as $N\rightarrow \infty$.  Therefore $u^N$ converges to some limiting function in certain complete function space (complete means any Cauchy sequence converges to some limit in this space), which turns out to be our exact solution.  Again, the moral of the story is that $u^{10}$ serves as a nice approximation (to our understanding), and a large $N$ requires a longer computation hence sometime are not taken in practice.}
+    \end{subfigure}
+\label{figure1}
+\end{figure}
+(ii).  If we try the separable solution $U=X(x)T(t)$, then $X$ satisfies the corresponding EP with NBC (do it yourself) and it is explicitly given by
+\begin{align*}
+X_n =\cos{\frac{n\pi x}{L}}, \, n=0,1,2,\cdots,
+\end{align*}
+therefore we can write $u(x,t)$ through a linear combination of $X_n$ as
+\begin{align*}
+u(x,t)=\sum_{n=0}^{\infty}C_{n}(t)\cos{\frac{n\pi x}{L}}.
+\end{align*}
+I would like to note that, when you were doing the problem, the Sturm-Liouville theorem was not expected and you can work out the problem following the separation of variable routine, which leads to the same infinite series for the solution.  Substitute $u(x,t)$ into the PDE and we will find
+\begin{align*}
+\sum_{n=0}^{\infty}C_{n}'(t)\cos{\frac{n\pi x}{L}}=-D\sum_{n=0}^{\infty}\big(\frac{n\pi}{L}\big)^{2}C_{n}(t)\cos{\frac{n\pi x}{L}},
+\end{align*}
+hence we have
+\[C_{n}(t)=C_{n}(0)e^{-D(\frac{n\pi}{L})^{2}t}, n=0,1,2,\cdots\]
+
+
+
+\begin{figure} 
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.85\textwidth]{hw2figure3.eps}\\
+  \caption{Evolution of the temperature as time increases.  We observes that the left end increases and the right end decreases; apparently, this is due to the transfer of heat from region of high to lower temperatures; moreover, in a large time $t\geq5$, the temperature almost reaches to a homogeneity, which agrees well with our intuition and physical expectation.}\label{figure2}
+\end{figure}
+
+\begin{figure} 
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.85\textwidth]{hw2figure4.eps}\\
+  \caption{Ill-posedness of heat equation backward in time.  We observe the blow-up of $u(x,t)$ back in time, which implies that heat equation back in time does not make sense, though mathematically its solution is still unique as stated in HW.}\label{figure3}
+\end{figure}
+
+(iii).  Moreover, from the IC $u(x,0)=x$, we have that
+\[u(x,0)=\phi(x)=C_{0}(0)+\sum_{n=1}^{\infty}C_{n}(0)\cos{\frac{n\pi x}{L}},\]
+For $n=1,2,...$, we multiply BHS by $\cos \frac{n\pi x}{L}$ and integrate it over $(0,L)$ by parts to obtain
+\begin{align*}
+C_n(0)&=\frac{2}{L}\int_{0}^{L}\phi(x)\cos{\frac{n\pi x}{L}}dx=\frac{2}{L}\int_{0}^{L}x\cos{\frac{n\pi x}{L}}dx\\
+&=\frac{2}{L}\int_{0}^{L}(\frac{L}{n\pi})xd\sin{\frac{n\pi x}{L}}=\frac{2}{n\pi}\Big(x\sin{\frac{n\pi x}{L}}\Big\vert^{L}_{0}-\int_{0}^{L}\sin{\frac{n\pi x}{L}}dx\Big)\\
+&=\frac{2L}{n^2\pi^2}\cos{\frac{n\pi x}{L}}\Big\vert_0^L=\frac{2L}{n^2\pi^2}\Big((-1)^n-1\Big);
+\end{align*}
+to find $C_0(0)$, we just simply integrate BHS over $(0,L)$ and find
+\[C_0(0)=\frac{\int_{0}^Lxdx}{L}=\frac{L}{2},\]
+therefore, we have
+\begin{align*}
+u(x,t)=\sum_{n=0}^{\infty}C_{n}(t)\cos{\frac{n\pi x}{L}}=\frac{L}{2}+\sum_{n=1}^{\infty}\frac{2L}{n^2\pi^2}\Big((-1)^n-1\Big)e^{-D(\frac{n\pi}{L})^{2}t}\cos{\frac{n\pi x}{L}}.
+\end{align*}
+
+(iv)--(vi).
+When $D=1$ and $L=\pi$, the solutions above is
+\[u(x,t)=\sum_{n=0}^{\infty}C_{n}(t)\cos nx=\frac{\pi}{2}+\sum_{n=1}^{\infty}\frac{2}{n^2\pi}\Big((-1)^n-1\Big)e^{-n^{2}t}\cos nx\]
+with its finite/partial sum given by
+\[u^N(x,t)=\sum_{n=0}^NC_{n}(t)\cos nx=\frac{\pi}{2}+\sum_{n=1}^N\frac{2}{n^2\pi}\Big((-1)^n-1\Big)e^{-n^{2}t}\cos nx.\]
+
+We observe the aforementioned convergence to the average value as $t\rightarrow \infty$.   One important observation is that, the steady state is determined by the boundary condition, but not the initial data; moreover, for the problem backward in time, we can find that the solution \textbf{blows up} in time, i.e., $u(x,t)\rightarrow \infty$ as $t\rightarrow -\infty$ (at least for a subsequence of such $t$) for each fixed $x\in(0,L)$.
+\end{solution}
+
+
+\item  The method of separation of variables can also be used to solve wave--equation or hyperbolic equation such as of the following form
+\begin{equation}\label{7}
+\left\{
+\begin{array}{ll}
+u_{tt}=Du_{xx},& x\in(0,L),t\in \mathbb R_+,\\
+u(x,0)=\phi(x), u_t(x,0)=0, &x\in(0,L),\\
+u(0,t)=0, u(L,t)=0, &t\in \mathbb R_+,
+\end{array}
+\right.
+\end{equation}
+where
+\[\phi(x)=
+\left\{
+\begin{array}{ll}
+\frac{2h}{L}x, &x\in[0,\frac{L}{2}],\\
+\frac{2h}{L}(L-x),& x\in[\frac{L}{2},L],
+\end{array}
+\right.
+\]
+wherein the left-hand side of the PDE, second-order derivative is taken concerning time.  You can solve (\ref{7}) by taking the following steps
+
+(i)  Try a separable solution of the form $U_n(x,t)=X_n(x)T_n(t)$;  find the ODEs of $X_n$ and $T_n$, then solve for $X_n$ by the boundary condition thus $T_n(t)$.  Now $T_n(t)$ satisfies second order ODE and it should take the form $T_n(t)=A_n \cos(...)+B_n\sin (...)$, where $A_n$ and $B_n$ are constants to be determined.  Now you should have obtained $U_n(x,t)=X_n(x)T_n(t)$;
+
+(ii) Let $u(x,t)=\sum^\infty_{n=1}X_n(x)T_n(t)$ and then find $A_n$ and $B_n$ by fitting the initial condition.  \emph{Remark:  In the linear combination, the coefficient $C_n$ is embedded into $A_n$ and $B_n$.}
+
+(iii)  Choose $D=L=1$.  Use the first 10 terms as your approximate.  Plot the graphs for $t=1, 1.5, 2, 2.5, 3$...and the initial data on the same coordinate.  What are your observations? Compare this with the heat equation.
+
+(iv).  You can even try to plot the graphs for $t=-1$, $t=-2$, $t=-3$.  You may see that graphs propagate like a wave and this is why the PDE is called a wave equation.  What is the speed of wave propagation?
+\begin{solution}
+(i).  Since the corresponding EP has homogeneous DBC, according to the Sturm--Liouville theorem we can write $u(x,t)$ into the following eigen--expansions
+\[u(x,t)=\sum_{n=1}^\infty C_n(t)\sin \frac{n\pi x}{L}.\]
+Ok, I do not explain how and why $\sin$ any more!!! Substituting this series into the PDE gives rise to
+\[C_n''(t)=-D\Big(\frac{n\pi}{L}\Big)^2C_n(t),\]
+which is a second--order linear ODE and its solution takes the form
+\begin{align*}
+C_n(t)=A_n\cos{\frac{n\pi \sqrt{D} t}{L}}+B_n\sin{\frac{n\pi \sqrt{D} t}{L}}, n=1,2,...
+\end{align*}
+Note that $n=0$ is easily ignored thanks to the DBC above (however, it helps to always keep $n=0$ for your solution in practice and then decide if it is necessary, at least when you are a PDE rookie).   Now $u_n(x,t)=C_n(t) X_n(x)$ and the solution to (\ref{7}) takes the form
+\begin{align*}
+u(x,t)=\sum_{n=1}^{\infty} \Big(A_n\cos{\frac{n\pi \sqrt{D} t}{L}}+B_n\sin{\frac{n\pi \sqrt{D} t}{L}}\Big)\sin{\frac{n\pi x}{L}},
+\end{align*}
+where $A_n$ and $B_n$, $n\in\mathbb N^+$ are constants to be determined.   Note that the coefficients in the linear combination are embedded into $A_n$ and $B_n$.
+
+(ii)  By matching the initial datum $u(x,0)=\phi(x)$, we have that
+\begin{align*}
+A_n=&\frac{2}{L}\int_{0}^{L} \phi(x)\sin{\frac{n\pi x}{L}}dx\\
+=&\frac{2}{L}\int_{0}^{\frac{L}{2}}\frac{2h}{L}x\sin{\frac{n\pi x}{L}}dx+\frac{2}{L}\int^{L}_{\frac{L}{2}}\frac{2h}{L}(L-x)\sin{\frac{n\pi x}{L}}dx\\
+=&\frac{8h}{n^2\pi^2}\sin{\frac{n\pi}{2}}\\
+=&
+\begin{cases}
+\frac{8h(-1)^k}{(2k-1)^2\pi^2},&n=2k-1,k=1,2,...\\
+0&n=2k,k=1,2,...;
+\end{cases}
+\end{align*}
+by matching the initial datum $u_t(x,0)=0$, we can easily find that $B_n=0$.  Therefore we have that the solution is given by
+\[u(x,t)=\sum_{k=1}^{\infty} \frac{8h(-1)^k}{(2k-1)^2\pi^2} \cos{\frac{(2k-1)\pi \sqrt{D} t}{L}}\sin{\frac{(2k-1)\pi x}{L}}.\]
+
+(iii)-(iv).
+When $D=L=h=1$ (should have assumed $h=1$), the approximate solution takes the form
+\[u^N(x,t)=\sum_{k=1}^{N} \frac{8(-1)^k}{(2k-1)^2\pi^2}  \big(\cos (2k-1)\pi t\big)\big(\sin (2k-1)\pi x\big).\]
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.85\textwidth]{hw2figure5.eps}\\
+  \caption{Graphes of $u^{10}(x,t)$ at different times.  Note that all satisfy the DBC and there are certain periodicity in these solutions.}\label{figure4}
+\end{figure}
+
+\end{solution}
+
+\item  This is another example that applies the method of separation of variables.  Consider the scenario that an agent starts with a total wealth $x$ at time $t$, and can invest the total wealth $X_s$ into a bond (risk-free) with a portion $\alpha_s$ and a stock (risky) with the rest portion $1-\alpha_s$.  Then idealized modeling of the evolution of the total wealth is the following differential equation
+    \[dX_s=X_s\big(r+(\mu-r)\alpha_s\big)dt+\sigma \alpha_sX_sdW_s,\]
+    where $r$ is the constant interest rate of the bond, and constants $\mu$ and $\sigma$ are the interest rate and volatility from the stock.  $W_s$ is the Brownian motion and it is a user-friendly choice that models the uncertainty or the ``risk" when investing in the stock.  Then an optimization problem arises when this agent opts to maximizes the ``benefit" from the total wealth by altering the allocation $\alpha_s$.  That is, one aims in finding the maximum value function from the investment
+    \[u(x,t):=\sup_{\alpha_s\in\mathcal A}E[\mathbb U(X^{x,t}_T)].\]
+    Here $\mathbb U(\cdot)$ is the so-called utility function, and ${t,x}$ on the shoulder are included to highlight the effects endowment $x$ at time $t$.  Note that: i) $X_t$ is a stochastic process, hence the expectation is taken; ii) one may wonder why not to maximize $E[X^{x,t}_T]$ but $E[\mathbb U(X^{x,t}_T)]$.  This utility function describes the well-accepted belief that utility or ``satisfaction" should not be linear in the wealth, but a concave function.  Imagine that eating two apples is less than twice satisfying as eating one.  Some may argue it might be more than twice in a certain situation which I agree, however, this implies that a nonlinear function should be considered here anyhow, and that is the utility function.  You do not have to understand everything above to do this problem, but I explain to them here to give you a motivation why the optimal value function $u(x,t)$ above is of interest.
+
+   By the standard dynamic programming principle (or Bellman's optimality condition), one can show that this function solves the following
+    \begin{equation}\label{HJB}
+\left\{
+\begin{array}{ll}
+u_t+rxu_x+\sup_{\alpha\in\mathbb R}\big[\alpha(\mu-r)xu_x+\frac{\alpha^2\sigma^2}{2}x^2u_{xx}\big]=0,&x\in (0,\infty),t\in(0,T),\\
+u(x,T)=\mathbb U(x)=\frac{x^p}{p},&x\in (0,\infty),
+\end{array}
+\right.
+\end{equation}
+where for simplicity we assume that $\alpha$ is constant, and choose the so-called CRRV utility $\mathbb U(x)$ with $p\in(0,1)$.  Use the method of severation of variable to solve for the optimal $\alpha^*$ and the value function of (\ref{HJB}).  Suggest answer: $u(x,t)=e^{\lambda(T-t)}x^p/p$, where $\lambda=\frac{p(\mu-r)^2}{2(1-p)\sigma^2}+pr$, and the optimal control is $\alpha^*=\frac{\mu-r}{(1-p)\sigma^2}$.
+\begin{solution}
+Let us try $u(x,t)=X(x)T(t)$ which is assumed nonzero as usual, then the PDE in (\ref{HJB}) implies that
+\[\frac{T'}{T}+rx\frac{X'}{X}+\sup_{\alpha\in\mathbb R}\Big[\alpha(\mu-r)x\frac{X'}{X}+\frac{\alpha^2\sigma^2x^2}{2}\frac{X''}{X}\Big]=0,\]
+where prime $'$ denotes the derivative respect to the intrinsic variable.  Then one concludes that $\frac{T'}{T}=\lambda$ must be a constant and accordingly
+\begin{equation}\label{euler}
+rx\frac{X'}{X}+\sup_{\alpha\in\mathbb R}\Big[\alpha(\mu-r)x\frac{X'}{X}+\frac{\alpha^2\sigma^2x^2}{2}\frac{X''}{X}\Big]=-\lambda.
+\end{equation}
+We recognize that (\ref{euler}) has the pattern that differentiating $X$ once balances out $x$ in the coefficient and twice $x^2$ in the coefficient (when I was learning ODE, this was called an Euler's equation, and I do not know your story here).  Therefore we can easily guess that $X$ is a power function of $x$; one the other hand, the terminal condition is $u(x,T)=\frac{x^p}{p}$, then this power index must be $p$ hence $X(x)=Cx^p$ for some constant $C$ to be determined.
+
+Bearing these facts in mind, let us proceed to find the optimal control $\alpha^*$.  To this, we find that $\alpha(\mu-r)x\frac{X'}{X}+\frac{\alpha^2\sigma^2x^2}{2}\frac{X''}{X}$, as a function of $\alpha$, is a parabola, and therefore one can easily find that its optimal value is attained at
+\[\alpha^*=-\frac{(\mu-r)x\frac{X'}{X}}{\sigma^2x^2\frac{X''}{X}}=-\frac{(\mu-r)}{\sigma^2(p-1)}\]
+as expected.  One can further find that $\lambda$ is the value given above.
+
+I would like to comment that this explicit solution is available for this particular utility function, and in general, the PDE or HJB system can not be solved explicitly, at least NOT by the method of separation of variables.
+\end{solution}
+
+\item   Find the following norms of $f(x)$
+
+\[(a).  \Vert f(x) \Vert_{L^2_{(0,1)}}, f(x)=e^x;  (b). \Vert f(x) \Vert_{L^2_{(0,2)}}, f(x)=x-1; \]
+\begin{solution}
+(a). By the definition of $L^p$-norm, we find that
+\begin{align*}
+\Vert f(x) \Vert_{L^2_{(0,1)}}&=\Big(\int_{0}^1 |f(x)|^2 dx\Big)^{\frac{1}{2}}=\Big(\int_{0}^1 (e^{x})^2 dx\Big)^{\frac{1}{2}}\\
+&=\sqrt{\frac{e^{2x}}{2}}\Big |^1_0=\sqrt{\frac{e^2-1}{2}};
+\end{align*}
+(b). Similarly, we can find that
+\begin{align*}
+\Vert f(x) \Vert_{L^2_{(0,2)}}&=\Big(\int_{0}^2 |f(x)|^2 dx\Big)^{\frac{1}{2}}=\sqrt{\int_0^2 (x^2-2x+1)dx}=\frac{\sqrt{6}}{3}.
+\end{align*}
+\end{solution}
+
+\item (i)  Show that $f(x)=\frac{1}{\sqrt x}\in L^1(0,1)$ but not $L^2(0,1)$;
+
+(ii)  What would be your general theory/conditions about a function of the form $f(x)=x^\alpha\in L^p(0,l)$, but not $L^q(0,1)$.  Assuming that $p,q\in(1,\infty)$ for simplicity.
+\begin{solution}
+(i)  It is easy to find that the anti--derivative of $f(x)$ is $\int f(x)dx=2\sqrt x$, while that of $f^2(x)$ is $\int f^2(x)dx=\ln x$, whence it is obvious $f\in L^1$, but $\not \in L^2 (0,1)$;
+
+(ii) note that $x^\alpha>0$ for all $x>0$.  In general, the anti--derivative reads
+\begin{align*}\int |f (x)|^pdx=\int x^{p\alpha}=
+\begin{cases}
+\ln x,&p\alpha=-1,\\
+\frac{1}{p\alpha+1} x^{p\alpha+1}dx,&p\alpha\neq-1,
+\end{cases}
+\end{align*}
+then we readily see that $x^{p\alpha}$ is not integrable over $(0,1)$ if $p\alpha\leq-1$, or equivalent $x^\alpha \in L^p(0,1)$ if and only if $p\alpha>-1$.  This implies that, for $1\leq p<q<\infty$, $x^\alpha \in L^p(0,1)$, $\not \in L^q(0,1)$, if $-\frac{1}{p}<\alpha \leq -\frac{1}{q}$.
+\end{solution}
+
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

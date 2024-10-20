@@ -1,0 +1,49 @@
+%!TEX program = xelatex
+%!BIB program = biber
+\documentclass[final]{swufethss-b}
+% 插入引言区
+\input{body/preamble}
+
+\title{新冠疫情的最优隔离策略}
+\author{常远}
+\date{} % 关闭日期
+\swufeyear{2020}
+\swufeschool{数学学院}
+\swufemajor{数学与应用数学（金融数学创新实验班）}
+\swufestudentid{42023017}
+\swufeadviser{王鸣晖}
+\swufegrade{}
+\swufefinishdate{2024 年 3 月}
+\swufesigndate{2024 年 3 月 10 日}
+
+\begin{document}
+% 生成封面和承诺页
+% \maketitle
+
+% 插入摘要
+\input{body/abstract.tex}
+% 生成目录
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}% 将页码重置为 1
+\pagestyle{swufe-bachelor}% 开启页脚
+
+
+% 插入引言、文献综述等，根据自己需要修改
+\input{body/introduction}
+\input{body/main_part}
+\input{body/conclusion}
+
+% 列出参考文献
+\nocite{*}
+\clearpage
+\printbibliography[heading=bibintoc]
+%新开一页插入致谢
+\clearpage
+% \input{body/acknowledgement}
+%新开一页插入附录，如果有
+\input{body/acknowledgement}
+\clearpage
+% \input{body/appendix} 
+
+\end{document}

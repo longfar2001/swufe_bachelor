@@ -1,0 +1,752 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2020}
+\author{\textbf{Homework 4, Solutions}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+\item This problem is designed to give you more motivations on the necessity of studying the eigenvalue problem in class.  We have shown that only a pair of the form $(X_n,\lambda_n)=\big(\sin \frac{n\pi x}{L}, \big(\frac{n\pi }{L}\big)^2\big)$, $n\in\mathbb N$, can satisfy the associated problem
+\begin{equation}\label{EPDBC}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0, x\in (0,L),\\
+X(0)=X(L)=0.
+\end{array}
+\right.
+\end{equation}
+First of all, it is easy to see that $CX_n$ is also a solution of (\ref{EPDBC}) for any $C\in\mathbb R$, however we chose $C=1$ and write $X_n=\sin \frac{n\pi x}{L}$; occasionally we cam also choose its normalized version $X_n=\sqrt{\frac{2}{L}}\sin \frac{n\pi x}{L}$ since $\Vert X_n\Vert_{L^2(0,L)}=1$.  That being said, it is the shape of the sine function that matters, but not the magnitude, at least for (\ref{EPDBC}).
+
+Second of all, (\ref{EPDBC}) is called an eigen--value problem, $(X_n,\lambda_n)$ an eigen--pair, an analogy to eigen--vectors and eigen--values in linear algebra.  Let us recall the followings in linear algebra: consider a $n\times n$ matrix $A$, we call $(\textbf{x},\lambda)$ its eigen--pair, $\textbf{x}$ (nonzero) the eigen--vector and $\lambda$ the eigen--value, if $A\textbf{x}=\lambda \textbf{x}$ holds ($\lambda=0$ is allowed); then if $\textbf{x}$ is an eigen--vector, so does $C\textbf{x}$.  This gives you another motivation why $C=1$ is selected above.  Now for (\ref{EPDBC}), one can formally treat $-\frac{d^2}{dx^2}$ as $A$ and rewrite it as $AX=\lambda X$, then we see that the eigen--space of $A$ is infinite--dimensional because it consists of all such eigen--functions $\{X_n\}$ for each $n\in\mathbb N$.  This is a strong contrast to the linear algebra, when a $n\times n$ matrix has an eigen--space of at most $n$--dimension.
+
+Moreover, it is well known that if a $n\times n$ matrix $A$ is invertible, its eigen--vectors form a basis of space $\mathbb R^n$ (go to review this if you are not aware).  Then we know from the Sturm--Liouville Theorem in lecture that, similarly the eigen--functions of $-\frac{d}{dx^2}$ (or just solutions to the eigen--value problem (\ref{EPDBC})) $\{X_n\}_{n\in\mathbb N}$ form a basis of $L^2(0,L)$ with DBC, i.e., the square--integrable functions with Dirichlet boundary conditions.  That being said, any function in $L^2$ with DBC can be written as a linear combination of $\{X_n\}$.  This is known as the Sturm-Liouville theorem that we mentioned in class and it is one of the corner--stones in the studies of differential equations--more will be talked about later in class.  Generally speaking, the studies of many PDE problem comes to the investigations of eigen--value problems, of course some of which are way more complicated than (\ref{EPDBC}).  However, we can study the cousins of (\ref{EPDBC}):
+
+Find eigen--paris $\{(X_k, \lambda_k)\}$ to the following eigen--value problems
+\begin{equation}\label{ep2}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0, x\in (0,L),\\
+X'(0)=X'(L)=0;
+\end{array}
+\right.
+\end{equation}
+
+\begin{equation}\label{ep3}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0, x\in (0,L),\\
+X(0)=X'(L)=0;
+\end{array}
+\right.
+\end{equation}
+and
+\begin{equation}\label{ep4}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0, x\in (0,L),\\
+X'(0)=X(L)=0;
+\end{array}
+\right.
+\end{equation}
+\begin{solution}
+I shall only work on (\ref{ep2}) in detail while one can do the rest similarly.  To find the eigen--pairs for (\ref{ep2}), we divide our discussions of the (sign of) parameter $\lambda$ into the following three cases:
+
+Case 1: $\lambda=-\mu^2<0, \mu\in \mathbb R$.  Then we know that the solution of the ODE takes the form
+\begin{align*}
+X(x)=c_1 e^{\mu x}+c_2 e^{-\mu x}, \, c_1, c_2 \in \mathbb R
+\end{align*}
+In light of the boundary condition we have
+\begin{align*}
+\begin{cases}
+X'(0)&=\mu c_1-\mu c_2=0 \\
+X'(L)&=\mu c_1 e^{\mu L}-\mu c_2 e^{-\mu L}=0,
+\end{cases}
+\end{align*}
+which imply that $c_1=c_2=0$ hence $X\equiv 0$.  This is impossible since we look for nonzero eigen--functions and this case is ruled out.
+
+
+Case 2: $\lambda=0$.  Then we can easily find that $X(x)=c_1 x+c_2$ and then $c_1=0$, $c_2\in\mathbb R$ thanks to the BC.
+
+
+Case 3: $\lambda=\mu^2>0, \mu\in \mathbb R$. In this case, the general solution takes the form
+\[X(x)=c_1\cos{\mu x}+c_2\sin{\mu x}, c_1,c_2\in\mathbb R.\]
+Therefore, we can compute that
+\begin{align*}
+\begin{cases}
+X'(0)&=\mu c_2=0 \\
+X'(L)&=-\mu c_1 \sin{\mu L}+\mu c_2 \cos{\mu L}=0,
+\end{cases}
+\end{align*}
+which imply that $\sin{\mu L}=0$.  Therefore we must have $\mu=\frac{k\pi}{L}$, for $k=1,2,\cdots$ and the eigen-function corresponding to $\mu$ is $\cos \frac{k\pi x}{L}$.
+
+In light of both case 2 and case 3, we see that the eigen--pairs of (\ref{ep2}) are
+\begin{align*}
+\{(X_k, \lambda_k)\}=\Big\{\Big(\cos{\frac{k\pi x}{L}},(\frac{k\pi}{L})^2\Big)\Big\}^{\infty}_{k=0}
+\end{align*}
+
+\textbf{Remark}: It is necessary to mention that $k$ should start from $0$ here, which corresponds to a constant eigen--fucntion.  This is a contrast from the case with DBC.
+
+ Eigen--pairs of (\ref{ep3}) are
+\begin{align*}
+\{(X_k, \lambda_k)\}=\Big\{\Big(\sin{\frac{(2k+1)\pi x}{2L}},(\frac{2k\pi+\pi}{2L})^2\Big)\Big\}^{\infty}_{k=0}
+\end{align*}
+
+
+ Eigen--pairs of (\ref{ep4}) are
+\begin{align*}
+\{(X_k, \lambda_k)\}=\Big\{\Big(\cos{\frac{(2k+1)\pi x}{2L}},(\frac{2k\pi+\pi}{2L})^2\Big)\Big\}^{\infty}_{k=0}
+\end{align*}
+\end{solution}
+
+
+\item  Let us consider the following problem under RBC
+\begin{equation}\label{NBVP1}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx},& x\in (0,1), t\in\mathbb R^+,\\
+u(x,0)=x, &x\in(0,1), \\
+u+u_x=0, & x=0,1, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+
+(i)  solve this problem in terms of infinite series;
+
+(ii) use computer program to plot the sum of first $N$--terms $u^N(x,t)$
+\[u^N(x,t):=\sum C_nX_n(x)T_n(t)\]
+of the series at time $t=0.1$ by taking $N=1, 2, 3, 10$ (in different colors or lines such as dash, dot, etc) respectively.  Then again we shall observe that $u^N(x,t)$ converges as $N$ increases and $u^N(x,t)$ to approximate the true solution if $N$ is large enough;
+
+(iii) assume that $u^{10}(x,t)$ is a good enough approximation of the exact solution (i.e., the infinite series)--this applies in the sequel.  Plot the graphes of $u^{10}(x,t)$ for $t=0.01,0.05,01,1,2,5,...$.   What are your observation of $u(x,t)$ when $t$ is large?
+\begin{solution}
+First of all, we recognize the corresponding eigen-value problem the eigen-functions of which form an orthogonal basis of $L^2$ is
+\[
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0,& x\in (0,1),\\
+X+X'=0, & x=0,1.
+\end{array}
+\right.
+\]
+You should be able to verify that, which I skip here, $\lambda=\mu^2$ for some $\mu$.  Indeed, one finds that the eigen-pairs are
+\[(X_k,\lambda_k)=\Big\{\Big(\sin \frac{k\pi x}{L}-\frac{k\pi}{L}\cos \frac{k\pi x}{L},(\frac{k\pi}{L})^2\Big\}_{k=1}^\infty,\]
+where as $X_0\equiv 0$.  Then one invokes Sturm-Liouville Theorem and write the solution in terms of infinite series as
+\[u(x,t)=\sum_{k=1}^\infty C_ke^{-(k\pi/L)^2t}X_k(x).\]
+
+\begin{figure}[h]
+  \centering
+\includegraphics[width=0.485\textwidth]{hw3figure31.eps}\hspace{-8mm}
+\includegraphics[width=0.485\textwidth]{hw3figure32.eps}
+\caption{\textbf{Left Column}: the first $N$-th sum at time $t=0.1$ for $N=1,2,3$ and 10.  \textbf{Right Column}: the error in $L^\infty$ for each $N$ large.  Similar as above, we observe that when $N>10$ the finite sum is an approximation with error tolerance of $O(10^{-55})$.}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+\includegraphics[width=0.85\textwidth]{hw3figure33.eps}
+\caption{Evolution of approximated solutions, which develop a boundary layer at $x=1$ for a short time and eventually converges to zero everywhere.  This agrees well with our intuitive understanding of the large time behavior.}
+\end{figure}
+
+Now we are left to determine the coefficients $C_k$, $k\in\mathbb N^+$.  To this end, we evaluate the series at $t=0$ and find that
+\[u(x,0)=x=\sum_{k=1}^\infty C_k X_k(x).\]
+Note we know from the proof that $X_k(x)$ are orthogonal to each other in $L^2$, therefore we test both hand side of the equation above by $X_k$ and collect
+\begin{align*}
+C_k=&\frac{\int_0^1 xX_k(x)dx}{\int_0^1 X^2_k(x)dx}\\
+   =&\frac{2}{(k\pi)^2+1}\Bigg(\frac{\sin k\pi x-k\pi x\cos k\pi x}{(k\pi)^2}\Bigg|_0^1-\frac{k\pi x\sin k\pi x+\cos k\pi x}{k\pi}\Bigg|_0^1\Bigg) \\
+   =&\frac{2}{(k\pi)^2+1}\Big(\frac{-k\pi \cos k\pi}{(k\pi)^2}-\frac{\cos k\pi-1}{k\pi}\Big)\\
+   =& \frac{2}{(k\pi)^2+1}\frac{1+2(-1)^k}{k\pi}  , k\in\mathbb N^+.
+\end{align*}
+
+\end{solution}
+
+\item  Let us consider the following problem with heating/colling resource under NBC
+\begin{equation}\label{NBVP1}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx}+e^{-t}\sin 2x,& x\in (0,1), t\in\mathbb R^+,\\
+u(x,0)=x, &x\in(0,1), \\
+u=0, & x=0,1, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+
+Do all the works as in Problem 2.
+\begin{solution}
+After recognizing the boundary condition as a DBC, we know from the Sturm--Liouville Theorem that the solution can be uniquely written as the following series
+\[u(x,t)=\sum_{n=1}^\infty C_n(t)\sin n\pi x.\]
+Then the PDE implies that
+\[\sum_{n=1}^\infty C'_n(t)\sin n\pi x=-\sum_{n=1}^\infty(n\pi)^2C_n(t)\sin n\pi x+e^{-t}\sin 2x,\]
+hence we have that
+\begin{equation}\label{ODE1}
+C'_2(t)=-(2\pi)^2C_2(t)+e^{-t}
+\end{equation}
+and
+\begin{equation}\label{ODE2}
+C'_n(t)=-(n\pi)^2C_n(t), \forall n\neq 2.
+\end{equation}
+Equation (\ref{ODE2}) is very simple and one immediately collects that
+\[C_n(t)=C_n(0)e^{-(n\pi)^2t}, \forall n\neq 2.\]
+Equation (\ref{ODE1}) can be a little tricky if you do not take advantage of certain techniques called integrating factor.
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=1\textwidth]{hw4dbc.png}\\
+  \caption{Illustration of convergence to zero of the solution to Problem (\ref{NBVP1}).  \textbf{Left:} we plot the solution at several times to illustrate the stabilization of the solution.  One can see that the dynamics are dominated by diffusion as well the boundary condition.  \textbf{Right}:  We plot the solution at even larger times to illustrate the dominance of the dynamics by the kinetics or $\sin 2\pi x$.  One can easily recognize that now the diffusion is more or less smeared out and PDE is dominated by the ODE (in the sense that the solution follows the mode of the latter).}\label{ }
+\end{figure}
+
+Indeed, one does not need to know this technique to the end, and let me show you how.  Let us denote for notational simplicity that $\lambda:=4\pi^2$.   Then we agree that (\ref{ODE1}) can be rewritten as $(e^{\lambda t}C_2(t))'e^{-\lambda t}=e^{t}$, or equivalently
+\[\big(e^{\lambda t}C_2(t)\big)'=e^{(\lambda -1)t}.\]
+Integrating this identity over $(0,t)$ gives us
+\[C_2(t)=C_2(0)e^{-\lambda t}+\frac{1}{\lambda -1}\Big(e^{-t}-e^{-\lambda t}\Big)=C_2(0)e^{-4\pi^2 t}+\frac{1}{4\pi^2 -1}\Big(e^{-t}-e^{-4\pi^2 t}\Big).\]
+Then the solution can be rewritten into the following series 
+\[u(x,t)=C_2(t)\sin 2\pi x+\sum_{n\neq2}C_n(t)\sin n\pi x,\]
+where $C_n(0)$, $n\geq1$, are determined by the initial condition as
+\[C_n(0)=2\int_0^1 x\sin n\pi xdx=\frac{2}{n\pi}(-1)^{n-1}, \forall n\geq1.\]
+\end{solution}
+
+
+\item  Let us consider the following problem with heating/colling resource under NBC
+\begin{equation}\label{NBVP1}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx}+e^{-t}\sin 2x,& x\in (0,1), t\in\mathbb R^+,\\
+u(x,0)=x, &x\in(0,1), \\
+u_x=0, & x=0,1, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+
+Do all the works as in Problem 2.  Summarize/propose all your observations/guesses from Problems 2-4 on the effects of IC, BC, and PDE on the long time behaviors.
+\begin{solution}
+The approach is pretty much the same except that now the series become
+\[u(x,t)=\sum_{n=0}^\infty C_n(t)\cos n\pi x,\]
+in light of the NBC, whence the PDE implies that
+\[\sum_{n=0}^\infty C'_n(t)\cos n\pi x=-\sum_{n=0}^\infty(n\pi)^2C_n(t)\cos n\pi x+e^{-t}\sin 2x.\]
+Testing this ODE by $\cos n\pi x$ over $(0,1)$, we find that
+\[C'_n(t)=-(n\pi)^2C_n(t)+2e^{-t}\int_0^1\sin 2x \cos n\pi xdx, \forall n\geq0.\]
+To evaluate the integral, one can use the triangle formula $\sin a \cos b=\frac{\sin(a+b)-\sin(a-b)}{2}$.  My calculations tell that this integral is
+\[\int_0^1\sin 2x \cos n\pi xdx=\frac{1-\cos (2+n\pi)}{2(2+n\pi)}+\frac{\cos(2-n\pi)-1}{2(2-n\pi)},n\geq0.\]
+This ODE can be solved exactly the same as (\ref{ODE1}), and the coefficients $C_n(0)$ are then explicitly determined by the initial condition as usual.  I skip the rest calculations and plots.  Anyhow, by now you should be able to evaluate everything and collect the desired series for this solution.
+\end{solution}
+
+\item Solve the following IBVP and write it solution in terms of infinite series
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=Du_{xx},& x\in(-L,L),t\in\mathbb R^+\\
+u(x,0)=\phi(x),&x\in(-L,L),\\
+u(-L,t)=u(L,t)=0, &t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+\emph{Remark:  You are encouraged to explore this problem over $(a,b)$ for general $a,b$ yourself, though I do not require you to do so or turn it in for this course.}
+\begin{solution}
+First of all, we have that the eigen--value problem associated with this system is
+\begin{equation*}
+\left\{
+\begin{array}{ll}
+X''+\lambda X=0,& x\in(-L,L),\\
+X(-L)=X(L)=0. &
+\end{array}
+\right.
+\end{equation*}
+Now we need to find the eigen--pairs to the problem above.  While you can do it by straightforward calculations, an alternative way is to do as follows:
+let \[Y(x)=X(x-L)\]
+and then it is easy to see that the eigen--value problem now becomes
+\begin{equation*}
+\left\{
+\begin{array}{ll}
+Y''+\lambda Y=0,& x\in(0,2L),\\
+Y(0)=Y(2L)=0. &
+\end{array}
+\right.
+\end{equation*}
+It is well known that the eigen--pairs are
+\[\]
+\[Y_n(x)=\sin \frac{n\pi x}{2L},\lambda_n=\Big(\frac{n\pi}{2L}\Big)^2,n=1,2,...\]
+therefore we have that
+\[X_n(x)=Y_n(x+L)=\sin \frac{n\pi (x+L)}{2L}=\sin \Big(\frac{n\pi x}{2L}+\frac{n\pi}{2}\Big),\lambda_n=\Big(\frac{n\pi}{2L}\Big)^2,n=1,2,...\]
+moreover, we can also find that
+\[\int_{-L}^L X^2_n(x)dx=\int_0^{2L}Y^2_n(x)dx=\int_0^{2L}\sin^2 \frac{n\pi x}{2L}dx=L,\]
+while \[\int_{-L}^L X_m(x)X_n(x)dx=0,m\neq n.\]
+
+According to the Sturm--Liouville Theory, we are able to write the solution in terms of the infinite series
+\[u(x,t)=\sum_{n=1}^\infty C_n(t) \sin \frac{n\pi (x+L)}{2L}.\]
+Substituting this solution into the PDE gives us
+\[\sum_{n=1}^\infty C_n'(t) \sin \frac{n\pi (x+L)}{2L}=-D\sum_{n=1}^\infty C_n(t) \Big(\frac{n\pi}{2L}\Big)^2\sin \frac{n\pi (x+L)}{2L};\]
+%on the other hand, we can have from straightforward calculations that
+%\[\int_{-L}^L \sin^2 \frac{n\pi x}{L}dx=\frac{x}{2}-\frac{L\sin \frac{2n\pi x}{L}}{4n\pi}\Big|_{-L}^L=L,\]
+%while \[\int_{-L}^L \sin \frac{m\pi (x-L)}{L} \sin \frac{n\pi (x-L)}{L}dx=0,m\neq n.\]
+Multiply BHS of the above system by $X_n(x)$ and then integrating it over $(-L,L)$, we obtain that
+\[C_n'(t)=- D \Big(\frac{n\pi}{2L}\Big)^2C_n(t);\]
+solving this ODE gives us
+\[C_n(t)=C_n(0)e^{-D(\frac{n\pi}{2L})^2t},\]
+where $C_n(0)$ can be evaluated by the initial condition as
+\[C_n(0)=\frac{1}{L}\int_{-L}^L \phi(x) \sin \frac{n\pi (x+L)}{2L}dx.\]
+\end{solution}
+
+\item  Separation of variables can also be applied to tackle some (most likely linear) PDEs in higher dimensions.  Consider
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=D\Delta u,& x\in\Omega,t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x\in\Omega,\\
+u(x,t)=0, &x\in\partial \Omega, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+Write down $u(x,t)$ in terms of an infinite series by mimicking the approaches for 1D IBVP.  You can assume similar properties of the eigen--value problem that you encounter.
+\begin{solution}
+We write $u(x,t)$ into
+\[u(x,t)=\sum_{n=1}^\infty C_n(t)w_n(x),\]
+where $w_n$ is an eigen--function to the following problem
+\begin{equation}\label{MDEP}
+\left\{
+\begin{array}{ll}
+\Delta w+\lambda w=0,& x\in\Omega\\
+w=0, &x\in\partial \Omega.
+\end{array}
+\right.
+\end{equation}
+Similarly as Sturm--Liouville theory, one has that $\{w_n\}_{n=1}^\infty$ form an orthogonal basis of $L^2(\Omega)$.  Then encoding the initial data gives us that
+\[C_n(t)=C_n(0)e^{-D\lambda_n t},\]
+$\lambda_n$ the eigen--value and
+\[C_n(0)=\frac{\int_\Omega \phi(x)w_n(x)dx}{\int_\Omega w^2_n(x)dx},\]
+therefore we have that
+\[u(x,t)=\sum_{n=0}^\infty C_n(t)w_n(x).\]  I would like to mention that in general $w_0\equiv 0$, however a rigorous verification requires some advanced theories/studies about the eigen--value problem.
+\end{solution}
+
+\item It seems in the problem above, more needed to be said about the following multi--dimensional eigen--value problem with $w\in C^2(\Omega)\cap C(\bar\Omega)$ (i.e., twice differentiable in the interior and continuous up to the boundary)
+\begin{equation}\label{DEP}
+\left\{
+\begin{array}{ll}
+\Delta w(x)+\lambda w(x)=0,& x\in\Omega,\\
+w(x)=0, &x\in\partial \Omega.
+\end{array}
+\right.
+\end{equation}
+Again, $<w,\lambda>$ is called eiven--pair and $w\not\equiv0$ is needed (see our discussions above).  Prove that $\lambda>0$.  Hint: multiply BHS by $w$ and the integrate it over $\Omega$ by parts and you will see that $\lambda\geq0$; moreover $w\equiv 0$ if $\lambda=0$ (continuity up to the boundary).  \emph{Remark: Similar as in 1D, there are infinitely many eigen--pairs.  The smallest eigen--value, denoted by $\lambda_1$, is called the principal eigen--value.  For example, the principal eigen--value in 1D is $(\frac{\pi}{L})^2$.  The effect of $\lambda_1$ is that it determines how fast the solutions converges/stablizes.}
+\begin{solution}
+Testing the EP by $w$ and then integrating it over $\Omega$ by parts, we have
+\[\lambda=\frac{\int_\Omega |\nabla w|^2}{\int_\Omega w^2},\]
+with $dx$ skipped in both integrals.  It is easy to see that $\lambda \geq0$.  If $\lambda=0$, we must have that $w\equiv$ a constant, hence $w\equiv 0$ in light of the boundary condition, however this is ruled out since $w$ is an eigen--function.  Therefore we must have that $\lambda>0$.
+\end{solution}
+
+\item Consider the following problem
+\begin{equation}\label{ndep}
+\left\{
+\begin{array}{ll}
+\Delta w+\lambda w=0,& x\in \Omega,\\
+\alpha\frac{\partial u}{\partial \textbf{n}}+\beta u=0, &x\in\partial\Omega,
+\end{array}
+\right.
+\end{equation}
+where $\Omega$ is a bounded domain in $\mathbb R^n$, $n\geq2$, and $\alpha^2+\beta^2\neq0$.  Prove that $w_m$ and $w_n$, corresponding to $\lambda_m$ and $\lambda_n$ respectively, are orthogonal in $L^2(\Omega)$, whenever $\lambda_m\neq \lambda_n$.
+\begin{solution}
+The proof is the same as that for its one--dimensional counterpart, except that one applies divergence theorem here.  I do not want to sleep too late tonight therefore I skip typing the details.
+\end{solution}
+
+\item The multi--dimensional eigen--value problem over special geometries can be solved explicitly.  For example, choose $\Omega=(0,a)\times(0,b)$ and consider the Dirichlet eigen--value problem (\ref{DEP}).  Find its eigen--pairs by starting with $u(x,y)=X(x)Y(y)$.  Hint: your solution should be of the form $u_{mn}(x,y)=X_m(x)Y_n(y)$ and $\lambda_{mn}$, $m,n\in\mathbb N$.
+    \begin{solution}
+We write the solution to (\ref{DEP}) as $w(x,y)=X(x)Y (y)$ and substitute it into the PDE to collect
+that
+\[X''Y+XY''+\lambda XY=0,\]
+since $XY \neq 0$, we have that
+\[\frac{X''}{X}+\frac{Y''}{Y}+\lambda=0,\]
+hence both $\frac{X''}{X}$ and $\frac{Y''}{Y}$ must be constants, which we shall denote by $\alpha$ and $\beta$ respectively.  Now I assume that you are able to show that $X(x)$ should take the
+$X_m=\sin \frac{m\pi x}{a}$  and $Y_n=\sin \frac{n\pi y}{b}$.  The key point is that $X$ and $Y$ are independent hence each admits its own sub--index.   Finally, you should be able to find that $u_{mn}=\sin \frac{m\pi x}{a}\sin \frac{n\pi y}{b}$, $m,n\in\mathbb N^+$; moreover, the eigen-values are $\lambda_{mn}=(m\pi/a)^2+(n\pi/b)^2$, $m,n\in\mathbb N^+$.
+\end{solution}
+
+\item One can also employ the method of separation of variables to solve other types of (multi--dimensional) PDEs.  For example, consider the following problem over a 2D square $\Omega=(0,1)\times(0,1)$
+\begin{equation}
+\left\{
+\begin{array}{ll}
+\Delta u=0,& x\in(0,1)\times(0,1)\\
+u_x(0,y)=u_x(1,y)=0,&y\in(0,1),\\
+u(x,0)=0, u(x,1)=x. &
+\end{array}
+\right.
+\end{equation}
+Find $u(x,y)$ in terms of infinite series by starting with $u(x,y)=X(x)Y(y)$.  Suggested answer:
+\[u(x,y)=\frac{y}{2}+\sum_{n=1}^\infty \frac{2((-1)^n-1)}{(n\pi)^2}\frac{e^{n\pi y}-e^{-n\pi y}}{e^{n\pi}-e^{-n\pi}}\cos n\pi x.\]
+Plot $u(x,y)$ by choosing $N$ large to see the graph yourself if it matches the boundary conditions.  \emph{Remark: If $\Delta u=0$, we say that $u$ is a harmonic function.  More about harmonic functions will be discussed with details in coming lectures.}
+\begin{solution}
+Using the trial solution of the form \[u(x,y)=X(x)Y(y)\]
+and invoking the PDE, we have that for some constant $\lambda$
+\[\frac{X''}{X}=-\frac{Y''}{Y}=-\lambda;\]
+$X$ satisfying the Neumann boundary condition gives us
+\[X_n(x)=\cos n \pi x, \lambda_n=(n\pi)^2,n=0,1,2,...\]
+On the other hand, $Y(y)$ satisfies the ODE
+\[Y''=(n\pi)^2Y\]
+hence $Y_n(y)$ takes the form $Y_n(y)=a_ne^{n\pi y}+b_ne^{-n\pi y}$ for $n=1,2,...$ and $Y_0(y)=a_0y+b_0$ for $n=0$; moreover, encoding the boundary condition gives us $Y(0)=0$ hence
+\[Y_0(y)=a_0y, Y_n(y)=a_n(e^{n\pi y}-e^{-n\pi y}), n=1,2,...\]
+therefore we have
+\[u(x,y)=\sum_{n=0}^\infty u_n(x,y)=a_0y+\sum_{n=1}^\infty a_n(e^{n\pi y}-e^{-n\pi y})\cos n\pi x,\]
+which satisfies the whole problem except the boundary condition at the top of the square.  To this end, we equate
+\[u(x,1)=\sum_{n=0}^\infty u_n(x,1)=a_0+\sum_{n=1}^\infty a_n(e^{n\pi }-e^{-n\pi })\cos n\pi x=x\]
+from which we obtain
+\[a_0=\int_0^2 xdx=\frac{1}{2}\]
+and
+\[a_n(e^{n\pi }-e^{-n\pi })=2\int_0^1 x\cos nx dx=\frac{2}{(n\pi)^2}(\cos n \pi-1),n=1,2,...\]
+finally, we collect
+\[u(x,y)=\frac{y}{2}+\sum_{n=1}^\infty \frac{2((-1)^n-1)}{(n\pi)^2}\frac{e^{n\pi y}-e^{-n\pi y}}{e^{n\pi}-e^{-n\pi}}\cos n\pi x\]
+as suggested.
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{hw2figure6.eps}
+        \caption{Plots of the approximation $u^{10}(x,y)$.}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{hw2figure7.eps}
+        \caption{Absolute error for different $N$.  It provides evidence that $N=10$ is already a good approximation if an upper bound of error $\varepsilon\leq 0.01$ is acceptable.}
+    \end{subfigure}
+\label{figure5}
+\end{figure}
+\end{solution}
+
+\item  We observe in class that the method of separation of variables can be applied to solve non-autonomous problems (i.e., the reaction term $f$ does not depend on $u$), whereas the PDE $u_t=u_{xx}+f(u)$ is nonlinear and can not be solved explicitly in general.  However, this method is applicable as long as the corresponding ODE is solvable.  To see this, let us consider the following non-autonomous problem
+\begin{equation}\label{5}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx}-\lambda u+\mu,& x\in(0,L),t\in\mathbb R^+,\\
+u(x,0)=0,&x\in(0,L),\\
+u_x(0,t)=0, u_x(L,t)=0, &t\in\mathbb R^+,
+\end{array}
+\right.
+\end{equation}
+where $\lambda$ and $\mu$ are positive constants.
+i) solve it explicitly;
+
+ii) what is the limit of $u(x,t)$ as $t\rightarrow \infty$?
+
+iii) what is the solution to the following ODE
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=-\lambda u+\mu,&t\in\mathbb R^+,\\
+u(0)=0.&
+\end{array}
+\right.
+\end{equation}
+What is (are) your observation(s) after comparing the solutions of the PDE and the ODE; use intuition to justify it(them)?
+\begin{solution}
+I assume that you are able to work this problem out by introducing $w$ as suggested.  Here in the following I shall show that this is not necessary.
+
+The IBVP homogeneous NBC, therefore we can substitute its eigen--expansion
+\[u(x,t)=\sum_{n=0}^\infty C_n(t)\cos \frac{n\pi x}{L}\]
+into the PDE and collect that
+\[\sum_{n=0}^\infty C'_n(t)\cos \frac{n\pi x}{L}=-\sum_{n=0}^\infty \Big(\frac{n\pi}{L}\Big)^2C_n(t)\cos \frac{n\pi x}{L}-\lambda \sum_{n=0}^\infty C_n(t)\cos \frac{n\pi x}{L}+\mu.\]
+Equating the coefficients gives us
+\[C_n'(t)=-\Big(\big(\frac{n\pi}{L}\big)^2+\lambda\Big)C_n(t)+\frac{2\mu}{L}\int_0^L \cos \frac{n\pi x}{L},\]
+i.e.,
+\[C_n'(t)=-\Big(\big(\frac{n\pi}{L}\big)^2+\lambda\Big)C_n(t).\]
+Solving this ODE with the initial condition, we have
+\[C_0(t)=\frac{\mu}{\lambda}\big(1-e^{-\lambda t}\big), C_n(t)=0,n=1,2,....\]
+Therefore we have that
+\[u(x,t)=C_0(t)=\frac{\mu}{\lambda}\big(1-e^{-\lambda t}\big).\]
+It is quick to see that $u(x,t)\rightarrow \frac{\mu}{\lambda}$ as $t\rightarrow\infty$.
+
+Indeed, we can formally expect this solution without even solving the PDE.  This IBVP describes a homogeneous well--insulated bar with zero temperature, therefore, there is no heat flux at all afterwards, hence the PDE indeed should be an ODE.  Solving the ODE gives the desired solution.
+\end{solution}
+
+\item  Solve the following non-autonomous problem with a different initial condition
+\begin{equation}\label{5a}
+\left\{
+\begin{array}{ll}
+u_t=u_{xx}-\lambda u+\mu,& x\in(0,L),t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x\in(0,L),\\
+u_x(0,t)=0, u_x(L,t)=0, &t\in\mathbb R^+,
+\end{array}
+\right.
+\end{equation}
+where $\lambda$ and $\mu$ are positive constants.  Find the (pointwise) limit of $u(x,t)$ as $t\rightarrow\infty$?  If you can not, do some numerical simulations by choosing $N=10$ and choosing $\phi(x)=x$ or $1+\cos \frac{\pi x}{L}$ to give you some intuitions.
+\begin{solution}
+We have that, all the calculations leading to
+\[u(x,t)=\sum_{n=0}^\infty C_n(t)\cos \frac{n\pi x}{L}\]
+hold with
+\[C_n(t)=C_n(0)e^{-((\frac{n\pi}{L})^2+\lambda)t}, n=1,2,...\]
+and $C_0(t)$ satisfies the ODE, except we have to find $C_n$ to cope with the general initial data $\phi(x)$, which easily implies that
+\[C_n(0)=\frac{2}{L}\int_0^ L \phi(x)\cos \frac{n\pi x}{L}dx. \]
+Finally, one have that
+\[u(x,t)=C_0(t)+\sum_{n=1}^\infty C_n(0)e^{-((\frac{n\pi}{L})^2+\lambda)t}\cos \frac{n\pi x}{L}\]
+or precisely
+\[u(x,t)=C_0(t)+\frac{2}{L} \sum_{n=1}^\infty \Big(\int_0^ L \phi(x)\cos \frac{n\pi \xi}{L} \cos \frac{n\pi x}{L} d\xi \Big)e^{-((\frac{n\pi}{L})^2+\lambda)t},\]
+then one can easily show that the series converges and goes to zero exponentially, hence $u(x,t)$ behaves like $C_0(t)$ for $t$ large.  Solve this ODE of $C_0(t)$ gives the desired conclusion that $u(x,t)\rightarrow \frac{\mu}{\lambda}$, the same as above.
+
+I skip the plots when $\phi\not\equiv 0$ here, but you should do some numerical experiments to show that $u\rightarrow \frac{\mu}{\lambda}$ as expected.
+\end{solution}
+
+\item Some of you may wonder why we are concerned about and look for a solution (only) in $L^2$.  This is a very good question and here are some of the main reasons.  First of all, it is obvious that a solution in $L^2$ is not enough, and ultimately we are interested in finding smooth solutions.  However, to this end, you shall find that you lack the tools at this stage.  Therefore, one can first find some solutions in $L^2$, and then prove that (if we can and if they are) they are actually in $L^4$, $L^6$,...$L^\infty$ or other spaces (Sobolev spaces), and then eventually smooth (or not) by techniques called \emph{a prior estimates} or \emph{regularity estimates}.  Of course, other advanced mathematics need to come into play and they are out of the scope of this course.  For example, one of its seven Millennium Prize problems in mathematics proposed by Clay Mathematics Institute in May 2000 is to prove the existence or nonexistence of smooth and globally well--defined solutions to Navier--Stokes equations in 3D, yet it remains open to date.  Second of all, some equations (e.g., wave equations) do not have smooth solutions and may develop shock or singularity in a finite time.  Many reaction-diffusion equations/systems also admit solutions with their $L^\infty$ going to infinity in a finite time, and this is called blow--up in a finite time.  Therefore, the search for a smooth solution for all time $t\in\mathbb R^+,$ is impossible, for many problems.  I also want to mention that, saying that $L^2$ is not enough does not mean it is not of interest, people nowadays are still very interested in finding solutions in $L^p$ spaces, or the so-called weak solutions, however, the method of separable of variables does not work very well, not only from PDE but also because of the properties of the space itself, in particular when the function(solution) has jump discontinuity.   The Eigen--expansion or Fourier expansion of $f(x)$ is the limit of the following sum as $N\rightarrow \infty$
+    \[f^N(x):=\sum_{n=0}^\infty C_n X_n(x),\]
+    where $\{X_n(x)\}$ is the orthogonal basis of $L^2(0,L)$ and
+    \[C_n=\frac{\int_0^L f(x)X_n(x)dx}{\int_0^L X_n^2(x) dx}.\]
+  then the general theory states that $f^N\rightarrow f$ pointwise in $(0,L)$ if $f(x)$ is continuous, uniformly if $f(x)$ is differentiable, while in $L^2$ if $f$ is merely square integrable.  In the last case, in particular, when $f(x)$ has jump discontinuity, one may see that the approximation can go wild, and this is usually referred to as the so--called \emph{Gibbs phenomenon}.
+
+  \begin{figure}[h]\vspace{-8mm}
+  \centering
+\includegraphics[width=0.9\textwidth]{hw3figure9.eps}
+\caption{Finite sum $f^N$ and oscillations for $N$ large.  We observe the non-convergence (in pointwise sense) of $f^N$ for $N$ large, though the error converges to zero in $L^2$.  Again this is because its limit is merely $L^2$, but not continuous, hence pointwise convergence is not expected.}
+\end{figure}
+  To see this yourself, let us consider the following example: let $f(x)$ be a function with a jump at $x=0$ defined over $(-\pi,\pi)$ as: $f(x)=1$ for $x\in[0,\pi)$ and $f(x)=-1$ for $x\in(-\pi,0)$.  First of all, write $f(x)$ into its series as
+    \[f(x)=\sum_{n=1}^\infty C_n\sin nx.\]
+    Find $C_n$.  Now let us approximate it by the sum of first $N$ terms as before
+    \[f_N(x):=\sum_{n=1}^N C_n\sin nx\]
+    for some large $N$.  Plot $f_N(x)$ over $(-\pi,\pi)$ for $N=2,4,8,16$ on the same graph.  Try $N=16,32$ and $64$ again.  What are your observations?  You can try with even larger $N$s.
+
+\begin{solution}
+I skip the calculations here.  The Gibbs phenomenon is evident from the plot.
+\end{solution}
+
+\item Coming backing to $\frac{1}{\sqrt{x}}$.  It serves as a good (counter--)example that a function can be integrable (belongs to $L^1(0,1)$), but not square integrable (does not belong to $L^2(0,1)$).  Indeed, it also serves as example that a function can be integrable, but not necessarily bounded (i.e., $L^\infty$).  It seems necessary to point out that, when proving this fact, the finite measure of the domain is required, that being said, only for $(0,1)$, or $(0,L)$ with $L<\infty$, but not for $(0,\infty)$, since $\frac{1}{\sqrt{x}}$ is also not integrable over $(0,\infty)$.  Indeed, one can not find any function of the form $x^\alpha$,  $\alpha$ being an index, that is integrable over $(0,\infty)$, since both 0 and $\infty$ serves as a singularity, thinking it formally.  With the one--dimensional case done (before), for $p\in(0,\infty)$, find the condition on $\alpha$ such that $|x|^\alpha$ is $L^p$ integrable over the unit ball $B(0)$ over $\mathbb R^n$, $n\geq2$;  find the condition on $\alpha$ such that $x^\alpha$ is $L^p$ integrable over $\mathbb R^n\backslash B(0)$.  Hint: $|x|$ is a radial solution.  \emph{Remark: the singularity is of fundamental importance in the study of various areas, including potential theory, harmonic analysis, PDEs, etc.  I also think it is a very good training on your multi--variate calculus.}
+\begin{solution}
+$|x|^\alpha$ being $L^p$ integrable over the unit ball $B(0)$ over $\mathbb R^n$, $n\geq2$, basically means that
+\[\int_{B(0)} |x|^{p\alpha}dx< \infty.\]
+To evaluate the integral, one can apply the user--friendly co--area formula to show
+\[\int_{B(0)} |x|^{p\alpha}dx=\int_0^1 \Big(\int_{\partial B_r(0)} |x|^{p\alpha} dS \Big) dr=C_n\int_0^1 r^{p\alpha } r^{n-1} dr=C_n\int_0^1 r^{p\alpha+n-1}dr,\]
+therefore $\alpha>-\frac{n}{p}$ is necessary similar as we have shown above; similarly, one can show that $\alpha<-\frac{n}{p}$ is necessary if $x^\alpha$ is $L^p$ integrable over $\mathbb R^n\backslash B(0)$.
+\end{solution}
+
+\item One of the fundamental theorems in studying $L^p$ spaces is H$\ddot{o}$lder's inequality which states that
+\begin{equation}\label{holder}
+\Vert fg \Vert_{L^1(\Omega)}\leq \Vert f\Vert_{L^p(\Omega)} \Vert g\Vert_{L^q(\Omega)},
+\end{equation}
+with $\frac{1}{p}+\frac{1}{q}=1$, $p,q\in(1,\infty)$, where
+\[\Vert f\Vert_{L^p(\Omega)}=\Big(\int_\Omega \vert f \vert^p dx\Big)^\frac{1}{p}\]
+as defined in class.  Though not required for this course, it is highly suggested that you go to prove the H$\ddot{o}$lder's inequality yourself or know how it can be proved.
+
+(i).  (i1) Use \eqref{holder} to show that \[\Vert fg \Vert_{L^r}\leq \Vert f\Vert_{L^p} \Vert g\Vert_{L^q}\]
+if $\frac{1}{p}+\frac{1}{q}=\frac{1}{r}$, $p,q\in(r,\infty)$.
+
+(i2)  Show that
+\[\Vert f \Vert_{L^r}\leq \Vert f\Vert^\theta_{L^p} \Vert f\Vert^{1-\theta}_{L^q}\]
+if
+\[\frac{1}{r}=\frac{\theta}{p}+\frac{1-\theta}{q}.\]
+
+(i3)  The inequality $ab<\frac{a^2}{2}+\frac{b^2}{2}$, known as the Cauchy--Schwarzt inequality, has a general form $ab<\epsilon a^2+\frac{b^2}{4\epsilon}$, $\forall \epsilon>0$.  Generalize the Young's inequality $ab<\frac{a^p}{p}+\frac{b^q}{q}$, with $a,b>0$, $p,q\in(1,\infty)$, to the form $ab<\epsilon a^p+C(\epsilon)b^q$ by finding $C(\epsilon)$.
+
+(ii). Prove that if $\vert \Omega \vert<\infty$, and $f\in L^p(\Omega)$, then $f\in L^q(\Omega)$ for all $q<p$.  \emph{Remark:  we can intuitively think $L^p$ as a subset/space of $L^q$, the former a smaller space (since stricter requirement of $f(x)$); this is sometimes stated that $L^p$ is \textbf{embedded} into $L^q$, and it is written as $L^p\hookrightarrow L^q$.}  For $\Omega=(0,1)$, you have already see a counter--example above for $q>p$ in Problem 15.  Try to generalize it to high-dimensions.
+
+(iii).  For each fixed continuous and bounded function $f$ over bounded $\Omega$, we know that for each $p\in(1,\infty)$, we can have find a value $\Vert f\Vert_{L^p(\Omega)}$.  Indeed, one can show that (by some advanced mathematics) that $\Vert f\Vert_{L^p(\Omega)}$ is a continuous function of $p$ (you are not asked to prove this), though usually $p$ is treated as a parameter.  It is also interesting to see that when $p=\infty$, the norm also makes sense.  Now for each fixed continuous and bounded function $f$, prove that
+\[\lim_{p\rightarrow \infty}\Vert f\Vert_{L^p(\Omega)}:=\Vert f\Vert_{L^\infty(\Omega)}=\max_{\bar \Omega} \vert f(x)\vert.\]
+Hint:  Since $\Vert f\Vert_{L^p(\Omega)}$ is continuous in $p$, you can show $\leq$ by continuity arguments; to show the $\geq$, denote $M=\max_{\Omega} \vert f(x)\vert$ and choose $\Omega_\epsilon=\{ x\vert \vert f(x)\vert\geq M-\epsilon \}$ for any $\epsilon$.  Argue the relationship between $\Vert f\Vert_{L^p(\Omega)}$ and $M-\epsilon$,  Then send $\epsilon$ to zero.
+
+(iv).  Indeed, the conclusion above also hold even if $f$ is not continuous except that the maximum is changed to the so--called \textbf{essential supremum} which is defined as
+\[\Vert f\Vert_{L^\infty(\Omega)}=\inf \{M|f(x)|\leq M, \text{~a.e.~} x \in \Omega \}.\]
+
+(v1).  To better your understanding about this definition, let us consider some concrete functions: Let $\Omega=(0,1)$.  Choose the functions: $f(x)=1$ for $x\in[0,\frac{1}{2})$ and $f(x)=0$ for $x\in(\frac{1}{2},1]$; $g(x)=1$ for $x\in[0,\frac{1}{2})\cup(\frac{1}{2},1]$ and $g(x)=20191010$ for $x=\frac{1}{2}$.  It is easy to see that $\max|f|=1<\max|g|=20191010$.  For each $p\geq1$, find $\Vert f\Vert_{L^p(\Omega)}$ and $\Vert g\Vert_{L^p(\Omega)}$.  Now send $p\rightarrow\infty$ to obtain $\Vert f\Vert_{L^\infty(\Omega)}$ and $\Vert g\Vert_{L^\infty(\Omega)}$, and compare them.  I hope that this gives you some more insights on the $L^\infty$--norm.  Moreover, it is easy to see that a functions in $L^p$ does not need to be bounded or continuous at all.
+\begin{solution}
+(i1).   The assumption that $\dfrac{1}{p}+\dfrac{1}{q}=\dfrac{1}{r}$ implies that $p/r$ and $q/r$ are conjugate $\dfrac{1}{\frac{p}{r}}+\dfrac{1}{\frac{q}{r}}=1$.   Then by H\'older's inequality for any measurable functions $f^{r}$ and $g^{r}$, we have
+  \begin{align}
+  \|f^{r}g^{r}\|_{L^{1}}\leqslant \|f^{r}\|_{L^{\frac{p}{r}}}\|g^{r}\|_{L^{\frac{q}{r}}},
+  \end{align}
+hence
+  \begin{align}
+  \Big(\int{|f^{r}g^{r}|dx} \Big)&\leqslant  \Big(\int{|f^{r}|^{\frac{p}{r}}dx} \Big)^{\frac{1}{\frac{p}{r}}} \Big(\int{|g^{r}|^{\frac{q}{r}}dx} \Big)^{\frac{1}{\frac{q}{r}}} \nonumber \\
+  &= \Big(\int{|f|^{p}dx} \Big)^{\frac{r}{p}} \Big(\int{|g|^{q}dx} \Big)^{\frac{r}{q}},
+  \end{align}
+therefore $\|fg\|_{L^{r}}\leq \|f\|_{L^{p}}\|g\|_{L^{q}}$ holds as desired inequality;
+
+(i2).  Apply Holder's inequality with $f=f^\theta f^{1-\theta}$ readily gives us the desired;
+
+(i3).  We have
+\[ab=\Big(a(p\epsilon)^\frac{1}{p} \Big)\Big(b/(p\epsilon)^\frac{1}{p} \Big)\leq \epsilon a^p+\frac{(p\epsilon)^\frac{q}{p}}{q}b^q,\]
+the generalized Young's inequality;
+
+(ii). We know that $f\in L^p(\Omega)$, which means that $\int_\Omega \vert f \vert^p dx<\infty$. From (i), we have that
+\begin{align*}
+\Vert fg\Vert_{L^{q}}\leqslant\Vert f\Vert_{L^p}\Vert g\Vert_{L^s},
+\end{align*}
+where $\frac{1}{s}+\frac{1}{p}=\frac{1}{q}$, $s,p\in(q,\infty)$.  For $g \equiv 1$, the equation above gives us
+\begin{align*}
+\Big(\int_{\Omega}\vert f\vert^{q}dx\Big)^{\frac{1}{q}}\leqslant\Big(\int_{\Omega}\vert f\vert^{p}dx\Big)^{\frac{1}{p}}\Big(\int_{\Omega}dx\Big)^{\frac{1}{s}}=\Big(\int_{\Omega}\vert f\vert^{p}dx\Big)^{\frac{1}{p}}\vert\Omega\vert^{\frac{1}{s}}.
+\end{align*}
+Because of  $\int_\Omega \vert f \vert^p dx<\infty$ and $\vert\Omega\vert<\infty$, we can conclude that $\int_{\Omega}\vert f\vert^{q}dx<\infty$, which means that $f\in L^q(\Omega)$ for all $q<p$.
+
+(iii).  It is easy to show that $f(x)=\frac{1}{\sqrt x}\in L^1$, but $\not \in L^2(0,L)$.  By the same token, we let $f(x)=x^\alpha$, with $\alpha$ being any fixed real number.  Then we readily see that
+\[I(p):=\Vert f(x)\Vert_{L^p(0,1)}=\Big(\int_0^1 x^{p\alpha}dx \Big)^\frac{1}{p}=\Big(\frac{1}{p\alpha+1}x^{p\alpha+1}\Big|_0^1\Big)^\frac{1}{p}.\]
+We see that $I(p)<\infty$ if $p\alpha+1>0$ and $I(p)=\infty$ if $p\alpha+1<0$; (when $p\alpha+1=0$, we are in the scenerio of $\ln x$ and you tell if it is integrable or nor?).  Now for each fixed $p<q$,we can choose $\alpha\in(-\frac{1}{p},-\frac{1}{q})$ such that $x^\alpha \in L^p(0,1)$, but $\not \in L^q(0,1)$.  I would like to further comment that this problem is concerned with the inclusions between normed spaces, or embedding of Banach spaces.  Let $\Omega$ be a bounded domain in $\mathbb R^n$, $n\geq1$, then we see that $L^q(\Omega)\subset L^p(\Omega)$ for all $p<q\in(0,1\infty)$ since $\Vert u\Vert_{L^p}\leq C\Vert u\Vert_{L^q}$ for some positive constant $C$ independent of $u$.  $L^q$ is said to be continuously embedded into $L^p$ and we write $L^q\hookrightarrow L^p$.  This is a generalized concept of inclusion for subsets of $\mathbb R^n$.  I would also like to remark that $f(x)\in L^p(\Omega)$ does not necessarily mean that it is bounded.  The former means $f$ is $p$--integrable; a representation of boundedness, in the sense of Lebesgue theory, is that $f\in L^\infty$, that being said, almost bounded, or bounded except up to a zero measure, and we know that $L^\infty\subset L^p$.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.45\textwidth]{embedding.jpg}\\
+  \caption{A cartoon illustrating the formal embeddings of $L^p$ spaces.  It seems necessary to mention that this only works for a bounded domain $\Omega$ or when $|\Omega|<\infty$, but not for unbounded region $\Omega$ since Holder's inequality is not applicable any more.  An immediate counter-example is that $f(x)\equiv 1$ is in $L^\infty(\mathbb R)$ but not in $L^1(\mathbb R)$.}
+\end{figure}
+
+(iv).   To show that $\Vert f\Vert_{L^\infty}=\max_{\bar \Omega}|f|$, we first see that if either $u\equiv 0$ or $|\Omega|=0$, there is nothing to prove, hence we shall assume otherwise.
+
+Let us denote $M=:\max_{\bar \Omega}|f(x)|>0$, with $|\Omega|>0$.  Then it follows from the definition that for any $p\in(0,\infty)$
+\[\Vert f\Vert_{L^p}=\Big(\int_\Omega |f(x)|^pdx \Big)^\frac{1}{p}\leq M\Big(\int_\Omega \big|\frac{f}{M}\big|^pdx \Big)^\frac{1}{p}\leq M|\Omega|^\frac{1}{p},\]
+therefore we have that
+\[\limsup_{p\rightarrow \infty}\Vert f\Vert_p\leq M;\]
+on the other hand, for any $\epsilon>0$, we denote
+\[\Omega_\epsilon:\{x\in\Omega: |f(x)|\geq M-\epsilon \}.\]
+Since $u(x)$ is continuous, one can always find some $\delta>0$ such that $|\Omega_\epsilon|\geq \delta$ (go to find why) and this leads us to
+\[\int_\Omega |f(x)|^pdx \geq \delta (M-\epsilon)^p\]
+and consequently
+\[\liminf_{p\rightarrow \infty} \Vert f\Vert_{L^p}\geq \lim_{p\rightarrow\infty}(M-\epsilon)\delta ^\frac{1}{p}=M-\epsilon.\]
+The arbitrariness of $\epsilon$, together with the reverse identity above, gives us the desired limit.
+
+Remark: some students apply the $\epsilon-\delta$ for the second part by sending $\epsilon\rightarrow 0$ without using the infimum, however you still need to show that the orders of limits as $p\rightarrow \infty$ and $\epsilon\rightarrow 0$ are switchable which can then guarantee the existence of the limit.  However $\Vert f\Vert_{L^p(\Omega_\epsilon)}\geq (M-\epsilon)\delta ^\frac{1}{p}$, and $\delta$ may also go to zero as $\epsilon\rightarrow 0$ (for example, $u(x)$ attains its maximum at exactly one interior point), then $\delta^\frac{1}{p}\rightarrow 0$ for each fixed $p$ and we can only show that $\Vert f\Vert_{L^p(\Omega_\epsilon)}\geq 0$, which is insufficient to prove the desired inequality.
+(v1).  It is easy to find that $\Vert f\Vert_{L^p}=(\frac{1}{2})^\frac{1}{p}$ and $\Vert g\Vert_{L^p}=1$ in the given example; one can easily find that $\Vert f\Vert_{L^\infty}=\Vert g\Vert_{L^\infty}$, while $\max f\neq \max g$.
+\end{solution}
+
+\item This problem is to warm up and prepare you for the fashions of convergence of sequences of functions.  The formal way (using $\epsilon-\delta$ language) to define \textbf{pointwise convergence} of $f_n(x)$ over set $E$ is, $\forall x\in E$ and $\forall \epsilon>0$, there exists $N_0\in\mathbb N^+$ such that for all $n\geq N_0$ we have that $\vert f_n(x)-f(x)\vert \leq \epsilon$.  \textbf{Uniform convergence} of $f_n\rightarrow f$ is that, $\forall \epsilon>0$, there exists $N_1\in\mathbb N^+$ such that for all $n\geq N_1$ we have that $\vert f_n(x)-f(x)\vert \leq \epsilon$ $\forall x$ in $E$.  The difference is the order of $\forall x$ and $N$, therefore $N_0$ depends on both $\epsilon$ and $x$, while $N_1$ does not depend on $x$ hence when we say the convergence is uniform we meant that it is uniform with respect to $x$, or the convergence speed does not depend on $x$.
+
+To elaborate, we recall that a function $f(x)$ is \textbf{continuous} at $x_0$ if $\forall \epsilon>0$, we can find $\delta>0$ such that $\vert x-x_0\vert<\delta$ implies $\vert f(x)-f(x_0) \vert<\epsilon$.  Here $\delta$ depends on $\epsilon$ and also $x_0$.  If $\delta$ only depends on $\epsilon$ and is independent of $x_0$, i.e., $\vert x-y\vert<\delta$ implies $\vert f(x)-f(y) \vert<\epsilon$ for any $x,y\in E$, the $f$ is \textbf{uniformly continuous}.  There is another type of continuity called \textbf{equicontinuity} for a sequence of functions $\{f_n(x)\}$, which states that $\vert x-x_0\vert<\delta$ implies $\vert f_n(x)-f_n(x_0) \vert<\epsilon$ for all $n$, while $\delta$ may depend on $x_0$ but does not depend on $n$.  Similarly, if $\delta$ only depends on $\epsilon$, we say that $\{f_n\}$ is \textbf{uniform equicontinuous}.  An important property of equicontinuous function sequence according to \textbf{Arzela-Ascoli} Theorem is that any uniformly bounded and equicontinuous sequence has a subsequence which converges uniformly.  This theorem is one of two cornerstone in modern mathematical analysis (the other being semi-continuity), and you are not required to understand equicontinuity to for this course.
+
+We already know that uniform convergence implies pointwise convergence but not the other way.  However, if the limit is also continuous, then pointwise convergence implies uniform convergence (You might be asked to proved in advanced analysis course).
+
+(a).  Prove that if a sequence of continuous functions $f_n$ converges to $f$ uniformly in $(a,b)$, then $f$ is continuous.  (Hint: use the $\epsilon-\delta$ language; for each $x_0$ in E, choose $f_n(x_0)$ that converges to $f(x_0)$; do the same for $f_n(x)$ with $x$ being in the neighbourhood of $x_0$.)
+
+(b).  Another important application of uniform convergence is the switch of order of integral and limit.  Consider the following so--called tent--function
+\begin{equation}f_n(x)=
+\left\{
+\begin{array}{ll}
+n^2x,& x\in[0,\frac{1}{n}],\\
+2n-n^2x,& x\in(\frac{1}{n},\frac{2}{n}],\\
+0,& x\in(\frac{2}{n},1],\\
+\end{array}
+\right.
+\end{equation}
+Find the pointwise limit $f(x)$ of $f_n(x)$;  evaluate the limits \[\lim_{n\rightarrow \infty} \int_0^1 f_n(x)dx \text{ and }\int_0^1 \lim_{n\rightarrow \infty} f_n(x)dx.\]  Are they equal?
+
+(c).  What is Lebesgue Dominated Convergence Theorem? Why does it fail on the example above?
+
+(d).  Let $f_n(x)$ be a sequence that converges to $f(x)$ uniformly on a bounded interval $(a,b)$.  Prove that
+\[\lim_{n\rightarrow \infty} \int_a^b f_n(x)dx=\int_a^b \lim_{n\rightarrow \infty} f_n(x)dx=\int_a^b f (x)dx\]
+\begin{solution}
+(a).  To show that $f$ is continuous at any point $x_0\in(a,b)$, we want to show that $\forall \epsilon>0$, there exists $\delta>0$ (which may depend on $x_0$) such that
+\[f(x)-f(x_0)\leq \epsilon, \forall x\in B_\delta(x_0),\]
+where $B_\delta(x_0)$ in general means a small NBHD of $x_0$ with radius $\delta$ and here is just $B_\delta(x_0)=\{x;|x-x_0|<\delta\}$.  To prove this, in light of uniform convergence of $f_n$ to $f$, we can always find $N_0$, which depends on $\epsilon$ but not $x$ such that for all $n\geq N_0$ we have
+\[|f_n(x)-f(x)|\leq \frac{\epsilon}{3},\forall x\in B_\delta(x_0);\]
+in particular, this also holds when $x=x_0$, i.e., for all $n\geq N_0$
+\[|f_n(x_0)-f(x_0)|\leq \frac{\epsilon}{3}.\]
+
+On the other hand, since $f_n(x)$ is continuous for each $n$, we choose $n=N_0+1$ and have that
+\[f_{N_0+1}(x)-f_{N_0+1}(x_0)\leq \frac{\epsilon}{3},\forall x\in B_\delta(x_0),\]
+and therefore, by choosing $n=N_0+1$ above we can finally have that
+\[|f(x)-f(x_0)|\leq |f(x)-f_{N_0+1}(x)|+|f_{N_0+1}(x)-f_{N_0+1}(x_0)|+|f_{N_0+1}(x_0)-f(x_0)|\leq \epsilon,\]
+which is exactly what we have desired.
+
+Remark:  This fact is the so--called Uniform Limit Theorem.  The statement still holds if continuity here is replaced by uniform continuity, that being said, if $f_n$ is a sequence of uniformly continuous function and it converges to $f$ uniformly, then $f$ must also be uniformly continuous.  You can try to prove this.
+
+(b).  The pointwise limit of $f_n$ is $f(x)\equiv 0$, $x\in[0,1]$.  To see this, you should fix each $x\in[0,1]$ and then send $n\rightarrow \infty$, therefore we have that
+\[\int_0^1f(x)dx=0;\]
+however, on the other hand
+\[\int_0^1 f_n(x)dx=1\]
+hence
+\[\lim_{n\rightarrow}\int_0^1 f_n(x)dx=1,\]
+therefore the limit of the integral and integral of the limit do not equal, i.e., the order of the limit and integration can not be switched.
+
+(c).  LDCT states that if $f_n\rightarrow f $ pointwise (or almost everywhere, i.e., the points where it does not converge has \emph{measure} zero), and $|f_n|<M$ for some positive constant $M$, independent of $n$, then we have that
+\[\lim_{n\rightarrow \infty}\int_\Omega f_n(x)dx=\int_\Omega f(x)dx;\]
+it fails in the example above, because the tent--function is not uniformly bounded.
+
+(d).  However, if $f_n$ converges to $f$ uniformly, the order is switchable.  To see this, we have from the uniform convergence that for any $\epsilon>0$, there exists $N$ such that
+\[|f_n(x)-f(x)|<\frac{\epsilon}{b-a},\forall x\in(a,b),\]
+therefore we can have that
+\[\Big| \int_a^b f_n(x)dx-\int_a^bf(x)dx \Big|\leq \int_a^b |f_n(x)-f(x)|dx\leq \frac{\epsilon}{b-a}\cdot (b-a)=\epsilon,\]
+and this is what we expected.
+\end{solution}
+
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

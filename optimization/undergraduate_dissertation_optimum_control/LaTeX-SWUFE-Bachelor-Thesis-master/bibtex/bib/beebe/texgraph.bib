@@ -1,0 +1,4346 @@
+%%% -*-BibTeX-*-
+%%% /u/sy/beebe/tex/bib/texgraph.bib, Fri Jun 21 09:31:33 1991
+%%% Edit by Nelson H. F. Beebe <beebe at magna.math.utah.edu>
+%%% ====================================================================
+%%%  BibTeX-file{
+%%%     author          = "Nelson H. F. Beebe",
+%%%     version         = "2.12",
+%%%     date            = "04 March 2019",
+%%%     time            = "06:11:41 MST",
+%%%     filename        = "texgraph.bib",
+%%%     address         = "University of Utah
+%%%                        Department of Mathematics, 110 LCB
+%%%                        155 S 1400 E RM 233
+%%%                        Salt Lake City, UT 84112-0090
+%%%                        USA",
+%%%     telephone       = "+1 801 581 5254",
+%%%     FAX             = "+1 801 581 4148",
+%%%     checksum        = "38594 4346 19371 179842",
+%%%     email           = "beebe at math.utah.edu, beebe at acm.org,
+%%%                        beebe at computer.org (Internet)",
+%%%     codetable       = "ISO/ASCII",
+%%%     keywords        = "AWK, bibliography, BibTeX,
+%%%                        digital-halftoning, ditroff, dvips,
+%%%                        dvitops, EEPIC, EPIC, Feynman-diagrams,
+%%%                        FPIC, GNUPLOT, GRAP, graphics, HITeX, JTeX,
+%%%                        Juno, PEX, PHIGS, PIC, PiCTeX, PLOT79,
+%%%                        PostScript, PStricks, TeX, texpic, TeXtyl,
+%%%                        TIFF, TPIC, trees, X-Window-System,
+%%%                        Xerox-Color-Encoding-Standard, Xlib",
+%%%     license         = "public domain",
+%%%     supported       = "yes",
+%%%     docstring       = "This BibTeX file records publications about
+%%%                        the use of graphics in TeX documents.
+%%%                        Sebastian Rahtz kindly provided the first 58
+%%%                        entries in this bibliography which started
+%%%                        the collection, and Nelson H. F.  Beebe
+%%%                        provided another 70+ to make the first
+%%%                        version.  The ISBN and ISSN fields will be
+%%%                        printed if the is-alpha.bst or is-plain.bst
+%%%                        style files are used.
+%%%
+%%%                        At version 2.12, the year coverage looked
+%%%                        like this:
+%%%
+%%%                             1976 (   1)    1986 (   2)    1996 (   1)
+%%%                             1977 (   0)    1987 (   0)    1997 (   5)
+%%%                             1978 (   0)    1988 (   2)    1998 (   1)
+%%%                             1979 (   1)    1989 (   0)    1999 (   2)
+%%%                             1980 (   0)    1990 (   3)    2000 (   0)
+%%%                             1981 (   1)    1991 (   1)    2001 (   1)
+%%%                             1982 (   0)    1992 (   2)    2002 (   0)
+%%%                             1983 (   1)    1993 (   0)    2003 (   1)
+%%%                             1984 (   1)    1994 (   1)    2004 (   5)
+%%%                             1985 (   1)    1995 (   2)
+%%%
+%%%                             Article:         89
+%%%                             Book:            34
+%%%                             InCollection:     5
+%%%                             InProceedings:    3
+%%%                             Manual:          13
+%%%                             Misc:             2
+%%%                             PhdThesis:        1
+%%%                             Proceedings:      3
+%%%                             TechReport:      16
+%%%                             Unpublished:      4
+%%%
+%%%                             Total entries:  170
+%%%
+%%%                        CONVENTIONS
+%%%
+%%%                        Books are tagged by the first author's last
+%%%                        name, a colon, up to 3 upper-case letters
+%%%                        taken from the first three upper-case words
+%%%                        in the title (ignoring words like A, And,
+%%%                        The), followed by the last two digits of
+%%%                        the publication year.  If there is a volume
+%%%                        entry, it is appended to the tag, prefixed
+%%%                        by a hyphen.
+%%%
+%%%                        For Dutch authors, a van part is included
+%%%                        in the author tag.  For names with accented
+%%%                        letters, accents are dropped in the author
+%%%                        tag.
+%%%
+%%%                        This scheme is systematic enough that it
+%%%                        can be programmed: most of the
+%%%                        Addison-Wesley book entries were created
+%%%                        with an awk program from a dump of the AW
+%%%                        database supplied by Mona Zeftel.  Older
+%%%                        entries in this bibliography were modified
+%%%                        on 28-Nov-1990 to conform to this tagging
+%%%                        scheme.
+%%%
+%%%                        The choice of a limit of 3 letters was
+%%%                        determined from experiments on the
+%%%                        Addison-Wesley collection.  Long tags are
+%%%                        undesirable because they are a nuisance to
+%%%                        type, and also interfere with the tagged
+%%%                        bibliography output produced using the
+%%%                        LaTeX showtags style option.
+%%%
+%%%                        Journal article tags look like
+%%%                        author:abbrev-volume-number-page, where the
+%%%                        author part is the last name of the first
+%%%                        author: for example,
+%%%                        Bhattacharya:PR203-1-203.
+%%%
+%%%                        Where systematic numbers are available,
+%%%                        technical report tags should look like
+%%%                        author:abbrev-number: for example,
+%%%                        Billawala:STAN-CS-89-1256.
+%%%
+%%%                        Entries are stored ordered by the BibTeX
+%%%                        tag name, independent of the entry type
+%%%                        (the GNU Emacs function sort-bibtex-entries
+%%%                        can be used to ensure correct ordering).
+%%%                        However, entries that are cross-referenced
+%%%                        by others are stored at the end of the
+%%%                        file, since that order is required by
+%%%                        BibTeX.
+%%%
+%%%                        With few exceptions, value fields for
+%%%                        acknowledgement, address, journal, and
+%%%                        publisher keywords should use macros
+%%%                        defined in the string preamble below.  This
+%%%                        helps to ensure consistency, and reduces
+%%%                        the entry sizes.  Address entries must
+%%%                        always include the country.
+%%%
+%%%                        The checksum field above contains a CRC-16
+%%%                        checksum as the first value, followed by the
+%%%                        equivalent of the standard UNIX wc (word
+%%%                        count) utility output of lines, words, and
+%%%                        characters.  This is produced by Robert
+%%%                        Solovay's checksum utility.",
+%%%  }
+%%% ====================================================================
+
+@Preamble{"\input bibnames.sty "
+        # "\input path.sty "
+        # "\ifx \undefined \acro \def\acro#1{{\sc #1}} \fi "
+        # "\ifx \undefined \bs \def\bs{{\char92}} \fi "
+        # "\ifx \undefined \Dash \def \Dash{\nobreak\thinspace---\penalty0\thinspace} \fi "
+        # "\ifx \undefined \DVI \def\DVI{{\tt dvi}} \fi "
+        # "\ifx \undefined \EPIC \def\EPIC{{\tt epic}} \fi "
+        # "\ifx \undefined \FEATPOST \def \FEATPOST {{\manfnt FEAT}\-{\manfnt POST}\spacefactor1000 }\fi"
+        # "\ifx \undefined \GRAP \def\GRAP{{\tt grap}} \fi "
+        # "\ifx \undefined \JTeX \def\JTeX{J\TeX{}} \fi "
+        # "\ifx \undefined \MP \def \MP {{\manfnt META}\-{\manfnt POST}\spacefactor1000 } \fi"
+        # "\ifx \undefined \PiC \def\PiC{{\sc pic}} \fi "
+        # "\ifx \undefined \PiCTeX \def\PiCTeX{{\PiC\TeX}} \fi "
+        # "\ifx \undefined \TEXHAX \def\TEXHAX{{\TeX{}hax}} \fi "
+        # "\ifx \undefined \TEXTYL \def\TEXTYL{{\TeX{}tyl}} \fi "
+        # "\ifx \undefined \TPIC \def\TPIC{{\tt tpic}} \fi "
+        # "\ifx \undefined \Xy \def \Xy{{\sc Xy}} \fi "
+        # "\ifx \undefined \XYMTeX \def\XYMTeX{X\kern-.25em\smash{\raise.50ex\hbox{\char'7}}\kern-.25em{M}\kern-.1em\TeX} \fi "
+
+        # "\hyphenation{An-wen-der-ver-ei-ni-gung Co-lo-phon Deutsch-sprach-ige}"
+}
+
+@String{ack-nhfb = "Nelson H. F. Beebe,
+                    University of Utah,
+                    Department of Mathematics, 110 LCB,
+                    155 S 1400 E RM 233,
+                    Salt Lake City, UT 84112-0090, USA,
+                    Tel: +1 801 581 5254,
+                    FAX: +1 801 581 4148,
+                    e-mail: \path|beebe@math.utah.edu|,
+                            \path|beebe@acm.org|,
+                            \path|beebe@computer.org| (Internet),
+                    URL: \path|http://www.math.utah.edu/~beebe/|"}
+
+@String{ack-spqr = "Sebastian P. Q. Rahtz,
+        Department of Computer Science,
+        University of Southampton,
+        Southampton,
+        SO9 5NH, UK,
+        e-mail: JANET: \path|S.P.Q.Rahtz@ecs.southampton.ac.uk|"}
+
+%%% NB: TeX normally will not hyphenate words connected by a dash, and
+%%% will normally allow a line break only after such a dash, not before.
+%%% However, style guides show examples of the em dash starting a line,
+%%% so a break before is probably okay.  I have been unable to get TeX to
+%%% hyphenate automatically after an \emdash (either the macro, or ---),
+%%% so I have inserted explicit discretionary hyphens after such cases.
+%%%
+
+%%% ====================================================================
+%%% Institution abbreviations:
+
+@String{inst-STAN-CS            = "Stanford University, Department of Computer
+                                  Science"}
+
+@String{inst-STAN-CS:adr        = "Stanford, CA, USA"}
+
+%%% ====================================================================
+%%% Journal abbreviations:
+
+@String{j-CACM                  = "Communications of the Association for
+                                  Computing Machinery"}
+
+@String{j-CBM                   = "Computers in Biology and Medicine"}
+
+@String{j-CC                    = "Computers and Chemistry"}
+
+@String{j-CGF                   = "Computer Graphics Forum"}
+
+@String{j-CGIP                  = "Computer Graphics and Image Processing"}
+
+@String{j-COMP-GRAPHICS         = "Computer Graphics"}
+
+@String{j-COMP-PHYS-COMM        = "Computer Physics Communications"}
+
+@String{j-CPC                   = "Computer Physics Communications"}
+
+@String{j-DDJ                   = "Dr. Dobb's Journal of Software Tools"}
+
+@String{j-EPODD                 = "Electronic Publishing\emdash Origination,
+                                  Dissemination, and Design"}
+
+@String{j-GUTENBERG             = "Cahiers {GUTenberg}"}
+
+@String{j-OR                    = "Opuscula Romana"}
+
+@String{j-PROC-SID              = "Proceedings of the Society for Information
+                                  Display"}
+
+@String{j-SIGGRAPH              = "ACM SIG{\-}GRAPH\emdash Com{\-}puter
+                                  Graphics"}
+
+@String{j-SPE                   = "Soft{\-}ware\emdash Prac{\-}tice and
+                                  Experience"}
+
+@String{j-TEXNIQUES             = "{\TeX{}}{\-}niques, Publications for the
+                                  {\TeX{}} community"}
+
+@String{j-TOG                   = "ACM Transactions on Graphics"}
+
+@String{j-TUGboat               = "{\TUB{}}"}
+
+@String{j-USENIX-SCP            = "{USENIX} Summer Conference Proceedings"}
+
+%%% ====================================================================
+%%% Publisher abbreviations:
+
+@String{pub-ADOBE               = "{Adobe Systems Incorporated}"}
+
+@String{pub-ADOBE:adr           = "1585 Charleston Road, P.~O. Box 7900,
+                                  Mountain View, CA 94039-7900, USA, Tel:
+                                  (415) 961-4400"}
+
+@String{pub-ANSI                = "American National Standards Institute"}
+
+@String{pub-ANSI:adr            = "1430 Broadway, New York, N. Y., 10018"}
+
+@String{pub-AP                  = "Academic Press"}
+
+@String{pub-AP:adr              = "New York, NY, USA"}
+
+@String{pub-ARBORTEXT           = "Arbortext, Inc."}
+
+@String{pub-ARBORTEXT:adr       = "Ann Arbor, MI, USA"}
+
+@String{pub-ATT-BELL            = "AT\&T Bell Laboratories"}
+
+@String{pub-ATT-BELL:adr        = "Murray Hill, NJ, USA"}
+
+@String{pub-AW                  = "Ad{\-d}i{\-s}on-Wes{\-l}ey"}
+
+@String{pub-AW:adr              = "Reading, MA, USA"}
+
+@String{pub-DP                  = "Digital Press"}
+
+@String{pub-DP:adr              = "12 Crosby Drive, Bedford, MA 01730, USA"}
+
+@String{pub-ELLIS-HORWOOD       = "Ellis Horwood"}
+
+@String{pub-ELLIS-HORWOOD:adr   = "New York, NY, USA"}
+
+@String{pub-GP                  = "Graphics Press"}
+
+@String{pub-GP:adr              = "Box 430, Cheshire, CT 06410, USA"}
+
+@String{pub-HRW                 = "Holt, Rinehart, and Winston"}
+
+@String{pub-HRW:adr             = "New York, NY, USA"}
+
+@String{pub-MASARYKOVA          = "Masarykova Universita"}
+
+@String{pub-MASARYKOVA:adr      = "Brno, Czechoslovakia"}
+
+@String{pub-MEGATEK             = "Megatek Corporation"}
+
+@String{pub-MEGATEK:adr         = "9645 Scranton Rd, San Diego, CA 92121, USA"}
+
+@String{pub-MH                  = "Mc{\-}Graw-Hill"}
+
+@String{pub-MH:adr              = "New York, NY, USA"}
+
+@String{pub-MIT                 = "MIT Press"}
+
+@String{pub-MIT:adr             = "Cambridge, MA, USA"}
+
+@String{pub-ORA                 = "O'Reilly \& {Associates, Inc.}"}
+
+@String{pub-ORA:adr             = "981 Chestnut Street, Newton, MA 02164, USA"}
+
+@String{pub-OXFORD              = "Oxford University Press"}
+
+@String{pub-OXFORD:adr          = "Walton Street, Oxford OX2 6DP, UK"}
+
+@String{pub-PH                  = "Pren{\-}tice-Hall"}
+
+@String{pub-PH:adr              = "Englewood Cliffs, NJ 07632, USA"}
+
+@String{pub-STAN-CS             = "Stanford University, Department of Computer
+                                  Science"}
+
+@String{pub-STAN-CS:adr         = "Stanford, CA, USA"}
+
+@String{pub-SV                  = "Spring{\-}er-Ver{\-}lag"}
+
+@String{pub-SV:adr              = "Berlin, Germany~/ Heidelberg, Germany~/
+                                  London, UK~/ etc."}
+
+@String{pub-SYBEX               = "Sybex"}
+
+@String{pub-SYBEX:adr           = "2021 Challenger Driver, Suite 100, Alameda,
+                                  CA 94501, USA"}
+
+@String{pub-TUG                 = "{\TeX} Users Group"}
+
+@String{pub-TUG:adr             = "Providence, RI, USA"}
+
+@String{pub-URW                 = "URW-Verlag"}
+
+@String{pub-URW:adr             = "Hamburg, Germany"}
+
+@String{pub-USENIX              = "USENIX"}
+
+@String{pub-USENIX:adr          = "Berkeley, CA, USA"}
+
+@String{pub-USNPS               = "U. S. Naval Postgraduate School"}
+
+@String{pub-USNPS:adr           = "Monterey, CA 93940, USA"}
+
+@String{pub-USNWL               = "U. S. Naval Weapons Laboratory"}
+
+@String{pub-USNWL:adr           = "Dahlgren, VA 22448, USA"}
+
+%%% ====================================================================
+%%% Series abbreviations:
+
+@String{ser-LNCS                = "Lecture Notes in Computer Science"}
+
+%%% ====================================================================
+%%% Bibliography entries sorted by citation label:
+
+@Misc{Adobe:colophon,
+  author =       pub-ADOBE,
+  title =        "{Colophon}\emdash {Adobe Systems News} {Publication}",
+  address =      pub-ADOBE:adr,
+  bibdate =      "Mon Mar 14 23:15:58 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Reid:1988:PLP,
+  author =       "Glenn C. Reid",
+  title =        "{PostScript} Language Program Design",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "xii + 224",
+  year =         "1988",
+  ISBN =         "0-201-14396-8",
+  ISBN-13 =      "978-0-201-14396-6",
+  LCCN =         "QA76.73.P67 R45 1988",
+  bibdate =      "Sat Aug 27 10:53:25 1994n",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/postscri.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  price =        "US\$22.95",
+  URL =          "http://www.rightbrain.com/rightbrain.shtml",
+  acknowledgement = ack-nhfb,
+  keywords =     "PostScript (computer program language)",
+  tableofcontents = "Preface / ix \\
+                 The PostScript Language: Overview / 1 \\
+                 Introduction / 1 \\
+                 The Language Model / 2 \\
+                 Dictionaries and Data Structures / 4 \\
+                 Stacks / 4 \\
+                 Built-In PostScript Language Operators / 5 \\
+                 The Imaging Model / 5 \\
+                 Coordinate Systems / 6 \\
+                 Paths and Paint / 7 \\
+                 Fonts / 7 \\
+                 Electronic Publishing and Printing / 7 \\
+                 Program Design Guidelines / 9 \\
+                 The Execution Model / 11 \\
+                 Introduction / 11 \\
+                 The Printing Job Model / 11 \\
+                 The Operand Stack / 13 \\
+                 Objects in the PostScript Language / 13 \\
+                 The Stack as a Data Structure / 15 \\
+                 The Dictionary Stack / 16 \\
+                 Dictionary Objects / 17 \\
+                 Using the Dictionary Stack / 18 \\
+                 Operators and Name Lookup / 19 \\
+                 The Bind Operator / 21 \\
+                 The Interpreter and the Scanner / 23 \\
+                 Recognition of Objects / 24 \\
+                 Procedures / 25 \\
+                 Very Large Procedure Bodies / 29 \\
+                 The Execution Stack / 32 \\
+                 The Server Loop / 34 \\
+                 The Imaging Model / 37 \\
+                 Introduction / 37 \\
+                 Applying the Metaphor / 38 \\
+                 Construction of Paths / 40 \\
+                 The Graphics State and Paths / 40 \\
+                 Painting Operations / 42 \\
+                 What Happens to the Current Path? / 43 \\
+                 Procedures for Constructing Paths / 44 \\
+                 Rectangles / 44 \\
+                 Circles and Arcs / 46 \\
+                 Arrowheads / 46 \\
+                 Text Operations / 49 \\
+                 Character Widths / 51 \\
+                 Clipping / 53 \\
+                 Complexity and Performance / 53 \\
+                 Rasterization / 54 \\
+                 Save and Restore / 54 \\
+                 The Font Cache / 55 \\
+                 Emulators and Translators / 57 \\
+                 Introduction / 57 \\
+                 Emulating Another Printer / 58 \\
+                 The stringwidth Operator / 61 \\
+                 Text Justification in an Emulator / 62 \\
+                 Translating Existing File Formats / 68 \\
+                 Units / 68 \\
+                 Fonts / 69 \\
+                 Font Differences / 69 \\
+                 Using the Imaging Model / 71 \\
+                 Preserving High-Level Information / 72 \\
+                 Rendering / 72 \\
+                 Optimizing Translator Output / 72 \\
+                 Computation and Decision-Making / 73 \\
+                 Designing the Page and the Program / 77 \\
+                 Introduction / 77 \\
+                 Page Layout Considerations / 77 \\
+                 Page Nesting and Independence / 78 \\
+                 Producing PostScript Language Output / 79 \\
+                 Round-Off and Coordinate Systems / 80 \\
+                 Efficiency / 81 \\
+                 Data Transmission Overhead / 82 \\
+                 Computation / 83 \\
+                 Interpretation Time / 85 \\
+                 Program Structure / 87 \\
+                 Introduction / 87 \\
+                 The Prologue and Script Model / 87 \\
+                 Modularity and Page Structure / 89 \\
+                 Ground State / 90 \\
+                 The Operand Stack / 92 \\
+                 Functional and Graphic Independence / 92 \\
+                 Save and Restore / 93 \\
+                 Page Elements and Their Properties / 94 \\
+                 Document Structuring Conventions / 96 \\
+                 The Mechanics of Setting Text / 99 \\
+                 Introduction / 99 \\
+                 Character Widths / 100 \\
+                 Margins and Justification / 102 \\
+                 Justification / 104 \\
+                 Handling Different Fonts / 106 \\
+                 Leading and Point Size / 108 \\
+                 Kerning and Ligatures / 109 \\
+                 Encoding and Character Sets / 114 \\
+                 Composite Characters and Accents / 117 \\
+                 Non-Roman Fonts / 117 \\
+                 Character Widths and Origins / 118 \\
+                 Scanned Images and Halftones / 123 \\
+                 Introduction / 123 \\
+                 The Image Operator / 123 \\
+                 How It Works / 124 \\
+                 The Image Matrix / 124 \\
+                 Data Acquisition Procedures / 126 \\
+                 Small Amounts of Data / 127 \\
+                 Large Amounts of Data / 127 \\
+                 A Common Error and Its Cause / 129 \\
+                 Synthetic Data / 129 \\
+                 Data Compression / 131 \\
+                 Halftone Screens / 131 \\
+                 Halftoning in the PostScript Language / 132 \\
+                 Changing the Halftone Screen / 132 \\
+                 The Spot Function / 134 \\
+                 Complex Graphic Problem-Solving / 137 \\
+                 Introduction / 137 \\
+                 Pattern Fills / 137 \\
+                 Logos, Grids, Forms, and Special Fonts / 143 \\
+                 Grids / 146 \\
+                 Transformation Matrices / 149 \\
+                 Inverted Coordinate Systems / 151 \\
+                 Color and Color Separations / 151 \\
+                 Color Separations / 152 \\
+                 Spot Color / 154 \\
+                 File Interchange Standards / 157 \\
+                 Introduction / 157 \\
+                 Conforming Documents / 157 \\
+                 Handling Printer-Specific Features / 158 \\
+                 Specifying Paper Sizes / 159 \\
+                 Printer Queries / 162 \\
+                 Conditional Execution / 163 \\
+                 Font Availability / 164 \\
+                 Putting it All Together / 165 \\
+                 Merging Files from Different Sources / 167 \\
+                 Introduction / 167 \\
+                 Using Existing Context / 168 \\
+                 Error Recovery / 169 \\
+                 Handling showpage / 170 \\
+                 Screen Representations / 171 \\
+                 Writing a Print Spooler / 173 \\
+                 Introduction / 173 \\
+                 Printer Management / 174 \\
+                 Communications / 174 \\
+                 Messages / 175 \\
+                 Using exitserver / 176 \\
+                 Managing Files and Fonts / 178 \\
+                 DocumentFonts / 178 \\
+                 IncludeFont / 179 \\
+                 BeginFont, EndFont / 180 \\
+                 Determining What Fonts Are Available / 181 \\
+                 Handling Resource Shortages / 182 \\
+                 Printer Description Files / 183 \\
+                 Memory and File Resource Management / 185 \\
+                 Memory Structure / 185 \\
+                 Memory Allocation / 186 \\
+                 Save and Restore / 187 \\
+                 Save Objects / 187 \\
+                 The invalidrestore Error / 188 \\
+                 Downloadable Font Programs / 190 \\
+                 Packed Arrays / 190 \\
+                 Raster Memory / 191 \\
+                 File Systems and Disk Management / 192 \\
+                 PostScript Language File Operations / 192 \\
+                 The Standard Input Stream / 193 \\
+                 Error Handling / 197 \\
+                 Introduction / 197 \\
+                 Strategies / 197 \\
+                 Non-Standard Operators / 197 \\
+                 Implementation Limits Exceeded / 198 \\
+                 The Stopped Operator / 199 \\
+                 The Error Handling Mechanism / 203 \\
+                 Redefining Error Procedures / 204 \\
+                 Handling Error Messages / 206 \\
+                 Debugging Techniques / 207 \\
+                 Introduction / 207 \\
+                 Establishing Two-Way Communication / 207 \\
+                 Serial Communications / 208 \\
+                 Parallel Communications / 209 \\
+                 Packet Network Communications / 209 \\
+                 Understanding PostScript Language Errors / 209 \\
+                 Error: undefined / 210 \\
+                 Error: typecheck / 211 \\
+                 Redefining Built-In Operators / 212 \\
+                 Stack Traces / 214 \\
+                 Interactive Techniques / 214 \\
+                 Coordinate System Transformations / 215 \\
+                 Debugging Messages / 216 \\
+                 Error Handler / 217 \\
+                 Index / 221",
+}
+
+@Book{Adobe:PLR85,
+  author =       pub-ADOBE,
+  title =        "{PostScript} Language Reference Manual",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "ix + 321",
+  year =         "{\noopsort{1985a}}1985",
+  ISBN =         "0-201-10174-2",
+  ISBN-13 =      "978-0-201-10174-4",
+  LCCN =         "QA76.73.P67 A33 1985",
+  bibdate =      "Sat Aug 27 11:13:49 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Adobe:PLT85,
+  author =       pub-ADOBE,
+  title =        "{PostScript} Language Tutorial and Cookbook",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "x + 243",
+  year =         "{\noopsort{1985b}}1985",
+  ISBN =         "0-201-10179-3",
+  ISBN-13 =      "978-0-201-10179-9",
+  LCCN =         "QA76.73.P67 A34 1985",
+  bibdate =      "Sat Aug 27 11:13:42 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+}
+
+@TechReport{Aldus:tiff,
+  author =       "Aldus Corporation and Microsoft Corporation",
+  title =        "Tag Image File Format ({TIFF}) Specification Revision
+                 5.0",
+  institution =  "Aldus Corporation, 411 First Avenue South, Suite 200,
+                 Seattle, WA 98104, Tel: (206) 622-5500, and Microsoft
+                 Corporation, 16011 NE 36th Way, Box 97017, Redmond, WA
+                 98073-9717, Tel: (206) 882-8080",
+  month =        aug # " 8",
+  year =         "1988",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Andrews:TB10-2-177-178,
+  author =       "Phil Andrews",
+  title =        "{Integration of \TeX\ and graphics at the Pittsburgh
+                 Supercomputing Center}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "2",
+  pages =        "177--178",
+  month =        jul,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 7 10:22:07 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  abstract =     "Drivers which support \protect\verb|\special| commands
+                 which include CGM files.",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Article{Anonymous:TB10-1-118,
+  author =       "Anonymous",
+  title =        "{GUTenberg Congr{\`e}s:\ {\TeX} et les graphiques,
+                 Paris, 16--17 May 1989}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "1",
+  pages =        "118--118",
+  month =        apr,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Manual{ANSI:gks,
+  title =        "Information Systems\emdash Com\-puter Graphics\emdash
+                 Graph\-i\-cal Kernel System ({GKS}). {ANSI}
+                 {X3}.124-1985",
+  organization = pub-ANSI,
+  address =      pub-ANSI:adr,
+  year =         "1985",
+  bibdate =      "Mon Mar 14 23:18:01 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Includes Fortran bindings to GKS.",
+  acknowledgement = ack-nhfb,
+}
+
+@Manual{ANSI:phigs,
+  title =        "Information Systems\emdash Com\-puter Graphics\emdash
+                 Pro\-gram\-mer's Hierarchical Interactive Graphical
+                 System. Draft proposal {X3}.144.1988",
+  organization = pub-ANSI,
+  address =      pub-ANSI:adr,
+  year =         "1988",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Manual{ANSI:phigs+,
+  title =        "{PHIGS}+ Functional Description, Revision 2.0",
+  organization = pub-ANSI,
+  address =      pub-ANSI:adr,
+  month =        jul # " 20",
+  year =         "1987",
+  bibdate =      "Mon Mar 14 23:18:31 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Appelt:TB9-3-284-287,
+  author =       "Wolfgang Appelt",
+  title =        "{Typesetting chess}",
+  journal =      j-TUGboat,
+  volume =       "9",
+  number =       "3",
+  pages =        "284--287",
+  month =        Nov,
+  year =         "1988",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Manual{Arbortext:1986,
+  author =       "{Arbortext Inc}",
+  title =        "Manual for {DVIPS}",
+  year =         "1986",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "See notes on LPEXT distributed with the software.",
+  acknowledgement = ack-spqr,
+}
+
+@Book{ATT:UPM83-2,
+  author =       "AT{\&T}",
+  key =          "ATT",
+  title =        "{UNIX} Programmer's Manual",
+  volume =       "2",
+  publisher =    pub-HRW,
+  address =      pub-HRW:adr,
+  pages =        "vii + 616",
+  year =         "1983",
+  ISBN =         "0-03-061743-X",
+  ISBN-13 =      "978-0-03-061743-0",
+  LCCN =         "QA76.8.U65 B44 1983",
+  bibdate =      "Mon Sep 30 17:04:17 1996",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+  xxnote =       "NB: special form AT{\&T} required to get correct
+                 alpha-style labels.",
+}
+
+@Article{Beck:TB11-3-373-380,
+  author =       "Micah Beck and A. Siegel",
+  title =        "{TransFig}: Portable Figures for {\TeX}",
+  journal =      j-TUGboat,
+  volume =       "11",
+  number =       "3",
+  pages =        "373--380",
+  year =         "1990",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 7 10:22:09 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  abstract =     "Fig is a public domain drawing program which runs
+                 Sunview or X Windows; Transfig is a set of programs to
+                 translate Fig format into a variety of formats,
+                 including {\PiCTeX}, {\LaTeX} pictures and {\PS}.",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Article{Beebe:dvi-drivers,
+  author =       "Nelson H. F. Beebe",
+  title =        "A {\TeX} {DVI} Driver Family",
+  journal =      j-TEXNIQUES,
+  volume =       "5",
+  pages =        "71--114",
+  month =        aug,
+  year =         "1987",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Proceedings of the Eighth Annual Meeting of the \TeX{}
+                 Users Group",
+  acknowledgement = ack-nhfb,
+}
+
+@TechReport{Beebe:plot79,
+  author =       "Nelson H. F. Beebe",
+  title =        "A User's Guide to {\PLOT}",
+  institution =  "University of Utah",
+  year =         "1980",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Beebe:plot79-biomed,
+  author =       "Nelson H. F. Beebe and R. P. C. Rodgers",
+  title =        "{\PLOT}: a comprehensive portable {Fortran} scientific
+                 line graphics system, as applied to biomedical
+                 research",
+  journal =      j-CBM,
+  volume =       "19",
+  number =       "6",
+  pages =        "385--402",
+  year =         "1989",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+}
+
+@Article{Beebe:tex-graphics,
+  author =       "Nelson H. F. Beebe",
+  title =        "{\TeX{}} and Graphics: The State of the Problem",
+  journal =      j-GUTENBERG,
+  volume =       "2",
+  pages =        "13--53",
+  year =         "1989",
+  ISSN =         "1140-9304",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Presented to: Congr{\`e}s GUTenberg, Paris, France,
+                 16--17 May 1989",
+}
+
+@TechReport{Bentley/Kernighan:1984,
+  author =       "Jon Bentley and Brian W. Kernighan",
+  title =        "{\GRAP}\emdash a language for typesetting graphs",
+  type =         "Computing Science Technical Report",
+  number =       "114",
+  institution =  pub-ATT-BELL,
+  address =      pub-ATT-BELL:adr,
+  year =         "1984",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Also distributed as software documentation.",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Bentley:grap,
+  author =       "Jon Louis Bentley and Brian W. Kernighan",
+  title =        "{GRAP}\emdash {A} Language for typesetting graphs",
+  journal =      j-CACM,
+  volume =       "29",
+  number =       "8",
+  pages =        "782--792",
+  month =        aug,
+  year =         "1986",
+  CODEN =        "CACMA2",
+  ISSN =         "0001-0782 (print), 1557-7317 (electronic)",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Bentley:pic,
+  author =       "Jon Louis Bentley",
+  title =        "Programming Pearls\emdash Little Languages",
+  journal =      j-CACM,
+  volume =       "29",
+  number =       "8",
+  pages =        "711--721",
+  month =        aug,
+  year =         "1986",
+  CODEN =        "CACMA2",
+  ISSN =         "0001-0782 (print), 1557-7317 (electronic)",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Description of the {\em pic\/} language.",
+  abstract =     "Discusses the design of {\em ad hoc} languages for
+                 specialist tasks, such as {\GRAP}.",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Berendt:TB11-2-190-194,
+  author =       "Gerhard Berendt",
+  title =        "{{On the implementation of graphics into \TeX}}",
+  journal =      j-TUGboat,
+  volume =       "11",
+  number =       "2",
+  pages =        "190--194",
+  month =        jun,
+  year =         "1990",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 7 10:22:10 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  abstract =     "Picture macros which are implemented with a
+                 combination of {\LaTeX} picture and {\EPIC}, and macros
+                 for including {\PS} pictures.",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Book{Brown:UP85,
+  author =       "Maxine Brown",
+  title =        "Understanding {PHIGS}",
+  publisher =    pub-MEGATEK,
+  address =      pub-MEGATEK:adr,
+  year =         "1985",
+  LCCN =         "T385 .B761 1985",
+  bibdate =      "Wed Dec 15 15:35:57 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Bruggemann-Klein:1989,
+  author =       "Anne Br{\"u}ggemann-Klein and Derrick Wood",
+  title =        "Drawing trees nicely with {\TeX}",
+  journal =      j-EPODD,
+  volume =       "3",
+  pages =        "101--115",
+  year =         "1989",
+  CODEN =        "EPODEU",
+  ISSN =         "0894-3982",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "Use pure {\TeX} to draw complicated trees.",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Carlisle:TB17-3-321,
+  author =       "David Carlisle",
+  title =        "{A {\LaTeX} tour, Part 2: The {\sf tools} and {\sf
+                 graphics} distributions}",
+  journal =      j-TUGboat,
+  volume =       "17",
+  number =       "3",
+  pages =        "321--326",
+  month =        sep,
+  year =         "1996",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Carnes:TB2-3-25,
+  author =       "Lance Carnes",
+  title =        "{{\TeX\ for the HP3000}}",
+  journal =      j-TUGboat,
+  volume =       "2",
+  number =       "3",
+  pages =        "25",
+  month =        nov,
+  year =         "1981",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Childs:TB10-1-44-46,
+  author =       "Bart Childs and Alan Stolleis and Don Berryman",
+  title =        "{A portable graphics inclusion}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "1",
+  pages =        "44--46",
+  month =        apr,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 7 10:22:10 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  abstract =     "Discussion of standards for \verb|\special| commands
+                 to include external figure files.",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Unpublished{Clark:1989,
+  author =       "James Clark",
+  title =        "{DVITOPS} User Manual",
+  year =         "1989",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Unpublished machine-readable documentation.",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Clark:TB12-1-157-165,
+  author =       "Adrian Clark",
+  title =        "Practical halftoning with {\TeX}",
+  journal =      j-TUGboat,
+  volume =       "12",
+  number =       "1",
+  pages =        "157--165",
+  year =         "1991",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Clark:TB13-3-253,
+  author =       "Malcolm Clark",
+  title =        "{{Portable graphics in {\TeX}}}",
+  journal =      j-TUGboat,
+  volume =       "13",
+  number =       "3",
+  pages =        "253--260",
+  month =        oct,
+  year =         "1992",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Clark:TB8-3-270,
+  author =       "Adrian F. Clark",
+  title =        "{{Halftone output from \TeX}}",
+  journal =      j-TUGboat,
+  volume =       "8",
+  number =       "3",
+  pages =        "270",
+  month =        nov,
+  year =         "1987",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+}
+
+@Article{Damrau:TB13-3-315,
+  author =       "Jackie Damrau",
+  title =        "{Discovering graphics in {\LaTeX} documents}",
+  journal =      j-TUGboat,
+  volume =       "13",
+  number =       "3",
+  pages =        "315--321",
+  month =        oct,
+  year =         "1992",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Dvonch:color-pdl,
+  author =       "Mary Ann Dvonch and Paul Roetling and Robert Buckley",
+  title =        "Color Descriptors in Page Description Languages",
+  journal =      j-PROC-SID,
+  volume =       "30",
+  number =       "2",
+  pages =        "177--181",
+  year =         "1989",
+  CODEN =        "SIDPAA",
+  ISSN =         "0734-1768, 0036-1496",
+  bibdate =      "Sun Dec 4 12:30:46 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Ehrbar:TB7-3-171,
+  author =       "Hans Ehrbar",
+  title =        "{{Statistical graphics with \TeX}}",
+  journal =      j-TUGboat,
+  volume =       "7",
+  number =       "3",
+  pages =        "171--175",
+  month =        oct,
+  year =         "1986",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 07 10:22:13 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Book{Enderle:CGP84,
+  author =       "G. Enderle and K. Kansy and G. Pfaff",
+  title =        "Computer Graphics Programming. {GKS}\emdash The
+                 Graphics Standard",
+  publisher =    pub-SV,
+  address =      pub-SV:adr,
+  pages =        "xvi + 542",
+  year =         "1984",
+  ISBN =         "0-387-11525-0, 3-540-11525-0",
+  ISBN-13 =      "978-0-387-11525-2, 978-3-540-11525-0",
+  LCCN =         "T385 .E531 1984",
+  bibdate =      "Wed Dec 15 07:59:26 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  series =       "Symbolic Computation, Editor: J. Encarna{\c{c}}{\~a}o
+                 and P. Hayes",
+  acknowledgement = ack-nhfb,
+}
+
+@TechReport{epic,
+  author =       "Sunil Podar",
+  title =        "Enhancements to the Picture Environment of {\LaTeX}",
+  type =         "Technical Report",
+  number =       "86-17",
+  institution =  "Department of Computer Science, S.U.N.Y",
+  year =         "1986",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Version 1.2: July 14, 1986.",
+  abstract =     "Describes the {\EPIC} macros, which extend the
+                 capabilities of {\LaTeX} picture without requiring new
+                 facilities.",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Eppstein:TB6-1-31,
+  author =       "David Eppstein",
+  title =        "{{Trees in \TeX}}",
+  journal =      j-TUGboat,
+  volume =       "6",
+  number =       "1",
+  pages =        "31--35",
+  month =        mar,
+  year =         "1985",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "Drawing simple horizontal trees in plain {\TeX} or
+                 {\LaTeX}.",
+  acknowledgement = ack-spqr,
+}
+
+@Manual{Finston:2003:URM,
+  author =       "Laurence D. Finston",
+  title =        "{3DLDF} user and reference manual: $3$-dimensional
+                 drawing with {\MP} output",
+  organization = "????",
+  address =      "????",
+  pages =        "ix + 269",
+  year =         "2003",
+  bibdate =      "Tue Jul 12 10:58:15 2005",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Manual edition 1.0 for 3DLDF version 1.0 September
+                 2003.",
+  URL =          "http://dante.ctan.org/CTAN/graphics/3DLDF/3DLDF.pdf",
+  acknowledgement = ack-nhfb,
+}
+
+@Manual{Finston:2004:URM,
+  author =       "Laurence D. Finston",
+  title =        "{3DLDF} user and reference manual: $3$-dimensional
+                 drawing with {\MP} output",
+  organization = "????",
+  address =      "????",
+  pages =        "x + 296",
+  year =         "2004",
+  bibdate =      "Tue Jul 12 10:58:15 2005",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Manual edition 1.1.5.1 for 3DLDF version 1.1.5.1
+                 January 2004.",
+  URL =          "http://dante.ctan.org/CTAN/graphics/3DLDF/3DLDF.pdf",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Foley:FIC82,
+  author =       "James D. Foley and Andries van Dam",
+  title =        "Fundamentals of Interactive Computer Graphics",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "xx + 664",
+  year =         "1982",
+  ISBN =         "0-201-14468-9",
+  ISBN-13 =      "978-0-201-14468-0",
+  LCCN =         "T385 .F63 1982",
+  bibdate =      "Wed Dec 15 08:01:46 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  series =       "The Systems Programming Series",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Fossmeier:TB12-2-229-232,
+  author =       "Reinhard F{\"o}{\ss}meier",
+  title =        "{X} bitmaps in {\TeX}",
+  journal =      j-TUGboat,
+  volume =       "12",
+  number =       "2",
+  pages =        "229--232",
+  year =         "1991",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Fossmeier:TB15-4-492,
+  author =       "Reinhard F{\"o}{\ss}meier",
+  title =        "{{Stereographic pictures using {\TeX}}}",
+  journal =      j-TUGboat,
+  volume =       "15",
+  number =       "4",
+  pages =        "492--495",
+  month =        dec,
+  year =         "1994",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Frick:1999:SGP,
+  author =       "Arne Frick and Georg Sander and Kathleen Wang",
+  title =        "Simulating Graphs As Physical Systems",
+  journal =      j-DDJ,
+  volume =       "24",
+  number =       "8",
+  pages =        "58, 60--64",
+  month =        aug,
+  year =         "1999",
+  CODEN =        "DDJOEB",
+  ISSN =         "1044-789X",
+  bibdate =      "Fri Jul 16 19:10:34 MDT 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  URL =          "http://www.ddj.com/",
+  abstract =     "Automatically generating comprehensible graphs for
+                 large amounts of data is a difficult problem in
+                 computer science. Our authors describe an algorithm
+                 based on a physical system of springs for drawing a
+                 useful and aesthetically pleasing graph from a large
+                 data set.",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Fujita:TB16-1-80,
+  author =       "Shinsaku Fujita",
+  title =        "{{\XYMTeX} for drawing chemical structural formulas}",
+  journal =      j-TUGboat,
+  volume =       "16",
+  number =       "1",
+  pages =        "80--88",
+  month =        mar,
+  year =         "1995",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@InProceedings{Goncalves:2004:FRM,
+  author =       "Luis Nobre Gon{\c{c}}alves",
+  title =        "{\FEATPOST} and a Review of $3${D} {\MP} Packages",
+  crossref =     "Syropoulos:2004:TXD",
+  pages =        "112--124",
+  year =         "2004",
+  CODEN =        "LNCSD9",
+  ISSN =         "0302-9743 (print), 1611-3349 (electronic)",
+  bibdate =      "Tue Nov 16 17:43:44 2004",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Goossens:1997:LGC,
+  author =       "Michel Goossens and Sebastian Rahtz and Frank
+                 Mittelbach",
+  title =        "The {\LaTeX} Graphics Companion: Illustrating
+                 Documents with {\TeX} and {PostScript}",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "xxi + 554",
+  year =         "1997",
+  ISBN =         "0-201-85469-4",
+  ISBN-13 =      "978-0-201-85469-5",
+  LCCN =         "Z253.4.L38G663 1997",
+  bibdate =      "Fri Jul 11 07:51:47 1997",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  price =        "US\$39.75",
+  series =       "Tools and Techniques for Computer Typesetting",
+  acknowledgement = ack-nhfb,
+  keywords =     "Computerized typesetting.; LaTeX (Computer file);
+                 Mathematics printing -- Computer programs.; PostScript
+                 (Computer program language); Scientific illustration --
+                 Computer programs.; Technical publishing -- Computer
+                 programs.",
+}
+
+@Article{Gourlay:music-printing,
+  author =       "John S. Gourlay",
+  title =        "A language for music printing",
+  journal =      j-CACM,
+  volume =       "29",
+  number =       "5",
+  pages =        "388--401",
+  month =        may,
+  year =         "1986",
+  CODEN =        "CACMA2",
+  ISSN =         "0001-0782 (print), 1557-7317 (electronic)",
+  bibdate =      "Sun Aug 14 18:32:13 MDT 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+  keywords =     "design; human factors; languages",
+  review =       "ACM CR 8612-1130",
+  subject =      "J.5 Computer Applications, ARTS AND HUMANITIES, Music
+                 \\ I.7.2 Computing Methodologies, TEXT PROCESSING,
+                 Document Preparation, Format and notation \\ I.7.2
+                 Computing Methodologies, TEXT PROCESSING, Document
+                 Preparation, Languages",
+}
+
+@Article{Haas/Kane:1987,
+  author =       "Roswitha T. Haas and Kevin C. O'Kane",
+  title =        "Typesetting Chemical Structure Formulas with the Text
+                 Formatter {\TeX}/{\LaTeX}",
+  journal =      j-CC,
+  volume =       "11",
+  number =       "4",
+  pages =        "251--271",
+  year =         "1987",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Hamilton-Kelly:TB11-1-103-119,
+  author =       "Brian {Hamilton Kelly}",
+  title =        "{Some macros to draw crosswords}",
+  journal =      j-TUGboat,
+  volume =       "11",
+  number =       "1",
+  pages =        "103--119",
+  month =        apr,
+  year =         "1990",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Manual{Hammerlindl:2004:ASB,
+  author =       "Andy Hammerlindl and John Bowman and Tom Prince",
+  title =        "{{\tt Asymptote}}: a script-based vector graphics
+                 language",
+  organization = "Faculty of Science, University of Alberta",
+  address =      "Edmonton, AB, Canada",
+  year =         "2004",
+  bibdate =      "Tue Jul 12 11:15:03 2005",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "{\tt Asymptote} is a powerful script-based vector
+                 graphics language for technical drawing, inspired by
+                 \MP{} but with an improved C++-like syntax. {\tt
+                 Asymptote} provides for figures the same high-quality
+                 level of typesetting that \LaTeX{} does for scientific
+                 text.",
+  URL =          "http://asymptote.sourceforge.net/",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Harrington:CGP83,
+  author =       "Steven Harrington",
+  title =        "Computer Graphics\emdash {A} Programming Approach",
+  publisher =    pub-MH,
+  address =      pub-MH:adr,
+  pages =        "xv + 448",
+  year =         "1983",
+  ISBN =         "0-07-026751-0",
+  ISBN-13 =      "978-0-07-026751-0",
+  LCCN =         "T385 .H34 1983",
+  bibdate =      "Tue Dec 14 23:42:22 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  price =        "US\$21.95",
+  acknowledgement = ack-nhfb,
+  libnote =      "Missing from my library.",
+}
+
+@Book{Harrington:CGP87,
+  author =       "Steven Harrington",
+  title =        "Computer Graphics\emdash {A} Programming Approach",
+  publisher =    pub-MH,
+  address =      pub-MH:adr,
+  edition =      "Second",
+  pages =        "xiv + 466",
+  year =         "1987",
+  ISBN =         "0-07-026753-7",
+  ISBN-13 =      "978-0-07-026753-4",
+  LCCN =         "T385 .H34 1987",
+  bibdate =      "Tue Dec 14 22:55:04 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  price =        "US\$38.95",
+  acknowledgement = ack-nhfb,
+}
+
+@InCollection{Heinz:1990,
+  author =       "Alois Heinz",
+  title =        "Including pictures in {\TeX}",
+  crossref =     "Clark:TAU90",
+  year =         "1990",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "General discussion of methods of graphics inclusion in
+                 {\TeX}.",
+  acknowledgement = ack-spqr,
+}
+
+@TechReport{Hershey:1981:ACT,
+  author =       "Allen V. Hershey",
+  title =        "Advanced Computer Typography",
+  number =       "NPS012-81-005",
+  institution =  pub-USNPS,
+  address =      pub-USNPS:adr,
+  month =        dec,
+  year =         "1981",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@TechReport{Hershey:calligraphy,
+  author =       "Allen V. Hershey",
+  title =        "Calligraphy for Computers",
+  number =       "TR-2101",
+  institution =  pub-USNWL,
+  address =      pub-USNWL:adr,
+  month =        aug,
+  year =         "1967",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Hershey:computer-typography,
+  author =       "Allen V. Hershey",
+  title =        "A Computer System for Scientific Typography",
+  journal =      j-CGIP,
+  volume =       "1",
+  pages =        "373--385",
+  year =         "1972",
+  CODEN =        "CGIPBG",
+  ISSN =         "0146-664X",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@TechReport{Hershey:fortran-cartography,
+  author =       "Allen V. Hershey",
+  title =        "{FORTRAN IV} Programming for Cartography and
+                 Typography",
+  number =       "TR-2339",
+  institution =  pub-USNWL,
+  address =      pub-USNWL:adr,
+  month =        sep,
+  year =         "1969",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@TechReport{Hershey:fortran-typography,
+  author =       "Allen V. Hershey",
+  title =        "Preparation of Reports with the {FORTRAN} Typographic
+                 System",
+  number =       "TN-K\slash 27-70",
+  institution =  pub-USNWL,
+  address =      pub-USNWL:adr,
+  month =        sep,
+  year =         "1970",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@TechReport{Hobby:1983:CMF,
+  author =       "John Hobby and Gu Guoan",
+  title =        "A {Chinese Meta-Font}",
+  type =         "Report",
+  number =       "STAN-CS-83-974",
+  institution =  inst-STAN-CS,
+  address =      inst-STAN-CS:adr,
+  year =         "1983",
+  bibdate =      "Sat Feb 10 14:51:21 1996",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-hk,
+}
+
+@PhdThesis{Hobby:1986:DBT,
+  author =       "John Douglas Hobby",
+  title =        "Digitized Brush Trajectories",
+  type =         "{Ph.D.} dissertation",
+  school =       "Department of Computer Science, Stanford University",
+  address =      "Stanford, CA, USA",
+  pages =        "151",
+  month =        jun,
+  year =         "1986",
+  bibdate =      "Wed May 25 08:06:33 2005",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Also published as report STAN-CS-1070 (1985).",
+  URL =          "http://wwwlib.umi.com/dissertations/fullcit/8602484",
+  abstract =     "We consider the problem of finding a discrete set of
+                 pixels that approximates the envelope of a convex brush
+                 shape with respect to a given trajectory. Let the
+                 digitization of a planar region be the set of pixels
+                 whose centers lie inside of it. We develop mathematical
+                 models for the width of digitized brush strokes, and we
+                 give a class of polygonal brush shapes such that the
+                 width of their envelope with respect to a given
+                 trajectory is accurately reflected by the digitization
+                 of the envelope. Polygonal brush shapes also have the
+                 advantage that it is usually much easier to compute the
+                 digitization of the envelope with respect to a given
+                 trajectory. We present fast algorithms for
+                 approximating a given brush shape with an appropriate
+                 polygon so that the digitization of the envelope of the
+                 modified brush will have more accurate and uniform
+                 width than the digitization of the exact envelope
+                 would. We also present an algorithm for finding a set
+                 of pixels that represents the envelope of a dynamically
+                 changing brush while preserving accurate and uniform
+                 stroke width. This algorithm finds a polygonal path
+                 with simple rational slopes that is digitally
+                 equivalent to the given trajectory. Other possible
+                 applications of this polygonal representation include
+                 smoothing digitized curves, data compression, and curve
+                 fitting.",
+  acknowledgement = ack-nhfb,
+}
+
+@InProceedings{Hobby:1992:IM,
+  author =       "John D. Hobby",
+  title =        "Introduction to {\MP}",
+  crossref =     "Zlatuska:1992:EPE",
+  pages =        "21--36",
+  year =         "1992",
+  bibdate =      "Thu Sep 2 12:27:38 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Invited talk.",
+  acknowledgement = ack-nhfb,
+}
+
+@Manual{Hobby:1995:DGM,
+  author =       "John D. Hobby",
+  title =        "Drawing Graphs with {\MP}",
+  organization = "AT\&T Bell Laboratories",
+  address =      "Murray Hill, NJ, USA",
+  pages =        "18",
+  year =         "1995",
+  bibdate =      "Tue Jul 12 11:58:06 2005",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  URL =          "http://ctan.tug.org/tex-archive/macros/latex/contrib/pdfslide/mpgraph.pdf",
+  acknowledgement = ack-nhfb,
+}
+
+@Manual{Hobby:1997:MS,
+  author =       "John D. Hobby",
+  title =        "The {\MP} System",
+  organization = "????",
+  address =      "????",
+  pages =        "20",
+  day =          "30",
+  month =        dec,
+  year =         "1997",
+  bibdate =      "Tue Jul 12 11:38:32 2005",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  URL =          "file:///texlive-2004-11/texmf-dist/doc/metapost/base/mpintro.pdf",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Hobby:2001:MDS,
+  author =       "John D. Hobby",
+  title =        "{\MP} le dessin sous {\TeX}: manuels de l'utilisateur
+                 pour {\MF} et graph",
+  journal =      j-GUTENBERG,
+  volume =       "41",
+  number =       "??",
+  pages =        "175",
+  year =         "2001",
+  ISSN =         "1140-9304",
+  bibdate =      "Tue Jul 12 10:54:03 2005",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "French translation by Pierre Fournier et Jean-C{\^o}me
+                 Charpentier.",
+  acknowledgement = ack-nhfb,
+}
+
+@Manual{Hobby:2004:UMM,
+  author =       "John D. Hobby",
+  title =        "A User's Manual for {{\MP}}",
+  organization = "????",
+  address =      "????",
+  pages =        "i + 85",
+  year =         "2004",
+  bibdate =      "Tue Jul 12 11:48:44 2005",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  URL =          "file:///texlive-2004-11/texmf-dist/doc/metapost/base/mpman.pdf",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Hoenig:TB12-1-125-128,
+  author =       "Alan Hoenig",
+  title =        "Labelling figures in {\TeX} documents",
+  journal =      j-TUGboat,
+  volume =       "12",
+  number =       "1",
+  pages =        "125--128",
+  year =         "1990",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "Problems of combining figures drawn using {\MF} with
+                 labels typeset by {\TeX}.",
+  acknowledgement = ack-spqr,
+}
+
+@Book{Hoenig:1998:TUL,
+  author =       "Alan Hoenig",
+  title =        "{\TeX} Unbound: {\LaTeX} and {\TeX} Strategies for
+                 Fonts, Graphics, \& More",
+  publisher =    pub-OXFORD,
+  address =      pub-OXFORD:adr,
+  pages =        "ix + 580",
+  year =         "1998",
+  ISBN =         "0-19-509686-X (paperback), 0-19-509685-1 (hardcover)",
+  ISBN-13 =      "978-0-19-509686-6 (paperback), 978-0-19-509685-9
+                 (hardcover)",
+  LCCN =         "Z253.4.L38H64 1997",
+  bibdate =      "Wed Apr 29 14:32:29 1998",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  price =        "US\$60.00 (hardcover), US\$35.00 (paperback)",
+  URL =          "http://www.oup-usa.org/gcdocs/gc_0195096851.html",
+  acknowledgement = ack-nhfb,
+  keywords =     "Computer fonts; Computer graphics; Computerized
+                 typesetting; Mathematics printing -- Computer programs;
+                 METAFONT; Technical publishing -- Computer programs;
+                 {\LaTeX} (Computer file); {\TeX} (Computer file)",
+}
+
+@Book{Holzgang:UPP87,
+  author =       "David A. Holzgang",
+  title =        "Understanding {PostScript} Programming",
+  publisher =    pub-SYBEX,
+  address =      pub-SYBEX:adr,
+  pages =        "xxxii + 459",
+  year =         "1987",
+  ISBN =         "0-89588-396-1",
+  ISBN-13 =      "978-0-89588-396-4",
+  LCCN =         "QA76.73.P67 H65 1987",
+  bibdate =      "Sat Aug 27 11:13:54 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Hopgood:IGK83,
+  author =       "F. Robert A. Hopgood and Julian R. Gallop and David A.
+                 Duce and Dale C. Sutcliffe",
+  title =        "Introduction to the Graphical Kernel System ({GKS})",
+  publisher =    pub-AP,
+  address =      pub-AP:adr,
+  pages =        "xi + 200",
+  year =         "1983",
+  ISBN =         "0-12-355570-1",
+  ISBN-13 =      "978-0-12-355570-0",
+  LCCN =         "T385 .I57 1983",
+  bibdate =      "Wed Dec 15 10:30:59 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "{A. P. I. C.} Studies in Data Processing No. 19.",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Hopgood:IGK86,
+  author =       "F. Robert A. Hopgood and Julian R. Gallop and David A.
+                 Duce and Dale C. Sutcliffe",
+  title =        "Introduction to the Graphical Kernel System ({GKS})",
+  publisher =    pub-AP,
+  address =      pub-AP:adr,
+  edition =      "Second",
+  pages =        "xii + 250",
+  year =         "1986",
+  ISBN =         "0-12-355571-X (paperback)",
+  ISBN-13 =      "978-0-12-355571-7 (paperback)",
+  LCCN =         "T385 .I571 1986",
+  bibdate =      "Wed Dec 15 10:31:02 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Revised for the International Standard. {A. P. I. C.}
+                 Studies in Data Processing No. 28",
+  price =        "UK\pounds 12.50",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Jeffrey:TB12-2-227-229,
+  author =       "Alan Jeffrey",
+  title =        "Labelled diagrams in {\MF}",
+  journal =      j-TUGboat,
+  volume =       "12",
+  number =       "2",
+  pages =        "227--229",
+  year =         "1991",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Book{Jones:IXW89,
+  author =       "Oliver Jones",
+  title =        "Introduction to the {X Window System}",
+  publisher =    pub-PH,
+  address =      pub-PH:adr,
+  pages =        "xii + 511",
+  year =         "1989",
+  ISBN =         "0-13-499997-5",
+  ISBN-13 =      "978-0-13-499997-5",
+  LCCN =         "QA76.76.W56 J66 1989",
+  bibdate =      "Wed Dec 15 10:35:42 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Kahrs:ditroff,
+  author =       "Mark Kahrs and Lee Moore",
+  title =        "Adventures with Type\-set\-ter-In\-de\-pen\-dent
+                 {TROFF}",
+  journal =      j-USENIX-SCP,
+  pages =        "258--269",
+  month =        jun # " 12--15",
+  year =         "1984",
+  ISSN =         "1049-5606",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@InProceedings{Kamin:1997:SPL,
+  author =       "Samuel N. Kamin and David Hyatt",
+  title =        "A Special-Purpose Language for Picture-Drawing",
+  crossref =     "USENIX:1997:PCD",
+  pages =        "297--310",
+  year =         "1997",
+  bibdate =      "Mon Feb 03 15:29:55 2003",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "This paper describes FPIC, an implementation in ML of
+                 a programmable extension to a PIC-like
+                 \cite{Kernighan:pic} language. The authors raise
+                 interesting points about the difficulty of doing this
+                 correctly in ML, and conclude that a more powerful base
+                 language (e.g., Haskell) might be more suitable. FPIC
+                 includes support for both PostScript and \LaTeX{}
+                 output.",
+  URL =          "http://www.usenix.org/publications/library/proceedings/dsl97/full_papers/kamin/kamin_html/kamin.html",
+  acknowledgement = ack-nhfb,
+}
+
+@Unpublished{Karney:1988,
+  author =       "Charles Karney",
+  title =        "Getting {\TeX} labelling on graphics",
+  year =         "1988",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Electronic mail to {\TEXHAX}, 24 May 1989.",
+  abstract =     "Suggestion of a scheme whereby the author nominates
+                 captions for tagged points on a graph, passes these
+                 through {\TeX} as \verb|\special|s and then has the
+                 {\DVI} driver integrate these typeset captions back
+                 into the graph being printed. This scheme has not yet
+                 been implemented.",
+  acknowledgement = ack-spqr,
+}
+
+@Book{Karow:DFT87,
+  author =       "Peter Karow",
+  title =        "Digital Formats for Typefaces",
+  publisher =    pub-URW,
+  address =      pub-URW:adr,
+  pages =        "400",
+  year =         "1987",
+  ISBN =         "3-926515-01-5",
+  ISBN-13 =      "978-3-926515-01-8",
+  LCCN =         "Z253.3 .K371 1987",
+  bibdate =      "Wed Dec 15 10:35:50 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@TechReport{Kernighan:ditroff,
+  author =       "Brian W. Kernighan",
+  title =        "A Typesetter-independent {TROFF}",
+  number =       "Computer Science Report 91",
+  institution =  pub-ATT-BELL,
+  address =      pub-ATT-BELL:adr,
+  year =         "1981",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Kernighan:pic,
+  author =       "Brian W. Kernighan",
+  title =        "{PIC}\emdash {A} language for typesetting graphics",
+  journal =      j-SPE,
+  volume =       "12",
+  number =       "1",
+  pages =        "1--22",
+  month =        jan,
+  year =         "1982",
+  CODEN =        "SPEXBL",
+  ISSN =         "0038-0644 (print), 1097-024X (electronic)",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Kneser:TB12-1-28-30,
+  author =       "Thomas Kneser",
+  title =        "{\LaTeX}-paragraphs floating around figures",
+  journal =      j-TUGboat,
+  volume =       "12",
+  number =       "1",
+  pages =        "28--30",
+  year =         "1991",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "Macros to allow `in-text' figures on the edge of
+                 paragraphs.",
+  acknowledgement = ack-spqr,
+}
+
+@Book{Knuth:1984:TB,
+  author =       "Donald E. Knuth",
+  title =        "The {\TeX}book",
+  volume =       "{\noopsort{1984a}}A",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "ix + 483",
+  year =         "1984",
+  ISBN =         "0-201-13447-0 (hardcover), 0-201-13448-9 (paperback)",
+  ISBN-13 =      "978-0-201-13447-6 (hardcover), 978-0-201-13448-3
+                 (paperback)",
+  LCCN =         "Z253.4.T47 K58 1986",
+  bibdate =      "Wed Dec 15 10:36:52 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/datacompression.bib;
+                 http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/typeset.bib",
+  note =         "Second printing, revised, October 1984. Sixth
+                 printing, revised, January 1986; also published as {\sl
+                 Computers \& Typesetting}, Vol.~A. Twenty-fourth
+                 printing, summer 1993, contains final revisions.
+                 Twenty-first printing, June 1992.",
+  price =        "US\$15.95 (paperback), US\$32.95 (hardcover)",
+  series =       "Computers and Typesetting",
+  acknowledgement = ack-nhfb,
+  keywords =     "computerized typesetting; documentation; languages;
+                 mathematics printing -- computer programs; TeX
+                 (computer file)",
+  remark =       "See translations
+                 \cite{Knuth:1989:TBK,Knuth:1993:VT}.",
+  subject =      "TeX (Computer file); TeX (Logiciel); TeX (Computer
+                 file); Computerized typesetting; Mathematics printing;
+                 Computer programs; Imprimerie; Composition automatique;
+                 Math{\'e}matiques; Impression; Logiciels;
+                 Math{\'e}matiques; Imprimerie; Computerized
+                 typesetting; Computer programs; TeX (logiciel); TeX;
+                 I.7.2 Computing Methodologies, TEXT PROCESSING,
+                 Document Preparation \\ J.7 Computer Applications,
+                 COMPUTERS IN OTHER SYSTEMS, Publishing \\ I.7.1
+                 Computing Methodologies, TEXT PROCESSING, Text
+                 Editing",
+  tableofcontents = "1: The Name of the Game / 1 \\
+                 2: Book Printing versus Ordinary Typing / 3 \\
+                 3: Controlling \TeX{} / 7 \\
+                 4: Fonts of Type / 13 \\
+                 5: Grouping / 19 \\
+                 6: Running \TeX{} / 23 \\
+                 7: How \TeX{} Reads What You Type / 37 \\
+                 8: The Characters You Type / 43 \\
+                 9: \TeX{}'s Roman Fonts / 51 \\
+                 10: Dimensions / 57 \\
+                 11: Boxes / 63 \\
+                 12: Glue / 69 \\
+                 13: Modes / 85 \\
+                 14: How \TeX{} Breaks Paragraphs into Lines / 91 \\
+                 15: How \TeX{} Makes Lines into Pages / 109 \\
+                 16: Typing Math Formulas / 127 \\
+                 17: More about Math / 139 \\
+                 18: Fine Points of Mathematics Typing / 161 \\
+                 19: Displayed Equations / 185 \\
+                 20: Definitions (also called Macros) / 199 \\
+                 21: Making Boxes / 221 \\
+                 22: Alignment / 231 \\
+                 23: Output Routines / 251 \\
+                 24: Summary of Vertical Mode / 267 \\
+                 25: Summary of Horizontal Mode / 285 \\
+                 26: Summary of Math Mode / 289 \\
+                 27: Recovery from Errors / 295 \\
+                 Appendices \\
+                 A: Answers to All the Exercises / 305 \\
+                 B: Basic Control Sequences / 339 \\
+                 C: Character Codes / 367 \\
+                 D: Dirty Tricks / 373 \\
+                 E: Example Formats / 403 \\
+                 F: Font Tables / 427 \\
+                 G: Generating Boxes from Formulas / 441 \\
+                 H: Hyphenation / 449 \\
+                 I: Index / 457 \\
+                 J: Joining the \TeX{} Community / 483",
+}
+
+@Book{Knuth:ct-b,
+  author =       "Donald E. Knuth",
+  title =        "{\TeX}: The Program",
+  volume =       "B",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "xv + 594",
+  year =         "{\noopsort{1986b}}1986",
+  ISBN =         "0-201-13437-3",
+  ISBN-13 =      "978-0-201-13437-7",
+  LCCN =         "Z253.4.T47 K578 1986",
+  bibdate =      "Wed Dec 15 10:36:54 1993",
+  bibsource =    "http://www.math.utah.edu/pub/bibnet/subjects/acc-stab-num-alg.bib;
+                 http://www.math.utah.edu/pub/tex/bib/datacompression.bib;
+                 http://www.math.utah.edu/pub/tex/bib/litprog.bib;
+                 http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/typeset.bib",
+  series =       "Computers and Typesetting",
+  acknowledgement = ack-nhfb,
+  tableofcontents = "1 Introduction / \S 1 \\
+                 2 The character set / \S 17 \\
+                 3 Input and output / \S 25 \\
+                 4 String handling / \S 38 \\
+                 5 On-line and off-line printing / \S 54 \\
+                 6 Reporting errors / \S 72 \\
+                 7 Arithmetic with scaled dimensions / \S 99 \\
+                 8 Packed data / \S 110 \\
+                 9 Dynamic memory allocation / \S 115 \\
+                 10 Data structures for boxes and their friends / \S 133
+                 \\
+                 11 Memory layout / \S 162 \\
+                 12 Displaying boxes / \S 173 \\
+                 13 Destroying boxes / \S 199 \\
+                 14 Copying boxes / \S 203 \\
+                 15 The command codes / \S 207 \\
+                 16 The semantic nest / \S 211 \\
+                 17 The table of equivalents / \S 220 \\
+                 18 The hash table / \S 256 \\
+                 19 Saving and restoring equivalents / \S 268 \\
+                 20 Token lists / \S 289 \\
+                 21 Introduction to the syntactic routines / \S 297 \\
+                 22 Input stacks and states / \S 300 \\
+                 23 Maintaining the input stacks / \S 321 \\
+                 24 Getting the next token / \S 332 \\
+                 25 Expanding the next token / \S 366 \\
+                 26 Basic scanning subroutines / \S 402 \\
+                 27 Building token lists / \S 464 \\
+                 28 Conditional processing / \S 487 \\
+                 29 File names / \S 511 \\
+                 30 Font metric data / \S 539 \\
+                 31 Device-independent file format / \S 583 \\
+                 32 Shipping pages out / \S 592 \\
+                 33 Packaging / \S 644 \\
+                 34 Data structures for math mode / \S 680 \\
+                 35 Subroutines for math mode / \S 699 \\
+                 36 Typesetting math formulas / \S 719 \\
+                 37 Alignment / \S 768 \\
+                 38 Breaking paragraphs into lines / \S 813 \\
+                 39 Breaking paragraphs into lines, continued / \S 862
+                 \\
+                 40 Pre-hyphenation / \S 891 \\
+                 41 Post-hyphenation / \S 900 \\
+                 42 Hyphenation / \S 919 \\
+                 43 Initializing the hyphenation tables / \S 942 \\
+                 44 Breaking vertical lists into pages / \S 967 \\
+                 45 The page builder / \S 980 \\
+                 46 The chief executive / \S 1029 \\
+                 47 Building boxes and lists / \S 1055 \\
+                 48 Building math lists / \S 1136 \\
+                 49 Mode-independent processing / \S 1208 \\
+                 50 Dumping and undumping the tables / \S 1299 \\
+                 51 The main program / \S 1330 \\
+                 52 Debugging / \S 1338 \\
+                 53 Extensions / \S 1340 \\
+                 54 System-dependent changes / \S 1376 \\
+                 55 Index / \S 1377",
+}
+
+@Book{Knuth:ct-c,
+  author =       "Donald E. Knuth",
+  title =        "The {\METAFONT}book",
+  volume =       "C",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "xi + 361",
+  year =         "{\noopsort{1986c}}1986",
+  ISBN =         "0-201-13445-4 (hardcover), 0-201-13444-6 (paperback)",
+  ISBN-13 =      "978-0-201-13445-2 (hardcover), 978-0-201-13444-5
+                 (paperback)",
+  LCCN =         "Z250.8.M46 K58 1986",
+  bibdate =      "Wed Dec 15 10:37:29 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/datacompression.bib;
+                 http://www.math.utah.edu/pub/tex/bib/font.bib;
+                 http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/typeset.bib",
+  series =       "Computers and Typesetting",
+  acknowledgement = ack-nhfb,
+  tableofcontents = "1 The Name of the Game / 1 \\
+                 2 Coordinates / 5 \\
+                 3 Curves / 13 \\
+                 4 Pens / 21 \\
+                 5 Running \METAFONT{} / 31 \\
+                 6 How \METAFONT{} Reads What You Type / 49 \\
+                 7 Variables / 53 \\
+                 8 Algebraic Expressions / 59 \\
+                 9 Equations / 75 \\
+                 10 Assignments / 87 \\
+                 11 Magnification and Resolution / 91 \\
+                 12 Boxes / 101 \\
+                 13 Drawing, Filling, and Erasing / 109 \\
+                 14 Paths / 123 \\
+                 15 Transformations / 141 \\
+                 16 Calligraphic Effects / 147 \\
+                 17 Grouping / 155 \\
+                 18 Definitions ( also called Macros) / 159 \\
+                 19 Conditions and Loops / 169 \\
+                 20 More about Macros / 175 \\
+                 21 Random Numbers / 183 \\
+                 22 Strings / 187 \\
+                 23 Online Displays / 191 \\
+                 24 Discreteness and Discretion / 195 \\
+                 25 Summary of Expressions / 209 \\
+                 26 Summary of the Language / 217 \\
+                 27 Recovering from Errors / 223 \\
+                 Appendices \\
+                 A Answers to All the Exercises / 233 \\
+                 B Basic Operations / 257 \\
+                 C Character Codes / 281 \\
+                 D Dirty Tricks / 285 \\
+                 E Examples / 301 \\
+                 F Font Metric Information / 315 \\
+                 G Generic Font Files / 323 \\
+                 H Hardcopy Proofs / 327 \\
+                 I Index / 345 \\
+                 J Joining the \TeX{} Community / 361",
+}
+
+@Book{Knuth:ct-d,
+  author =       "Donald E. Knuth",
+  title =        "{\METAFONT}: The Program",
+  volume =       "D",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "xv + 560",
+  year =         "{\noopsort{1986d}}1986",
+  ISBN =         "0-201-13438-1",
+  ISBN-13 =      "978-0-201-13438-4",
+  LCCN =         "Z250.8.M46 K578 1986",
+  bibdate =      "Wed Dec 15 10:37:32 1993",
+  bibsource =    "http://www.math.utah.edu/pub/bibnet/subjects/acc-stab-num-alg.bib;
+                 http://www.math.utah.edu/pub/tex/bib/datacompression.bib;
+                 http://www.math.utah.edu/pub/tex/bib/font.bib;
+                 http://www.math.utah.edu/pub/tex/bib/litprog.bib;
+                 http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/typeset.bib",
+  series =       "Computers and Typesetting",
+  acknowledgement = ack-nhfb,
+  tableofcontents = "1 Introduction / \S 1 \\
+                 2 The character set / \S 17 \\
+                 3 Input and output / \S 24 \\
+                 4 String handling / \S 37 \\
+                 5 On-line and off-line printing / \S 54 \\
+                 6 Reporting errors / \S 67 \\
+                 7 Arithmetic with scaled numbers / \S 95 \\
+                 8 Algebraic and transcendental functions / \S 120 \\
+                 9 Packed data / \S 153 \\
+                 10 Dynamic memory allocation / \S 158 \\
+                 11 Memory layout / \S 175 \\
+                 12 The command codes / \S 186 \\
+                 13 The hash table / \S 200 \\
+                 14 Token lists / \S 214 \\
+                 15 Data structures for variables / \S 228 \\
+                 16 Saving and restoring equivalents / \S 250 \\
+                 17 Data structures for paths / \S 255 \\
+                 18 Choosing control points / \S 269 \\
+                 19 Generating discrete moves / \S 303 \\
+                 20 Edge structures / \S 323 \\
+                 21 Subdivision into octants / \S 386 \\
+                 22 Filling a contour / \S 460 \\
+                 23 Polygonal pens / \S 469 \\
+                 24 Filling an envelope / \S 490 \\
+                 25 Elliptical pens / \S 524 \\
+                 26 Direction and intersection times / \S 538 \\
+                 27 Online graphic output / \S 564 \\
+                 28 Dynamic linear equations / \S 585 \\
+                 29 Dynamic nonlinear equations / \S 618 \\
+                 30 Introduction to the syntactic routines / \S 624 \\
+                 31 Input stacks and states / \S 627 \\
+                 32 Maintaining the input stacks / \S 647 \\
+                 33 Getting the next token / \S 658 \\
+                 34 Scanning macro definitions / \S 683 \\
+                 35 Expanding the next token / \S 706 \\
+                 36 Conditional processing / \S 738 \\
+                 37 Iterations / \S 752 \\
+                 38 File names / \S 766 \\
+                 39 Introduction to the parsing routines / \S 796 \\
+                 40 Parsing primary expressions / \S 823 \\
+                 41 Parsing secondary and higher expressions / \S 862
+                 \\
+                 42 Doing the operations / \S 893 \\
+                 43 Statements and commands / \S 989 \\
+                 44 Commands / \S 1020 \\
+                 45 Font metric data / \S 1087 \\
+                 46 Generic font file format / \S 1142 \\
+                 47 Shipping characters out / \S 1149 \\
+                 48 Dumping and undumping the tables / \S 1183 \\
+                 49 The main program / \S 1202 \\
+                 50 Debugging / \S 1212 \\
+                 51 System-dependent changes / \S 1214 \\
+                 52 Index / \S 1215",
+}
+
+@Book{Knuth:ct-e,
+  author =       "Donald E. Knuth",
+  title =        "{Computer Modern} Typefaces",
+  volume =       "E",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "xv + 588",
+  year =         "{\noopsort{1986e}}1986",
+  ISBN =         "0-201-13446-2",
+  ISBN-13 =      "978-0-201-13446-9",
+  LCCN =         "Z250.8.M46 K574 1986",
+  bibdate =      "Wed Dec 15 10:37:33 1993",
+  bibsource =    "http://www.math.utah.edu/pub/bibnet/subjects/acc-stab-num-alg.bib;
+                 http://www.math.utah.edu/pub/tex/bib/datacompression.bib;
+                 http://www.math.utah.edu/pub/tex/bib/font.bib;
+                 http://www.math.utah.edu/pub/tex/bib/litprog.bib;
+                 http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/typeset.bib",
+  series =       "Computers and Typesetting",
+  acknowledgement = ack-nhfb,
+  remark =       "Reprinted with corrections July, 1987.",
+  tableofcontents = "Introduction to the Parameters / 1 \\
+                 Organization of the Files / 8 \\
+                 Parameter Files / 10 \\
+                 Driver Files / 36 \\
+                 {\tt roman}: Roman text and typewriter text / 36 \\
+                 {\tt title}: Caps and digits only / 38 \\
+                 {\tt texset} : Extended ASCII character set / 38 \\
+                 {\tt csc}: Caps and small caps / 40 \\
+                 {\tt textit}: Italic text and typewriter text / 41 \\
+                 {\tt mathit}: Math italic / 42 \\
+                 {\tt mathsy}: Math symbols / 44 \\
+                 {\tt mathex}: Math extension characters / 44 \\
+                 Program Files / 46 \\
+                 {\tt accent}: Accents common to roman and italic / 49
+                 \\
+                 {\tt bigacc}: Wide accents for math extension font / 63
+                 \\
+                 {\tt bigdel}: Delimiters for math extension font / 66
+                 \\
+                 {\tt bigop}: Operators for math extension font / 103
+                 \\
+                 {\tt calu}: Calligraphic capitals / 123 \\
+                 {\tt comlig}: Ligatures common to roman and italic /
+                 141 \\
+                 {\tt cscspu}: Special uppercase for caps and small caps
+                 / 145 \\
+                 {\tt greekl}: Lowercase Greek / 147 \\
+                 {\tt greeku}: Upper case Greek / 171 \\
+                 {\tt itald}: Italic digits / 193 \\
+                 {\tt italig}: Italic f-ligatures / 199 \\
+                 {\tt itall}: Italic lowercase / 209 \\
+                 {\tt italms}: Italic math specials / 233 \\
+                 {\tt italp}: Italic punctuation / 239 \\
+                 {\tt italsp}: Special lowercase for italic / 245 \\
+                 {\tt olddig}: Oldstyle digits / 251 \\
+                 {\tt punct}: Punctuation common to roman and italic /
+                 265 \\
+                 {\tt romand}: Roman digits / 285 \\
+                 {\tt romanl}: Roman lowercase / 305 \\
+                 {\tt romanp}: Roman punctuation / 361 \\
+                 {\tt romanu}: Roman uppercase / 369 \\
+                 {\tt romlig}: Roman f-ligatures / 421 \\
+                 {\tt romms}: Roman math specials / 431 \\
+                 {\tt romspl}: Special lowercase for roman / 443 \\
+                 {\tt romspu}: Special uppercase for roman / 451 \\
+                 {\tt romsub}: Substitutes for ligatures / 457 \\
+                 {\tt sym}: Math symbols common to several fonts / 459
+                 \\
+                 {\tt symbol}: Math symbols in symbol font only / 483
+                 \\
+                 {\tt tset}: Extended ASCII symbols / 542 \\
+                 {\tt tsetsl}: Extended ASCII symbols to be slanted /
+                 543 \\
+                 The Base File / 545 \\
+                 Font Specimens / 554 \\
+                 General Index / 571 Index to Character Programs / 581",
+}
+
+@Article{Knuth:halftone,
+  author =       "Donald E. Knuth",
+  title =        "Digital Halftones by Dot Diffusion",
+  journal =      j-TOG,
+  volume =       "6",
+  number =       "4",
+  pages =        "245--273",
+  month =        oct,
+  year =         "1987",
+  CODEN =        "ATGRDF",
+  ISSN =         "0730-0301 (print), 1557-7368 (electronic)",
+  bibdate =      "Fri Aug 26 08:57:23 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Knuth:TB8-1-14,
+  author =       "Donald Knuth and Pierre MacKay",
+  title =        "{Mixing right-to-left texts with left-to-right
+                 texts}",
+  journal =      j-TUGboat,
+  volume =       "8",
+  number =       "1",
+  pages =        "14",
+  month =        apr,
+  year =         "1987",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Knuth:TB8-2-135,
+  author =       "Donald E. Knuth",
+  title =        "{Fonts for digital halftones}",
+  journal =      j-TUGboat,
+  volume =       "8",
+  number =       "2",
+  pages =        "135--160",
+  month =        jul,
+  year =         "1987",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@TechReport{Knuth:tex-errors,
+  author =       "Donald E. Knuth",
+  title =        "The Errors of {\TeX}",
+  number =       "{STAN-CS-88-1223}",
+  institution =  pub-STAN-CS,
+  address =      pub-STAN-CS:adr,
+  month =        sep,
+  year =         "1988",
+  bibdate =      "Mon Mar 14 23:27:07 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Knuth:1979:TMN,
+  author =       "Donald E. Knuth",
+  title =        "{\TeX} and {\METAFONT}: New Directions in
+                 Typesetting",
+  publisher =    pub-DP,
+  address =      pub-DP:adr,
+  pages =        "xi + 201 + 105",
+  year =         "1979",
+  ISBN =         "0-932376-02-9",
+  ISBN-13 =      "978-0-932376-02-2",
+  LCCN =         "Z253.3 .K58 1979",
+  bibdate =      "Wed Dec 15 10:37:42 1993",
+  bibsource =    "Graphics/imager/imager.books.bib;
+                 Graphics/siggraph/79.bib;
+                 http://www.math.utah.edu/pub/tex/bib/font.bib;
+                 http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/siggraph/new/79.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/typeset.bib",
+  acknowledgement = ack-nhfb,
+  keywords =     "Applications; character display/generation; character
+                 display/generation and Applications; general
+                 references; printing/publishing industry; programming
+                 systems; software; standards text books; standards text
+                 books and software",
+  remark =       "A landmark book at the time it was published. Newer
+                 versions exist. Less than portable as claimed, but
+                 still significant. Required reading for anyone doing
+                 font design and type setting.",
+  tableofcontents = "Part 1: Mathematical Typography \\
+                 Part 2: \TeX, a system for technical text \\
+                 Part 3: METAFONT, a system for alphabet design",
+}
+
+@Manual{Kotz:gnuplot,
+  author =       "David Kotz",
+  title =        "{GNUPLOT \LaTeX} Tutorial Version 2.0",
+  organization = "Computer Science Department, Duke University",
+  month =        feb,
+  year =         "1990",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "See also \cite{Williams:gnuplot}.",
+  acknowledgement = ack-nhfb,
+}
+
+@Unpublished{Kwok:1988,
+  author =       "Conrad Kwok",
+  title =        "{EEPIC}: Extensions to {\EPIC} and {\LaTeX} Picture
+                 environment",
+  year =         "1988",
+  bibdate =      "Mon Feb 10 07:34:44 1997",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Unpublished machine-readable document.",
+  abstract =     "Macros which re-implement some of {\EPIC} and {\LaTeX}
+                 picture with appropriate \verb|\special| commands from
+                 the {\TPIC} set.",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Laan:TB17-2-222,
+  author =       "Kees van der Laan",
+  title =        "{Turtle graphics and {\TeX}\Dash a child can do it}",
+  journal =      j-TUGboat,
+  volume =       "17",
+  number =       "2",
+  pages =        "222--228",
+  month =        jun,
+  year =         "1996",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Laan:TB17-3-269,
+  author =       "Kees van der Laan",
+  title =        "{{{Graphics and {\TeX}\Dash A reappraisal of
+                 {\MF}/MetaPost/{\PS}}}}",
+  journal =      j-TUGboat,
+  volume =       "17",
+  number =       "3",
+  pages =        "269--279",
+  month =        sep,
+  year =         "1996",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Book{Lamport:1986:LDP,
+  author =       "Leslie Lamport",
+  title =        "{\LaTeX}: a Document Preparation System: User's Guide
+                 and Reference Manual",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "xiv + 242",
+  year =         "1986",
+  ISBN =         "0-201-15790-X",
+  ISBN-13 =      "978-0-201-15790-1",
+  LCCN =         "Z253.4.L38 L35 1986",
+  bibdate =      "Wed Dec 15 10:38:04 1993",
+  bibsource =    "http://www.math.utah.edu/pub/bibnet/subjects/acc-stab-num-alg.bib;
+                 http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/typeset.bib",
+  abstract =     "LaTeX is a special version of Donald Knuth's TeX
+                 program for computer typesetting, a program
+                 particularly suitable for producing high-quality
+                 documents with mathematical text. LaTeX is a collection
+                 of high-level commands, called macros, which simplify
+                 the use of TeX and make the typesetting relatively
+                 easy.",
+  acknowledgement = ack-nhfb,
+  listoffigures = "5.1 Points and their coordinates / 102 \\
+                 5.2 \verb=\put(1.4,2.6){\line(3,-1){4.8}}= / 106 \\
+                 5.3 The format of a list / 113 \\
+                 C.1 Making footnotes without the \verb=\footnote=
+                 command / 156 \\
+                 C.2 Sectioning and table of contents commands / 158 \\
+                 C.3 An example title / 164 \\
+                 C.4 A \verb=tabbing= environment example / 180 \\
+                 C.5 An example of the \verb=tabular= environment / 182
+                 \\
+                 C.6 A sample \verb=picture= environment / 197",
+  listoftables = "3.1 Accents / 40 \\
+                 3.2 Foreign Symbols / 40 \\
+                 3.3 Greek Letters / 43 \\
+                 3.4 Binary Operation Symbols / 44 \\
+                 3.5 Relation Symbols / 44 \\
+                 3.6 Arrow Symbols / 45 \\
+                 3.7 Miscellaneous Symbols / 45 \\
+                 3.8 Variable-sized Symbols / 45 \\
+                 3.9 Log-like Functions / 46 \\
+                 3.10 Delimiters / 48 \\
+                 3.11 Math Mode Accents / 51",
+  review =       "ACM CR 9001-0030",
+  shorttableofcontents = "Preface / xiii \\
+                 1: Getting Acquainted / 1 \\
+                 2: Getting Started / 11 \\
+                 3: Carrying On / 37 \\
+                 4: Moving Information Around / 69 \\
+                 5: Designing It Yourself / 81 \\
+                 6: Errors / 117 \\
+                 A: \SLiTeX{} / 131 \\
+                 B: The Bibliography Database / 139 \\
+                 C: Reference Manual / 149 \\
+                 D: Using Plain \TeX{} Commands / 203 \\
+                 Bibliography / 207 \\
+                 Index / 209",
+  subject =      "I.7.2 Computing Methodologies, TEXT PROCESSING,
+                 Document Preparation, LaTeX \\ D.2.3 Software, SOFTWARE
+                 ENGINEERING, Coding, Pretty printers",
+  tableofcontents = "Preface / xiii \\
+                 1: Getting Acquainted / 1 \\
+                 1.1 How to Avoid Reading This Book / 2 \\
+                 1.2 How to Read This Book / 2 \\
+                 1.3 The Game of the Name / 4 \\
+                 1.4 Turning Typing into Typography / 5 \\
+                 1.5 Turning Ideas into Input / 8 \\
+                 1.6 Trying It Out / 8 \\
+                 2: Getting Started / 11 \\
+                 2.1 Preparing an Input File / 12 \\
+                 2.2 The Input / 13 \\
+                 2.2.1 Sentences and Paragraphs / 13 \\
+                 Quotation Marks / 13 \\
+                 Dashes / 14 \\
+                 Space After a Period / 14 \\
+                 Special Symbols / 15 \\
+                 Simple Text-Generating Commands / 15 \\
+                 Emphasizing Text / 16 \\
+                 Preventing Line Breaks / 18 \\
+                 Footnotes / 19 \\
+                 Formulas / 19 \\
+                 Ignorable Input / 20 \\
+                 2.2.2 The Document / 21 \\
+                 The Document Style / 21 \\
+                 The Title ``Page'' / 22 \\
+                 2.2.3 Sectioning / 22 \\
+                 2.2.4 Displayed Material / 24 \\
+                 Quotations / 26 \\
+                 Lists / 26 \\
+                 Poetry / 27 \\
+                 Displayed Formulas / 28 \\
+                 2.3 Running \LaTeX{} / 28 \\
+                 2.4 Helpful Hints / 32 \\
+                 2.5 Summary / 33 \\
+                 3: Carrying On / 37 \\
+                 3.1 Changing the Type Style / 38 \\
+                 3.2 Symbols from Other Languages / 39 \\
+                 3.2.1 Accents / 40 \\
+                 3.2.2 Symbols / 40 \\
+                 3.3 Mathematical Formulas / 41 \\
+                 3.3.1 Some Common Structures / 41 \\
+                 Subscripts and Superscripts / 41 \\
+                 Fractions / 41 \\
+                 Roots / 42 \\
+                 Ellipsis / 42 \\
+                 3.3.2 Mathematical Symbols / 42 \\
+                 Greek Letters / 43 \\
+                 Calligraphic Letters / 43 \\
+                 A Menagerie of Mathematical Symbols / 44 \\
+                 Log-like Functions / 46 \\
+                 3.3.3 Arrays / 47 \\
+                 The array Environment / 47 \\
+                 Vertical Alignment / 47 \\
+                 More Complex Arrays / 48 \\
+                 3.3.4 Delimiters / 48 \\
+                 3.3.5 Multiline Formulas / 49 \\
+                 3.3.6 Putting One Thing Above Another / 50 \\
+                 Over- and Underlining / 51 \\
+                 Accents / 51 \\
+                 Stacking Symbols / 52 \\
+                 3.3.7 Spacing in Math Mode / 52 \\
+                 3.3.8 Changing Style in Math Mode / 53 \\
+                 Type Style / 53 \\
+                 Math Style / 54 \\
+                 3.3.9 When All Else Fails / 54 \\
+                 3.4 Defining Commands and Environments / 54 \\
+                 3.4.1 Defining Commands / 55 \\
+                 3.4.2 Defining Environments / 57 \\
+                 3.4.3 Theorems and Such / 58 \\
+                 3.5 Figures and Other Floating Bodies / 59 \\
+                 3.5.1 Figures and Tables / 59 \\
+                 3.5.2 Marginal Notes / 61 \\
+                 3.6 Lining It Up in Columns / 62 \\
+                 3.6.1 The tabbing Environment / 62 \\
+                 3.6.2 The tabular Environment / 63 \\
+                 3.7 Simulating Typed Text / 65 \\
+                 3.8 Letters / 66 \\
+                 4: Moving Information Around / 69 \\
+                 4.1 The Table of Contents / 70 \\
+                 4.2 Cross-References / 71 \\
+                 4.3 Bibliography and Citation / 72 \\
+                 4.3.1 Doing It Yourself / 73 \\
+                 4.3.2 Using \BibTeX{} / 74 \\
+                 4.4 Splitting Your Input / 75 \\
+                 4.5 Making an Index or Glossary / 77 \\
+                 4.5.1 Producing an Index or Glossary / 77 \\
+                 4.5.2 Compiling the Entries / 78 \\
+                 4.6 Keyboard Input and Screen Output / 79 \\
+                 5: Designing It Yourself / 81 \\
+                 5.1 Document and Page Styles / 82 \\
+                 5.1.1 Document Styles / 82 \\
+                 5.1.2 Page Styles / 83 \\
+                 5.1.3 The Title Page and Abstract / 84 \\
+                 5.1.4 Customizing the Document Style / 85 \\
+                 5.2 Line and Page Breaking / 87 \\
+                 5.2.1 Line Breaking / 87 \\
+                 5.2.2 Page Breaking / 90 \\
+                 5.3 Numbering / 91 \\
+                 5.4 Length, Spaces, and Boxes / 93 \\
+                 5.4.1 Length / 93 \\
+                 5.4.2 Spaces / 95 \\
+                 5.4.3 Boxes / 96 \\
+                 LR Boxes / 97 \\
+                 Parboxes / 98 \\
+                 Rule Boxes / 100 \\
+                 Raising and Lowering Boxes / 100 \\
+                 Saving Boxes / 101 \\
+                 5.5 Pictures / 101 \\
+                 5.5.1 The picture Environment / 102 \\
+                 5.5.2 Picture Objects / 103 \\
+                 Text / 104 \\
+                 Boxes / 104 \\
+                 Straight Lines / 105 \\
+                 Arrows / 106 \\
+                 Stacks / 107 \\
+                 Circles / 107 \\
+                 Ovals and Rounded Corners / 108 \\
+                 Framing / 108 \\
+                 5.5.3 Reusing Objects / 109 \\
+                 5.5.4 Repeated Patterns / 109 \\
+                 5.5.5 Some Hints on Drawing Pictures / 110 \\
+                 5.6 Centering and ``Flushing'' / 111 \\
+                 5.7 List-Making Environments / 112 \\
+                 5.7.1 The {\tt list} Environment / 112 \\
+                 5.7.2 The {\tt trivlist} Environment / 115 \\
+                 5.8 Fonts / 115 \\
+                 5.8.1 Changing Type Size / 115 \\
+                 5.8.2 Loading Fonts / 116 \\
+                 6: Errors / 117 \\
+                 6.1 Finding the Error / 118 \\
+                 6.2 \LaTeX's Error Messages / 120 \\
+                 6.3 \TeX's Error Messages / 123 \\
+                 6.4 \LaTeX{} Warnings / 128 \\
+                 6.5 \TeX{} Warnings / 129 \\
+                 A: \SLiTeX{} / 131 \\
+                 A.l How \SLiTeX{} makes Colors / 132 \\
+                 A.2 The Root File / 133 \\
+                 A.3 The Slide File / 134 \\
+                 A.3.1 Slides / 134 \\
+                 A.3.2 Overlays / 136 \\
+                 A.3.3 Notes / 137 \\
+                 A.3.4 Page Styles for Slides / 137 \\
+                 A.4 Making Only Some Slides / 138 \\
+                 B: The Bibliography Database / 139 \\
+                 B.1 The Format of the {\tt bib} File / 140 \\
+                 B.1.1 The Entry Format / 140 \\
+                 B.1.2 The Text of a Field / 141 \\
+                 Names / 141 \\
+                 Titles / 142 \\
+                 B.1.3 Abbreviations / 143 \\
+                 B.2 The Entries / 144 \\
+                 B.2.1 Entry Types / 144 \\
+                 B.2.2 Fields / 146 \\
+                 C: Reference Manual / 149 \\
+                 C.1 Commands and Environments / 150 \\
+                 C.1.1 Command Names and Arguments / 150 \\
+                 C.1.2 Environments / 151 \\
+                 C.1.3 Fragile Commands / 151 \\
+                 C.1.4 Declarations / 152 \\
+                 C.1.5 Invisible Commands and Environments / 152 \\
+                 C.1.6 The {\tt \backslash\backslash} command / 153 \\
+                 C.2 Sentences and Paragraphs / 154 \\
+                 C.2.1 Making Sentences / 154 \\
+                 C.2.2 Making Paragraphs / 154 \\
+                 C.2.3 Footnotes / 156 \\
+                 C.2.4 Accents and Special Symbols / 157 \\
+                 C.3 Sectioning and Table of Contents / 157 \\
+                 C.3.1 Sectioning Commands / 157 \\
+                 C.3.2 The Appendix / 158 \\
+                 C.3.3 Table of Contents / 158 \\
+                 C.3.4 Style Parameters / 159 \\
+                 C.4 Document and Page Styles / 160 \\
+                 C.4.1 Document Styles / 160 \\
+                 C.4.2 Page Styles / 161 \\
+                 C.4.3 The Title Page and Abstract / 163 \\
+                 C.5 Displayed Paragraphs / 165 \\
+                 C.5.1 Quotations and Verse / 165 \\
+                 C.5.2 List-Making Environments / 165 \\
+                 C.5.3 The {\tt list} and {\tt trivlist} Environments /
+                 166 \\
+                 C.5.4 Verbatim / 168 \\
+                 C.6 Mathematical Formulas / 169 \\
+                 C.6.1 Math Mode Environments / 169 \\
+                 C.6.2 Common Structures / 170 \\
+                 C.6.3 Mathematical Symbols / 171 \\
+                 C.6.4 Arrays / 171 \\
+                 C.6.5 Delimiters / 171 \\
+                 C.6.6 Putting One Thing Above Another / 171 \\
+                 C.6. 7 Spacing / 172 \\
+                 C.6.8 Changing Style / 172 \\
+                 C. 7 Definitions / 173 \\
+                 C.7.1 Defining Commands / 173 \\
+                 C. 7.2 Defining Environments / 173 \\
+                 C.7.3 Theorem-like Environments / 174 \\
+                 C.7.4 Numbering / 174 \\
+                 C.8 Figures and Other Floating Bodies / 176 \\
+                 C.8.1 Figures and Tables / 176 \\
+                 C.8.2 Marginal Notes / 178 \\
+                 C.9 Lining It Up in Columns / 179 \\
+                 C.9.1 The tabbing Environment / 179 \\
+                 C.9.2 The array and tabular Environments / 182 \\
+                 C.10 Moving Information Around / 185 \\
+                 C.10.1 Files / 185 \\
+                 C.10.2 Cross-References / 186 \\
+                 C.10.3 Bibliography and Citation / 187 \\
+                 C.10.4 Splitting the Input / 188 \\
+                 C.10.5 Index and Glossary / 189 \\
+                 Producing an Index / 189 \\
+                 Compiling the Entries / 189 \\
+                 C.10.6 Terminal Input and Output / 189 \\
+                 C.11 Line and Page Breaking / 190 \\
+                 C.11.1 Line Breaking / 190 \\
+                 C.11.2 Page Breaking / 191 \\
+                 C.12 Lengths, Spaces, and Boxes / 192 \\
+                 C.12.1 Length / 192 \\
+                 C.12 2 Space / 193 \\
+                 C.12.3 Boxes / 194 \\
+                 C.13 The picture Environment / 196 \\
+                 C.13.1 Picture-Mode Commands / 196 \\
+                 C.13.2 Picture Objects / 197 \\
+                 C.13.3 Picture Declarations / 199 \\
+                 C.14 Font Selection / 199 \\
+                 C.14.1 Changing the Type Style / 199 \\
+                 C.14.2 Changing the Type Size / 200 \\
+                 C.14.3 Loading Fonts / 200 \\
+                 C.14.4 Fonts in Math Mode / 200 \\
+                 D: Using Plain \TeX{} Commands / 203 \\
+                 Bibliography / 207 \\
+                 Index / 209",
+}
+
+@Book{Lamport:1994:LDP,
+  author =       "Leslie Lamport",
+  title =        "{\LaTeX}: a Document Preparation System: User's Guide
+                 and Reference Manual",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  edition =      "Second",
+  pages =        "xvi + 272",
+  year =         "1994",
+  ISBN =         "0-201-52983-1",
+  ISBN-13 =      "978-0-201-52983-8",
+  LCCN =         "Z253.4.L38L35 1994",
+  bibdate =      "Wed Aug 10 09:55:59 1994",
+  bibsource =    "http://www.math.utah.edu/pub/bibnet/subjects/acc-stab-num-alg.bib;
+                 http://www.math.utah.edu/pub/bibnet/subjects/han-wri-mat-sci-2ed.bib;
+                 http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/typeset.bib",
+  abstract =     "\LaTeX{} is a software system for typesetting
+                 documents. Because it is especially good for technical
+                 documents and is available for almost any computer
+                 system, \LaTeX{} has become a lingua franca of the
+                 scientific world. Researchers, educators, and students
+                 in universities, as well as scientists in industry, use
+                 \LaTeX{} to produce professionally formatted papers,
+                 proposals, and books. They also use \LaTeX{} input to
+                 communicate information electronically to their
+                 colleagues around the world. With the release of
+                 \LaTeX{} $ 2_\epsilon $, the new standard version,
+                 \LaTeX{} has become even more powerful. Among its new
+                 features are an improved method for handling different
+                 styles of type, and commands for including graphics and
+                 producing colors. \LaTeX{} $ 2_\epsilon $ makes
+                 available to all \LaTeX{} users valuable enhancements
+                 to the software that have been developed over the years
+                 by users in many different places to satisfy a variety
+                 of needs. This book, written by the original architect
+                 and implementer of \LaTeX{} is both the user's guide
+                 and the reference manual for the software. It has been
+                 updated to reflect the changes in the new release. The
+                 book begins with instructions for formatting simpler
+                 text, and progressively describes commands and
+                 techniques for handling larger and more complicated
+                 documents. A separate chapter explains how to deal with
+                 errors. An added appendix describes what is new and
+                 different in \LaTeX{} $ 2_\epsilon $. Other additions
+                 to the second edition include descriptions of new
+                 commands for inserting pictures prepared with other
+                 programs and for producing colored output; new sections
+                 on how to make books and slides; instructions for
+                 making an index with the MakeIndex program, and an
+                 updated guide to preparing a bibliography with the
+                 BibTeX program; plus a section on how to send your
+                 \LaTeX{} documents electronically. Users new to
+                 \LaTeX{} will find here a book that has earned
+                 worldwide praise as a model for clear, concise, and
+                 practical documentation. Experienced users will want to
+                 update their \LaTeX{} library. Although most standard
+                 \LaTeX{} input files will work with \LaTeX{} $
+                 2_\epsilon $, to take advantage of the new features, a
+                 few \LaTeX{} $ 2_\epsilon $ conventions must first be
+                 learned. For users who want an advanced guide to
+                 \LaTeX{} $ 2_\epsilon $ and to more than 150 packages
+                 that can now be used at any site to provide additional
+                 features, a useful companion to this book is
+                 \booktitle{The \LaTeX{} Companion}, by Goossens,
+                 Mittelbach, and Samarin (also published by
+                 Addison-Wesley).",
+  acknowledgement = ack-nhfb,
+  listoffigures = "6.1 Boxes and how \TeX{} puts them together / 103 \\
+                 6.2 The complete definition of the \verb=\face= command
+                 / 110 \\
+                 6.3 The format of a list / 113 \\
+                 7.1 Points and their coordinates / 119 \\
+                 7.2 \verb=\put (1.4,2.6){\line(3,-1){4.8}}= / 122 \\
+                 C.1 Making footnotes without the \verb=\footnote=
+                 command / 173 \\
+                 C.2 Sectioning and table of contents commands / 174 \\
+                 C.3 Page style parameters / 182 \\
+                 C.4 An example title / 183 \\
+                 C.5 Writing programs with the \verb=ifthen= package's
+                 commands / 196 \\
+                 C.6 A \verb=tabbing= environment example / 202 \\
+                 C.7 Examples of the \verb=tabular= and \verb=tabular*=
+                 environments / 204 \\
+                 C.8 A sample \verb=picture= environment / 220",
+  listoftables = "3.1 Accents / 38 \\
+                 3.2 Non-English Symbols / 39 \\
+                 3.3 Greek Letters / 41 \\
+                 3.4 Binary Operation Symbols / 42 \\
+                 3.5 Relation Symbols / 43 \\
+                 3.6 Arrow Symbols / 43 \\
+                 3.7 Miscellaneous Symbols / 43 \\
+                 3.8 Variable-sized Symbols / 44 \\
+                 3.9 Log-like Functions / 44 \\
+                 3.10 Delimiters / 47 \\
+                 3.11 Math Mode Accents / 50",
+  shorttableofcontents = "Preface / xvii \\
+                 1: Getting Acquainted / 1 \\
+                 2: Getting Started / 11 \\
+                 3: Carrying On / 35 \\
+                 4: Moving Information Around / 65 \\
+                 5: Other Document Classes / 79 \\
+                 6: Designing It Yourself / 87 \\
+                 7: Pictures and Colors / 117 \\
+                 8: Errors / 133 \\
+                 A: Using MakeIndex / 149 \\
+                 B: The Bibliography Database / 155 \\
+                 C: Reference Manual / 165 \\
+                 D: What's New / 227 \\
+                 E: Using Plain TEX Commands / 231 \\
+                 Bibliography / 235 \\
+                 Index / 237",
+  tableofcontents = "Preface / xvii \\
+                 1: Getting Acquainted / 1 \\
+                 1.1 How to Avoid Reading This Book / 2 \\
+                 1.2 How to Read This Book / 3 \\
+                 1.3 The Game of the Name / 5 \\
+                 1.4 Turning Typing into Typography / 5 \\
+                 1.5 Why \LaTeX{}? / 7 \\
+                 1.6 Turning Ideas into Input / 8 \\
+                 1.7 Trying It Out / 8 \\
+                 2: Getting Started / 11 \\
+                 2.1 Preparing an Input File / 12 \\
+                 2.2 The Input / 13 \\
+                 2.2.1 Sentences and Paragraphs / 13 \\
+                 Quotation Marks / 13 \\
+                 Dashes / 14 \\
+                 Space After a Period / 14 \\
+                 Special Symbols / 15 \\
+                 Simple Text-Generating Commands / 15 \\
+                 Emphasizing Text / 16 \\
+                 Preventing Line Breaks / 17 \\
+                 Footnotes / 17 \\
+                 Formulas / 18 \\
+                 Ignorable Input / 19 \\
+                 2.2.2 The Document / 19 \\
+                 The Document Class / 19 \\
+                 The Title ``Page'' / 20 \\
+                 2.2.3 Sectioning / 21 \\
+                 2.2.4 Displayed Material / 23 \\
+                 Quotations / 24 \\
+                 Lists / 24 \\
+                 Poetry / 25 \\
+                 Displayed Formulas / 26 \\
+                 2.2.5 Declarations / 27 \\
+                 2.3 Running \LaTeX{} / 28 \\
+                 2.4 Helpful Hints / 31 \\
+                 2.5 Summary / 32 \\
+                 3: Carrying On / 35 \\
+                 3.1 Changing the Type Style. / 36 \\
+                 3.2 Symbols from Other Languages / 38 \\
+                 3.2.1 Accents / 38 \\
+                 3.2.2 Symbols / 38 \\
+                 3.3 Mathematical Formulas / 39 \\
+                 3.3.1 Some Common Structures / 40 \\
+                 Subscripts and Superscripts / 40 \\
+                 Fractions / 40 \\
+                 Roots / 40 \\
+                 Ellipsis / 40 \\
+                 3.3.2 Mathematical Symbols / 41 \\
+                 Greek Letters / 41 \\
+                 Calligraphic Letters / 42 \\
+                 A Menagerie of Mathematical Symbols / 42 \\
+                 Log-like Functions / 44 \\
+                 3.3.3 Arrays / 45 \\
+                 The array Environment / 45 \\
+                 Vertical Alignment / 46 \\
+                 More Complex Arrays / 46 \\
+                 3.3.4 Delimiters / 46 \\
+                 3.3.5 Multiline Formulas / 47 \\
+                 3.3.6 Putting One Thing Above Another / 49 \\
+                 Over- and Underlining. / 49 \\
+                 Accents / 49 \\
+                 Stacking Symbols / 50 \\
+                 3.3.7 Spacing in Math Mode / 50 \\
+                 3.3.8 Changing Style in Math Mode / 51 \\
+                 Type Style / 51 \\
+                 Math Style / 52 \\
+                 3.3.9 When All Else Fails / 52 \\
+                 3.4 Defining Commands and Environments / 53 \\
+                 3.4.1 Defining Commands / 53 \\
+                 3.4.2 Defining Environments / 55 \\
+                 3.4.3 Theorems and Such / 56 \\
+                 3.5 Figures and Other Floating Bodies / 58 \\
+                 3.5.1 Figures and Tables / 58 \\
+                 3.5.2 Marginal Notes / 59 \\
+                 3.6 Lining It Up in Columns / 60 \\
+                 3.6.1 The tabbing Environment / 60 \\
+                 3.6.2 The tabular Environment / 62 \\
+                 3.7 Simulating Typed Text / 63 \\
+                 4: Moving Information Around / 65 \\
+                 4.1 The Table of Contents / 66 \\
+                 4.2 Cross-References / 67 \\
+                 4.3 Bibliography and Citation / 69 \\
+                 4.3.1 Using \BibTeX{} / 70 \\
+                 4.3.2 Doing It Yourself / 71 \\
+                 4.4 Splitting Your Input / 72 \\
+                 4.5 Making an Index or Glossary / 74 \\
+                 4.5.1 Compiling the Entries / 74 \\
+                 4.5.2 Producing an Index or Glossary by Yourself / 75
+                 \\
+                 4.6 Keyboard Input and Screen Output / 76 \\
+                 4.7 Sending Your Document / 77 \\
+                 5: Other Document Classes / 79 \\
+                 5.1 Books / 80 \\
+                 5.2 Slides / 80 \\
+                 5.2.1 Slides and Overlays / 81 \\
+                 5.2.2 Notes / 83 \\
+                 5.2.3 Printing Only Some Slides and Notes / 83 \\
+                 5.2.4 Other Text / 84 \\
+                 5.3 Letters / 84 \\
+                 6: Designing It Yourself / 87 \\
+                 6.1 Document and Page Styles / 88 \\
+                 6.1.1 Document-Class Options / 88 \\
+                 6.1.2 Page Styles / 89 \\
+                 6.1.3 The Title Page and Abstract / 90 \\
+                 6.1.4 Customizing the Style / 91 \\
+                 6.2 Line and Page Breaking / 93 \\
+                 6.2.1 Line Breaking / 93 \\
+                 6.2.2 Page Breaking / 96 \\
+                 6.3 Numbering / 97 \\
+                 6.4 Length, Spaces, and Boxes / 99 \\
+                 6.4.1 Length / 99 \\
+                 6.4.2 Spaces / 101 \\
+                 6.4.3 Boxes / 103 \\
+                 LR Boxes / 104 \\
+                 Parboxes / 104 \\
+                 Rule Boxes / 106 \\
+                 Raising and Lowering Boxes / 107 \\
+                 Saving Boxes / 107 \\
+                 6.4.4 Formatting with Boxes / 108 \\
+                 6.5 Centering and ``Flushing'' / 111 \\
+                 6.6 List-Making Environments / 112 \\
+                 6.6.1 The {\tt list} Environment / 112 \\
+                 6.6.2 The {\tt trivlist} Environment / 115 \\
+                 6.7 Fonts / 115 \\
+                 6.7.1 Changing Type Size / 115 \\
+                 6.7.2 Special Symbols / 116 \\
+                 7: Pictures and Colors / 117 \\
+                 7.1 Pictures / 118 \\
+                 7.1.1 The picture Environment / 119 \\
+                 7.1.2 Picture Objects / 120 \\
+                 Text / 120 \\
+                 Boxes / 120 \\
+                 Straight Lines / 122 \\
+                 Arrows / 123 \\
+                 Stacks / 123 \\
+                 Circles / 124 \\
+                 Ovals and Rounded Corners / 124 \\
+                 Framing / 125 \\
+                 7.1.3 Curves / 125 \\
+                 7.1:4 Grids / 126 \\
+                 7.1.5 Reusing Objects / 127 \\
+                 7.1.6 Repeated Patterns / 127 \\
+                 7.1.7 Some Hints on Drawing Pictures / 128 \\
+                 7.2 The graphics Package / 129 \\
+                 7.3 Color / 131 \\
+                 8: Errors / 133 \\
+                 8.1 Finding the Error / 134 \\
+                 8.2 \LaTeX{}'s Error Messages / 136 \\
+                 8.3 \TeX{}'s Error Messages / 140 \\
+                 8.4 \LaTeX{} Warnings / 145 \\
+                 8.5 \TeX{} Warnings / 147 \\
+                 A: Using MakeIndex / 149 \\
+                 A.1 How to Use MakeIndex / 150 \\
+                 A.2 How to Generate Index Entries / 150 \\
+                 A.2.1 When, Why, What, and How to Index / 150 \\
+                 A.2.2 The Basics / 151 \\
+                 A.2.3 The Fine Print / 153 \\
+                 A.3 Error Messages / 154 \\
+                 B: The Bibliography Database / 155 \\
+                 B.1 The Format of the bib File / 156 \\
+                 B.1.1 The Entry Format / 156 \\
+                 B.1.2 The Text of a Field / 157 \\
+                 Names / 157 \\
+                 Titles / 158 \\
+                 B.1.3 Abbreviations / 158 \\
+                 B.1.4 Cross-References / 159 \\
+                 B.2 The Entries / 160 \\
+                 B.2.1 Entry Types / 160 \\
+                 B.2.2 Fields / 162 \\
+                 C: Reference Manual / 165 \\
+                 C.1 Commands and Environments / 166 \\
+                 C.1.1 Command Names and Arguments / 166 \\
+                 C.1.2 Environments / 167 \\
+                 C.1.3 Fragile Commands / 167 \\
+                 C.1.4 Declarations / 168 \\
+                 C.1.5 Invisible Commands and Environments / 169 \\
+                 C.1.6 The\\ Command / 169 \\
+                 C.2 The Structure of the Document / 170 \\
+                 C.3 Sentences and Paragraphs / 170 \\
+                 C.3.1 Making Sentences / 170 \\
+                 C.3.2 Making Paragraphs / 171 \\
+                 C.3.3 Footnotes / 172 \\
+                 C.3.4 Accents and Special Symbols / 173 \\
+                 C.4 Sectioning and Table of Contents / 174 \\
+                 C.4.1 Sectioning Commands / 174 \\
+                 C.4.2 The Appendix / 175 \\
+                 C.4.3 Table of Contents / 175 \\
+                 C.4.4 Style Parameters / 176 \\
+                 C.5 Classes, Packages, and Page Styles / 176 \\
+                 C.5.1 Document Class / 176 \\
+                 C.5.2 Packages / 178 \\
+                 C.5.3 Page Styles / 179 \\
+                 C.5.4 The Title Page and Abstract / 181 \\
+                 C.6 Displayed Paragraphs / 183 \\
+                 C.6.1 Quotations and Verse / 184 \\
+                 C.6.2 List-Making Environments / 184 \\
+                 C.6.3 The list and trivlist Environments / 185 \\
+                 C.6.4 Verbatim / 186 \\
+                 C.7 Mathematical Formulas / 187 \\
+                 C.7.1 Math Mode Environments / 187 \\
+                 C.7.2 Common Structures / 189 \\
+                 C.7.3 Mathematical Symbols / 189 \\
+                 C.7.4 Arrays / 190 \\
+                 C.7.5 Delimiters / 190 \\
+                 C.7.6 Putting One Thing Above Another / 190 \\
+                 C.7.7 Spacing / 191 \\
+                 C.7.8 Changing Style / 191 \\
+                 C.8 Definitions, Numbering, and Programming. / 192 \\
+                 C.8.1 Defining Commands / 192 \\
+                 C.8.2 Defining Environments / 192 \\
+                 C.8.3 Theorem-like Environments / 193 \\
+                 C.8.4 Numbering / 194 \\
+                 C.8.5 The ifthen Package / 195 \\
+                 C.9 Figures and Other Floating Bodies / 197 \\
+                 C.9.1 Figures and Tables / 197 \\
+                 C.9.2 Marginal Notes / 200 \\
+                 C.10 Lining It Up in Columns / 201 \\
+                 C.10.1 The tabbing Environment / 201 \\
+                 C.10.2 The array and tabular Environments / 204 \\
+                 C.11 Moving Information Around / 207 \\
+                 C.11.1 Files / 207 \\
+                 C.11.2 Cross-References / 209 \\
+                 C.11.3 Bibliography and Citation / 209 \\
+                 C.11.4 Splitting the Input / 210 \\
+                 C.11.5 Index and Glossary / 211 \\
+                 Producing an Index / 211 \\
+                 Compiling the Entries / 212 \\
+                 C.11.6 Terminal Input and Output / 212 \\
+                 C.12 Line and Page Breaking / 213 \\
+                 C.12.1 Line Breaking / 213 \\
+                 C.12.2 Page Breaking / 214 \\
+                 C.13 Lengths, Spaces, and Boxes / 215 \\
+                 C.13.1 Length / 215 \\
+                 C.13.2 Space / 216 \\
+                 C.13.3 Boxes / 217 \\
+                 C.14 Pictures and Color / 219 \\
+                 C.14.1 The picture Environment / 219 \\
+                 Picture-Mode Commands / 220 \\
+                 Picture Objects / 221 \\
+                 Picture Declarations / 223 \\
+                 C.14.2 The graphics Package. / 223 \\
+                 C.14.3 The color Package / 224 \\
+                 C.15 Font Selection / 225 \\
+                 C.15.1 Changing the Type Style / 225 \\
+                 C.15.2 Changing the Type Size / 226 \\
+                 C.15.3 Special Symbols / 226 \\
+                 D: What's New / 227 \\
+                 E: Using Plain TEX Commands / 231 \\
+                 Bibliography / 235 \\
+                 Index / 237",
+}
+
+@Article{Lesenko:TB18-3-166,
+  author =       "Sergey Lesenko",
+  title =        "{{\acro{DVIPDF}} and Graphics}",
+  journal =      j-TUGboat,
+  volume =       "18",
+  number =       "3",
+  pages =        "166--169",
+  month =        sep,
+  year =         "1997",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Levine:CPC-58-181,
+  author =       "Michael J. S. Levine",
+  title =        "A {\LaTeX} graphics routine for drawing {Feynman}
+                 diagrams",
+  journal =      j-CPC,
+  volume =       "58",
+  pages =        "181--198",
+  year =         "1990",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Maclenan:TB12-1-66-69,
+  author =       "M. P. Maclenan and G. M. Burns",
+  title =        "An approach to drawing circuit diagrams for text
+                 books",
+  journal =      j-TUGboat,
+  volume =       "12",
+  number =       "1",
+  pages =        "66--69",
+  year =         "1991",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "A library of pictograms built on {\PiCTeX}.",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Moore:TB18-3-159,
+  author =       "Ross Moore",
+  title =        "{{High quality labels on included graphics, using
+                 {\Xy-pic}}}",
+  journal =      j-TUGboat,
+  volume =       "18",
+  number =       "3",
+  pages =        "159--165",
+  month =        sep,
+  year =         "1997",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Moore:TB19-1-61,
+  author =       "Ross Moore",
+  title =        "{Erratum: High quality labels on included graphics,
+                 using {\Xy-pic}, {\tubissue 18(3)}, pp. 151--158}",
+  journal =      j-TUGboat,
+  volume =       "19",
+  number =       "1",
+  pages =        "61--61",
+  month =        mar,
+  year =         "1998",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Nelson:1985:JCG,
+  author =       "Greg Nelson",
+  title =        "Juno, a Constraint-Based Graphics System",
+  journal =      j-COMP-GRAPHICS,
+  volume =       "19",
+  number =       "3",
+  pages =        "235--243",
+  month =        jul,
+  year =         "1985",
+  CODEN =        "CPGPBZ",
+  ISBN =         "0-89791-166-0",
+  ISBN-13 =      "978-0-89791-166-5",
+  ISSN =         "0097-8930",
+  LCCN =         "????",
+  bibdate =      "Sat Dec 21 15:50:08 MST 1996",
+  bibsource =    "Compendex database;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "Juno is a system that harmoniously integrates a
+                 language for describing pictures with a
+                 what-you-see-is-what-you-get image editor. Two of
+                 Juno's novelties are that geometric constraints are
+                 used to specify locations, and that the text of a Juno
+                 program is modified in response to the interactive
+                 editing of the displayed image that the program
+                 produces.",
+  acknowledgement = ack-nhfb,
+  affiliation =  "Xerox Palo Alto Research Cent, Palo Alto, CA, USA",
+  affiliationaddress = "Xerox Palo Alto Research Cent, Palo Alto, CA,
+                 USA",
+  classification = "723",
+  conference =   "SIGGRAPH '85 Conf Proc",
+  journalabr =   "Comput Graphics (ACM)",
+  keywords =     "computer graphics; computer programming ---
+                 Algorithms; computer systems, digital --- Interactive
+                 Operation; editor; image processing --- Image Analysis;
+                 implicit editing; Interactive; juno; metafont",
+  meetingaddress = "San Francisco, CA, USA",
+  meetingdate =  "Jul 22--26 1985",
+  meetingdate2 = "07/22--26/85",
+}
+
+@Article{Ness:tv-guide,
+  author =       "David Ness",
+  title =        "The Use of {\TeX{}} in a Commercial Environment",
+  journal =      j-TEXNIQUES,
+  volume =       "5",
+  pages =        "115--123",
+  month =        aug,
+  year =         "1987",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Proceedings of the Eighth Annual Meeting of the \TeX{}
+                 Users Group",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Nicole:TB12-1-70,
+  author =       "Olivier Nicole",
+  title =        "{{A graphic driver to interface statistical software S
+                 and {\PiCTeX}}}",
+  journal =      j-TUGboat,
+  volume =       "12",
+  number =       "1",
+  pages =        "70--73",
+  month =        mar,
+  year =         "1991",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 07 10:22:16 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@InCollection{Norris/Oakley:1990,
+  author =       "A. C. Norris and A. L. Oakley",
+  title =        "Electronic Publishing and Chemical Text Processing",
+  crossref =     "Clark:TAU90",
+  year =         "1990",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Book{Nye:1988:XPM,
+  author =       "Adrian Nye",
+  title =        "{Xlib} Programming Manual for Version 11",
+  volume =       "1",
+  publisher =    pub-ORA,
+  address =      pub-ORA:adr,
+  pages =        "xxxiii + 615",
+  year =         "1988",
+  ISBN =         "0-937175-26-9, 0-937175-89-7",
+  ISBN-13 =      "978-0-937175-26-2, 978-0-937175-89-7",
+  LCCN =         "QA76.76.W56 D44 v.1 1988",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/ora.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/unix.bib",
+  URL =          "http://www.oreilly.com/catalog/9780937175262",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Nye:XRM88,
+  author =       "Adrian Nye",
+  title =        "Xlib Reference Manual for Version 11",
+  volume =       "2",
+  publisher =    pub-ORA,
+  address =      pub-ORA:adr,
+  pages =        "xiv + 701",
+  year =         "1988",
+  ISBN =         "0-937175-27-7",
+  ISBN-13 =      "978-0-937175-27-9",
+  LCCN =         "QA76.76.W56 D44 v.2 1988",
+  bibdate =      "Wed Dec 15 10:40:05 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Ohl:1995:DFD,
+  author =       "Thorsten Ohl",
+  title =        "Drawing {Feynman} diagrams with {\LaTeX} and
+                 {\METAFONT}",
+  journal =      j-COMP-PHYS-COMM,
+  volume =       "90",
+  number =       "2--3",
+  pages =        "340--354",
+  month =        oct,
+  year =         "1995",
+  CODEN =        "CPHCBZ",
+  DOI =          "https://doi.org/10.1016/0010-4655(95)90137-S",
+  ISSN =         "0010-4655 (print), 1879-2944 (electronic)",
+  ISSN-L =       "0010-4655",
+  bibdate =      "Mon Feb 13 21:29:59 MST 2012",
+  bibsource =    "Compendex database;
+                 ftp://ftp.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/bibnet/authors/f/feynman-richard-p.bib;
+                 http://www.math.utah.edu/pub/tex/bib/compphyscomm1990.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "feynMF is a {\LaTeX} package for easy drawing of
+                 professional quality Feynman diagrams with METAFONT (or
+                 METAPOST). feynMF lays out most diagrams satisfactorily
+                 from the structure of the graph without any need for
+                 manual intervention. Nevertheless all the power of
+                 METAFONT (or METAPOST) is available for the most
+                 complicated cases.",
+  acknowledgement = ack-nhfb,
+  affiliation =  "Technische Hochschule Darmstadt",
+  affiliationaddress = "Darmstadt, Ger",
+  classification = "723; 723.1.1; 723.5; 902.1; 921.4; 931.4",
+  fjournal =     "Computer Physics Communications",
+  journal-URL =  "http://www.sciencedirect.com/science/journal/00104655",
+  keywords =     "Algorithms; Computer graphics; Computer programming
+                 languages; Computer software; Drawing (graphics);
+                 Feynman diagrams; Graph theory; latex (programming
+                 language); metafont (programming language); Quantum
+                 theory",
+}
+
+@Article{Olejniczak-Burkert:TB10-4-627-637,
+  author =       "Rolf Olejniczak-Burkert",
+  title =        "{{{\it texpic\/}\emdash Design and Implementation of a
+                 Picture Graphics Language in \TeX\ {\`a} la {\it
+                 pic\/}}}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "4",
+  pages =        "627--637",
+  month =        dec,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 07 10:22:23 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Book{Oreilly:XWS88,
+  author =       "Tim O'Reilly and Valerie Quercia and Linda Lamb",
+  title =        "{X} Window System User's Guide for Version 11",
+  volume =       "3",
+  publisher =    pub-ORA,
+  address =      pub-ORA:adr,
+  year =         "1988",
+  ISBN =         "0-937175-29-3",
+  ISBN-13 =      "978-0-937175-29-3",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Pickrell:TB11-1-26-31,
+  author =       "Lee S. Pickrell",
+  title =        "{Combining graphics with {\TeX} on IBM PC-compatible
+                 systems and LaserJet printers}",
+  journal =      j-TUGboat,
+  volume =       "11",
+  number =       "1",
+  pages =        "26--31",
+  month =        apr,
+  year =         "1990",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 7 10:22:27 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Article{Pickrell:TB11-2-200-206,
+  author =       "Lee S. Pickrell",
+  title =        "{Combining graphics with \TeX\ on PC systems with
+                 laser printers, part II}",
+  journal =      j-TUGboat,
+  volume =       "11",
+  number =       "2",
+  pages =        "200--206",
+  month =        jun,
+  year =         "1990",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 7 10:22:29 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Article{Plestenjak:1999:ADP,
+  author =       "Bor Plestenjak",
+  title =        "An algorithm for drawing planar graphs",
+  journal =      j-SPE,
+  volume =       "29",
+  number =       "11",
+  pages =        "973--984",
+  month =        sep,
+  year =         "1999",
+  CODEN =        "SPEXBL",
+  ISSN =         "0038-0644 (print), 1097-024X (electronic)",
+  bibdate =      "Sat Sep 18 18:25:59 MDT 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www3.interscience.wiley.com/journalfinder.html",
+  URL =          "http://www3.interscience.wiley.com/cgi-bin/abstract?ID=63501203;
+                 http://www3.interscience.wiley.com/cgi-bin/fulltext?ID=63501203&PLACEBO=IE.pdf",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Price:TB2-1-122,
+  author =       "Lynne A. Price",
+  title =        "{Hebrew letter (with source)}",
+  journal =      j-TUGboat,
+  volume =       "2",
+  number =       "1",
+  pages =        "122",
+  month =        feb,
+  year =         "1981",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Manual{Publisher,
+  author =       "{Arbortext Inc}",
+  title =        "The {Publisher} User Manual",
+  publisher =    pub-ARBORTEXT,
+  address =      pub-ARBORTEXT:adr,
+  year =         "1988",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@TechReport{Rahtz:1987a,
+  author =       "Sebastian Rahtz",
+  title =        "The right text-processing tools for the job?",
+  type =         "CSMAN",
+  number =       "87-4",
+  institution =  "Computer Science, University of Southampton",
+  year =         "1987",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Rahtz:1987b,
+  author =       "Sebastian Rahtz",
+  title =        "The {Protestant Cemetery, Rome}: a study undertaken
+                 under the auspices of the {Unione Internazionale degli
+                 Istituti di Archeologia Storia e Storia dell'Arte in
+                 Roma}",
+  journal =      j-OR,
+  volume =       "16",
+  pages =        "149--167",
+  year =         "1987",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@InCollection{Ramek:1990:CSF,
+  author =       "Michael Ramek",
+  title =        "Chemical structure formulae and x/y diagrams with
+                 {\TeX}",
+  crossref =     "Clark:TAU90",
+  year =         "1990",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Reckdahl:1996:UAG,
+  author =       "Keith Reckdahl",
+  title =        "{Using \acro{EPS} graphics in {\LaTeXe} documents,
+                 Part 2: Floating figures, boxed figures, captions, and
+                 math in figures}",
+  journal =      j-TUGboat,
+  volume =       "17",
+  number =       "3",
+  pages =        "288--310",
+  month =        sep,
+  year =         "1996",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Reid:TB10-2-188-191,
+  author =       "Tom Reid and Don Hosek",
+  title =        "{Report from the |DVI| driver standards committee}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "2",
+  pages =        "188--191",
+  month =        jul,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Renfrow:TB10-4-607,
+  author =       "J. T. Renfrow",
+  title =        "{Methodologies for preparing and integrating {\PS}
+                 graphics}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "4",
+  pages =        "607--626",
+  month =        dec,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 07 10:22:30 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@TechReport{Renner:textyl,
+  author =       "John S. Renner",
+  title =        "{\TeX}tyl: a line-drawing interface for {\TeX}",
+  number =       "OSU-CISRC-4\slash 87-TR9",
+  institution =  "Department of Computer Science, Ohio State
+                 University",
+  month =        mar,
+  year =         "1987",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Unpublished{Reynolds:1987,
+  author =       "J. C. Reynolds",
+  title =        "User's manual for Diagram Macros",
+  month =        dec,
+  year =         "1987",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "Unpublished machine-readable document.",
+  acknowledgement = ack-spqr,
+}
+
+@Book{Roads:FCM87,
+  editor =       "Curtis Roads and John Strawn",
+  title =        "Foundations of Computer Music",
+  publisher =    pub-MIT,
+  address =      pub-MIT:adr,
+  pages =        "xiii + 712",
+  year =         "1987",
+  ISBN =         "0-262-18114-2",
+  ISBN-13 =      "978-0-262-18114-3",
+  LCCN =         "ML1092 .F7 1985",
+  bibdate =      "Wed Dec 15 10:41:13 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Roegel:1997:CAM,
+  author =       "Denis Roegel",
+  title =        "Creating {$3$D} animations with {{\MP}}",
+  journal =      j-TUGboat,
+  volume =       "18",
+  number =       "4",
+  pages =        "274--283",
+  month =        dec,
+  year =         "1997",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Jul 5 17:27:22 MDT 2003",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  URL =          "http://ctan.tug.org/tex-archive/graphics/metapost/contrib/macros/3d/doc/paper1997corrected.pdf",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Rogers:TB10-1-39-44,
+  author =       "David F. Rogers",
+  title =        "{Computer graphics and \TeX\emdash a challenge}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "1",
+  pages =        "39--44",
+  month =        apr,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 7 10:22:30 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Article{Rogers:TB18-4-246,
+  author =       "David F. Rogers",
+  title =        "{{\it The {\LaTeX} Graphics Companion}, by Michel
+                 Goossens, Sebastian Rahtz and Frank Mittelbach}",
+  journal =      j-TUGboat,
+  volume =       "18",
+  number =       "4",
+  pages =        "246--246",
+  month =        dec,
+  year =         "1997",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Rose:TB18-3-151,
+  author =       "{Kristoffer H{\o}{}gsbro Rose}",
+  title =        "{{Very high level 2-dimensional graphics with {\TeX}
+                 and {\Xy-pic}}}",
+  journal =      j-TUGboat,
+  volume =       "18",
+  number =       "3",
+  pages =        "151--158",
+  month =        sep,
+  year =         "1997",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@TechReport{Rost:pex,
+  author =       "Randi J. Rost",
+  title =        "{PEX} Introduction and Overview",
+  number =       "Version 3.20",
+  institution =  "Digital Equipment Corporation, Workstation Systems
+                 Engineering",
+  month =        apr,
+  year =         "1988",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "This document is present in the X Window System
+                 Version 11 Release 3 in the file
+                 \path|X11/X11/doc/extensions/pex/doc/intro/doc.ms|.",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Roth:RWP88,
+  editor =       "Stephen E. Roth",
+  title =        "Real World {PostScript}",
+  publisher =    pub-AW,
+  address =      pub-AW:adr,
+  pages =        "xiv + 383",
+  year =         "1988",
+  ISBN =         "0-201-06663-7",
+  ISBN-13 =      "978-0-201-06663-0",
+  LCCN =         "Z286.D47 R4 1988",
+  bibdate =      "Wed Dec 15 18:12:59 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Rubinstein:TB10-2-170-172,
+  author =       "Zalman Rubinstein",
+  title =        "{{Chess printing via \MF\ and \TeX}}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "2",
+  pages =        "170--172",
+  month =        jul,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+}
+
+@Article{Saito:TB8-2-103,
+  author =       "Yasuki Saito",
+  title =        "{{Report on \JTeX: A Japanese \TeX}}",
+  journal =      j-TUGboat,
+  volume =       "8",
+  number =       "2",
+  pages =        "103",
+  month =        jul,
+  year =         "1987",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Salomon:TB10-2-207-216,
+  author =       "David Salomon",
+  title =        "{{DDA methods in \TeX}}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "2",
+  pages =        "207--216",
+  month =        jul,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "Deals with the mathematical background to producing
+                 good circles, arcs and lines from dots, using Digital
+                 Differential Analyzer methods.",
+  acknowledgement = ack-spqr,
+}
+
+@Book{Scheifler:XWS88,
+  author =       "Robert W. Scheifler and James Gettys and Ron Newman",
+  title =        "{X Window System}: {C} Library and Protocol
+                 Reference",
+  publisher =    pub-DP,
+  address =      pub-DP:adr,
+  pages =        "xxix + 701",
+  year =         "1988",
+  ISBN =         "1-55558-012-2",
+  ISBN-13 =      "978-1-55558-012-4",
+  LCCN =         "QA76.76.W56 S34 1988",
+  bibdate =      "Wed Dec 15 10:41:32 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Schopf:TB10-1-105-107,
+  author =       "Rainer Sch{\"o}pf",
+  title =        "{{Drawing histogram bars inside the \LaTeX\
+                 picture--environment}}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "1",
+  pages =        "105--107",
+  month =        apr,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Schrod:TB12-2-232-233,
+  author =       "Joachim Schrod",
+  title =        "Report on the {{\tt DVI}} driver standard",
+  journal =      j-TUGboat,
+  volume =       "12",
+  number =       "2",
+  pages =        "232--233",
+  year =         "1991",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Schwer:TB11-2-194,
+  author =       "Len Schwer",
+  title =        "{Including Macintosh graphics in {\LaTeX} documents}",
+  journal =      j-TUGboat,
+  volume =       "11",
+  number =       "2",
+  pages =        "194--200",
+  month =        jun,
+  year =         "1990",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 07 10:22:30 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Article{SIGGRAPH:core77,
+  author =       "ACM\slash SIGGRAPH",
+  title =        "Status Report of the {Graphic Standards Planning
+                 Committee of ACM\slash SIGGRAPH}",
+  journal =      j-SIGGRAPH,
+  volume =       "11",
+  number =       "3",
+  year =         "1977",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{SIGGRAPH:core79,
+  author =       "ACM\slash SIGGRAPH",
+  title =        "Status Report of the {Graphic Standards Planning
+                 Committee of ACM\slash SIGGRAPH}",
+  journal =      j-SIGGRAPH,
+  volume =       "13",
+  number =       "3",
+  month =        aug,
+  year =         "1979",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@InCollection{Simpson:1990:NTU,
+  author =       "Rick Simpson",
+  title =        "Non-traditional uses of {\MF}",
+  crossref =     "Clark:TAU90",
+  year =         "1990",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Sowa:1991:IGT,
+  author =       "Friedrich Sowa",
+  title =        "Integration of graphics into {\TeX}",
+  journal =      j-TUGboat,
+  volume =       "12",
+  number =       "1",
+  pages =        "58--63",
+  year =         "1991",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 7 10:22:30 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  abstract =     "Describes BM2FONT, a program to turn bitmap pictures
+                 (e.g.\ TIFF) into PK files for use by {\TeX}, with some
+                 notes on halftoning.",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Article{Spivak:TB10-2-164-165,
+  author =       "Michael Spivak and Michael Ballantyne and Yoke Lee",
+  title =        "{HI-\TeX} cutting \& pasting",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "2",
+  pages =        "164--165",
+  month =        jul,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "Describes dvipaste, a system for merging dvi files.
+                 The idea is that complex tables or figures will be
+                 typeset on their own, to avoid burdening {\TeX}'s
+                 memory, and then merged into the main {\DVI} file,
+                 where space has been left, just before printing.",
+}
+
+@Article{Spragens:TB6-2-66,
+  author =       "Alan Spragens",
+  title =        "{Graphics commands for {\TeX}\Dash Discussion in
+                 {\TeX}hax conference}",
+  journal =      j-TUGboat,
+  volume =       "6",
+  number =       "2",
+  pages =        "66--68",
+  month =        jul,
+  year =         "1985",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Article{Tobin:TB4-1-26,
+  author =       "Georgia K. M. Tobin",
+  title =        "{Computer calligraphy}",
+  journal =      j-TUGboat,
+  volume =       "4",
+  number =       "1",
+  pages =        "26",
+  month =        apr,
+  year =         "1983",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Tobin:TB5-1-36,
+  author =       "Georgia K. M. Tobin",
+  title =        "{The OCLC Roman family of fonts}",
+  journal =      j-TUGboat,
+  volume =       "5",
+  number =       "1",
+  pages =        "36",
+  month =        may,
+  year =         "1984",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Tobin:TB6-1-12,
+  author =       "G. K. M. Tobin",
+  title =        "{A bit of doggerel}",
+  journal =      j-TUGboat,
+  volume =       "6",
+  number =       "1",
+  pages =        "12",
+  month =        mar,
+  year =         "1985",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Tobin:TB8-1-26,
+  author =       "Georgia K. M. Tobin",
+  title =        "{{Some empirical observations on \MF\ design}}",
+  journal =      j-TUGboat,
+  volume =       "8",
+  number =       "1",
+  pages =        "26",
+  month =        apr,
+  year =         "1987",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Tobin:TB9-1-15-18,
+  author =       "Georgia K. M. Tobin",
+  title =        "{The ABC's of special effects}",
+  journal =      j-TUGboat,
+  volume =       "9",
+  number =       "1",
+  pages =        "15--18",
+  month =        apr,
+  year =         "1988",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Tobin:TB9-2-126-128,
+  author =       "Georgia K. M. Tobin",
+  title =        "{Designing for low-res devices}",
+  journal =      j-TUGboat,
+  volume =       "9",
+  number =       "2",
+  pages =        "126--128",
+  month =        aug,
+  year =         "1988",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Tufte:VDQ83,
+  author =       "Edward R. Tufte",
+  title =        "The Visual Display of Quantitative Information",
+  publisher =    pub-GP,
+  address =      pub-GP:adr,
+  pages =        "197",
+  year =         "1983",
+  ISBN =         "0-9613921-0-X",
+  ISBN-13 =      "978-0-9613921-0-9",
+  LCCN =         "K27.S8 T84",
+  bibdate =      "Wed Dec 15 10:58:53 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  price =        "US\$34.00",
+  acknowledgement = ack-nhfb,
+}
+
+@Book{Ulichney:DH87,
+  author =       "Robert Ulichney",
+  title =        "Digital Halftoning",
+  publisher =    pub-MIT,
+  address =      pub-MIT:adr,
+  pages =        "xiv + 362",
+  year =         "1987",
+  ISBN =         "0-262-21009-6",
+  ISBN-13 =      "978-0-262-21009-6",
+  LCCN =         "T385 .U451 1987",
+  bibdate =      "Wed Dec 15 10:58:55 1993",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Vanderburg:TB8-3-291-300,
+  author =       "Glenn L. Vanderburg and Thomas J. Reid",
+  title =        "{{\tt\bs special} issues}",
+  journal =      j-TUGboat,
+  volume =       "8",
+  number =       "3",
+  pages =        "291--300",
+  month =        nov,
+  year =         "1987",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{vanderLaan:TB10-1-113-116,
+  author =       "C. G. van der Laan",
+  title =        "{{Typesetting bridge via \LaTeX}}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "1",
+  pages =        "113--116",
+  month =        apr,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{vanHaagen:TB9-2-189-192,
+  author =       "A. J. {Van Haagen}",
+  title =        "{{Box plots and scatter plots with \TeX\ macros}}",
+  journal =      j-TUGboat,
+  volume =       "9",
+  number =       "2",
+  pages =        "189--192",
+  month =        aug,
+  year =         "1988",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{VanWyk:awk,
+  author =       "Christopher J. {Van Wyk}",
+  title =        "{AWK} as Glue for Programs",
+  journal =      j-SPE,
+  volume =       "16",
+  number =       "4",
+  pages =        "369--388",
+  month =        apr,
+  year =         "1986",
+  CODEN =        "SPEXBL",
+  ISSN =         "0038-0644 (print), 1097-024X (electronic)",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{VanWyk:ideal,
+  author =       "Christopher J. {Van Wyk}",
+  title =        "A High-Level Language for Specifying Pictures",
+  journal =      j-TOG,
+  volume =       "1",
+  number =       "2",
+  pages =        "163--182",
+  month =        apr,
+  year =         "1982",
+  CODEN =        "ATGRDF",
+  ISSN =         "0730-0301 (print), 1557-7368 (electronic)",
+  bibdate =      "Fri Aug 26 08:57:19 1994",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Waldschmidt:1988,
+  author =       "H. Waldschmidt",
+  title =        "An editor for constructing graphics with {\TeX}",
+  journal =      j-CGF,
+  volume =       "6",
+  number =       "4",
+  pages =        "359--364",
+  year =         "1988",
+  CODEN =        "CGFODY",
+  ISSN =         "0167-7055 (print), 1467-8659 (electronic)",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Weiss:TB13-3-330,
+  author =       "Neil A. Weiss",
+  title =        "{Creation and incorporation of {\PS} graphics with
+                 {\TeX}-formatted labels into {\TeX} documents}",
+  journal =      j-TUGboat,
+  volume =       "13",
+  number =       "3",
+  pages =        "330--334",
+  month =        oct,
+  year =         "1992",
+  ISSN =         "0896-3207",
+  bibdate =      "Sat Feb 20 18:54:33 MST 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  acknowledgement = ack-bnb # " and " # ack-nhfb,
+}
+
+@Book{Wichura:PM87,
+  author =       "Michael J. Wichura",
+  title =        "The {\PiCTeX} manual",
+  number =       "6",
+  publisher =    pub-TUG,
+  address =      pub-TUG:adr,
+  year =         "1987",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  series =       "{\TeX}niques: publications for the {\TeX} community",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Wichura:TB9-2-193-197,
+  author =       "Michael J. Wichura",
+  title =        "{{\PiCTeX: Macros for drawing \PiC tures}}",
+  journal =      j-TUGboat,
+  volume =       "9",
+  number =       "2",
+  pages =        "193--197",
+  month =        aug,
+  year =         "1988",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@Article{Wilcox:TB10-2-179-187,
+  author =       "Patricia Wilcox",
+  title =        "{{{\small METAPLOT}: Machine-independent line graphics
+                 for \TeX}}",
+  journal =      j-TUGboat,
+  volume =       "10",
+  number =       "2",
+  pages =        "179--187",
+  month =        jul,
+  year =         "1989",
+  ISSN =         "0896-3207",
+  bibdate =      "Wed Apr 7 10:22:30 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/index-table-t.html#tugboat;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/tugboat.bib",
+  abstract =     "METAPLOT is a program which translates files
+                 describing vector graphics (HPGL) into {\MF} code; this
+                 code is used to generate a figure as a single character
+                 in a special font, using {\MF}.",
+  acknowledgement = ack-bnb # " and " # ack-nhfb # " and " # ack-spqr,
+}
+
+@Manual{Williams:gnuplot,
+  author =       "Thomas Williams and Colin Kelley and John Campbell and
+                 David Kotz and Russell Lang",
+  title =        "{GNUPLOT}\emdash An Interactive Plotting Program",
+  month =        "31 " # aug,
+  note =         "Available in several Internet archives, including the
+                 Free Software Foundation collection on
+                 \path|prep.ai.mit.edu|. GNUPLOT can produce output for
+                 many different devices, including {\LaTeX} picture
+                 mode, {\PS}, and the X Window System. See also
+                 \cite{Kotz:gnuplot}.",
+  year =         "1990",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@InCollection{Winckler:1990:TFI,
+  author =       "{J{\"o}rg} Winckler",
+  title =        "{\TeX} fonts in image generation software",
+  crossref =     "Clark:TAU90",
+  year =         "1990",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@TechReport{Wolcott:1976:CCT,
+  author =       "Norman M. Wolcott and Joseph Hilsenrath",
+  title =        "A Contribution to Computer Typesetting Techniques.
+                 {Tables} of Coordinates for {Hershey}'s Repertoire of
+                 Occidental Type Fonts and Graphics Symbols",
+  number =       "PB-251 845",
+  institution =  "U. S. National Bureau of Standards",
+  month =        apr,
+  year =         "1976",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  note =         "NBS Special Publication 424",
+  acknowledgement = ack-nhfb,
+}
+
+@Misc{Wood:plj,
+  author =       "Patrick {Wood, editor}",
+  title =        "{{\POSTSCRIPT Language Journal}}",
+  howpublished = "Pipeline Associates, Inc., P. O. Box 5763, Parsippany,
+                 NJ 07054",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Article{Wujastyk:TB9-3-246-251,
+  author =       "Dominik Wujastyk",
+  title =        "{Further faces}",
+  journal =      j-TUGboat,
+  volume =       "9",
+  number =       "3",
+  pages =        "246--251",
+  month =        nov,
+  year =         "1988",
+  ISSN =         "0896-3207",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-spqr,
+}
+
+@TechReport{Xerox:color,
+  author =       "Xerox Corporation",
+  title =        "The {Xerox Color Encoding Standard}",
+  number =       "XNSS 288811",
+  institution =  "Xerox Systems Institute",
+  month =        mar,
+  year =         "1989",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+%%% ====================================================================
+%%% The following entries are cross-referenced by preceding entries.
+%%% BibTeX requires that they follow all references to them, so we put
+%%% them at the end of the .bib file.
+%%% ====================================================================
+
+@Book{Clark:TAU90,
+  editor =       "Malcolm Clark",
+  booktitle =    "{\TeX} Applications, Uses, Methods",
+  title =        "{\TeX} Applications, Uses, Methods",
+  publisher =    pub-ELLIS-HORWOOD,
+  address =      pub-ELLIS-HORWOOD:adr,
+  year =         "1990",
+  ISBN =         "0-13-912296-6",
+  ISBN-13 =      "978-0-13-912296-5",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  abstract =     "Papers from the 1988 {\TeX}eter conference.",
+  acknowledgement = ack-spqr,
+}
+
+@Proceedings{Syropoulos:2004:TXD,
+  editor =       "Apostolos Syropoulos and Karl Berry and Yannis
+                 Haralambous and Baden Hughes and Steven Peter and John
+                 Plaice",
+  booktitle =    "{{\TeX}, XML, and Digital Typography: International
+                 Conference on \TeX, XML, and Digital Typography, held
+                 jointly with the 25th Annual Meeting of the \TeX{}
+                 Users Group, TUG 2004, Xanthi, Greece, August
+                 30--September 3, 2004: Proceedings}",
+  title =        "{{\TeX}, XML, and Digital Typography: International
+                 Conference on \TeX, XML, and Digital Typography, held
+                 jointly with the 25th Annual Meeting of the \TeX{}
+                 Users Group, TUG 2004, Xanthi, Greece, August
+                 30--September 3, 2004: Proceedings}",
+  volume =       "3130",
+  publisher =    pub-SV,
+  address =      pub-SV:adr,
+  pages =        "viii + 263",
+  year =         "2004",
+  CODEN =        "LNCSD9",
+  DOI =          "https://doi.org/10.1007/b99374",
+  ISBN =         "3-540-22801-2 (paperback)",
+  ISBN-13 =      "978-3-540-22801-1 (paperback)",
+  ISSN =         "0302-9743 (print), 1611-3349 (electronic)",
+  LCCN =         "Z253.3 I58 2004",
+  bibdate =      "Tue Nov 16 08:40:30 2004",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/java2000.bib;
+                 http://www.math.utah.edu/pub/tex/bib/lncs.bib;
+                 http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texbook3.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  series =       ser-LNCS,
+  URL =          "http://link.springer-ny.com/link/service/series/0558/tocs/t3130.htm;
+                 http://www.springerlink.com/openurl.asp?genre=issue&issn=0302-9743&volume=3130;
+                 http://www.springerlink.com/openurl.asp?genre=volume&id=doi:10.1007/b99374",
+  acknowledgement = ack-nhfb,
+  tableofcontents = "Digital Typography in the New Millennium: Flexible
+                 Documents by a Flexible Engine / Christos K. K.
+                 Loverdos and Apostolos Syropoulos / 1--16 \\
+                 Moving $\Omega$ to an Object-Oriented Platform / John
+                 Plaice, Yannis Haralambous, Paul Swoboda, and G{\'a}bor
+                 Bella / 17--26 \\
+                 Basque: A Case Study in Generalizing LaTeX Language
+                 Support / Jagoba Arias P{\'e}rez, Jes{\'u}s L{\'a}zaro,
+                 and Juan M. Aguirregabiria / 27--33 \\
+                 $\mu o \nu o 2 \pi o \lambda \nu$: Java-Based
+                 Conversion of Monotonic to Polytonic Greek / Johannes
+                 Likos / 34--54 \\
+                 Using LaTeX to Typeset a
+                 Mar{\=a}{\d{t}}h{\=\i}--English Dictionary / Manasi
+                 Athale and Rahul Athale / 55--58 \\
+                 Hyphenation Patterns for Ancient and Modern Greek /
+                 Dimitrios Filippou / 59--67 \\
+                 Typesetting the Deseret Alphabet with LaTeX and
+                 METAFONT / Kenneth R. Beesley / 68--111 \\
+                 FEATPOST and a Review of 3D METAPOST Packages / Luis
+                 Nobre Gon{\c{c}}alves / 112--124 \\
+                 Interactive Editing of MathML Markup Using TeX Syntax /
+                 Luca Padovani / 125--139 \\
+                 Typesetting CJK Languages with $\Omega$ / Jin-Hwan Cho
+                 / 139--139 \\
+                 Dynamic Arabic Mathematical Fonts / Mustapha Eddahibi,
+                 Azzeddine Lazrek, and Khalid Sami / 149--157 \\
+                 Arabic Mathematical e-Documents / Mustapha Eddahibi,
+                 Azzeddine Lazrek, and Khalid Sami / 158--168 \\
+                 Migrating to XML: The Case of the GUST Bulletin Archive
+                 / W{\l}odzimierz Bzyl and Tomasz Przechlewski /
+                 169--178 \\
+                 Animations in pdfTeX-Generated PDF / Jan Hole{\c{c}}ek
+                 and Petr Sojka / 179--191 \\
+                 iTeXMac: An Integrated TeX Environment for Mac OS X /
+                 J{\'e}r{\^o}ne Laurens / 192--202 \\
+                 MlBibTeX: Beyond LaTeX / Jan-Michel Hufflen / 203--215
+                 \\
+                 Managing TeX Resources with XML Topic Maps / Tomasz
+                 Przechlewski / 216--228 \\
+                 {\c{S}}{\"a}ferTeX: Source Code Esthetics for Automated
+                 Typesetting / Frank-Rene Schaefer / 229--239 \\
+                 Creating Type 1 Fonts from metafont Sources / Karel
+                 P{\'\i}{\v{s}}ka / 240--256 \\
+                 Beyond Glyphs, Advanced Typographic Features of Fonts /
+                 George Williams / 257--263 \\
+                 Author Index / / 256--256",
+}
+
+@Proceedings{USENIX:1997:PCD,
+  editor =       "{USENIX}",
+  booktitle =    "Proceedings of the Conference on Domain-Specific
+                 Languages, October 15--17, 1997, Santa Barbara,
+                 California",
+  title =        "Proceedings of the Conference on Domain-Specific
+                 Languages, October 15--17, 1997, Santa Barbara,
+                 California",
+  publisher =    pub-USENIX,
+  address =      pub-USENIX:adr,
+  pages =        "310",
+  year =         "1997",
+  ISBN =         "1-880446-89-8",
+  ISBN-13 =      "978-1-880446-89-8",
+  LCCN =         "QA76.7 .C663 1997",
+  bibdate =      "Wed Jan 20 14:49:05 1999",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/texgraph.bib",
+  acknowledgement = ack-nhfb,
+}
+
+@Proceedings{Zlatuska:1992:EPE,
+  editor =       "Ji{\v{r}}{\'\i} Zlatu{\v{s}}ka",
+  booktitle =    "{Euro\TeX{} '92: Proceedings of the 7th European
+                 {\TeX} Conference, Prague, Czechoslovakia, September
+                 14--18, 1992}",
+  title =        "{Euro\TeX{} '92: Proceedings of the 7th European
+                 {\TeX} Conference, Prague, Czechoslovakia, September
+                 14--18, 1992}",
+  publisher =    pub-MASARYKOVA,
+  address =      pub-MASARYKOVA:adr,
+  pages =        "viii + 330",
+  month =        sep,
+  year =         "1992",
+  ISBN =         "80-210-0480-0",
+  ISBN-13 =      "978-80-210-0480-1",
+  bibdate =      "Tue Dec 27 06:37:06 2005",
+  bibsource =    "http://www.math.utah.edu/pub/tex/bib/master.bib;
+                 http://www.math.utah.edu/pub/tex/bib/postscri.bib;
+                 http://www.math.utah.edu/pub/tex/bib/texgraph.bib;
+                 http://www.math.utah.edu/pub/tex/bib/typeset.bib",
+  series =       "Proceedings of the European \TeX{} Conference",
+  acknowledgement = ack-nhfb,
+  tableofcontents = "Alan Hoenig / When \TeX{} and METAFONT work
+                 together (invited talk) / 1 \\
+                 John D. Hobby / Introduction to MetaPost (invited talk)
+                 / 21 \\
+                 Andrei B. Khodulev and Irina A. Makhovaya / On \TeX{}
+                 experience in Mir Publishers / 37 \\
+                 Laurent Siebenmann / The Lion and the Mouse / 43 \\
+                 Petr Sojka, Rudolf Cervenka, and Martin Svoboda /
+                 \TeX{} for database publishing 53 \\
+                 Ondfej Vacha / TgX for typesetting in a publishing
+                 house / 59 \\
+                 Michel Lavaud / A solution to help ensuring the future
+                 of \TeX{}: make its use easier on cheap machines / 66
+                 \\
+                 Frank Mittelbach and Chris Rowley / {\LaTeX3}:
+                 structure and design (invited talk) / 69 \\
+                 Anita Z. Hoover / The key to successful support:
+                 knowing your \TeX{} and \LaTeX{} users (invited talk) /
+                 71 \\
+                 Theo Jurriens / \TeX{} for everybody? / 86 \\
+                 Daniel Flipo and Laurent Siebenmann / Hyphenation in
+                 presence of accents and diacritics: An easy and
+                 low-cost solution / 87 \\
+                 Laurent Siebenmann / CaesarCM --- A gentle road to
+                 perfect hyphenation in modest \TeX{} environments / 97
+                 \\
+                 Laurent Siebenmann / La mise en application
+                 d{\'e}finitive de la norme de Cork / 107 \\
+                 Boguslav Jackowski and Marek Rycko / Polishing \TeX{}:
+                 from ready to use to handy in use / 119 \\
+                 Rama Porrat / Developments in Hebrew \TeX{} / 135 \\
+                 Michael Vinogradov / Russian \TeX{}: new eight bit
+                 fonts and IBM PC equipment / 149 \\
+                 Klaus Lagally / Arab\TeX{} --- Typesetting Arabic with
+                 vowels and ligatures / 153 \\
+                 Erik-Jan Vens / Incorporating PostScript fonts in
+                 \TeX{} / 173 \\
+                 Kristoffer H. Rose / How to typeset pretty diagram
+                 arrows with \TeX{} --- design decisions used in Xy-pic
+                 / 183 \\
+                 Kees van der Laan / Table diversions / 211 \\
+                 Jorg Knappen / Changing the appearance of math / 212
+                 \\
+                 Kees van der Laan / Typesetting crosswords via \TeX{} /
+                 217 \\
+                 Kees van der Laan / FIFO and LIFO incognito / 225 \\
+                 Philip Taylor / The future of \TeX{} / 235 \\
+                 Frank Mittelbach and Chris Rowley / The future of high
+                 quality typesetting: structure and design (invited
+                 talk) / 255 \\
+                 Daniel Taupin / Music\TeX{}: using \TeX{} to write
+                 polyphonic or instrumental music (invited talk) / 257
+                 \\
+                 Kristoffer H. Rose / Typesetting Diagrams with Xy-pic:
+                 user's manual / 273 \\
+                 Yannis Haralambous / Towards the revival of traditional
+                 Arabic typography \ldots{} through \TeX{} (invited
+                 talk) / 293",
+}
+
+%%% From TEX-EURO at DHDURZ1.Berkeley.EDU Mon Jul  8 04:27:58 1991
+%%% Flags: 000000000001
+%%% Return-Path: <TEX-EURO at DHDURZ1.Berkeley.EDU>
+%%% Received: from cc.utah.edu by math.utah.edu (4.1/SMI-4.1-utah-csc-server)
+%%%      id AA15473; Mon, 8 Jul 91 04:27:55 MDT
+%%% Received: from UCBCMSA.BITNET (MAILER at UCBCMSA) by CC.UTAH.EDU with PMDF#10043;
+%%%  Mon, 8 Jul 1991 04:27 MST
+%%% Received: by UCBCMSA (Mailer R2.04) id 2047; Mon, 08 Jul 91 03:27:01 PDT
+%%% Date: Mon, 8 Jul 91 12:03:43 MES
+%%% From: Jens Pirnay <HRU003 at DJUKFA11.BITNET>
+%%% Subject: Re: texcad or similar thing for sun?
+%%% In-Reply-To: Message of Sun, 7 Jul 91 22:16:53 CET from
+%%%  <weissenfels at BAUELEMENTE.E-TECHNIK.UNI-DORTMUND.DBP.DE>
+%%% Sender: TeX-Euro Distribution List for European TeX Users
+%%%  <TEX-EURO at DHDURZ1.BITNET>
+%%% To: "Nelson H. F. Beebe" <beebe at math.utah.edu>
+%%% Reply-To: TeX-Euro Distribution List for European TeX Users
+%%%  <TEX-EURO at DHDURZ1.BITNET>
+%%% Message-Id: <6497F39770002161 at CC.UTAH.EDU>
+%%% X-Envelope-To: beebe at MATH.UTAH.EDU
+%%%
+%%
+%%% Date:         Mon, 08 Jul 91 11:53:48 MES
+%%% From:         Jens Pirnay <HRU003 at DJUKFA11>
+%%% Subject:      Re: texcad or similar thing for sun?
+%%% To:           TeX-Euro  Distribution List for European TeX Users
+%%%  <TEX-EURO at DHDURZ1>
+%%% In-Reply-To:  Message of Sun, 7 Jul 91 22:16:53 CET from
+%%%  <weissenfels at BAUELEMENTE.E-TECHNIK.UNI-DORTMUND.DBP.DE>
+%%% ========================================================================
+%%% The question: "Is there anything like TEXCAD, TEXDRAW for Suns?"
+%%% The answer: Yes, indeed, it is called FIG (Facility for Interactive Gene-
+%%% ration if figures) and runs under Sunview (fig) or X11 (xfig).
+%%%
+%%% The source code is available via ftp on nearly any better unix-server,
+%%% e.g. Passau (forwiss.uni-passau.de) or Stuttgart
+%%% (rusmv1.rus.uni-stuttgart.de).
+%%%
+%%% A short note about the features of the three most popular TeX-drawing
+%%% aids (= this means, the three I know :-) )
+%%%   Name           Machine      Features
+%%% --------------------------------------------------------------
+%%%   TeXCAD         IBM-PC       45 % (most of LaTeX's abilities,
+%%%                               no beziers; translates to LaTeX)
+%%%   TeXDraw 1.79   Atari-ST     80 % (LaTeX's abilities plus epics,
+%%%                               beziers: translates to LaTeX, PiCTeX,
+%%%                               Metafont; plus conversion of bitmap-
+%%%                               graphics to LaTeX or Metafont; imports
+%%%                               LaTeX, HPGL)
+%%%   TeXDraw 2.00   Atari-ST(+)  100% (like 1.79 plus splines, ellipses,
+%%%                  IBM-PC (++)  arcs; plus import of FIG, GEM, CSG;
+%%%                               plus translates FIG; plus support of
+%%%                               \special-packages (em, cs, tpic))
+%%%   fig / xfig     sun / X11    100 % (most of LaTeX's abilities plus
+%%%                               arcs, ellipses, splines; translates to
+%%%                               PostScript, LaTeX, tpic, HPGL, PicTeX)
+%%%
+%%% (+)  betatest-stadium
+%%% (++) just started, to convert
+%%%
+%%% This rating is *VERY* subjective (remember I wrote TeXDraw ;-) )
+%%%
+%%% Jens Pirnay, Institut f. Physik III, Uni Regensburg, Germany
+%%% X400  : pirnay at vax1.rz.uni-regensburg.dbp.de
+%%% BITNET: hru003 at djukfa11

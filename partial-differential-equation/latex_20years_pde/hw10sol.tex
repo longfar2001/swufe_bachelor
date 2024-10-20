@@ -1,0 +1,269 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2020}
+\author{\textbf{Homework 10, Solutions}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+ \usepackage{textcomp}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+
+\begin{enumerate}
+
+\item We know that Heaviside step function
+\begin{equation}H(x)=
+\left\{
+\begin{array}{ll}
+1& x> 0, \\
+0,&x<0
+\end{array}
+\right.
+\end{equation}
+has the dirac--delta function $\delta(x)$ being its weak derivative.  However, you might find that a Heaviside function is defined otherwise such as
+\begin{equation}H(x)=
+\left\{
+\begin{array}{ll}
+1& x> 0, \\
+\frac{1}{2} (\text{or any other number})& x= 0, \\
+0,&x<0
+\end{array}
+\right.
+\end{equation}
+in some textbooks.  According to the Lebesgue's theory, the value a function at a single point (or a zero
+measure set) does not effect its properties in general and two functions that are equal almost everywhere are
+considered to be identical.  Accordingly, the two forms of $H(x)$ are identical while we shall take the former in our course.  Similarly, weak derivative of a function is unique up to a measure zero, that being said, if $f(x)$ is a weak derivative of $F(x)$, then $g(x)$ is also a weak derivative, if $f(x)$ and $g(x)$ only differ on a zero measure set.  This applies further.
+
+A so-called bump function is given as $R(x)=xH(x)$.  Show by definition that the weak derivative of $R(x)$ is $H(x)$.
+\begin{solution}
+Let $v(x)\in L^1_{\text{loc}}(\mathbb{R}^1)$ be a weak derivative of $R(x)$, then we have from the definition of the weak derivative that, for $M$ being large
+\[\int_{-M}^M R(x)\phi'(x)dx=-\int_{-M}^M v(x)\phi(x)dx\]
+for all $\phi(x)\in C^1_0(-M,M)$, i.e., $\phi(x)\in C^1(-M,M)$ and $\phi(x)=0$ for $\vert x\vert>M$.  Note that we usually send $M=\infty$, and the test function in $C^\infty_0$, however, this alternative is just give you an impression that they are equivalent in definition.  Then we have from integration by parts that
+\[\int_{-M}^M R(x)\phi'(x)dx=\int_0^M x d\phi(x)=-\int_0^M \phi(x) dx=-\int_{-M}^M H(x)\phi(x)dx,\]
+therefore $H(x)$ is a weak derivative of $R(x)$.
+
+Remark:  The weak derivative is unique in the sense of measure zero, i.e., out of a region of zero measure.
+\end{solution}
+
+\item Find the weak derivative of $F(x)$, denoted by $f(x)$
+\begin{equation}
+F(x)=\left\{
+\begin{array}{ll}
+x,&0<x\leq1,\\
+1,&1\leq x<2.
+\end{array}
+\right.
+\end{equation}
+\begin{solution}
+Formally we see that the weak derivative of $F(x)$, denoted by $f(x)$, is
+\begin{equation}
+f(x)=\left\{
+\begin{array}{ll}
+1,&0<x\leq1,\\
+0,&1\leq x<2.
+\end{array}
+\right.
+\end{equation}
+To prove this by definition, we choose any $\phi\in C^\infty_{c}(0,2)$ and can easily find that
+\[\int_0^2F\phi'dx=\int_0^1F\phi'dx+\int_1^2 F\phi'dx=-\int_0^1\phi dx=\int_0^2 f\phi dx,\]
+with $f$ given above.  This is done.
+\end{solution}
+
+\item It is necessary to point out that in the definition of a weak derivative both $F$ and $f$ being $L^1_{\text{loc}}$ are necessary (here ``loc" means being locally integrable in the sense that it is integrable over any compact subset of $\Omega$).  Let $\Omega=(0,2)$ and define
+\begin{equation}
+F(x)=\left\{
+\begin{array}{ll}
+x,&0<x\leq1,\\
+2,&1\leq x<2.
+\end{array}
+\right.
+\end{equation}
+Show that $F'=f$ does not exist in the weak sense by the following contradiction argument: suppose that the weak derivative $f$ exists, show that for any test function $\phi(x)\in C^\infty_c(0,2)$ we have
+\[\int_0^2f \phi dx=\int_0^1 \phi dx+\phi(1).\]
+
+Now choose a sequence of test functions $\phi_m(x)$ satisfying
+\[0\leq \phi_m(x)\leq 1, \phi_m(1)=1,\phi_m(x)\rightarrow 0, \forall x\neq1, m\rightarrow\infty\]
+and then obtain  a contradiction from the identity above.
+\begin{solution}
+We argue by contradiction and assume that the weak derivative exists.  Then choose a sequence of test functions $\{\phi_m\}_{m=1}^\infty$ above, and then we have
+\[1=\lim_{m\rightarrow \infty}\phi_m(1)=\lim_{m\rightarrow \infty}\Big(\int_0^2 f\phi_m dx-\int_0^1 \phi_mdx\Big)=0,\]
+which is a contradiction.
+\end{solution}
+
+\item  Assume that $F_n(x)$ converges to $F(x)$ weakly, and let $f_n(x)$ and $f(x)$ be their weak derivatives respectively.  Prove that $f_n(x)$ also converges to $f(x)$ weakly.
+\begin{solution}
+Since $f_n(x)$ is the weak derivative of $F_n(x)$, we have that for any test function $\phi\in C_c(\Omega)$ that
+\begin{equation}\label{ab}
+-\int_\Omega \phi'(x)F_n(x)dx=\int_\Omega \phi(x)f_n(x)dx;
+\end{equation}
+similarly, we have that
+\begin{equation}\label{cd}
+-\int_\Omega \phi'(x)F(x)dx=\int_\Omega \phi(x)f(x)dx;
+\end{equation}
+Since $F_n\rightarrow F$ weakly (in $L^p(\Omega)$ for instance), we have that for any function $\psi$ in its dual space (the space of all its bounded linear functional), we have that
+\[\int_\Omega F_n(x) \psi(x)dx \rightarrow \int_\Omega F(x) \psi(x) dx;\]
+there is an advanced theory in functional analysis that $C_c^\infty$ function is always in the dual space of probably all the function spaces we work on, therefore we can choose $\psi=\phi'$ and obtain from (\ref{ab}) and (\ref{cd}) that
+\[\int_\Omega f_n(x) \psi(x)dx \rightarrow \int_\Omega f(x) \psi(x) dx,\]
+and this implies that $f_n\rightarrow f$ weakly.
+\end{solution}
+
+\item Find the fundamental solution of $\mathcal L=\frac{d^2}{dx^2}$.  Show that if $\frac{d^2F(x)}{dx^2}=\sin x$, then we can have the following (not intuitively simple)
+\[F(x)=\frac{1}{2}\int_{-\infty}^\infty |x-y|\sin ydy.\]
+\begin{solution}
+To find the fundamental solutions of $\mathcal L$, it is sufficient to find $G(x)$ such that $\mathcal L G=\delta(x)$.  On the other hand, we already know from class that the weak derivative of $H(x)$ is $\delta(x)$, therefore we have that $\frac{dG(x)}{dx}=H(x)$, in the weak sense.
+
+It seems necessary to mention that, if $f$ is the weak derivative of $F$, so is it a weak derivative for $F+c$ for any constant $c$.  In this spirit, we see that $H(x)+c$ also admits $\delta(x)$ as the weak derivative, hence $xH(x)+cx$ is the fundamental solution of $\frac{d^2}{dx^2}$ for any $c$.  In particular, choosing $c=\frac{1}{2}$, with $xH(x)+\frac{x}{2}$, implies that $\frac{1}{2}|x|$ is a fundamental solution of $\mathcal L$, therefore we have
+\[F(x)=\frac{1}{2}\int_{-\infty}^\infty |x-y|\sin ydy.\]
+as desired.
+
+Remark:  One was able to show this by straightforward calculation as in class or by using Fourier transform as in HW 10.  An analog is the following simple fact that, if $G(x)$ is a fundamental solution of $\mathcal L$, so is $G(x)+V(x)$ for any $V(x)$ such that $\mathcal LV(x)=0$.
+\end{solution}
+
+\item Show that $F(x)=xH(x)+cx$, $\forall c\in\mathbb R$, is a fundamental solution of $\mathcal L=\frac{d^2}{dx^2}$
+\begin{solution}
+This can be verified easily by definition and I skip the details.  
+\end{solution}
+
+\item
+i)  Find a fundamental solution $G$ of $\mathcal L:=\frac{d^2}{dx^2}-1$ such that $\mathcal LG(x)=\delta(x)$.  Hint: Fourier transform.
+
+ii) use this fundamental solution to solve the following problem in terms of an integral
+\[-u_{xx}+u=f,x\in \mathbb R.\]
+Compare this with your solution in HW 9.
+\begin{solution}
+This was done in HW 9.  I would like to mention that one can also solve this by straightforward calculations as we did in class for $\frac{d^2}{dx^2}$.  That is, one solve for $\frac{d^2G}{dx^2}-G=0$ for $x>0$ and $x<0$ respectively, and then match the (arbitrary) constants with the integral condition from a delta.  Details skipped.  
+\end{solution}
+
+\item One can easily generalize the second--order operator to higher dimension, the laplace operator $\Delta$ over $\Omega\subset\mathbb R^n$, $n\geq1$.
+\begin{enumerate}
+  \item We say that $f$  is radially symmetric if $f(x)=f(r)$, $r=|x|:=\sqrt{\sum_{i=1}^n x_i^2}$.  Prove that
+  \[\Delta f(r)=f''(r)+\frac{n-1}{r}f'(r),\]
+  the prime being derivative taken with respect to $r$.
+  \item We shall show in a coming lecture that $G(r):=\frac{1}{2\pi}\ln r$ is the fundamental solution of $\Delta$ for $n=2$, $-\frac{1}{4\pi r^2}$ being that for $n=3$.  For this moment, let us consider its regularization over $2D$ of the form
+      \[G_\epsilon(r)=\frac{1}{2\pi}\ln (r+\epsilon),\epsilon>0.\]
+      Show that $\Delta G_\epsilon(r)$ converges to $\delta(x)$ in distribution as $\epsilon\rightarrow 0^+$.  Hint: you can either apply Lebesgue's dominated convergence theorem, or use $\epsilon$--$\delta$ language.  Make sure you have checked all the conditions when apply the former one.
+\end{enumerate}
+\begin{solution}
+(a)  We show this by straightforward calculations.  First of all, we have that $\frac{\partial r}{\partial x_i}=\frac{x_i}{r}$.  Then by chain rule we have
+\[\frac{\partial f(r)}{\partial x_i}=\frac{\partial f(r)}{\partial r}\frac{\partial r}{\partial x_i}=\frac{\partial f(r)}{\partial r} \frac{x_i}{r};\]
+moreover, we have
+\[\frac{\partial^2 f}{\partial x_i^2}=\frac{\partial}{\partial x_i}\Big(\frac{\partial f}{\partial r} \frac{x_i}{r}\Big)=\frac{\partial^2 f}{\partial r^2} \big(\frac{x_i}{r}\big)^2+\frac{\partial f}{\partial r}\frac{\partial }{\partial x_i}\big(\frac{x_i}{r}\big);\]
+finally, using the fact that
+\[\frac{\partial }{\partial x_i}\big(\frac{x_i}{r}\big)=\frac{1}{r}-\frac{x_i^2}{r^3}\]
+leads us to the expected identity.
+
+(b)  By the identity in (a), we have that
+\[\Delta G_\epsilon(r)=G''_\epsilon(r)+\frac{1}{r}G'_\epsilon(r)=\frac{1}{2\pi}\Big(\frac{1}{r+\epsilon}+\frac{1}{r}\cdot \frac{-1}{(r+\epsilon)^2}\Big)=\delta_\epsilon(x):=\frac{\epsilon}{2\pi(r+\epsilon)^2},\]
+and we shall show $\delta_\epsilon(x)$ converges to $\delta(x)$ is distribution.  Note that here its distribution limit $\delta(x)$ satisfies all the properties except that it is multi--dimensional.
+
+To this end, we first see that, formally $\delta_\epsilon(x)\rightarrow \infty$ if $x=0$, $\rightarrow 0$ if $x\neq 0$.  Next, we have that
+\[\int_{\mathbb R^2}\delta_\epsilon(x)dx=\int_{\mathbb R^2} \frac{\epsilon}{2\pi(r+\epsilon)^2} dx=\int_0^\infty \frac{\epsilon r}{(r+\epsilon)^2}dr=-\frac{\epsilon}{r+\epsilon}\Big|_0^\infty=1.\]
+Now, we only need to show that for any text function $\phi(x)\in C(\mathbb R^2)\cap L^\infty (\mathbb R^2)$
+\[\int_{\mathbb R^2}\delta_\epsilon(x)\phi(x)dx\rightarrow\phi(0),\]
+or equivalently
+\[\int_{\mathbb R^2}\frac{\epsilon}{2\pi(r+\epsilon)^2}\phi(x)dx\rightarrow\phi(0).\]
+To show this, we observe that for any $\delta$ small, one can choose $R$ large enough such that
+\[\int_{\mathbb R^2\backslash B_0(M)}\frac{\epsilon}{2\pi(r+\epsilon)^2}\phi(x)dx=\delta;\]
+on the other hand, one has from the dominated convergence theorem that as $\epsilon \rightarrow 0$
+\[\int_{B_0(M)}\frac{\epsilon}{2\pi(r+\epsilon)^2}\phi(x)dx=\phi(x_\epsilon) \int_{B_0(M)}\frac{\epsilon}{2\pi(r+\epsilon)^2}dx\leq \phi(x_\epsilon)(1-\delta)\rightarrow \phi(0),\]
+since $\delta$ is arbitrary.  I would like mention that one can also apply the standard $\epsilon$-$\delta$ to prove this.
+\end{solution}
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

@@ -1,0 +1,282 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2022}
+\author{\textbf{Homework 8, Due Dec 1}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+ \usepackage{textcomp}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+
+\item  We have defined the Dirac-delta function $\delta(x)$ in 1D in class.
+
+(1) generalize the definition to $N$D, $N\geq2$.
+
+(2) give an example of the nascent delta function as above;
+
+
+\item For multi--dimensional domain in $\mathbb R^N$, $N\geq2$, with $x=(x_1,x_2,...,x_N)$, the analog heat kernel is
+\[G(x,t)=\frac{1}{{(4\pi Dt)}^\frac{N}{2}}e^{-\frac{|x|^2}{4Dt}},\]
+where $\xi=0$ is chosen.  Show that
+
+(i) $G_t=D\Delta G$;
+
+(ii) $\int_{\mathbb R^N}G(x,t)dx=1$.
+
+
+\item  Show the following facts for $\delta(x)$:
+
+(1).  $\delta(x)=\delta(-x)$;
+
+(2). $\delta(kx)=\frac{\delta(x)}{\vert k\vert }$, where $k$ is a non-zero constant;
+
+(3).  $\int_\mathbb{R} f(x)\delta(x-x_0) dx=f(x_0)$; $\delta(x-x_0)$ is occasionally written as $\delta_{x_0}(x)$;
+
+(4).  Let $f(x)$ be continuous except for a jump--discontinuity at $0$.  Show that
+\[\frac{f(0^-)+f(0^+)}{2}=\int_{-\infty}^\infty f(x)\delta(x)dx\]
+
+Remark: For (1) and (2), you are indeed asked to show that they equal in the distribution sense, but not pointwisely.
+
+
+
+
+
+\item  Define the following sequence of functions from $(-1,1)\rightarrow \mathbb{R}$
+\begin{equation}f_n(x)=
+\left\{
+\begin{array}{ll}
+-n,~x\in(-\frac{1}{n},0),\\
+n,~x\in(0,\frac{1}{n}),\\
+0,~\text{elsewhere}.
+\end{array}
+\right.
+\end{equation}
+Find the distribution limit of $f_n(x)$.  Prove your claim.
+
+\item Let us revisit the Lebesgue's dominated convergence theorem.  It states that: if $f_n(x)\rightarrow f(x)$ pointwisely/a.e., and there exists an integrable function $g(x)$ such that $|f_n(x)|\leq g(x)$ pointwisely/a.e., then one has that
+    \[\lim_{n\rightarrow \infty} \int_\Omega f_n(x)dx=\int_\Omega f(x)dx,\]
+    or equivalently $\Vert f_n-f\Vert_{L^1(\Omega)}\rightarrow 0$.  Here $g(x)$ means that $g\in L^1(\Omega)$.  Use this fact to prove its generalized version: if all the statements above hold, except that $g\in L^p(\Omega)$, $p\in(1,\infty)$, then we have that $\Vert f_n-f\Vert_{L^p(\Omega)}\rightarrow 0$.  I wish this gives you some motivations for further (strong) convergence on the $(G*f)(x,t)\rightarrow f(x)$ that we proved in class.
+
+ \item We know that the solution $u(x,t)$ to the following Cauchy problem
+\begin{equation}\label{infty}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (-\infty,\infty), t>0,\\
+u(x,0)=\phi(x),&x \in (-\infty,\infty),
+\end{array}
+\right.
+\end{equation}
+is given by
+\[u(x,t)=\int_{\mathbb R} \phi(\xi)G(x,t;\xi)d\xi,\]
+with
+\[G(x,t;\xi)=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{(x-\xi)^2}{4Dt}}\footnote{I would like to point out that there should be no confusion on the notation here, where $G(x-\xi;t)$ was adopted in class.  It is a matter of the integration variable and the parameter.}.\]
+Suppose that $\phi(x)\in L^\infty(\mathbb R)\cap C^0(\mathbb R)$ (i.e., continuous and bounded).
+\begin{enumerate}
+\item Prove that $u(x,t)\in C_x(\mathbb R)$, i.e., continuous with respect to $x$.  Hint: you can either use $\epsilon-\delta$ language or show that $u(x_n,t)\rightarrow u(x,t)$ as $x_n\rightarrow x$ for each fixed $(x,t)$.  Similarly, you can continue to prove that $u\in C^k_x(\mathbb R)$ for any $k\in\mathbb N^+$, hence $C^\infty_x$, while you can skip this part;
+\item Indeed, as you may have seen from your proof, the continuity condition on initial data $\phi(x)$ above is not required, i.e., $u(x,t)\in C^\infty (\mathbb R\times [\epsilon,\infty))$ for any $\epsilon>0$, if $\phi(x)\in L^\infty(\mathbb R)$ (even if it has jump or discontinuity).  To illustrate this, let us assume $\phi(x)=1$ for $x\in(-1,1)$ and $\phi(x)=0$ elsewhere, therefore it has jumps at $x=\pm1$.  Choose $D=1$, then use MATLAB to plot the integral solution $u(x,t)$ above for time $t=0.001$, $t=0.01$, $t=0.1$ and $t=1$ in the same coordinate--choose the integration limit to be $(-M,M)$ for some $M$ large enough so it approximate the exact solution.  One shall see that $u(x,t)$ becomes smooth at $x=\pm 1$ for any small time $t>0$, though two jumps present in the initial data; this is the so--called smoothing or regularizing effect of diffusion.
+\end{enumerate}
+
+
+\item Consider the following problem over the half-plane
+\begin{equation}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t>0,\\
+u(x,0)=0,&x \in (0,\infty),\\
+u(0,t)=N_0,&t>0,
+\end{array}
+\right.
+\end{equation}
+where $N_0$ is a point heating source at the end point.
+
+(1) Solve for $u(x,t)$ in terms of an integral.
+
+
+(2) Set $D=N_0=1$.  Plot your solve for $t=0.001$, 0.01, 0.1 and $1$.  The graphes should match the physical description of the problem.
+
+\item
+Use physical interpretations (or design some mental experiments) to obtain the solution to the following problems by using $u(x,t)$ in (\ref{infty}) without solving them as you have done before (note that you already know the results according to lecture and the last HW)
+\begin{equation}\label{DBC}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t>0,\\
+u(x,0)=\phi(x),&x \in (0,\infty),\\
+u(0,t)=0,&t>0,
+\end{array}
+\right.
+\end{equation}
+and
+\begin{equation}\label{NBC}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t>0,\\
+u(x,0)=\phi(x),&x \in (0,\infty),\\
+u_x(0,t)=0,&t>0.
+\end{array}
+\right.
+\end{equation}
+Hint: while $G$ presents a unit heating source, $-G$ presents a unit cooling source.
+
+\item  This problem is to give you a flavor of how PDE is connected and applied to finance.  To be specific, we will obtain the price of a European option explicitly by solving the classical 1D heat equation, leading to the seminal Black-Scholes formula.
+
+In mathematical finance, the Black-Scholes or Black-Scholes-Merton model is a PDE that describes the price evolution of a European call or European put under the Black-Scholes model.  Let us denote $S_t$ as the price of the underlying risky asset at time $t$, typically a stock (which is regarded as an independent variable to which investigator adjust their investing strategy) and $\mu$ as the risk--free interest rate, then the Black-Scholes model assumes that the price of $S$ follows a geometric Brownian motion
+\[\frac{dS_t}{S_t}=\mu dt+\sigma dW_t\footnote{Here the subindex $t$, like it or not, merely means a notation, not the partial derivative.},\]
+where $W_t$ is Brownian motion (a continuous stochastic process the increments of which are Gaussian, i.e., $W_{t+s}-W_s\sim N(0,s)$ for each $t,s>0$, one can simply it treat it formally as a randomly increasing or decreasing process as time varies).  $\sigma>0$ is the magnitude of such randomness, so this term measures the risk (of investing in this stock) and is called \emph{volatility} in finance (think of this as the variance of a random variable in statistics).  It is not hard to image that $S$ is now a stochastic process, i.e., at each fixed time $S$ is a random variable with random event $\omega$ hidden.  Financial time-series data indicate that the volatility can depend on stock price $S$ and other factors in practice (e.g., time-delay, term structure, component structure, volatility smile, etc., if you are aware of), however for the sake of mathematical simplicity (all models are wrong), it is assumed that $\sigma$ is a constant in the B--S model (well, this is not useful, to be honest with you).  According to the model, the equation above gives rise to the following PDE
+\begin{equation}\label{BS}
+\left\{
+\begin{array}{ll}
+\frac{\partial V}{\partial t}+\frac{1}{2}\sigma^2 S^2\frac{\partial^2 V}{\partial S^2}+rS\frac{\partial V}{\partial S}-rV=0,& S>0,0<t<T,\\
+V(S,T)=\phi(S),&S>0,
+\end{array}
+\right.
+\end{equation}
+where $T>0$ is a pre--given time, the so-called strike time.  $V$ is the option value (as the dependent value) (the word \emph{option} in finance means the right to buy or sell an asset at a predetermined price, or the so-called strike price $K$, before or on the strike time $T$.  Both $K$ and $T$ are specified in the contract.)  You need to know some basic stochastic calculus or It\^o calculus in order to derive this PDE, which is out of the scope of this homework or this course.  Anyhow, let us just focus on cooking up this PDE at this moment.  It is necessary to point out that instead of an initial condition, (\ref{BS}) is coupled with a terminal condition.  This is because the diffusion rate becomes $-\frac{1}{2}\sigma^2S^2$ if you want to write it as a heat equation, therefore there is no contradiction to the principle that diffusion rate can not be negative.
+
+It is the purpose of this homework to show that (\ref{BS}) can be transformed to the Cauchy problem of the heat equation and then be solved explicitly.  To this end, do the followings:
+
+(a).  Introduce the new variables
+\[S=Ke^x, t=T-\frac{\tau}{\sigma^2/2},\]
+where the constant $K$ is the strike price.  Let $v(x,\tau)=V(S,t)$.  Show that
+\[\frac{\partial v}{\partial \tau}=\frac{\partial^2 v}{\partial x^2}+\Big(\frac{2r}{\sigma^2}-1\Big)\frac{\partial v}{\partial x}-\frac{2r}{\sigma^2}v.\]
+
+(b).  Introduce
+\[u(x,\tau)=e^{ax+b\tau}v(x,\tau).\]
+Choose constants $a$ and $b$ such that $u(x,\tau)$ satisfies
+\begin{equation}\label{heat}
+\frac{\partial u}{\partial \tau}=\frac{\partial^2u}{\partial x^2}.
+\end{equation}
+
+(c)  A European option may be exercised only at the expiration date $T$ of the option, and in particular, the call option of a European option is defined mathematically by letting
+\[\phi(S)=\max\{S-K,0\}.\]
+Solve the classical heat equation (\ref{heat}) under this terminal condition.  Write your solution $u(x,\tau)$ in terms of integrals.
+
+(d).  In terms of the solutions in (c) and the transformations.  Show that the solution $V(S,t)$ to (\ref{BS}) is
+\[V=SN(d_1)-Ke^{-r(T-t)}N(d_2),\]
+where
+\[d_1=\frac{\ln S/K +(r+\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}},\]
+\[d_2=\frac{\ln S/K +(r-\sigma^2/2)(T-t)}{\sigma \sqrt {T-t}},\]
+and $N$ is the cumulative normal distribution that
+\[N(x)=\frac{1}{\sqrt {2\pi}}\int_{-\infty}^x e^{-\frac{y^2}{2}}dy.\]
+
+(e)  Suppose that $S=200$, $K=210$, $r=2\%$ is the annual interest rate, $\sigma=0.58$ and the expiration date is in two months.  Find the call value $V$.  In order to make use of this formula, you need to make sure that all the parameters are on the same scale.
+
+\item Let us consider the multi-dimensional heat equation in $\mathbb R^n$, $n\geq2$
+\begin{equation}\label{ND}
+\left\{
+\begin{array}{ll}
+u_t=D \Delta u,& x\in \mathbb R^n, t>0,\\
+u(x,0)=\phi(x),&x \in \mathbb R^n.
+\end{array}
+\right.
+\end{equation}
+
+i) use your gut feeling to write down the solution of (\ref{ND}) without solving it.  Hint: what is the fundamental solution in $n$D?
+
+ii) To solve (\ref{ND}), let us consider the \emph{dilation scaling} with constants $\alpha$ and $\beta$
+\[u(x,t):=\frac{1}{t^\alpha}v\big(\frac{x}{t^\beta}\big),x\in\mathbb R^n,t>0.\]
+Denote $y:=\frac{x}{t^\beta}$.  Find the PDE for $v(y)$ and show that $\beta=\frac{1}{2}$;
+
+iii) Let $w(|y|)=v(y)$.  Find the PDE for $w(|y|)$ and show that $\alpha=\frac{n}{2}$;
+
+iv) Suppose that (for physical consideration) that both $w$ and $w'$ converges to zero as $|y|\rightarrow\infty$,  Show that $w(r)=C_0e^{-\frac{r^2}{4}}$, where $C_0$ is a positive constant to be determined such that the total mass/integral of $w$ is unit.  Compare it with your intuition.
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

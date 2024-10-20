@@ -1,0 +1,174 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2022}
+\author{\textbf{Homework 9, Due Dec 8}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+ \usepackage{textcomp}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+
+\item We know that the Heaviside step function
+\begin{equation}H(x)=
+\left\{
+\begin{array}{ll}
+1& x> 0, \\
+0,&x<0
+\end{array}
+\right.
+\end{equation}
+has the Dirac-delta function $\delta(x)$ be its weak derivative.  As I mentioned in class you might find in some textbooks that a Heaviside function is defined otherwise such as
+\begin{equation}H(x)=
+\left\{
+\begin{array}{ll}
+1& x> 0, \\
+\frac{1}{2}~(\text{or any other number})& x= 0, \\
+0,&x<0.
+\end{array}
+\right.
+\end{equation}
+However, according to Lebesgue's theory, the value of a function at a single point (or a zero
+measure set) does not affect its properties in general and two functions that are equal almost everywhere are
+considered to be identical.  Accordingly, the two forms of $H(x)$ are identical while we shall take the former in our course.  Similarly, the weak derivative of a function is unique up to a measure zero, that being said, if $f(x)$ is a weak derivative of $F(x)$, then $g(x)$ is also a weak derivative, if $f(x)$ and $g(x)$ only differ on a zero measure set.  This applies further.
+
+A so-called bump function is given as $B(x)=xH(x)$.  Show by definition that the weak derivative of $B(x)$ is $H(x)$.
+
+\item Find the weak derivative of $F(x)$, denoted by $f(x)$
+\begin{equation}
+F(x)=\left\{
+\begin{array}{ll}
+x,&0<x\leq1,\\
+1,&1\leq x<2.
+\end{array}
+\right.
+\end{equation}
+
+\item It is necessary to point out that in the definition of a weak derivative, some textbooks require that both $F$ and $f$ are $L^1_{\text{loc}}$ (here "loc" means being locally integrable in the sense that it is integrable over any compact subset of $\Omega$).  Let $\Omega=(0,2)$ and define
+\begin{equation}
+F(x)=\left\{
+\begin{array}{ll}
+x,&0<x\leq1,\\
+2,&1\leq x<2.
+\end{array}
+\right.
+\end{equation}
+Show that $F'=f$ does not exist in the weak sense by the following contradiction argument: suppose that the weak derivative $f$ exists, show that for any test function $\phi(x)\in C^1_0(0,2)$ (some textbooks use $C^\infty_c$, where ``c" denotes compact) we have
+\[\int_0^2f \phi dx=\int_0^1 \phi dx+\phi(1).\]
+
+Now choose a sequence of test functions $\phi_m(x)$ satisfying
+\[0\leq \phi_m(x)\leq 1, \phi_m(1)=1,\phi_m(x)\rightarrow 0, \forall x\neq1, m\rightarrow\infty\]
+and then obtain a contradiction from the identity above.
+
+\item  Assume that $F_n(x)$ converges to $F(x)$ weakly, and let $f_n(x)$ and $f(x)$ be their weak derivatives respectively.  Prove that $f_n(x)$ also converges to $f(x)$ weakly.
+
+
+\item One can easily generalize the second--order operator to higher dimension, the Laplace operator $\Delta$ over $\Omega\subset\mathbb R^n$, $n\geq1$.
+\begin{enumerate}
+  \item We say that $f$  is radially symmetric if $f(x)=f(r)$, $r=|x|:=\sqrt{\sum_{i=1}^n x_i^2}$.  Prove that
+  \[\Delta f(r)=f''(r)+\frac{n-1}{r}f'(r),\]
+where the prime denotes a derivative taken with respect to $r$.
+  \item Denote that $G(r):=\frac{1}{2\pi}\ln r$ for $n=2$.  We shall show that $\Delta G=\delta(r)$.  For this moment, let us consider its regularization over $2D$ of the form
+      \[G_\epsilon(r)=\frac{1}{2\pi}\ln (r+\epsilon),\epsilon>0.\]
+      Show that $\Delta G_\epsilon(r)$ converges to $\delta(x)$ in distribution as $\epsilon\rightarrow 0^+$.  Hint: you can either apply Lebesgue's dominated convergence theorem, or use $\epsilon$--$\delta$ language.  Make sure you have checked all the conditions when applying the former one.
+      \item Denote $G(r):=-\frac{1}{4\pi r^2}$ for $n=3$.  Mimic (b) by finding an approximation $G_\epsilon$ and then show that this approximation $\Delta G_\epsilon$ convergence to $\delta(x)$ in distribution.
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+\endinput

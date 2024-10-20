@@ -1,0 +1,492 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2020}
+\author{\textbf{Homework 6, Solutions}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+ \usepackage{textcomp}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+\item In measure theory, there are two additional convergence manners for $f_n\rightarrow f$: convergence in measure (called convergence in probability) and convergence almost everywhere (convergence almost surely).  This should give you a flavor that a probability is a measure and vice versa.  Convergence in measure states that for each fixed $\varepsilon>0$
+    \[m\big(\{x\in\Omega: |f_n(x)-f(x)|\geq\varepsilon\}\big)\rightarrow 0, \text{~as~}n\rightarrow \infty,\]
+    and convergence almost everywhere means that the measure of the non-convergence region is zero, i.e., for each fixed $\varepsilon>0$
+    \[m\big(\{x\in\Omega: \lim_{n\rightarrow\infty}|f_n(x)-f(x)|\geq\varepsilon\}\big)=0.\]
+i) what are the relationships between these two convergence manners?  Prove your claims or give a counter-example.
+
+ii) what are their relationships between strong convergence (convergence in $L^2$ for instance)?  Prove your claims or give a counter-example.
+
+I would like to point out there convergence are global behaviors in strong contrast to the pointwise convergence since all the points are involved in the convergence limit.
+\begin{solution}
+There facts are from your undergraduate course, and I assume that each of you know these statements and their proofs.  I present them here to give you a taste how they apply to/in PDEs.
+\end{solution}
+
+\item  It is known that strong convergence implies weak convergence, while not the converse.  One counter-example we mentioned in class is $f_n(x):=\sin nx$ over $(0,2\pi)$.
+
+(i)  Prove that $\sin nx \nrightarrow 0 $ in $L^2((0,2\pi))$.
+
+(ii)  Prove that
+$\sin nx \rightharpoonup 0$ weakly by showing
+\[\int_0^{2\pi} g(x)\sin nx dx\rightarrow 0=\Big(\int_0^{2\pi} g(x)0  dx\Big),\forall g\in L^2((0,2\pi)).\]
+If suffices even if $g\in L^1$.  Hint: Riemann--Lebesgue lemma.
+\begin{solution}
+(i).  It is very easy to show that $\Vert \sin nx\Vert_{L^2((0,2\pi))}\not \rightarrow 0$ by straightforward calculations, hence the strong convergence is impossible.  (What is the value?)
+
+(ii).  Applying Riemann--Lebesgue lemma gives the desired limit.  I already presented partial approach in class and I assume/need that you know how to prove this lemma in detail.  One student, if you all remember, mentioned that you learnt this in Calculus.  It is possible but I still doubt it as the $L^2$-norm was not introduced by then.  Wish me wrong.
+\end{solution}
+
+\item  We recall that $f_n(x) \rightharpoonup f(x)$ weakly in $L^p$ (resp. convergence in distribution) if for any $\phi\in L^q$ (resp. continuous and bounded), which is its conjugate space with $\frac{1}{p}+\frac{1}{q}=1$, we have that
+\[\int_\Omega f_n\phi dx\rightarrow \int_\Omega f\phi dx.\]
+Here we see that for any $g$ in $L^q$
+\[<\cdot, g>=\int_\Omega \cdot g\]
+defines a bounded linear functional for $L^p$.  Then we also call $L^q$ \emph{the dual space} of $L^p$ since any element in $L^q$ defines a functional for $L^q$.
+
+(i)  Another type of convergence that you may see sometimes is $\Vert f_n \Vert_p\rightarrow \Vert f\Vert_p$, which merely states the convergence of a sequence of real numbers.  Prove that if $f_n \rightarrow f$ in $L^p$, then $\Vert f_n \Vert_p\rightarrow \Vert f\Vert_p$ (Use Minkowski triangle inequality); however the apposite statement is not necessarily true.  Give a counter-example and show it;
+
+(ii) We have proved that strong convergence in $L^p$ implies the weak convergence by Holder's inequality, however, the opposite statement is not necessarily true.  For example, prove that $\sin nx$ converges to zero weakly, but not strongly in $L^p$.  Hint: Riemann--Lebesgue lemma;
+
+(iii) Prover that, if $f_n \rightharpoonup f$ weakly and $\Vert f_n \Vert_p\rightarrow \Vert f\Vert_p$, then $f_n\rightarrow f$ strongly.
+\begin{solution}
+Minkowski's triangle inequality states that, $\forall f,g\in L^p$, $p\in(1,\infty)$, we always have that $\Vert f+g\Vert_{L^p}\leq \Vert f\Vert_{L^p}+\Vert g\Vert_{L^p}$.  Then it is not hard to obtain that
+\[\big| \Vert f_n\Vert_{L^p}-\Vert f\Vert_{L^p} \big|\leq \Vert f_n-f\Vert_{L^p}\rightarrow 0,\]
+which proves the desired claim.  You can fill the details yourself. I skip presenting a counter-example here, however, here is a hint how you can construct such a counter--example:  think of $f_n$ and $f$ as points in a plane and their norms measure the distance from the origin, therefore $\Vert f_n-f\Vert_{L^p}\rightarrow 0$ means that the distance between $f_n$ are $f$ goes to zero, while $\Vert f_n\Vert_{L^p}\rightarrow \Vert f\Vert_{L^p}$ merely means that the distance of $f_n$ to the origin converges to that of $f$.  Now it is not hard to surmise that the former implies the latter, but not the other way.  I assume that you are able to find a counter--example.
+
+Finally, we shall prove that though each condition in does not, while both conditions, imply the strong convergence.  To prove this, let us divide our discussions into the following cases:
+
+case 1: $p=2$.  Then the conclusion is straightforward following Cauchy--Schwarz inequality.  I assume that you have no problem proving this case;
+
+case 2: $p>2$.  We first see that for any $z\in \mathbb R$
+\[|z+1|^p\geq c|z|^p+pz+1,\]
+where $c$ is a positive constant independent of $z$.  (In order to prove this fact, we just need to show that $\frac{|z+1|^p-pz-1}{|z|^p}$ has a positive lower bounded $c$ over $\mathbb R$).  Now we can let $z=\frac{f_n-f}{f}$ in this inequality, multiply it by $|f|^p$ and then integrate the new one over $\Omega$ to obtain
+\[\int_\Omega|f_n|^pdx\geq \int_\Omega |f|^pdx+p\int_\Omega |f|^{p-2}f(f_n-f)dx+c\int_\Omega |f_n-f|^pdx.\]
+Since $f_n \rightharpoonup f$ weakly, we see that the second integral on the right hand size of the equality converges to zero (think of $|f|^{p-2}f$ as a test function).  On the other hand, we have that $\int_\Omega |f_n|^pdx\rightarrow \int_\Omega |f|^pdx$ thanks to the strong convergence, therefore we must have
+\[\int_\Omega |f_n-f|^pdx\rightarrow 0,\]
+which implies the strong convergence.
+
+case 3: $p\in(1,2)$.  The proof of this part is a little bit tricky.  Similar as above, we can show (by straightforward calculations) that $\forall z\in\mathbb R$
+\begin{align*}
+  |z+1| \geq & c|z|^p+pz+1,\text{~if~}|z|\geq1, \\
+  |z+1| \geq & c|z|^2+pz+1,\text{~if~}|z|\geq1.
+\end{align*}
+In order to apply these inequalities, we shall choose $z=\frac{f_n-f}{f}$.  Denote
+\[\Omega_n:=\{x\in\Omega; |z|\geq1\},\]
+then we can have by the same calculations as above that
+\begin{align*}
+  \int_\Omega |f_n|^pdx =&\int_{\Omega\backslash\Omega_n}|f_n|^pdx+\int_{\Omega_n}|f_n|^pdx   \\
+   =&\int_{\Omega\backslash\Omega_n}|z+1|^p|f|^pdx+\int_{\Omega_n}|z+1|^p|f|^pdx   \\
+   \geq & \int_{\Omega\backslash\Omega_n}(c|z|^2+pz+1)|f|^pdx+\int_{\Omega_n}(c|z|^p+pz+1)|f|^pdx,   \\
+\end{align*}
+which implies, in light of the formula of $z$, that
+\[\int_{\Omega\backslash\Omega_n}(f_n-f)^2|f|^{p-2}dx+\int_{\Omega_n}|f_n-f|^pdx\rightarrow 0.\]
+Both integrals are nonnegative, hence both should converge to zero
+\[\int_{\Omega\backslash\Omega_n}(f_n-f)^2|f|^{p-2}dx\rightarrow 0, \int_{\Omega_n}|f_n-f|^pdx\rightarrow 0.\]
+In particular, we only need to show that
+\[\int_{\Omega\backslash\Omega_n}|f_n-f|^pdx\rightarrow 0.\]
+For this purpose, we shall apply Holder's inequality or Schwarz's inequality as following.  Note that $|f_n-f|<|f|$ in $\Omega\backslash\Omega_n$, then we have that
+\begin{align*}
+  \int_{\Omega\backslash\Omega_n}|f_n-f|^pdx\leq  & \int_{\Omega\backslash\Omega_n}|f|^{p-1} |f_n-f|dx  \\
+   \leq & \Big(\int_{\Omega\backslash\Omega_n}|f|^{p} \Big)^\frac{1}{2}\Big(\int_{\Omega\backslash\Omega_n}|f|^{p-2} |f_n-f|^2dx \Big)^\frac{1}{2} \\
+  \leq  &   \Big(\int_{\Omega}|f|^{p} \Big)^\frac{1}{2}\Big(\int_{\Omega\backslash\Omega_n}|f|^{p-2} |f_n-f|^2dx \Big)^\frac{1}{2}\rightarrow 0, \\
+\end{align*}
+which is the desired claim and the proof completes.
+\end{solution}
+
+
+\item In class, we arrived at an integral of the following form when evaluating $G^{\pm}_L$
+\[I(c)=\int_0^\infty e^{-w^2b} \cos (wc) dw,\]
+where $b$ and $c$ are constants.
+
+(i)  Evaluate this integral through integration by parts;
+
+(ii).  An alternative approach is to solve an ODE that $I(c)$ satisfies.  Show that $I(c)$ satisfies
+\[\frac{dI(c)}{dc}=-\frac{c}{2b}I(c);\]
+
+(iii).  Show that $I(0)=\sqrt \frac{\pi}{4b}$ and solve the ODE in (i) to find $I(c)$.
+\begin{solution}
+(i) Skipped.
+
+(ii). Differentiate $I(c)$ w.r.t $t$ and we have
+\begin{align*}
+\frac{dI(c)}{dc}&=\frac{d}{dc}\int_0^\infty e^{-w^2b} \cos (wc) dw=\int_0^\infty e^{-w^2b} \Big(\frac{d}{dc}\cos (wc)\Big) dw\\
+&=-\int_0^\infty we^{-w^2b} \sin (wc) dw.
+\end{align*}
+Meanwhile, we can evaluate $RHS$ of the equation
+\begin{align*}
+-\frac{c}{2b}I(c)&=-\frac{c}{2b}\int_0^\infty e^{-w^2b} \cos (wc) dw=-\frac{1}{2b}\int_0^\infty e^{-w^2b} d\sin (wc) \\
+&=-\frac{1}{2b}e^{-w^2b} \sin (wc)\Big\vert_0^\infty+\frac{1}{2b}\int_0^\infty  \sin (wc)de^{-w^2b}=-\int_0^\infty we^{-w^2b} \sin (wc) dw.
+\end{align*}
+Therefore, $I(c)$ satisfies
+\[\frac{dI(c)}{dc}=-\frac{c}{2b}I(c).\]
+(iii). In order to evaluate the value of $I(0)$, we calculate
+\begin{align*}
+I^2(0)&=\Big(\int_0^\infty e^{-w^2b} dw\Big)^2=\int_0^\infty e^{-x^2b} dx\cdot\int_0^\infty e^{-y^2b} dy\\
+&=\int_0^\infty\int_0^\infty e^{-(x^2+y^2)b}dxdy
+\end{align*}
+Let $x=r\sin\theta$ and $y=r\cos\theta$. Then we can have that
+\[I^2(0)=\int_0^{\frac{\pi}{2}}d\theta \int_0^\infty e^{-r^2 b}rdr=\frac{\pi}{2}(-\frac{1}{2b}) e^{-r^2 b}\Big\vert_0^\infty=\frac{\pi}{4b}.\]
+Of course $I(0)>0$, we can get $I(0)=\sqrt \frac{\pi}{4b}$. From (i), we can write the equation in form of
+\[\frac{dI(c)}{I(c)}=-\frac{c}{2b}dc.\]
+Integrating it over $(0,t)$, we have that
+\begin{align*}
+\ln{I(c)}\Big\vert_0^t=-\frac{c^2}{4b}\Big\vert_0^t=-\frac{t^2}{4b}
+\end{align*}
+i.e., $I(t)=I(0)e^{-\frac{t^2}{4b}}$, which is
+\[I(c)=\sqrt \frac{\pi}{4b}e^{-\frac{c^2}{4b}}.\]
+\end{solution}
+
+\item Use the solutions above to complete our approach in class and solve the following IBVP in $(0,\infty)$
+\begin{equation}\label{halfinfty}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x \in (0,\infty),\\
+u(0,t)=u(\infty,t)=0,&t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+That is, you need to write the solution in the following form
+\[u(x,t)=\int_0^\infty \phi(\xi)\big(G^-(\xi;x,t)-G^+(\xi;x,t)\big)\xi.\]
+\begin{solution}
+We have already presented the solution as an integral in class with
+\[G^\pm(\xi;x,t)=\frac{1}{\sqrt{4\pi Dt}}e^\frac{-(\xi\pm x)}{4Dt}.\]
+\end{solution}
+
+
+
+\item Be advised that the integral above can be evaluated symbolically.  Choose $D=1$ and the initial data to be $\phi(x)\equiv 1$ for $x\in(0,1)\cup(2,3)$ and $\phi(x)\equiv0$ otherwise.  Plot the solution of (\ref{halfinfty}) at times $t=10^{-4},10^{-3},0.1,0.5$,1 and 5.  Note that this integral over $(0,\infty)$ must be truncated over $(0,L)$ for $L$ large.  Choose your own $L$.  (You should know how to choose such $L$ up to certain accuracy by now).
+\begin{solution}
+Skipped.  I do not bother to plot the graphes, but I encourage students to send their (ease-to-implement and logically well-presented) MATLAB codes to me so I make them up.
+\end{solution}
+
+\item If we do not apply the integral solution above, then one needs to approximate that of (\ref{halfinfty}) through the finite series
+\[u(x,t)=\sum_{n=1}^NC_n(0)e^{-D(\frac{n\pi x}{L})^2t}\sin\frac{n\pi x}{L}\]
+by choosing both $N$ and $L$ sufficiently large.  The accuracy is lost twice here if it makes sense to you.  Do the same as the problem above numerically, and then compare how it works.
+\begin{solution}
+Skipped.
+\end{solution}
+
+\item  Let us consider the following IBVP over half line $(0,\infty)$ with Neumann boundary condition
+\begin{equation}\label{NBC}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,\infty), t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x \in (0,\infty),\\
+u_x(0,t)=0,&t\in(0,\infty),
+\end{array}
+\right.
+\end{equation}
+Similar as in class, tackle this problem by first solving its counterpart in $(0,L)$ and then sending $L\rightarrow\infty$.  Hint: the suggested solution is
+\[u(x,t)=\int_0^\infty \phi(\xi)\Big(G(x,t;\xi)+G(x,t;-\xi)\Big)d\xi.\]
+\begin{solution}
+First of all, we consider the corresponding problem over $(0,L)$
+\begin{equation}\label{NBCL}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (0,L), t>0,\\
+u(x,0)=\phi(x),&x \in (0,L),\\
+u_x(0,t)=0,&x\in(0,L).
+\end{array}
+\right.
+\end{equation}
+We already know that the solution to (\ref{NBCL}) in infinite series takes the form
+\[u(x,t)=\int_0^L \phi(\xi)G_L(x,t;\xi)d\xi,\]
+with
+\[G_L(x,t;\xi):=\frac{2}{L}\sum_{n=0}^\infty e^{-D(\frac{n\pi}{L})^2t}\cos \frac{n\pi x}{L}\cos \frac{n\pi \xi}{L},\]
+which, in light of the new notation $\Delta w:=\frac{\pi}{L}$ becomes
+\[G_L(x,t;\xi):=\frac{2}{\pi}\sum_{n=0}^\infty e^{-D(n\Delta w)^2t}\cos (n \Delta w x) \cos (n\Delta w \xi) \Delta w.\]
+Thanks to the formula $\cos a \cos b=\frac{1}{2}\big(\cos (a+b)+\cos (a-b)\big)$, we have that
+\[G_L(x,t;\xi):=\frac{1}{\pi}\sum_{n=0}^\infty e^{-D(n\Delta w)^2t}\Big(\cos n \Delta w (x+\xi)+\cos n \Delta w (x-\xi)\Big)\Delta w.\]
+Now I skip the rest details and assume that you have no problem show that it converges to $G(x,t;\xi)+G(x,t;-\xi)$, $G$ the heat kernel.  I would like to mention that we will see from a physical interpretation why this problem must have its solution of this form.
+\end{solution}
+
+
+\item  Let us consider the following Cauchy problem
+\begin{equation}\label{infty}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (-\infty,\infty), t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x \in (-\infty,\infty).
+\end{array}
+\right.
+\end{equation}
+We can approximate the solution to this problem by first solving its counterpart in $(-L,L)$, which has been in a previous homework, and then sending $L\rightarrow\infty$.
+
+Consider
+\begin{equation}\label{L}
+\left\{
+\begin{array}{ll}
+u_t=D u_{xx},& x\in (-L,L), t\in\mathbb R^+,\\
+u(x,0)=\phi(x),&x \in (-L,L),\\
+u(-L,t)=u(L,t)=0,& t\in\mathbb R^+.\\
+\end{array}
+\right.
+\end{equation}
+
+(i).  write the solution to (\ref{L}) in terms of infinite series; you just present your final results, no need to show the details here;
+
+(ii).  write the series above into an integral and then evaluate this integral by sending $L\rightarrow \infty$.  Suggested answer:
+\begin{equation}\label{sol}
+u(x,t)=\int_{\mathbb R}G(x,t;\xi)\phi(\xi)d\xi,
+\end{equation}
+where $G(x,t;\xi)$ is the so-called heat kernel and it is explicitly given by
+\[G(x,t;\xi)=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{|x-\xi|^2}{4Dt}}.\]
+We shall see several important applications of solution (\ref{sol}) in the future.
+\begin{solution}
+(i) we know from a previous HW that the corresponding eigen--functions are $\sin \frac{n\pi (x+L)}{2L}$ and therefore we can write the solutions into the following form
+\[u(x,t)=\sum_{n=1}^\infty C_n(t)\sin \frac{n\pi (x+L)}{2L}.\]
+For further reference I shall include details that obtain the coefficients of the series.  Substituting it into the PDE gives us
+\[\sum_{n=1}^\infty C'_n(t)\sin \frac{n\pi (x+L)}{2L}=-D\sum_{n=1}^\infty C_n(t)\Big(\frac{n\pi}{2L}\Big)^2\sin \frac{n\pi (x+L)}{2L},\]
+which further implies due to the orthogonality of the eigen--functions that
+\[C'_n(t)=-D\Big(\frac{n\pi}{2L}\Big)^2C_n(t),n=1,2,...\]
+Solving this ODE gives rise to
+\[C_n(t)=C_n(0)e^{-D(\frac{n\pi}{2L})^2t}\]
+hence the solution is
+\[u(x,t)=\sum_{n=1}^\infty C_n(0)e^{-D(\frac{n\pi}{2L})^2t}\sin \frac{n\pi (x+L)}{2L}.\]
+
+To decipher the initial condition, we have that
+\[\phi(x)=u(x,0)=\sum_{n=1}^\infty C_n(0)\sin \frac{n\pi (x+L)}{2L},\]
+which implies
+\[C_n(0)=\frac{1}{L}\int_{-L}^L\phi(x)\sin \frac{n\pi (x+L)}{2L}dx,\]
+where we have applied the fact that
+\[\int_{-L}^L \sin^2 \frac{n\pi (x+L)}{2L}dx=L.\]
+
+Finally, the solution, in terms of an infinite series, is
+\[u(x,t)=\int_{-L}^L\phi(\xi)G_L(x,t;\xi)d\xi,\]
+where
+\[G_L(x,t;\xi):=\frac{1}{L}\sum_{n=1}^\infty e^{-D(\frac{n\pi}{2L})^2t}\sin \frac{n\pi (x+L)}{2L} \sin \frac{n\pi (\xi+L)}{2L}\]
+or for later application
+\begin{equation}\label{Gl}
+G_L(x,t;\xi)=\frac{1}{L}\sum_{n=1}^\infty e^{-D(\frac{n\pi}{2L})^2t}\sin \Big(\frac{n\pi x}{2L}+\frac{n\pi}{2}\Big)\sin \Big(\frac{n\pi \xi}{2L}+\frac{n\pi}{2}\Big).
+\end{equation}
+
+(ii)  now we proceed to investigate the limit of $G_L(x,t;\xi)$ as $L\rightarrow \infty$.  Similar as in class, let us denote $\Delta w:=\frac{\pi}{2L}$, then we can rewrite $G_L(x,t;\xi)$ in (\ref{Gl}) into
+\[G_L(x,t;\xi)=\frac{2}{\pi}\sum_{n=1}^\infty e^{-D(n \Delta w)^2t}\sin  \Big(n\Delta wx+\frac{n\pi}{2} \Big)\sin  \Big(n\Delta w\xi+\frac{n\pi}{2} \Big)\Delta w,\]
+and we shall investigate $G_L(x,t;\xi)$ as $L\rightarrow\infty$.
+
+
+First of all, in light of the compound-angle formula
+\[\sin a\sin b=\frac{1}{2}\big(\cos (a-b)-\cos (a+b)\big),\]
+we have that
+\begin{align}\label{expansion}
+G_L(x,t;\xi)=&\frac{1}{\pi}\sum_{n=1}^\infty e^{-D(n \Delta w)^2t}\Big(\cos n\Delta w(x-\xi)-\cos (n\Delta w (x+\xi)+n\pi) \Big) \Delta w  \nonumber\\
+   =& \frac{1}{\pi}\sum_{n=1}^\infty e^{-D(n \Delta w)^2t} \cos n\Delta w(x-\xi) \Delta w \nonumber\\
+   &-\frac{1}{\pi}\sum_{n=1}^\infty \Big(e^{-D(n \Delta w)^2t}\cos (n\Delta w (x+\xi)+n\pi) \Big)\Delta w \nonumber\\
+  =& \overbrace{\frac{1}{\pi}\sum_{n=1}^\infty e^{-D(n \Delta w)^2t} \cos n\Delta w(x-\xi) \Delta w}^{I}
+  - \overbrace{\frac{1}{\pi}\sum_{n=1}^\infty (-1)^n e^{-D(n \Delta w)^2t} \cos n\Delta w(x+\xi) \Delta w}^{J}
+\end{align}
+Note that for the first identity in (\ref{expansion})  one does not always have
+\[\sum_{n=1}^\infty(a_n+b_n)=\sum_{n=1}^\infty a_n+\sum_{n=1}^\infty b_n,\]
+however it is true when both $\{a_n\}$ and $\{b_n\}$ are convergent, as they are here.
+
+According to our lecture, one finds that as $\Delta w\rightarrow 0$
+\[I\rightarrow \frac{1}{\pi}\frac{\sqrt \pi}{\sqrt{4 Dt}}e^{-\frac{|x-\xi|^2}{4Dt}}=G(x,t;\xi),\]
+which is the heat kernel.  Now we shall show that $J\rightarrow 0$ as $\Delta w\rightarrow 0$.  Note that $J$ has alternating terms, then similar as above, we can split it into two parts with $n=2k-1$ and $2k$ as
+\[J=\frac{1}{\pi}\sum_{k=1}^\infty- e^{-D((2k-1) \Delta w)^2t} \cos ((2k-1)\Delta w(x+\xi)) \Delta w
++\frac{1}{\pi}\sum_{k=1}^\infty e^{-D(2k \Delta w)^2t} \cos 2k\Delta w(x+\xi) \Delta w\]
+or
+\[J=\frac{1}{\pi}\sum_{k=1}^\infty\Big(e^{-D(2k \Delta w)^2t} \cos 2k\Delta w(x+\xi)- e^{-D((2k-1) \Delta w)^2t} \cos ((2k-1)\Delta w(x+\xi))\Big) \Delta w.\]
+Starting from here, I surmise there are various labor--saving methods that you may apply to show that $J\rightarrow 0$ as $\Delta w\rightarrow 0$ and I would be more than happy to know if you can propose an easier solution (let me know if you do have one).  However I shall simply use brutal force as follows.  Note that the function $J$ takes the form $f(2k\Delta w)g(2k \Delta w)-f((2k-1)\Delta w)g((2k-1) \Delta w)$, the natural way is to rewrite it into $f(2k\Delta w)g(2k \Delta w)-f((2k-1)\Delta w)g(2k \Delta w)+f((2k-1)\Delta w)g(2k \Delta w)-f((2k-1)\Delta w)g((2k-1) \Delta w)$ for easier cooking.  In this spirit, one has that
+
+\begin{align}
+J=& \overbrace{\frac{1}{\pi}\sum_{k=1}^\infty e^{-D(2k \Delta w)^2t}\Big(\cos 2k\Delta w(x+\xi)-\cos ((2k-1)\Delta w(x+\xi))\Big) \Delta w}^{J_1} \nonumber\\
+&+ \overbrace{\frac{1}{\pi}\sum_{k=1}^\infty\Big(e^{-D(2k \Delta w)^2t}- e^{-D((2k-1)\Delta w)^2t}\Big) \Big(\cos ((2k-1)\Delta w(x+\xi))\Big)\Delta w}^{J_2}
+\end{align}
+
+To cook up $J_1$, we use the compound--angle formula $\cos a-\cos b=-2\sin \frac{a+b}{2}\sin \frac{a-b}{2}$ to have that
+\[J_1=\frac{1}{\pi}\sum_{k=1}^\infty e^{-D(2k \Delta w)^2t} (-2)\sin \Delta w(x+\xi)\sin\big((2k-1)\Delta w(x+\xi)\big) \Delta w;\]
+note that for $x$ and $\xi$ fixed, $\sin \Delta w(x+\xi)=O(\Delta w)$ as $\Delta w\rightarrow 0$, therefore we have from the fact $|\sin\big((2k-1)\Delta w(x+\xi)\big)|\leq1$ that
+\[|J_1|\leq O(\Delta w) \overbrace{\sum_{k=1}^\infty e^{-D(2k \Delta w)^2t} \Delta w}^{J_{11}},\]
+with $\frac{2}{\pi}$ embedded into $O(\Delta w)$.  It is easy to see that
+\[J_{11}\rightarrow \int_{-\infty}^\infty e^{-D(2 w)^2t}dw<\infty,\]
+therefore $J_1 \rightarrow 0$ as $\Delta w\rightarrow 0$.
+
+To estimate $J_2$, we first have from Mean Value Theorem that, for some $k^*\in[k-\frac{1}{2},k]$ one has
+\[e^{-D(2k \Delta w)^2t}- e^{-D((2k-1)\Delta w)^2t}=e^{-D(2k^* \Delta w)^2t}(Dt)(\Delta w)((4k-1)\Delta w).\]
+Why? It holds because $e^{-a^2}-e^{-b^2}=e^{-c^2}(b^2-a^2)$ for some $c\in[a,b]$.  Therefore one has that
+\[|J_2|\leq O(\Delta w)\frac{1}{\pi}\sum_{k=1}^\infty  e^{-D(2k^* \Delta w)^2t}((4k-1)\Delta w) \Delta w,\]
+which again converges to zero, since this infinite series is finite (either you can find it to be an approximate of an integral or show directly that it is bounded).  This verifies that $J\rightarrow 0$ as $\Delta w\rightarrow 0$.  Finally, we finish the proof and collect (\ref{sol}) as expected.
+\end{solution}
+
+
+\item   The heat kernel $G(x,t;\xi)$ is sometimes called fundamental solution of heat equation
+\[G(x,t;\xi)=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{(x-\xi)^2}{4Dt}}.\]
+Prove that
+
+(i) $|\frac{\partial G}{\partial x}|\rightarrow 0$ as $|x|\rightarrow\infty$ for each $t$ and $\xi$.  Prove the same for $\frac{\partial^m G}{\partial x^m}$ for each $m\in \mathbb N^+$;
+
+(ii) $G_t=DG_{xx}$, $x\in\mathbb R,t\in\mathbb R^+$;
+
+(iii) $\int_{\mathbb R}G(x,t;\xi)dx=1$.
+
+Remark:  I would like to note that we write the kernel $G(x,t;\xi)$ and $G(\xi;x,t)$ interchangeably.  The former is to highlight the eventual solution as a function of $x$ and $t$, whereas the latter is to focus on treating $\xi$ as the integration variable whenever applicable.
+\begin{solution}
+All the conclusions above can be verified through straightforward calculations and I skip typing them here.  I would like to point out that in (i), one should treat both $t$ and $x$ as
+fixed parameters.
+\end{solution}
+
+\item To give yourself some physical intuitions on the heat kernel, let us consider the following situation in $\mathbb R$: put two unit thermal heat at locations $\xi=-1$ and $\xi=1$ respectively at time $t=0$.  Suppose that the temperature $u(x,t)$ satisfies the heat equation with diffusion rate $D=1$, then it is given by the following explicit form
+    \[u(x,t)=G(x,t;-1)+G(x,t;1)=\frac{1}{\sqrt{4\pi t}}\Big(e^{-\frac{(x+1)^2}{4t}}+e^{-\frac{(x-1)^2}{4t}}\Big).\]
+Plot $u(x,t)$ over $x\in(-5,5)$ with $t=0.01, 0.02, 0.05$, $0.1$ and $1$ \emph{on the same coordinate} in $(-R,R)$ (if $R$ is large, then it approximates the whole line)  to illustrate your results--please use different colors and/or line styles for better effects.  We will know more about the physical intuition in the future; indeed you should already have an intuition about: i) the evolution of the thermal energy; ii) the connect between diffusion and Brownian motion or normal distribution.)
+\begin{solution}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \includegraphics[width=\textwidth]{hw5figure1.eps}
+        \caption*{The evolution of the compounded heat kernel}
+    \end{subfigure}\hspace{5mm}
+    \begin{subfigure}[b]{0.475\textwidth}
+        \includegraphics[width=\textwidth]{hw5figure2.eps}
+        \caption*{The evolution zoomed out in $(-20,20)$}
+    \end{subfigure}
+    \caption{Evolution of the compounded heat kernel.}\label{HK1}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \includegraphics[width=\textwidth]{hw5figure3.eps}
+        \caption*{Formation of $\delta$ as $t\rightarrow 0^+$}
+    \end{subfigure}\hspace{5mm}
+    \begin{subfigure}[b]{0.475\textwidth}
+        \includegraphics[width=\textwidth]{hw5figure4.eps}
+        \caption*{Smoothing effect of diffusion rate}
+    \end{subfigure}
+    \caption{Formation of $\delta$ and effect of diffusion rate for Problem 2.}\label{HK2}
+\end{figure}
+
+There are some additional plots I added in Figure \ref{HK1} and Figure \ref{HK2} to examine some interesting and also important phenomena such as the convergence of the heat kernel to a $\delta$-function as $t\rightarrow 0^+$, the smoothing effect of diffusion rate $D$, etc.  We will provide a rigourous proof later in this class.
+\end{solution}
+
+
+\item For multi--dimensional domain in $\mathbb R^N$, $N\geq2$, with $x=(x_1,x_2,...,x_N)$, the analog heat kernel is
+\[G(x,t)=\frac{1}{{(4\pi Dt)}^\frac{N}{2}}e^{-\frac{|x|^2}{4Dt}},\]
+where $\xi=0$ is chosen.  Show that
+
+(i) $G_t=D\Delta G$;
+
+(ii) $\int_{\mathbb R^N}G(x,t)dx=1$.
+\begin{solution}
+Similar as before, I assume that the students can verify these facts through straightforward calculations and I skip the details here.
+\end{solution}
+
+\item  Define the following sequence of functions from $(-1,1)\rightarrow \mathbb{R}$
+\begin{equation}f_n(x)=
+\left\{
+\begin{array}{ll}
+-n,~x\in(-\frac{1}{n},0),\\
+n,~x\in(0,\frac{1}{n}),\\
+0,~\text{elsewhere}.
+\end{array}
+\right.
+\end{equation}
+Find the distribution limit of $f_n(x)$.  Prove your claim.
+\begin{solution}
+First of all, it is easy to see that $f_n(x)\rightarrow 0$ pointwisely, therefore it is natural to guess that as $n\rightarrow \infty$ the distribution limit of $f_n(x)$ is $f(x)\equiv 0$.  Indeed, this is a good guess and in order to prove this it is equivalent to show that
+\[\int_{\mathbb{R}}f_n (x)\phi(x)dx\rightarrow \int_{\mathbb{R}}f (x)\phi(x)dx= 0\]
+for any continuous and bounded function $\phi(x)$ as $n\rightarrow\infty$.  Indeed, we have
+\begin{align*}
+\int_{\mathbb{R}}f_n (x)\phi(x)dx=\phi(\xi_n)\int_{\mathbb{R}}f_n (x)dx=\phi(\xi_n)\Big(\int^{0}_{-\frac{1}{n}}(-n)dx+\int_{0}^{\frac{1}{n}}ndx\Big)=0=\int_{\mathbb R} f(x)\phi(x)dx,
+\end{align*}
+where $\xi_n\in[-\frac{1}{n},\frac{1}{n}]$ in light of Mean Value Theorem.  This shows that $f\equiv 0$ is the distribution limit of $f_n(x)$ by definition.  I would like to mention that, sometimes weak convergence is treated as convergence in distribution, in the sense that they are almost the same except that one requires the test function $\phi$ to be in $L^q$ (the dual space), while the other to be continuous and bounded, or $L^\infty \cap C^0$.  This was noted in class.
+\end{solution}
+
+
+\end{enumerate}
+
+
+\end{document}
+\endinput

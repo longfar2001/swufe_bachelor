@@ -1,0 +1,143 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2022}
+\author{\textbf{Homework 6} Due Nov 14}
+\date{}
+
+\voffset -1.25cm \hoffset -3.5cm \textwidth 18cm \textheight 25cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+
+
+\begin{enumerate}
+\item In measure theory, there are two additional convergence manners for $f_n\rightarrow f$: convergence in measure (called convergence in probability) and convergence almost everywhere (convergence almost surely).  This should give you a flavor that probability is a measure and vice versa.  Convergence in measure states that for each fixed $\varepsilon>0$
+    \[m\big(\{x\in\Omega: |f_n(x)-f(x)|\geq\varepsilon\}\big)\rightarrow 0, \text{~as~}n\rightarrow \infty,\]
+    and convergence almost everywhere means that the measure of the non-convergence region is zero, i.e., for each fixed $\varepsilon>0$
+    \[m\big(\{x\in\Omega: \lim_{n\rightarrow\infty}|f_n(x)-f(x)|\geq\varepsilon\}\big)=0.\]
+i) what are the relationships between these two convergence manners?  Prove your claims or give a counter-example.
+
+ii) what are their relationships between strong convergence (convergence in $L^2$ for instance)?  Prove your claims or give a counter-example.
+
+I would like to point out that convergence is global behavior in strong contrast to pointwise convergence since all the points are involved in the convergence limit.
+
+\item  It is known that strong convergence implies weak convergence, while not the converse.  One counter-example we mentioned in class is $f_n(x):=\sin nx$ over $(0,2\pi)$.
+
+(i)  Prove that $\sin nx \nrightarrow 0 $ in $L^2((0,2\pi))$.
+
+(ii)  Prove that
+$\sin nx \rightharpoonup 0$ weakly by showing
+\[\int_0^{2\pi} g(x)\sin nx dx\rightarrow 0=\Big(\int_0^{2\pi} g(x)0  dx\Big),\forall g\in L^2((0,2\pi)).\]
+If suffices even if $g\in L^1$.  Hint: Riemann--Lebesgue lemma.
+
+\item  We recall that $f_n(x) \rightharpoonup f(x)$ weakly in $L^p$ (resp. convergence in distribution) if for any $\phi\in L^q$ (resp. continuous and bounded), which is its conjugate space with $\frac{1}{p}+\frac{1}{q}=1$, we have that
+\[\int_\Omega f_n\phi dx\rightarrow \int_\Omega f\phi dx.\]
+Here we see that for any $g$ in $L^q$
+\[<\cdot, g>=\int_\Omega \cdot g\]
+defines a bounded linear functional for $L^p$.  Then we also call $L^q$ \emph{the dual space} of $L^p$ since any element in $L^q$ defines a functional for $L^q$.
+
+(i)  Another type of convergence that you may see sometimes is $\Vert f_n \Vert_p\rightarrow \Vert f\Vert_p$, which merely states the convergence of a sequence of real numbers.  Prove that if $f_n \rightarrow f$ in $L^p$, then $\Vert f_n \Vert_p\rightarrow \Vert f\Vert_p$ (Use Minkowski triangle inequality); however the opposite statement is not necessarily true.  Give a counter-example and show it;
+
+(ii) We have proved that strong convergence in $L^p$ implies the weak convergence by Holder's inequality, however, the opposite statement is not necessarily true.  For example, prove that $\sin nx$ converges to zero weakly, but not strongly in $L^p$.  Hint: Riemann--Lebesgue lemma;
+
+(iii) Prove that, if $f_n \rightharpoonup f$ weakly and $\Vert f_n \Vert_p\rightarrow \Vert f\Vert_p$, then $f_n\rightarrow f$ strongly.
+\end{enumerate}
+
+
+\end{document}
+\endinput
+
+
+
+

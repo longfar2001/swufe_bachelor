@@ -1,0 +1,575 @@
+\NeedsTeXFormat{LaTeX2e}% LaTeX 2.09 can't be used (nor non-LaTeX)
+[1994/12/01]% LaTeX date must December 1994 or later
+\documentclass[6pt]{article}
+\pagestyle{headings}
+\setlength{\textwidth}{18cm}
+\setlength{\topmargin}{0in}
+\setlength{\headsep}{0in}
+
+\title{Introduction to PDEs, Fall 2020}
+\author{\textbf{Homework 2, Solutions}}
+\date{}
+
+\voffset -2cm \hoffset -1.5cm \textwidth 16cm \textheight 24cm
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{esint}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
+ \usepackage[colorlinks=true]{hyperref}
+ \usepackage{multirow}
+\input{amssym.tex}
+\def\N{{\Bbb N}}
+\def\Z{{\Bbb Z}}
+\def\Q{{\Bbb Q}}
+\def\R{{\Bbb R}}
+\def\C{{\Bbb C}}
+\def\SS{{\Bbb S}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+%\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{solution}{Solution}
+%\newtheorem{proof}{Proof}
+ \numberwithin{equation}{section}
+%\newtheorem*{problem}{Problem}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+%\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+\newcommand{\keywords}
+
+
+\def\bb{\begin}
+\def\bc{\begin{center}}       \def\ec{\end{center}}
+\def\ba{\begin{array}}        \def\ea{\end{array}}
+\def\be{\begin{equation}}     \def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}    \def\eea{\end{eqnarray}}
+\def\beaa{\begin{eqnarray*}}  \def\eeaa{\end{eqnarray*}}
+\def\hh{\!\!\!\!}             \def\EM{\hh &   &\hh}
+\def\EQ{\hh & = & \hh}        \def\EE{\hh & \equiv & \hh}
+\def\LE{\hh & \le & \hh}      \def\GE{\hh & \ge & \hh}
+\def\LT{\hh & < & \hh}        \def\GT{\hh & > & \hh}
+\def\NE{\hh & \ne & \hh}      \def\AND#1{\hh & #1 & \hh}
+
+\def\r{\right}
+\def\lf{\left}
+\def\hs{\hspace{0.5cm}}
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dsup{\displaystyle\sup}
+\def\dmin{\displaystyle\min}
+\def\dmax{\displaystyle\max}
+\def\dinf{\displaystyle\inf}
+
+\def\al{\alpha}               \def\bt{\beta}
+\def\ep{\varepsilon}
+\def\la{\lambda}              \def\vp{\varphi}
+\def\da{\delta}               \def\th{\theta}
+\def\vth{\vartheta}           \def\nn{\nonumber}
+\def\oo{\infty}
+\def\dd{\cdots}               \def\pa{\partial}
+\def\q{\quad}                 \def\qq{\qquad}
+\def\dx{{\dot x}}             \def\ddx{{\ddot x}}
+\def\f{\frac}                 \def\fa{\forall\,}
+\def\z{\left}                 \def\y{\right}
+\def\w{\omega}                \def\bs{\backslash}
+\def\ga{\gamma}               \def\si{\sigma}
+\def\iint{\int\!\!\!\!\int}
+\def\dfrac#1#2{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
+\def\mathbb{\Bbb}
+\def\bl{\Bigl}
+\def\br{\Bigr}
+\def\Real{\R}
+\def\Proof{\noindent{\bf Proof}\quad}
+\def\qed{\hfill$\square$\smallskip}
+
+\begin{document}
+\maketitle
+
+\textbf{Name}:\rule{1 in}{0.001 in} \\
+\begin{enumerate}
+\item In calculus course, we learned that product rule and quotient rule for single-variate differentiable functions $f$ and $g$ of $x$, i.e.
+\[(fg)'=f'g+fg', \text{~and~}\Big(\frac{f}{g}\Big)=\frac{f'g-fg'}{g^2},\]
+where $'$ denote the derivative taken with respect to $x$.
+
+In the sequel of this problem, we assume that $f=f(x)$ and $g=g(x)$ are multi--variate scalar functions of $x=(x_1,x_2,...,x_n) \in \mathbb R^N$, $N\geq2$.
+
+(1a).  Find $\nabla (fg)$ and $\nabla \Big(\frac{f}{g}\Big)$ as above by straightforward calculations;
+
+(1b).  Show the following identity by straightforward calculations
+\[\nabla \cdot (f\nabla g)=\nabla f \cdot \nabla g+f \Delta g;\]
+
+(1c).  Use your result in (1b) and the Divergence Theorem to show that
+\begin{equation}\label{1}
+\int_\Omega \nabla f \cdot \nabla g+f \Delta g dx =\int_{\partial \Omega} f \frac{\partial g}{\partial \textbf{n}} dS,
+\end{equation}
+where $\Omega$ is a bounded domain with piecewise smooth boundary $\partial \Omega$ and unit outer normal $\textbf{n}$.
+(\ref{1}) is called Green's first identity.  What is formula of (\ref{1}) when $\Omega=(a,b)$?
+
+(1d).  Use your result in (1b) or (1c) to show that
+ \begin{equation}\label{2}
+\int_\Omega f \Delta g - \Delta f  gdx =\int_{\partial \Omega} f \frac{\partial g}{\partial \textbf{n}}-\frac{\partial f}{\partial \textbf{n}} gdS.
+\end{equation}
+(\ref{2}) is called Green's second identity.  What is formula of (\ref{2}) when $\Omega=(a,b)$?
+\begin{solution}
+(1a) one should be able to verify by straightforward calculations involving componentwise (partial) derivatives that $\nabla (fg)=\nabla f g+f \nabla g$ and $\nabla \Big(\frac{f}{g}\Big)=\frac{\nabla f g-f \nabla g}{g^2}$.  These identities are parallel to the produce rule and quotient rule in 1D.
+
+(1b)-(1d) can be verified using the identities in (1a) and the divergence theorem.  One should be able to see that (\ref{2}) parallels the integration by parts in 1D.
+
+\end{solution}
+
+\item This problem is designed to verify the divergence theorem.  Consider a unit ball in $\mathbb R^3$
+\[\Omega:=\{(x,y,z)\in\mathbb R^3|x^2+y^2+z^2<1 \}\] and its boundary, the unit sphere
+\[S:=\{(x,y,z)\in\mathbb R^3|x^2+y^2+z^2=1 \}.\]
+
+(i).  Given a vector field
+\[\textbf{F}=\Big(x,\frac{y^2}{2},\frac{z^2}{2}\Big),\]
+evaluate \[\int_\Omega \nabla \cdot \textbf{F} dx;\]\\
+
+(ii) find out unit outer normal $\textbf{n}$ at $\textbf{x}=(x,y,z)$; then evaluate
+ \[\int_S   \textbf{F} \cdot  \textbf{n} dS.\]
+ Of course, you should find out what is $\textbf{n}$ at first.   Your answers in (i) and (ii) should match and this verifies divergence theorem (at least for this particular example).
+\begin{remark}
+It seems necessary to point out that, in some (or many undergraduate) textbooks, it is conventionally to write
+ \[\iint_V f(x,y) dxdy, \iiint_V f(x,y,z) dxdydz,...\]
+ for double, triple,...volume integrals, and
+ \[  \oint_S f(x,y) ds, \oiint_S f(x,y,z) dS,...\]
+ for line, surface... integrals.  However, the (succinct) way that I wrote these integrals in problem above is well adopted in modern mathematics, which is the same as that to use $x$ for $(x_1,x_2,...)$.  You should not confuse yourself.
+ \end{remark}
+ \begin{solution}
+(i)  We can first find that $\nabla \cdot \textbf{F}=1+y+z$ hence
+\[\int_\Omega \nabla \cdot \textbf{F} dx=\int_\Omega (1+y+z)dxdydz.\]
+While you can proceed to perform all the calculations.  One trick is to observe that, since $y$/$z$ is odd, one has
+\[\int_\Omega ydxdydz=\int_\Omega zdxdydz=0.\]
+Therefore
+\[\int_\Omega \nabla \cdot \textbf{F} dx=\int_\Omega 1dxdydz=\frac{4\pi}{3}.\]
+
+(ii)  You should have the same answer as in (i) if the divergence theorem is applied.  Calculations skipped.
+\end{solution}
+
+\item  Consider a homogeneous long cylindrical pipe of length $L$.  Denote $c$, $\kappa$ and $\rho$ as its carrying capacity, thermal conductivity and density respectively.  Suppose that the temperature at every point on the inner surface to be the same, and that at every point on the outer surface to be the same at the beginning, but that each surface temperature changes concerning time $t$.  Then the heat will flow radially and the temperature on any cylindrical surface of area $S=2\pi r L$ is a constant, where $r$ is the distance from the center.  Show that the temperature $u(x,t)$ of the pipe satisfies
+\[\frac{\partial u}{\partial t}=\frac{\kappa}{c\rho}\Big(\frac{\partial ^2 u}{\partial r^2} +\frac{1}{r}\frac{\partial u}{\partial r}\Big).\]
+Hint: the heat does not flow along the pipe but radially instead.
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[height=4in,width=3in,angle=0]{pipe.png}
+\caption{A cylindrical pipe.  The black area denotes the hole}
+\end{center}
+\end{figure}
+\begin{solution}
+We already know that the heat equation takes the following form
+\[\frac{\partial u}{\partial t}=\frac{\kappa}{c\rho}\Delta u;\]
+on the other hand, it is easy to see that $u(x,y,z)$ only depends on $x$ and $y$, and indeed it is a function of $r=\sqrt{x^2+y^2}$.  By chain rule, you would be able to find that $\Delta u=u_{rr}+\frac{1}{r}u_r$, which leads us to the desired PDE.  Details skipped.  Note that there was a typo in the previous solution, and I meant it on purpose.
+
+An alternative approach is as follows:  Note that the heat flows radially pointing outwards.  Let $\Omega$ be the ring region at each cross-section and denote $u(r,\theta,t)$ as temperature at $(r,\theta,t)\in\Omega\times\mathbb{R} ^{+}$ in the polar coordinate. At time $t$,  then the total energy within a small perturbed pipe is
+\begin{align*}
+E(t)=\int_{r}^{r+\Delta r}c\rho 2\pi rLu(x,t)dr.
+\end{align*}
+The rate of change of the total thermal energy with respect to time $t$ is
+\begin{align*}
+\frac{dE}{dt}=\frac{d}{dt}\Big(\int_{r}^{r+\Delta r}c\rho 2\pi rLu(x,t)dr\Big)=2\pi c\rho L\int_{r}^{r+\Delta r}r\frac{\partial u(r,\theta,t)}{\partial t}dr.
+\end{align*}
+According to the Fourier's Law, we find that
+\begin{align*}
+\frac{dE}{dt}&=-\int_{\partial\Omega}\textbf{J}\cdot\textbf{n}dS
+=2\pi\kappa L\int_{r}^{r+\Delta r}\frac{\partial}{\partial r}(r\frac{\partial u(r,t)}{\partial r})dr\\
+&=2\pi\kappa L\Big(r\frac{\partial ^2 u(r,t)}{\partial r^2} +\frac{\partial u(r,t)}{\partial r}\Big),
+\end{align*}
+which implies that
+\begin{align*}
+\frac{\partial u(r,t)}{\partial t}=\frac{\kappa}{c\rho}\Big(\frac{\partial ^2 u(r,t)}{\partial r^2} +\frac{1}{r}\frac{\partial u(r,t)}{\partial r}\Big).
+\end{align*}
+\end{solution}
+
+\item  Consider a surface $S$ that separates two materials with different thermal conductivities $\kappa_1$ and $\kappa_2$ respectively¨C
+think about the material welding for example. Let $u_1$ and $u_2$ be the temperature of the two media. Suppose that
+the media are in intimate contact along the surface so we have that
+\begin{equation}\label{5}
+u_1=u_2 \text{~on~} S
+\end{equation}
+Prove that on S
+\begin{equation}\label{6}
+-\kappa_1 \frac{\partial u_1}{\partial \textbf{n}}=-\kappa_2 \frac{\partial u_2}{\partial \textbf{n}} \text{~on~} S
+\end{equation}
+where $\textbf{n}$ is the unit normal of the surface $S$.  (\ref{5}) and (\ref{6}) are called the transmission conditions.  Hint: take
+a small region consist of two welded materials, then find the rate of change of the thermal energy over the whole
+region and those over the individual piece respectively.
+\begin{solution}
+Without loss of our generality, we assume that $S$ is an arbitrary surface that separate these two media.  Let $\Omega$ be a small region that consists of two pieces $\Omega_1$ and $\Omega_2$, where $\Omega_1$ and $\Omega_2$ overlap at the surface $S$.  The thermal conductivities of $\Omega_1$ and $\Omega_2$ are $\kappa_1$ and $\kappa_2$ respectively.  Moreover, the unit outer normals to $\partial \Omega_1$ and $\partial \Omega_2$ are denoted by $\textbf{n}_1$ and $\textbf{n}_2$ with $\textbf{n}_1=-\textbf{n}_2$ on $S$.  See the following figure.  The blue curve is actually a cross--section of the surface, and the curves denote the thermal/heat flux.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{drawing.png}
+ \end{figure}
+We know that the thermal flux over $\Omega_i$ takes the form
+\[\textbf{J}_i=-\kappa_i \nabla u_i,i=1,2,\]
+and the rate of change of thermal energy (density) $E_i$ over $\Omega_i$ can be obtained through
+\begin{equation}\label{a}
+\frac{dE_i(t)}{dt}=\int_{\partial \Omega_i} -\textbf{J}_i \cdot \textbf{n}_idS  +\int_{\Omega_i}f(x,t)dx, i=1,2,
+\end{equation}
+where $f(x,t)$ is the creating--depredation rate of the heat.  Moreover, the rate of change of total amount of thermal energy over $\Omega$ $E(t)$ equals
+\begin{equation}\label{b}
+\frac{dE(t)}{dt}=\int_{\partial \Omega } -\textbf{J}  \cdot \textbf{n} dS  +\int_{\Omega }f(x,t)dx,
+\end{equation}
+where $\textbf{J}=\textbf{J}_i$ and $\textbf{n}=\textbf{n}_i$ if $x\in \partial \Omega_i$, $i=1,2$.  On the other hand, it is not hard to see that
+\begin{equation}\label{c}
+\frac{dE(t)}{dt}=\frac{dE_1(t)}{dt}+\frac{dE_2(t)}{dt}.
+\end{equation}
+We also want to point out that $\partial \Omega=(\partial \Omega_1\cup \partial \Omega_2) \backslash S$.  Putting (\ref{a}), (\ref{b}) and (\ref{c}) together, we can easily see that
+\[-\int_S \kappa_1 \frac{\partial u_1}{\partial \textbf{n}_1}=\int_S \kappa_2 \frac{\partial u_2}{\partial \textbf{n}_2}.\]
+Then the transmission condition immediately follows since $\textbf{n}_1=-\textbf{n}_2=\textbf{n}$ and $S$ is arbitrary.
+\end{solution}
+
+\item Note the in $\mathbb R^N$, the classical heat equation $u_t=D\Delta u$ can be rewritten into the following form
+\[u_t=\nabla \cdot (\textbf{A}\nabla u),\]
+which is called the divergence form, where the matrix $A=\left(
+           \begin{array}{cccc}
+             D & 0 & \cdots & 0 \\
+             0 & D & \cdots & 0 \\
+             \cdots & \cdots & D & 0 \\
+             0 & \cdots & 0 & D \\
+           \end{array}
+         \right)=D\textbf{I}$, $I$ is the $N\times N$ identity matrix.  Therefore, one needs to identify the matrix $A$, called tensor matrix, or diffusion matrix, depending on the modeling itself.
+
+i)  Consider the problem in 2D, $u_t=2u_{xx}+u_{yy}$.  Write this problem into the divergence theorem by finding out the matrix $A$;
+
+ii) Again in 2D, what is the PDE is classical form when the matrix is given by the general form
+\[A=\left(
+      \begin{array}{cc}
+        a & b \\
+        c & d \\
+      \end{array}
+    \right).
+\]
+
+iii) one notices that when $A$ is a diagonal matrix, the PDE is more approachable than the other case.  However, one can always diagonalize this problem by a linear transformation.  To see this, suppose that $A$ is invertible (i.e., $ad\neq bc$), and denote
+\[\tilde x:=c_1x+c_2y,\tilde y=d_1x+d_2y.\]
+Find $c_1,c_2,d_1,d_2$ such that one can write $u_t=\nabla_{(\tilde x,\tilde y)} \cdot (\textbf{A}^*\nabla_{(\tilde x,\tilde y)}u)$ with $A^*$ being a diagonal matrix, where
+\[\nabla_{(\tilde x,\tilde y)}=(\frac{\partial}{\partial \tilde x}, \frac{\partial}{\partial \tilde y})\]
+is the grad under the new coordinate;
+
+iv) generalize iii) to multi-dimensional case.  One can now see the connection between eigen-vectors of matrix $A$ and the liner transformation above. Hint: how to diagonalize a $N\times N$ matrix?
+\begin{solution}
+i) one can easily find that \[A=\left(
+      \begin{array}{cc}
+        2 & 0 \\
+        0 & 1 \\
+      \end{array}
+    \right).
+\]
+ii) we would have that $u_t=au_{xx}+(b+c)u_{xy}+du_{yy}$.
+
+iii)-iv) are skipped, and they give you some ideas on how to diagonalize the heat equation.
+\end{solution}
+
+\item Consider the following reaction--diffusion equation with Robin boundary condition
+\begin{equation}\label{1}
+\left\{
+\begin{array}{ll}
+u_t=D\Delta u+f(x,t),&x\in \Omega,t>0,\\
+u(x,0)=\phi(x),&x\in \Omega,\\
+\alpha u+\beta \frac{\partial u}{\partial \textbf{n}}=\gamma,&x \in \partial \Omega, t>0.
+\end{array}
+\right.
+\end{equation}
+Use the energy method to:
+
+(i)  prove the uniqueness of (\ref{1}) when $\alpha=0$ and $\beta\neq 0$;
+
+(ii) prove the uniqueness when both $\alpha$ and $\beta$ are not zero.  You might need to discuss the signs of $\alpha$ and $\beta$.
+\begin{solution}
+I shall only deal with (ii) with (i) can be treated by the arguments.  To show the uniqueness of (\ref{1}), it is equivalent to show that the following homogeneous IBVP admits only zero solution,
+\begin{equation} \label{04}
+\left\{
+\begin{array}{ll}
+w_t=D\Delta w,&x \in \Omega, t>0     \\
+w(x,0)=0,&x\in \Omega,\\
+\alpha w+\beta \frac{\partial w}{\partial \textbf{n}}=0,&x\in \partial \Omega, t>0.
+\end{array}
+\right.
+\end{equation}
+To this end, we define an energy functional for (\ref{04}) as
+\[E(t)=\int_\Omega w^2(x,t)dx, t\geq0, \]
+and we can easily see that $E(0)=0$.  Now we differentiate $E(t)$ with respect to time $t$ and collect that
+\begin{equation}\label{10}
+E'(t)=2D\Big(-\frac{\beta}{\alpha}\int_{\partial \Omega} w(x,t)^2 dS-\int_\Omega \vert \nabla w(x,t)\vert ^2 dx \Big)=-2D\int_\Omega \vert \nabla w(x,t)\vert ^2 dx\leq 0,
+\end{equation}
+then it follows that $E'(t)\leq0$ hence the solution to (\ref{04}) with RBC is unique if $\frac{\beta}{\alpha}>0$; however, if $\frac{\beta}{\alpha}<0$, we can not determine the sign of $E(t)$, therefore we can not determine the uniqueness for (\ref{04}) with the RBC in this case.
+\end{solution}
+Remark:  \emph{The claim that we can not determine the uniqueness here does not necessarily mean that there is no uniqueness to this problem.  It merely means that this particular energy functional can not be used to prove the uniqueness, if the solution is unique at all.}
+
+\item   The so-called energy
+\[E(t)=\int_\Omega w^2(x,t)dx\]
+might not be necessary physical energy such as kinetic energy or potential energy.  But the term ``energy" is used since it has many similarities as physical energy, for example, is always positive, is increasing if temperature $u$ increases.  It is better called energy-functional as we did in class (i.e., the function of functions).
+
+(i) let us define
+\[E(t):=\int_\Omega w^4(x,t)dx.\]
+Use this new energy--functional to prove the uniqueness to (\ref{1}) with $\alpha=1$ and $\beta=0$.
+
+(ii)  can you use $E(t):=\int_\Omega w^3(x,t)dx$ for this purpose?
+\begin{solution}
+(i)  Again, to prove the uniqueness of (\ref{1}), it is sufficient to show that the following system has only zero solution
+\begin{equation}\label{2sol}
+\left\{
+\begin{array}{ll}
+w_t=D\Delta w,&x\in \Omega,t>0,\\
+w(x,0)=0,&x\in \Omega,\\
+w=0,&x \in \partial \Omega, t>0.
+\end{array}
+\right.
+\end{equation}
+
+In light of the PDE and boundary condition, we have from straightforward calculations that
+\begin{eqnarray*}
+E'(t)&=& \frac{d}{dt}\int_\Omega w^4(x,t) dx=4\int_\Omega w^3 \frac{\partial w}{\partial t} dx  \nonumber \\
+&=&4D\int_\Omega w^3 \Delta w dx=4D\Big(\int_{\partial \Omega} w^3 \frac{\partial w}{\partial \textbf{n}}dS-3\int_\Omega w^2 \vert\nabla w\vert^2 dx\Big) \nonumber \\
+&=&-12D\int_\Omega w^2 \vert\nabla w\vert^2 dx \leq 0,\nonumber \\
+\end{eqnarray*}
+therefore $E(t)$ is monotone deceasing in time which, together with the fact $E(0)=0$, implies that $E(t)=0$ for all $t>0$.  Therefore we must have that $w(x,t)\equiv0$ as expected.
+
+(ii)  There are several reasons one can not use this newly defined energy to prove the uniqueness.  First of all, it is unknown the monotonicity of $E(t)$; one is also not able to show that $E(t)$ is always positive/non--negative.  However, failing to do so does not necessarily that the absence of uniqueness; it merely means that employing this particular choice does not suffice.  In practical (research) problems, one shall see many problems can be solved provided with such functionals, which are usually very difficult to obtain or do not exist at all.
+\end{solution}
+
+\item In general, one can not apply energy methods to problems with $f=f(x,t,u)$; many problems have indeed more than one solution.  However, it works for problems with special reaction term $f$ (note that $f$ is called reaction in general because heat produces through \emph{chemical reactions}; and therefore you may see in elsewhere that the heat equations is also called reaction-diffusion equation).
+
+(i).  Use energy method to prove uniqueness to the following problem
+\begin{equation}\label{decay}
+\left\{
+\begin{array}{ll}
+u_t=D\Delta u-u,&x\in \Omega,t>0,\\
+u(x,0)=\phi(x),&x\in \Omega,\\
+u(x,t)=\gamma,&x \in \partial \Omega, t>0.
+\end{array}
+\right.
+\end{equation}
+
+(ii).  Do the same for the following problem with $f=f(u)$ dependent only on $u$
+\begin{equation}\label{nonlinear}
+\left\{
+\begin{array}{ll}
+u_t=D\Delta u+f(u),&x\in \Omega,t>0,\\
+u(x,0)=\phi(x),&x\in \Omega,\\
+u(x,t)=\gamma,&x \in \partial \Omega, t>0.
+\end{array}
+\right.
+\end{equation}
+For what conditions (on $f$) do you have uniqueness of (\ref{nonlinear})?  Hint: according to intermediate value theorem, $f(u_1)-f(u_2)=f'(u_1+\theta (u_2-u_1))(u_1-u_2)$ for some $\theta\in[0,1]$.  Remark: you should see that it also works even if $f=f(x,t,u)$, while I skip $x$ and $t$ with loss of generality.
+\begin{solution}
+(i)  Similar as above, to prove the uniqueness of (\ref{decay}), it suffices to show that the following problem admits only the trivial solution $w(x,t)\equiv 0$, for all $(x,t)\in\Omega\times \mathbb R^+$,
+\begin{equation}\label{decay1}
+\left\{
+\begin{array}{ll}
+w_t=D\Delta w-w,&x\in \Omega,t\in\mathbb R^+,\\
+u(x,0)=0,&x\in \Omega,\\
+w(x,t)=\gamma,&x \in \partial \Omega, t\in\mathbb R^+.
+\end{array}
+\right.
+\end{equation}
+Endow (\ref{1}) with the energy
+\[E(w):=\int_\Omega w^2(x,t)dx.\]
+One obtains from the PDE and the integration by parts that
+\[\frac{d}{dt}E(t)=2\int_\Omega w w_tdx=-2\int_\Omega (D|\nabla w |^2+w^2)dx\leq 0,\]
+hence $E(t)$ is non--increasing and $E(t)\leq 0$.  Moreover, the facts that $E(t)\geq 0$ and $E(0)=0$ imply that $E(t)=0$, $\forall t\in\mathbb R^+$, and the uniqueness follows.
+
+(ii).  For this nonlinear problem, we shall prove that the following problem has only the trivial solution
+\begin{equation}\label{nonlinear2}
+\left\{
+\begin{array}{ll}
+w_t=D\Delta w+f(u_1)-f(u_2),&x\in \Omega,t\in\mathbb R^+,\\
+u(x,0)=0,&x\in \Omega,\\
+w(x,t)=\gamma,&x \in \partial \Omega, t\in\mathbb R^+,
+\end{array}
+\right.
+\end{equation}
+assuming that $u_1$ and $u_2$ are two solutions with $w:=u_1-u_2$.  Recall that the intermediate value theorem states that there exists $\theta \in[0,1]$ such that $f(u_1)-f(u_2)=f'(u^*)(u_1-u_2)$, $u^*=\theta u_1+(1-\theta)u_2$.  Then by the same calculations above, we have that
+\[\frac{d}{dt}E(t)=2\int_\Omega w w_tdx=-2\int_\Omega (D|\nabla w |^2+\int_\Omega f'(u^*)w^2)dx.\]
+If $f'(u)\leq 0$ for any $u\in\mathbb R$, we conclude that $E'(t)\leq 0$ and the uniqueness follows as above.
+\end{solution}
+
+\item  Energy method, one of the most utilized tools in the studies of PDEs, can also be applied to problems of other various forms.  For example, consider the following Initial Boundary Value Problem (a wave equation)
+\begin{equation}\label{wave}
+\left\{
+\begin{array}{ll}
+u_{tt}=D\Delta u+f(x,t),&x\in \Omega,t>0,\\
+u(x,0)=\phi(x),&x\in \Omega,\\
+u_t(x,t)=h(x),&x \in \partial \Omega, t>0.
+\end{array}
+\right.
+\end{equation}
+Use the energy--functional
+\[E(t):=\frac{1}{2}\int_\Omega w_t^2(x,t)+|\nabla w(x,t)|^2 dx\]
+to prove the uniqueness of (\ref{wave}).  You need to justify each step of your arguments rigorously.
+\begin{solution}
+Since this PDE is nonlinear, to show the uniqueness, it is sufficient to show that the following problem has only zero solution
+\begin{equation}\label{wavehomo}
+\left\{
+\begin{array}{ll}
+w_{tt}=D\Delta w,&x\in \Omega,t\in\mathbb R^+,\\
+w(x,0)=0,& x \in \Omega,\\
+w_t(x,t)=0,&x \in \partial \Omega.
+\end{array}
+\right.
+\end{equation}
+To this end, we compute the rate of change of $E(t)$ to be
+\begin{align*}
+  \frac{dE(t)}{dt}= & \int_\Omega w_tw_{tt}+ D\nabla w_t\cdot \nabla w dx-(\text{chain rule}) \\
+  = & \int_\Omega w_t(w_{tt}-D\Delta w)dx-(\text{PDE; the boundary integral disappears due to the zero BC}) \\
+  = & 0,
+\end{align*}
+where I skip the detailed calculations in between.  Therefore $E(t)=E(0)=0$ and this implies that $w(x,t)\equiv 0$ for $(x,t)\in\Omega\times(0,\infty)$.
+
+\end{solution}
+
+\item  We shall see in coming lectures that heat equation can not be solved back in time (i.e., only the case $t>0$, or some finite lower bounded, can be well investigated).  This effect is called the \emph{ill-posedness} of heat equation backward in time.  However, the backward heat equation has uniqueness, surprisingly or not.
+
+    To show this, let us take 1-D heat equation over $\Omega=(0,L)$ with DBC for example.  Similar as in class, it is equivalent to prove the claim that the following problem has only zero solution $w(x,t)\equiv 0$ over $(0,L)\times (-\infty,0)$
+\begin{equation}\label{backheat}
+\left\{
+\begin{array}{ll}
+w_t=Dw_{xx},&x\in (0,L),t<0,\\
+w(x,0)=0,&x\in (0,L),\\
+w(x,t)=0,&x=0,L, t<0,
+\end{array}
+\right.
+\end{equation}
+and furthermore it is sufficient to prove that $E(t)=0$ for all $t<0$, with $E(t):=\int_\Omega w^2(x,t)dx$.  It is not easy to see that the fact $\frac{dE(t)}{dt}\leq 0$ leads to no contradiction since $E(t)\geq00$ for $t<0$, which is totally reasonable.
+
+Let us argue by contradiction as follows.  If not, say $E(t_0)>0$ for some $t_0>0$.  Then by the continuity, we can always find $t_1\in(t_0,0]$ such that $E(t)>0$ in $(t_0,t_1)$ and $E(t_1)=0$ (draw a graph to for yourself; such $t_1$ exists since at least $E(0)=0$).
+
+
+(i)  Find $E'(t)$ and $E''(t)$;
+
+(ii)  Prove the Cauchy--Schwartz inequality
+\[\Big| \int_0^L f(x)g(x)dx \Big|\leq \Big(\int_0^L f^2(x) dx\Big)^\frac{1}{2} \Big(\int_0^L g^2(x) dx\Big)^\frac{1}{2};\]
+this is also referred to as Holder's inequality with $p=2$.  Hint: $p(r)=\int_0^L (f(x)+rg(x))^2 dx$ is always nonnegative, $\forall r\in\mathbb R$;
+
+(iii)  Prove that $(E')^2\leq EE''$, $\forall t\in [t_0,t_1)$;
+
+(iv)  Prove that $(\ln E)''\geq 0$, $\forall t\in [t_0,t_1)$, and then use this to derive a contraction to the fact that $E(t_1)=0$.
+\begin{solution}
+(i) One has as before that
+\[E'(t)=-2D\int_\Omega |\nabla w|^2 dx,\]
+and $E''(t)=\int_\Omega (2ww_t)_tdx=2\int_\Omega (w_t)^2 dx+2\int_\Omega ww_{tt} dx$, which, together with the PDE, implies that
+\[E''(t)=\int_\Omega (2ww_t)_tdx=2D\int_\Omega (\Delta w)^2 dx+2\int_\Omega w\Delta w_t dx.\]
+Now, we employ Green's second identity with DBC $w=0$ and again the PDE to obtain
+\[E''(t)=\int_\Omega (2ww_t)_tdx=2D\int_\Omega (\Delta w)^2 dx+2\int_\Omega \Delta w w_t dx=4D\int_\Omega (\Delta w)^2 dx.\]
+
+(ii).  It is easy to see that the quadratic function $p(r)=\int_0^L (f(x)+rg(x))^2 dx=(\int_0^L g^2 dx)r^2+2(\int_0^L fg dx)r+(\int_0^L f^2 dx)$ is always non--negative, therefore its discriminant is non--positive, and this implies the desired Cauchy-Schwarz inequality.
+
+(iii)  By C--S inequality, one easily observes that $(E')^2\leq EE''$, $\forall t\in [t_0,t_1)$;
+
+(iv)  Now, since $(\ln E(t))''=\frac{E''E-(E')^2}{E^2}\geq0$ for $t\in (t_0,t_1)$, we have that $\ln E(t)$ is convex(non--concave) in this interval.  This is impossible since $E(t)\equiv 0$ for all $t\geq t_1$ (draw a graph of $E(t)$ yourself).  The uniqueness follows.
+\end{solution}
+
+\item Let us revisit the following example in class: consider the following IBVP
+\begin{equation}\label{1dheat}
+\left\{
+\begin{array}{ll}
+u_t=Du_{xx},&x\in (0,L),t>0,\\
+u(x,0)=x,&x\in (0,L),\\
+u(x,t)=0,&x=0,L, t>0.
+\end{array}
+\right.
+\end{equation}
+
+i) without solving (\ref{1dheat}), what is your guess of the behavior of its solution at different time, say $t=0.01,0.05,1,5,$, and eventually as $t\rightarrow \infty$.  Use physical or biological interpretations of the PDE and DBC.  Draw $u(x,t)$ at these times to illustrate your expectation;
+
+ii) as we have done in class, the solution is unique and we have written it into the following series
+\[u(x,t)=\sum_{n=1}^\infty C_n e^{-D(\frac{n\pi}{L})^2t}\sin \frac{n\pi x}{L}.\]
+Finish the calculations by solving $C_n$.  Note: we choose $n=0$ in class, but one immediately recognizes that $C_0$ is superfluous now that the first term is zero.  Moreover, we shall see later in the course why the solution to (\ref{1dheat}) must take the form of this series.
+
+iii) choose $D=1$ and $L=\pi$.  Plot $u(x,t)$ $t=0.01,0.05,1,5,$ in the same coordinate.  Compare the results with your guess in i).
+
+\begin{solution}
+(i) we recognize (\ref{1dheat}) as a system describing the heat evolution in a homogeneous bar/rod which has no interval heating or cooling resources and is placed in icing water at both ends.  It is natural to expect from our life experience (called Fourier's law of thermal transportation as described in class) that the thermal energy eventually loses to the icing water and the temperature will stabilize to zero in a long time, i.e., $u(x,t)\rightarrow 0$ as $t\rightarrow \infty$.
+
+(ii) As in class, we test both hand sizes of the series by $\sin \frac{n\pi x}{L}$, and find that the coefficients $C'n$ must be chosen to be $C_n=\frac{2(-1)^{k+1}}{k\pi}$ in order to fit the initial condition
+\[u(x,t)=\sum_{n=1}^\infty\frac{2(-1)^{n+1}}{n\pi}e^{-D(n\pi)^2t}\sin n\pi x.\]
+\begin{figure}[h]
+  \centering
+\includegraphics[width=0.485\textwidth]{hw3figure21.eps}\hspace{-8mm}
+\includegraphics[width=0.485\textwidth]{hw3figure22.eps}
+\caption{\textbf{Left Column}: the first $N$-th sum at time $t=0.1$ for $N=1,2,3$ and 10.  \textbf{Right Column}: the error in $L^\infty$ for each $N$ large.  We observe that when $N$ is large, the finite sum is an approximation with error tolerance of $O(10^{-54})$.}\label{convergence}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+\includegraphics[width=0.75\textwidth]{hw3figure23.eps}
+\caption{Evolution of approximated solutions with its convergence to zero in large time.  I assume that this agrees well with your intuitive understanding of the large time behavior.}\label{approx}
+\end{figure}
+
+(iii)  We would like to note that the infinitely series presents the unique solution, however, in practice one has to truncate it by taking the finite terms
+\[u^N(x,t):=\sum_{n=1}^N\frac{2(-1)^{n+1}}{n\pi}e^{-D(n\pi)^2t}\sin n\pi x.\]
+Moreover, by standard calculus one can show that $u^N(x,t)$ converges as $N$ increases and approximate the true solution if $N$ is large enough.  Indeed, this convergence is not always good as we shall see later in this course.  We plot several graphs in  Figure \ref{convergence} for different $N$ and they suggest that $u^{10}(x,t)$ is a good enough approximation of the exact solution (i.e., the infinite series)--this applies in the sequel.  Therefore, in Figure \ref{approx} we adopt $u^{10}(x,t)$ for $t=0.01,0.05,01,1,2,5,...$, as the ``true" solution.  We observe the formation and evolution of a boundary layer at $x=1$ for $t$ small and $u^N$ decays to zero as $t$ increases in these figures.
+
+\end{solution}
+
+
+\item Consider the following IBVP
+\begin{equation}\label{1dheatnbc}
+\left\{
+\begin{array}{ll}
+u_t=Du_{xx},&x\in (0,L),t>0,\\
+u(x,0)=x,&x\in (0,L),\\
+u_x(x,t)=0,&x=0,L, t>0.
+\end{array}
+\right.
+\end{equation}
+
+i) without solving (\ref{1dheatnbc}), what is your guess of the behavior of its solution at different time, say $t=0.01,0.05,1,5,$, and eventually as $t\rightarrow \infty$.  Use physical or biological interpretations of the PDE and NBC.  Draw $u(x,t)$ at these times to illustrate your expectation;
+
+ii) Again, as we have shown in class, the solution to (\ref{1dheatnbc}) is unique and we will see that it can be written it into the following series
+\[u(x,t)=\sum_{n=0}^\infty C_n e^{-D(\frac{n\pi}{L})^2t}\cos \frac{n\pi x}{L}.\]
+Finish the calculations by solving $C_n$.  Note that $n=0$ can not be ignored.  Again, we shall see why the solution to (\ref{1dheatnbc}) must take this form.
+
+iii) choose $D=1$ and $L=\pi$.  Plot $u(x,t)$ $t=0.01,0.05,1,5,$ in the same coordinate.  Compare the results with your guess in i).
+\begin{solution}
+(i) Again, we recognize (\ref{1dheat}) as an equation describing the heat evolution in a homogeneous bar/rod which has no interval heating or cooling resources and is well insulated on both left and right end.  Then we expect that the temperature will stabilize to a constant $C$ in a long time, whereas the conservation of thermal energy readily implies this constant must be the average of the initial temperature, $u(x,t)\rightarrow C=\int_0^\pi x dx/\pi=\frac{\pi}{2}$ as $t\rightarrow \infty$.
+
+(ii) As in class, we test both hand sizes of the series by $\cos \frac{n\pi x}{L}$ and find that
+\begin{align*}
+C_n(0)&=\frac{2}{L}\int_{0}^{L}\phi(x)\cos{\frac{n\pi x}{L}}dx=\frac{2}{L}\int_{0}^{L}x\cos{\frac{n\pi x}{L}}dx\\
+&=\frac{2}{L}\int_{0}^{L}(\frac{L}{n\pi})xd\sin{\frac{n\pi x}{L}}=\frac{2}{n\pi}\Big(x\sin{\frac{n\pi x}{L}}\Big\vert^{L}_{0}-\int_{0}^{L}\sin{\frac{n\pi x}{L}}dx\Big)\\
+&=\frac{2L}{n^2\pi^2}\cos{\frac{n\pi x}{L}}\Big\vert_0^L=\frac{2L}{n^2\pi^2}\Big((-1)^k-1\Big);
+\end{align*}
+for $n=0$, we integration BHS over $(0,L)$ and find
+\[C_0(0)=\frac{\int_{0}^Lxdx}{L}=\frac{L}{2},\]
+therefore, we have
+\begin{align*}
+u(x,t)=\sum_{n=0}^{\infty}C_{n}(t)\cos{\frac{n\pi x}{L}}=\frac{L}{2}+\sum_{n=1}^{\infty}\frac{2L}{n^2\pi^2}\Big((-1)^k-1\Big)e^{-D(\frac{n\pi}{L})^{2}t}\cos{\frac{n\pi x}{L}}.
+\end{align*}
+
+Similar as above, one should in practice use the truncated finite series
+\[u^N(x,t):=\sum_{n=0}^{N}C_{n}(t)\cos{\frac{n\pi x}{L}}=\frac{L}{2}+\sum_{n=1}^{\infty}\frac{2L}{n^2\pi^2}\Big((-1)^k-1\Big)e^{-D(\frac{n\pi}{L})^{2}t}\cos{\frac{n\pi x}{L}}.\]
+to approximate the exact solution by choosing $N$ sufficiently large.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.495\textwidth]{hw2NBC.jpg}
+    \includegraphics[width=0.495\textwidth]{hw2NBC-blowup.jpg}
+  \caption{Left: convergence to the constant steady state as $t\rightarrow \infty$.  Right: Blow-up into infinity as $t\rightarrow -\infty$.}
+  \label{hw2NBC}
+  \end{figure}
+
+
+(iii) You should be able to observe the aforementioned convergence to the average value as $t\rightarrow \infty$.   One important observation is that, the steady-state is determined by the boundary condition, but not the initial data; moreover, for the problem backward in time, we can find that the solution \emph{blows up} in time, i.e., $u(x,t)\rightarrow \infty$ as $t\rightarrow -\infty$ (at least for a subsequence of such $t$) for each fixed $x\in(0,L)$.  Again, this suggests that the heat equation can not be solved backward in time.
+\end{solution}
+
+\end{enumerate}
+
+
+\end{document}
+\endinput
